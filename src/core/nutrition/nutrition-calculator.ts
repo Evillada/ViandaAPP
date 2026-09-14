@@ -102,12 +102,39 @@ export interface MacroDistribution {
   fatG: number;
 }
 
-/** 25% proteína, 50% carbos, 25% grasas */
-export function calculateMacros(targetKcal: number): MacroDistribution {
+export interface MacroRatios {
+  proteinPct: number; // e.g. 25
+  carbsPct: number;   // e.g. 50
+  fatPct: number;     // e.g. 25
+}
+
+/** Distribuciones predefinidas comunes en nutrición clínica */
+export const MACRO_PRESETS: Record<string, MacroRatios & { label: string }> = {
+  STANDARD: { label: "Estándar (25/50/25)", proteinPct: 25, carbsPct: 50, fatPct: 25 },
+  HIGH_PROTEIN: { label: "Alta en proteína (30/40/30)", proteinPct: 30, carbsPct: 40, fatPct: 30 },
+  LOW_CARB: { label: "Baja en carbohidratos (30/30/40)", proteinPct: 30, carbsPct: 30, fatPct: 40 },
+  KETOGENIC: { label: "Cetogénica (20/5/75)", proteinPct: 20, carbsPct: 5, fatPct: 75 },
+  ATHLETIC: { label: "Deportista (25/55/20)", proteinPct: 25, carbsPct: 55, fatPct: 20 },
+  RENAL: { label: "Renal (10/60/30)", proteinPct: 10, carbsPct: 60, fatPct: 30 },
+};
+
+/**
+ * Calcula macros con distribución personalizable
+ * @param targetKcal kcal objetivo
+ * @param ratios porcentajes (suman 100). Default: 25/50/25
+ */
+export function calculateMacros(
+  targetKcal: number,
+  ratios?: Partial<MacroRatios>
+): MacroDistribution {
+  const pPct = ratios?.proteinPct ?? 25;
+  const cPct = ratios?.carbsPct ?? 50;
+  const fPct = ratios?.fatPct ?? 25;
+
   return {
-    proteinG: Math.round((targetKcal * 0.25) / 4),
-    carbsG: Math.round((targetKcal * 0.5) / 4),
-    fatG: Math.round((targetKcal * 0.25) / 9),
+    proteinG: Math.round((targetKcal * (pPct / 100)) / 4),
+    carbsG: Math.round((targetKcal * (cPct / 100)) / 4),
+    fatG: Math.round((targetKcal * (fPct / 100)) / 9),
   };
 }
 

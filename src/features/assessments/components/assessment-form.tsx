@@ -30,17 +30,43 @@ const TMB_FORMULA_LABELS: Record<string, string> = {
   FAO_OMS: "FAO/OMS/UNU (1985)",
 };
 
+const MACRO_PRESET_LABELS: Record<string, { label: string; p: number; c: number; f: number }> = {
+  STANDARD: { label: "Estándar (25/50/25)", p: 25, c: 50, f: 25 },
+  HIGH_PROTEIN: { label: "Alta en proteína (30/40/30)", p: 30, c: 40, f: 30 },
+  LOW_CARB: { label: "Baja en carbohidratos (30/30/40)", p: 30, c: 30, f: 40 },
+  KETOGENIC: { label: "Cetogénica (20/5/75)", p: 20, c: 5, f: 75 },
+  ATHLETIC: { label: "Deportista (25/55/20)", p: 25, c: 55, f: 20 },
+  RENAL: { label: "Renal (10/60/30)", p: 10, c: 60, f: 30 },
+  CUSTOM: { label: "Personalizado", p: 25, c: 50, f: 25 },
+};
+
 export function AssessmentForm({ patientId }: { patientId: string }) {
   const [error, setError] = useState<string | null>(null);
   const [weightKg, setWeightKg] = useState("");
   const [heightCm, setHeightCm] = useState("");
+  const [macroPreset, setMacroPreset] = useState("STANDARD");
+  const [customP, setCustomP] = useState("25");
+  const [customC, setCustomC] = useState("50");
+  const [customF, setCustomF] = useState("25");
   const [isPending, startTransition] = useTransition();
 
   const today = new Date().toISOString().slice(0, 10);
+  const isCustom = macroPreset === "CUSTOM";
+  const totalPct = isCustom
+    ? (parseFloat(customP) || 0) + (parseFloat(customC) || 0) + (parseFloat(customF) || 0)
+    : 100;
 
   function handleSubmit(formData: FormData) {
     setError(null);
     formData.set("patientId", patientId);
+    if (!isCustom) {
+      const preset = MACRO_PRESET_LABELS[macroPreset];
+      if (preset) {
+        formData.set("proteinPct", String(preset.p));
+        formData.set("carbsPct", String(preset.c));
+        formData.set("fatPct", String(preset.f));
+      }
+    }
     startTransition(async () => {
       const result = await createAssessment(formData);
       if (result?.error) setError(result.error);
@@ -127,6 +153,72 @@ export function AssessmentForm({ patientId }: { patientId: string }) {
         </div>
         <BmiLivePreview weightKg={weightKg} heightCm={heightCm} />
         {optionalNumber("bodyFatPercent", "% Grasa manual (opcional)")}
+      </FormSection>
+
+      <FormSection title="Distribución de macronutrientes" description="Elige un perfil predefinido o personaliza los porcentajes">
+        <div className="space-y-1">
+          <label htmlFor="macroPreset" className="block text-sm font-medium text-text">
+            Perfil de macros
+          </label>
+          <select
+            id="macroPreset"
+            name="macroPreset"
+            className={selectClass}
+            value={macroPreset}
+            onChange={(e) => setMacroPreset(e.target.value)}
+          >
+            {Object.entries(MACRO_PRESET_LABELS).map(([k, v]) => (
+              <option key={k} value={k}>{v.label}</option>
+            ))}
+          </select>
+        </div>
+        {isCustom && (
+          <div className="grid grid-cols-3 gap-3">
+            <Input
+              label="% Proteína"
+              id="proteinPct"
+              name="proteinPct"
+              type="number"
+              min="5"
+              max="60"
+              step="1"
+              value={customP}
+              onChange={(e) => setCustomP(e.target.value)}
+            />
+            <Input
+              label="% Carbohidratos"
+              id="carbsPct"
+              name="carbsPct"
+              type="number"
+              min="0"
+              max="80"
+              step="1"
+              value={customC}
+              onChange={(e) => setCustomC(e.target.value)}
+            />
+            <Input
+              label="% Grasas"
+              id="fatPct"
+              name="fatPct"
+              type="number"
+              min="5"
+              max="80"
+              step="1"
+              value={customF}
+              onChange={(e) => setCustomF(e.target.value)}
+            />
+          </div>
+        )}
+        {isCustom && totalPct !== 100 && (
+          <p className="text-sm text-warning">
+            ⚠️ Los porcentajes suman {totalPct}% — deben sumar 100%
+          </p>
+        )}
+        {!isCustom && macroPreset in MACRO_PRESET_LABELS && (
+          <p className="text-xs text-muted">
+            Proteína {MACRO_PRESET_LABELS[macroPreset]!.p}% · Carbohidratos {MACRO_PRESET_LABELS[macroPreset]!.c}% · Grasas {MACRO_PRESET_LABELS[macroPreset]!.f}%
+          </p>
+        )}
       </FormSection>
 
       <FormSection title="Perímetros (cm)" description="ISAK completo — todos opcionales" defaultOpen={false}>

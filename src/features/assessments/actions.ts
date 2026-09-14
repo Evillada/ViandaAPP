@@ -8,6 +8,7 @@ import {
   calculateMacros,
   calculateTargetKcal,
   calculateTmb,
+  MACRO_PRESETS,
   type ActivityLevel,
   type Sex,
   type TmbFormula,
@@ -19,6 +20,8 @@ import {
   calculateWaistHipRatio,
 } from "@/core/anthropometry/perimeters";
 import { calculateSomatotype } from "@/core/anthropometry/somatotype";
+import { calculateWaterRequirement } from "@/core/nutrition/water-calculator";
+import { generateNutritionalDiagnosis } from "@/core/nutrition/diagnosis";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { redirect } from "next/navigation";
@@ -45,6 +48,12 @@ const assessmentSchema = z.object({
     "VERY_ACTIVE",
   ]),
   tmbFormula: z.enum(["MIFFLIN_ST_JEOR", "HARRIS_BENEDICT", "FAO_OMS"]).optional(),
+  // Macro distribution
+  macroPreset: z.string().optional(),
+  proteinPct: optionalFloat,
+  carbsPct: optionalFloat,
+  fatPct: optionalFloat,
+  // Medidas
   weightKg: z.coerce.number().min(20).max(300),
   heightCm: z.coerce.number().min(100).max(250),
   bodyFatPercent: optionalFloat,
@@ -133,19 +142,29 @@ export async function createAssessment(formData: FormData) {
   const bmi = calculateBmi(data.weightKg, data.heightCm);
   const bmiClassification = classifyBmiOms(bmi);
   const tmbFormula = (data.tmbFormula ?? "MIFFLIN_ST_JEOR") as TmbFormula;
-  const tmb = calculateTmb(
-    data.weightKg,
-    data.heightCm,
-    age,
-    sex,
-    tmbFormula
-  );
-  const targetKcal = calculateTargetKcal(
-    tmb,
-    data.activityLevel as ActivityLevel
-  );
-  const macros = calculateMacros(targetKcal);
+  const tmb = calculateTmb(data.weightKg, data.heightCm, age, sex, tmbFormula);
+  const targetKcal = calculateTargetKcal(tmb, data.activityLevel as ActivityLevel);
 
+  // Custom macros
+  const presetKey = data.macroPreset ?? "STANDARD";
+  let proteinPct = 25;
+  let carbsPct = 50;
+  let fatPct = 25;
+
+  if (presetKey === "CUSTOM") {
+    proteinPct = data.proteinPct ?? 25;
+    carbsPct = data.carbsPct ?? 50;
+    fatPct = data.fatPct ?? 25;
+  } else if (presetKey in MACRO_PRESETS) {
+    const preset = MACRO_PRESETS[presetKey]!;
+    proteinPct = preset.proteinPct;
+    carbsPct = preset.carbsPct;
+    fatPct = preset.fatPct;
+  }
+
+  const macros = calculateMacros(targetKcal, { proteinPct, carbsPct, fatPct });
+
+  // Waist-hip ratio
   const waistHipRatio =
     data.waistCm && data.hipCm
       ? calculateWaistHipRatio(data.waistCm, data.hipCm)
@@ -156,6 +175,7 @@ export async function createAssessment(formData: FormData) {
       ? calculateArmMuscleArea(data.armContractedCm, data.skinfoldTricepsMm)
       : null;
 
+  // Body composition
   const composition = calculateBodyComposition(
     data.weightKg,
     {
@@ -174,7 +194,7 @@ export async function createAssessment(formData: FormData) {
     data.bodyFatPercent
   );
 
-  // Somatotipo Heath-Carter
+  // Somatotype Heath-Carter
   const somatotype = calculateSomatotype({
     heightCm: data.heightCm,
     weightKg: data.weightKg,
@@ -186,6 +206,26 @@ export async function createAssessment(formData: FormData) {
     calfCm: data.calfCm ?? undefined,
     humerusBreadthCm: data.humerusBreadthCm ?? undefined,
     femurBreadthCm: data.femurBreadthCm ?? undefined,
+  });
+
+  // Water requirement
+  const water = calculateWaterRequirement(
+    data.weightKg,
+    age,
+    data.activityLevel,
+    "ADJUSTED"
+  );
+
+  // Nutritional diagnosis
+  const diagnosis = generateNutritionalDiagnosis({
+    bmi,
+    sex,
+    age,
+    bodyFatPercent: composition?.bodyFatPercent ?? data.bodyFatPercent,
+    waistCm: data.waistCm,
+    waistHipRatio,
+    heightCm: data.heightCm,
+    weightKg: data.weightKg,
   });
 
   const assessment = await prisma.assessment.create({
@@ -255,6 +295,14 @@ export async function createAssessment(formData: FormData) {
           proteinG: macros.proteinG,
           carbsG: macros.carbsG,
           fatG: macros.fatG,
+          macroPreset: presetKey as never,
+          proteinPct,
+          carbsPct,
+          fatPct,
+          waterMlPerDay: water.mlPerDay,
+          waterMethod: water.method,
+          nutritionalDiagnosis: diagnosis.overallDiagnosis,
+          cie10Code: diagnosis.cie10Code,
         },
       },
     },

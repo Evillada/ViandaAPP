@@ -94,6 +94,16 @@ enum TmbFormula {
   FAO_OMS
 }
 
+enum MacroPreset {
+  STANDARD
+  HIGH_PROTEIN
+  LOW_CARB
+  KETOGENIC
+  ATHLETIC
+  RENAL
+  CUSTOM
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -159,6 +169,7 @@ model Assessment {
   anthropometry   AnthropometryRecord?
   nutritionalGoal NutritionalGoal?
   mealPlans       MealPlan[]
+  dietaryRecalls  DietaryRecall[]
 
   @@map("assessments")
 }
@@ -229,10 +240,58 @@ model NutritionalGoal {
   carbsG      Float
   fatG        Float
 
+  // Distribución de macros personalizable
+  macroPreset  MacroPreset @default(STANDARD)
+  proteinPct   Float       @default(25)
+  carbsPct     Float       @default(50)
+  fatPct       Float       @default(25)
+
+  // Requerimiento hídrico
+  waterMlPerDay  Int?
+  waterMethod    String?
+
+  // Diagnóstico nutricional automático
+  nutritionalDiagnosis String?
+  cie10Code            String?
+
   assessmentId String     @unique
   assessment   Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
 
   @@map("nutritional_goals")
+}
+
+model DietaryRecall {
+  id         String   @id @default(cuid())
+  recallDate DateTime @default(now())
+  notes      String?
+  isTypical  Boolean  @default(false) // ¿Es un día típico?
+  createdAt  DateTime @default(now())
+
+  assessmentId String
+  assessment   Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  items DietaryRecallItem[]
+
+  @@map("dietary_recalls")
+}
+
+model DietaryRecallItem {
+  id                 String  @id @default(cuid())
+  mealType           String  // BREAKFAST, LUNCH, etc.
+  time               String  // "07:30"
+  foodName           String
+  foodId             String? // Enlace opcional al catálogo
+  food               Food?   @relation(fields: [foodId], references: [id])
+  quantity           Float   @default(1)
+  portionDescription String  // "1 taza", "2 cucharadas"
+  portionGrams       Float
+  preparationMethod  String? // "frito", "al horno"
+  notes              String?
+
+  recallId String
+  recall   DietaryRecall @relation(fields: [recallId], references: [id], onDelete: Cascade)
+
+  @@map("dietary_recall_items")
 }
 
 model FoodCategory {
@@ -263,9 +322,10 @@ model Food {
   categoryId String
   category   FoodCategory @relation(fields: [categoryId], references: [id])
 
-  nutrients FoodNutrient[]
-  portions  FoodPortion[]
-  mealItems MealItem[]
+  nutrients    FoodNutrient[]
+  portions     FoodPortion[]
+  mealItems    MealItem[]
+  recallItems  DietaryRecallItem[]
 
   @@map("foods")
 }

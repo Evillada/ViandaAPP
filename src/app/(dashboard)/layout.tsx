@@ -7,6 +7,7 @@ const navItems = [
   { href: "/dashboard", label: "Inicio", icon: "🏠" },
   { href: "/dashboard/patients", label: "Pacientes", icon: "👥" },
   { href: "/dashboard/appointments", label: "Citas", icon: "📅" },
+  { href: "/dashboard/tools", label: "Herramientas", icon: "🧮" },
 ];
 
 export default async function DashboardLayout({
