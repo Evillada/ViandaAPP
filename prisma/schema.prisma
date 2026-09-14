@@ -1,0 +1,413 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+  PROFESSIONAL
+}
+
+enum Sex {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum ActivityLevel {
+  SEDENTARY
+  LIGHT
+  MODERATE
+  ACTIVE
+  VERY_ACTIVE
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+}
+
+enum MealType {
+  BREAKFAST
+  MORNING_SNACK
+  LUNCH
+  AFTERNOON_SNACK
+  DINNER
+  EVENING_SNACK
+  OTHER
+}
+
+enum MealPlanStatus {
+  DRAFT
+  ACTIVE
+  COMPLETED
+  REPLACED
+  CANCELLED
+}
+
+enum NutrientCategory {
+  ENERGY
+  MACRO
+  LIPID
+  VITAMIN
+  MINERAL
+}
+
+enum PatientStatus {
+  ACTIVE
+  INACTIVE
+  DISCHARGED
+}
+
+enum BmiCategory {
+  UNDERWEIGHT
+  NORMAL
+  OVERWEIGHT
+  OBESE_I
+  OBESE_II
+  OBESE_III
+}
+
+enum AssessmentType {
+  INITIAL
+  FOLLOW_UP
+  REASSESSMENT
+  DISCHARGE
+}
+
+enum BodyFatMethod {
+  MANUAL
+  DURNIN_WOMERSLEY
+  JACKSON_POLLOCK_3
+  YUHASZ
+}
+
+enum TmbFormula {
+  MIFFLIN_ST_JEOR
+  HARRIS_BENEDICT
+  FAO_OMS
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          Role      @default(PROFESSIONAL)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts     Account[]
+  sessions     Session[]
+  patients     Patient[]
+  appointments Appointment[]
+  assessments  Assessment[]
+  mealPlans    MealPlan[]
+
+  @@map("users")
+}
+
+model Patient {
+  id          String        @id @default(cuid())
+  firstName   String
+  lastName    String
+  documentId  String?
+  sex         Sex?
+  email       String?
+  phone       String?
+  dateOfBirth DateTime?
+  notes       String?
+  status      PatientStatus @default(ACTIVE)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  professionalId String
+  professional   User          @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+  appointments   Appointment[]
+  assessments    Assessment[]
+  mealPlans      MealPlan[]
+
+  @@map("patients")
+}
+
+model Assessment {
+  id             String         @id @default(cuid())
+  type           AssessmentType @default(INITIAL)
+  assessmentDate DateTime       @default(now())
+  reason         String
+  notes          String?
+  allergies      String?
+  conditions     String?
+  medications    String?
+  activityLevel  ActivityLevel  @default(SEDENTARY)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  patientId      String
+  patient        Patient @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  professionalId String
+  professional   User    @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+
+  anthropometry   AnthropometryRecord?
+  nutritionalGoal NutritionalGoal?
+  mealPlans       MealPlan[]
+
+  @@map("assessments")
+}
+
+model AnthropometryRecord {
+  id             String  @id @default(cuid())
+  weightKg       Float
+  heightCm       Float
+  bodyFatPercent Float?
+  bodyFatMethod  BodyFatMethod?
+  fatMassKg      Float?
+  leanMassKg     Float?
+  waistHipRatio  Float?
+
+  // Perímetros
+  headCm           Float?
+  neckCm           Float?
+  chestCm          Float?   // Mesoesternal
+  waistCm          Float?   // Circunferencia de cintura
+  abdominalCm      Float?   // Circunferencia abdominal (a nivel del ombligo)
+  hipCm            Float?   // Circunferencia de cadera
+  armRelaxedCm     Float?   // Perímetro braquial relajado
+  armContractedCm  Float?   // Mitad de brazo contraído
+  forearmCm        Float?   // Antebrazo
+  wristCm          Float?   // Muñeca
+  thighProximalCm  Float?   // Muslo a 1 cm del pliegue glúteo
+  thighCm          Float?   // Perímetro de muslo
+  calfCm           Float?   // Perímetro de pantorrilla
+  armMuscleAreaCm2 Float?
+
+  // Pliegues cutáneos (mm)
+  skinfoldTricepsMm      Float?   // Tricipital
+  skinfoldBicepsMm       Float?   // Bicipital
+  skinfoldSubscapularMm  Float?   // Subescapular
+  skinfoldIliacCrestMm   Float?   // Iliocrestal
+  skinfoldSuprailiacMm   Float?   // Suprailiaco
+  skinfoldAbdominalMm    Float?   // Abdominal
+  skinfoldThighMm        Float?   // Muslo frontal
+  skinfoldCalfMm         Float?   // Pantorrilla medial
+  skinfoldMidaxillaryMm  Float?   // Axilar medial
+  skinfoldPectoralMm     Float?   // Pectoral
+
+  // Diámetros óseos (cm) — para somatotipo Heath-Carter
+  humerusBreadthCm  Float?   // Biepicondíleo del húmero
+  femurBreadthCm    Float?   // Biepicondíleo del fémur
+
+  // Somatotipo calculado
+  somatotypeEndo  Float?
+  somatotypeMeso  Float?
+  somatotypeEcto  Float?
+
+  anthropometryNotes String?
+
+  assessmentId String     @unique
+  assessment   Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  @@map("anthropometry_records")
+}
+
+model NutritionalGoal {
+  id          String       @id @default(cuid())
+  bmi         Float
+  bmiCategory BmiCategory
+  tmbKcal     Float
+  tmbFormula  TmbFormula   @default(MIFFLIN_ST_JEOR)
+  targetKcal  Float
+  proteinG    Float
+  carbsG      Float
+  fatG        Float
+
+  assessmentId String     @unique
+  assessment   Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  @@map("nutritional_goals")
+}
+
+model FoodCategory {
+  id    String @id @default(cuid())
+  name  String @unique
+  slug  String @unique
+  foods Food[]
+
+  @@map("food_categories")
+}
+
+model Nutrient {
+  id       String           @id @default(cuid())
+  name     String           @unique
+  unit     String
+  category NutrientCategory
+  foods    FoodNutrient[]
+
+  @@map("nutrients")
+}
+
+model Food {
+  id       String  @id @default(cuid())
+  name     String
+  source   String  @default("ICBF")
+  isGlobal Boolean @default(true)
+
+  categoryId String
+  category   FoodCategory @relation(fields: [categoryId], references: [id])
+
+  nutrients FoodNutrient[]
+  portions  FoodPortion[]
+  mealItems MealItem[]
+
+  @@map("foods")
+}
+
+model FoodNutrient {
+  id            String @id @default(cuid())
+  amountPer100g Float
+
+  foodId     String
+  food       Food     @relation(fields: [foodId], references: [id], onDelete: Cascade)
+  nutrientId String
+  nutrient   Nutrient @relation(fields: [nutrientId], references: [id], onDelete: Cascade)
+
+  @@unique([foodId, nutrientId])
+  @@map("food_nutrients")
+}
+
+model FoodPortion {
+  id        String  @id @default(cuid())
+  name      String
+  grams     Float
+  isDefault Boolean @default(false)
+
+  foodId String
+  food   Food   @relation(fields: [foodId], references: [id], onDelete: Cascade)
+
+  @@map("food_portions")
+}
+
+model MealPlan {
+  id      String         @id @default(cuid())
+  name    String
+  notes   String?
+  status  MealPlanStatus @default(DRAFT)
+  version Int            @default(1)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  patientId      String
+  patient        Patient     @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  assessmentId   String?
+  assessment     Assessment? @relation(fields: [assessmentId], references: [id], onDelete: SetNull)
+  professionalId String
+  professional   User        @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+
+  days MealPlanDay[]
+
+  @@map("meal_plans")
+}
+
+model MealPlanDay {
+  id       String @id @default(cuid())
+  name     String
+  orderNum Int    @default(1)
+
+  mealPlanId String
+  mealPlan   MealPlan @relation(fields: [mealPlanId], references: [id], onDelete: Cascade)
+  meals      Meal[]
+
+  @@map("meal_plan_days")
+}
+
+model Meal {
+  id       String   @id @default(cuid())
+  type     MealType
+  name     String?
+  orderNum Int      @default(1)
+
+  dayId String
+  day   MealPlanDay @relation(fields: [dayId], references: [id], onDelete: Cascade)
+  items MealItem[]
+
+  @@map("meals")
+}
+
+model MealItem {
+  id           String  @id @default(cuid())
+  quantity     Float   @default(1)
+  portionGrams Float
+  notes        String?
+
+  mealId String
+  meal   Meal   @relation(fields: [mealId], references: [id], onDelete: Cascade)
+  foodId String
+  food   Food   @relation(fields: [foodId], references: [id])
+
+  @@map("meal_items")
+}
+
+model Appointment {
+  id        String            @id @default(cuid())
+  date      DateTime
+  duration  Int               @default(30)
+  reason    String?
+  status    AppointmentStatus @default(SCHEDULED)
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  patientId      String
+  patient        Patient @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  professionalId String
+  professional   User    @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+
+  @@map("appointments")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}

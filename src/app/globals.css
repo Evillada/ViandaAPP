@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  /* Wellness palette */
+  --color-primary: #2a9d8f;
+  --color-primary-dark: #21867a;
+  --color-primary-light: #e8f5f3;
+  --color-secondary: #457b9d;
+  --color-accent: #f4a261;
+  --color-accent-light: #fef3e8;
+  --color-surface: #ffffff;
+  --color-background: #f7fafa;
+  --color-muted: #64748b;
+  --color-text: #264653;
+  --color-border: #e2e8f0;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  --background: var(--color-background);
+  --foreground: var(--color-text);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-accent-light: var(--color-accent-light);
+  --color-surface: var(--color-surface);
+  --color-muted: var(--color-muted);
+  --color-text: var(--color-text);
+  --color-border: var(--color-border);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Custom utility classes */
+.gradient-wellness {
+  background: linear-gradient(135deg, #e8f5f3 0%, #f0f9ff 50%, #fef3e8 100%);
+}
+
+.card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-hover:hover {
+  box-shadow: 0 8px 25px -5px rgb(42 157 143 / 0.15);
+  transform: translateY(-1px);
+}
