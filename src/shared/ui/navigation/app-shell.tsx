@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef } from "react";
 import {
   Calculator,
   CalendarDays,
@@ -45,7 +45,7 @@ function isActive(pathname: string, item: NavItem): boolean {
 
 export function AppShell({ areaLabel, items, areas, user, switchAreaAction, signOutAction, children }: AppShellProps) {
   const pathname = usePathname();
-  const [accountOpen, setAccountOpen] = useState(false);
+  const accountDialogRef = useRef<HTMLDialogElement>(null);
   const initial = user.name?.[0]?.toUpperCase() ?? "V";
 
   const accountPanel = (
@@ -157,7 +157,8 @@ export function AppShell({ areaLabel, items, areas, user, switchAreaAction, sign
           <li className="flex-1">
             <button
               type="button"
-              onClick={() => setAccountOpen(true)}
+              onClick={() => accountDialogRef.current?.showModal()}
+              aria-haspopup="dialog"
               className="flex w-full min-h-14 flex-col items-center justify-center gap-0.5 text-[11px] font-medium text-muted"
             >
               <UserRound className="h-5 w-5" aria-hidden="true" />
@@ -167,30 +168,32 @@ export function AppShell({ areaLabel, items, areas, user, switchAreaAction, sign
         </ul>
       </nav>
 
-      {accountOpen && (
-        <div className="md:hidden fixed inset-0 z-50 flex items-end bg-black/40" onClick={() => setAccountOpen(false)}>
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label="Cuenta"
-            className="w-full rounded-t-2xl bg-surface p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between mb-4">
-              <p className="font-semibold text-text">Cuenta</p>
-              <button
-                type="button"
-                onClick={() => setAccountOpen(false)}
-                aria-label="Cerrar"
-                className="h-11 w-11 flex items-center justify-center rounded-full text-muted hover:bg-background"
-              >
-                <X className="h-5 w-5" aria-hidden="true" />
-              </button>
-            </div>
-            {accountPanel}
+      <dialog
+        ref={accountDialogRef}
+        aria-label="Cuenta"
+        className="fixed inset-x-0 bottom-0 top-auto m-0 w-full max-w-none rounded-t-2xl bg-surface p-0 backdrop:bg-black/40"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) e.currentTarget.close();
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") e.currentTarget.close();
+        }}
+      >
+        <div className="p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))]">
+          <div className="flex items-center justify-between mb-4">
+            <p className="font-semibold text-text">Cuenta</p>
+            <button
+              type="button"
+              onClick={() => accountDialogRef.current?.close()}
+              aria-label="Cerrar"
+              className="h-11 w-11 flex items-center justify-center rounded-full text-muted hover:bg-background"
+            >
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
           </div>
+          {accountPanel}
         </div>
-      )}
+      </dialog>
     </div>
   );
 }
