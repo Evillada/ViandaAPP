@@ -1,6 +1,8 @@
 "use server";
 
-import { auth } from "@/infrastructure/auth/auth";
+import { getActorFor, requireActorFor } from "@/infrastructure/access/access-context";
+import { recordAuditBestEffort } from "@/infrastructure/audit/audit-logger";
+import { getRequestMeta } from "@/infrastructure/http/request-meta";
 import { prisma } from "@/infrastructure/database/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -8,6 +10,20 @@ import {
   generateAutomaticMealPlan,
   type FoodForGenerator,
 } from "@/core/nutrition/meal-plan-generator";
+
+async function auditMealPlan(actorId: string, mealPlanId: string, patientId: string, change: string) {
+  const { ip } = await getRequestMeta();
+  await recordAuditBestEffort({
+    actorId,
+    actorRole: "PROFESSIONAL",
+    action: "MEAL_PLAN_CHANGED",
+    entityType: "MealPlan",
+    entityId: mealPlanId,
+    patientId,
+    metadata: { change },
+    ip,
+  });
+}
 
 export async function getFoods(search?: string) {
   return prisma.food.findMany({
@@ -25,11 +41,10 @@ export async function getFoods(search?: string) {
 }
 
 export async function getMealPlan(id: string) {
-  const session = await auth();
-  if (!session?.user?.id) throw new Error("No autorizado");
+  const actor = await requireActorFor("PROFESSIONAL");
 
   return prisma.mealPlan.findFirst({
-    where: { id, professionalId: session.user.id },
+    where: { id, professionalId: actor.userId },
     include: {
       patient: true,
       assessment: { include: { nutritionalGoal: true } },
@@ -57,11 +72,11 @@ export async function getMealPlan(id: string) {
 }
 
 export async function createMealPlan(patientId: string, assessmentId: string) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
 
   const patient = await prisma.patient.findFirst({
-    where: { id: patientId, professionalId: session.user.id },
+    where: { id: patientId, professionalId: actor.userId },
   });
   if (!patient) return { error: "Paciente no encontrado" };
 
@@ -70,7 +85,7 @@ export async function createMealPlan(patientId: string, assessmentId: string) {
       name: `Plan nutricional — ${patient.firstName}`,
       patientId,
       assessmentId,
-      professionalId: session.user.id,
+      professionalId: actor.userId,
       status: "DRAFT",
       days: {
         create: {
@@ -88,6 +103,7 @@ export async function createMealPlan(patientId: string, assessmentId: string) {
     },
   });
 
+  await auditMealPlan(actor.userId, plan.id, patientId, "created");
   redirect(`/dashboard/meal-plans/${plan.id}`);
 }
 
@@ -133,14 +149,14 @@ export async function generateAutomaticMealPlanAction(
   patientId: string,
   assessmentId: string
 ) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
 
   const assessment = await prisma.assessment.findFirst({
     where: {
       id: assessmentId,
       patientId,
-      professionalId: session.user.id,
+      professionalId: actor.userId,
     },
     include: {
       patient: true,
@@ -177,7 +193,7 @@ export async function generateAutomaticMealPlanAction(
         "Generado automáticamente según TMB, actividad y macros. Revisar y ajustar antes de aprobar.",
       patientId,
       assessmentId,
-      professionalId: session.user.id,
+      professionalId: actor.userId,
       status: "DRAFT",
       days: {
         create: {
@@ -201,6 +217,7 @@ export async function generateAutomaticMealPlanAction(
     },
   });
 
+  await auditMealPlan(actor.userId, plan.id, patientId, "generated");
   revalidatePath(`/dashboard/patients/${patientId}`);
   redirect(`/dashboard/meal-plans/${plan.id}`);
 }
@@ -212,11 +229,11 @@ export async function regenerateMealPlanFromForm(formData: FormData): Promise<vo
 }
 
 export async function regenerateAutomaticMealPlan(mealPlanId: string) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
 
   const plan = await prisma.mealPlan.findFirst({
-    where: { id: mealPlanId, professionalId: session.user.id },
+    where: { id: mealPlanId, professionalId: actor.userId },
     include: {
       assessment: { include: { nutritionalGoal: true } },
       days: { include: { meals: { include: { items: true } } } },
@@ -268,6 +285,7 @@ export async function regenerateAutomaticMealPlan(mealPlanId: string) {
     },
   });
 
+  await auditMealPlan(actor.userId, mealPlanId, plan.patientId, "regenerated");
   revalidatePath(`/dashboard/meal-plans/${mealPlanId}`);
   return { success: true };
 }
@@ -279,8 +297,8 @@ export async function activateMealPlanForm(formData: FormData): Promise<void> {
 }
 
 export async function addMealItem(formData: FormData) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
 
   const mealId = formData.get("mealId") as string;
   const foodId = formData.get("foodId") as string;
@@ -293,40 +311,53 @@ export async function addMealItem(formData: FormData) {
   }
 
   const plan = await prisma.mealPlan.findFirst({
-    where: { id: mealPlanId, professionalId: session.user.id },
+    where: { id: mealPlanId, professionalId: actor.userId },
   });
   if (!plan) return { error: "Plan no encontrado" };
+
+  const meal = await prisma.meal.findFirst({ where: { id: mealId, day: { mealPlanId } }, select: { id: true } });
+  if (!meal) return { error: "Comida no encontrada en este plan" };
 
   await prisma.mealItem.create({
     data: { mealId, foodId, portionGrams, quantity },
   });
 
+  await auditMealPlan(actor.userId, mealPlanId, plan.patientId, "item_added");
   revalidatePath(`/dashboard/meal-plans/${mealPlanId}`);
   return { success: true };
 }
 
 export async function removeMealItem(itemId: string, mealPlanId: string) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
 
   const plan = await prisma.mealPlan.findFirst({
-    where: { id: mealPlanId, professionalId: session.user.id },
+    where: { id: mealPlanId, professionalId: actor.userId },
   });
   if (!plan) return { error: "Plan no encontrado" };
 
-  await prisma.mealItem.delete({ where: { id: itemId } });
+  const removed = await prisma.mealItem.deleteMany({
+    where: { id: itemId, meal: { day: { mealPlanId } } },
+  });
+  if (removed.count === 0) return { error: "Elemento no encontrado" };
+
+  await auditMealPlan(actor.userId, mealPlanId, plan.patientId, "item_removed");
   revalidatePath(`/dashboard/meal-plans/${mealPlanId}`);
   return { success: true };
 }
 
 export async function activateMealPlan(mealPlanId: string) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
 
-  await prisma.mealPlan.updateMany({
-    where: { id: mealPlanId, professionalId: session.user.id },
-    data: { status: "ACTIVE" },
+  const plan = await prisma.mealPlan.findFirst({
+    where: { id: mealPlanId, professionalId: actor.userId },
+    select: { id: true, patientId: true },
   });
+  if (!plan) return { error: "Plan no encontrado" };
+
+  await prisma.mealPlan.update({ where: { id: mealPlanId }, data: { status: "ACTIVE" } });
+  await auditMealPlan(actor.userId, mealPlanId, plan.patientId, "activated");
 
   revalidatePath(`/dashboard/meal-plans/${mealPlanId}`);
   return { success: true };

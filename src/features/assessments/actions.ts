@@ -1,6 +1,8 @@
 "use server";
 
-import { auth } from "@/infrastructure/auth/auth";
+import { getActorFor, requireActorFor } from "@/infrastructure/access/access-context";
+import { recordAuditBestEffort } from "@/infrastructure/audit/audit-logger";
+import { getRequestMeta } from "@/infrastructure/http/request-meta";
 import { prisma } from "@/infrastructure/database/prisma";
 import {
   calculateAge,
@@ -89,11 +91,10 @@ const assessmentSchema = z.object({
 });
 
 export async function getAssessment(id: string) {
-  const session = await auth();
-  if (!session?.user?.id) throw new Error("No autorizado");
+  const actor = await requireActorFor("PROFESSIONAL");
 
-  return prisma.assessment.findFirst({
-    where: { id, professionalId: session.user.id },
+  const assessment = await prisma.assessment.findFirst({
+    where: { id, professionalId: actor.userId },
     include: {
       patient: true,
       anthropometry: true,
@@ -101,22 +102,36 @@ export async function getAssessment(id: string) {
       mealPlans: { orderBy: { createdAt: "desc" } },
     },
   });
+
+  if (assessment) {
+    const { ip } = await getRequestMeta();
+    await recordAuditBestEffort({
+      actorId: actor.userId,
+      actorRole: "PROFESSIONAL",
+      action: "PATIENT_RECORD_VIEWED",
+      entityType: "Assessment",
+      entityId: assessment.id,
+      patientId: assessment.patientId,
+      ip,
+    });
+  }
+
+  return assessment;
 }
 
 export async function getPatientAssessments(patientId: string) {
-  const session = await auth();
-  if (!session?.user?.id) throw new Error("No autorizado");
+  const actor = await requireActorFor("PROFESSIONAL");
 
   return prisma.assessment.findMany({
-    where: { patientId, professionalId: session.user.id },
+    where: { patientId, professionalId: actor.userId },
     include: { anthropometry: true, nutritionalGoal: true },
     orderBy: { assessmentDate: "desc" },
   });
 }
 
 export async function createAssessment(formData: FormData) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
 
   const raw = Object.fromEntries(formData.entries());
   const parsed = assessmentSchema.safeParse(raw);
@@ -128,7 +143,7 @@ export async function createAssessment(formData: FormData) {
   const data = parsed.data;
 
   const patient = await prisma.patient.findFirst({
-    where: { id: data.patientId, professionalId: session.user.id },
+    where: { id: data.patientId, professionalId: actor.userId },
   });
   if (!patient) return { error: "Paciente no encontrado" };
   if (!patient.dateOfBirth || !patient.sex) {
@@ -239,7 +254,7 @@ export async function createAssessment(formData: FormData) {
       medications: data.medications || null,
       activityLevel: data.activityLevel,
       patientId: data.patientId,
-      professionalId: session.user.id,
+      professionalId: actor.userId,
       anthropometry: {
         create: {
           weightKg: data.weightKg,
@@ -306,6 +321,17 @@ export async function createAssessment(formData: FormData) {
         },
       },
     },
+  });
+
+  const { ip } = await getRequestMeta();
+  await recordAuditBestEffort({
+    actorId: actor.userId,
+    actorRole: "PROFESSIONAL",
+    action: "ASSESSMENT_CREATED",
+    entityType: "Assessment",
+    entityId: assessment.id,
+    patientId: data.patientId,
+    ip,
   });
 
   revalidatePath(`/dashboard/patients/${data.patientId}`);

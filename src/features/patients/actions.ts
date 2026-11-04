@@ -1,9 +1,14 @@
 "use server";
 
-import { auth } from "@/infrastructure/auth/auth";
-import { prisma } from "@/infrastructure/database/prisma";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { canViewPatientRecord } from "@/core/access/policies";
+import type { Actor } from "@/core/access/types";
+import type { AuditAction } from "@/core/audit/audit";
+import { getActorFor, requireActorFor } from "@/infrastructure/access/access-context";
+import { recordAuditBestEffort } from "@/infrastructure/audit/audit-logger";
+import { prisma } from "@/infrastructure/database/prisma";
+import { getRequestMeta } from "@/infrastructure/http/request-meta";
 
 const patientSchema = z.object({
   firstName: z.string().min(1, "Nombre requerido"),
@@ -16,13 +21,45 @@ const patientSchema = z.object({
   notes: z.string().optional(),
 });
 
+function parsePatientForm(formData: FormData) {
+  return patientSchema.safeParse({
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+    documentId: formData.get("documentId") || undefined,
+    sex: formData.get("sex") || undefined,
+    email: formData.get("email") || undefined,
+    phone: formData.get("phone") || undefined,
+    dateOfBirth: formData.get("dateOfBirth") || undefined,
+    notes: formData.get("notes") || undefined,
+  });
+}
+
+async function auditPatient(actor: Actor, action: AuditAction, patientId: string, metadata?: Record<string, unknown>) {
+  const { ip } = await getRequestMeta();
+  await recordAuditBestEffort({
+    actorId: actor.userId,
+    actorRole: "PROFESSIONAL",
+    action,
+    entityType: "Patient",
+    entityId: patientId,
+    patientId,
+    metadata,
+    ip,
+  });
+}
+
+function revalidatePatients(id?: string) {
+  revalidatePath("/dashboard");
+  revalidatePath("/dashboard/patients");
+  if (id) revalidatePath(`/dashboard/patients/${id}`);
+}
+
 export async function getPatients(includeInactive = false) {
-  const session = await auth();
-  if (!session?.user?.id) throw new Error("No autorizado");
+  const actor = await requireActorFor("PROFESSIONAL");
 
   return prisma.patient.findMany({
     where: {
-      professionalId: session.user.id,
+      professionalId: actor.userId,
       ...(!includeInactive && { status: { not: "INACTIVE" } }),
     },
     orderBy: { createdAt: "desc" },
@@ -38,11 +75,10 @@ export async function getPatients(includeInactive = false) {
 }
 
 export async function getPatient(id: string) {
-  const session = await auth();
-  if (!session?.user?.id) throw new Error("No autorizado");
+  const actor = await requireActorFor("PROFESSIONAL");
 
-  return prisma.patient.findFirst({
-    where: { id, professionalId: session.user.id },
+  const patient = await prisma.patient.findFirst({
+    where: { id, professionalId: actor.userId },
     include: {
       assessments: {
         orderBy: { assessmentDate: "desc" },
@@ -54,31 +90,27 @@ export async function getPatient(id: string) {
       },
     },
   });
+
+  if (!patient || !canViewPatientRecord(actor, { professionalId: patient.professionalId, userId: patient.userId, consentActive: false })) {
+    return null;
+  }
+
+  await auditPatient(actor, "PATIENT_RECORD_VIEWED", patient.id);
+  return patient;
 }
 
 export async function createPatient(formData: FormData) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
 
-  const parsed = patientSchema.safeParse({
-    firstName: formData.get("firstName"),
-    lastName: formData.get("lastName"),
-    documentId: formData.get("documentId") || undefined,
-    sex: formData.get("sex") || undefined,
-    email: formData.get("email") || undefined,
-    phone: formData.get("phone") || undefined,
-    dateOfBirth: formData.get("dateOfBirth") || undefined,
-    notes: formData.get("notes") || undefined,
-  });
-
+  const parsed = parsePatientForm(formData);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Datos inválidos" };
   }
 
-  const { firstName, lastName, documentId, sex, email, phone, dateOfBirth, notes } =
-    parsed.data;
+  const { firstName, lastName, documentId, sex, email, phone, dateOfBirth, notes } = parsed.data;
 
-  await prisma.patient.create({
+  const patient = await prisma.patient.create({
     data: {
       firstName,
       lastName,
@@ -88,70 +120,59 @@ export async function createPatient(formData: FormData) {
       phone: phone || null,
       dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : null,
       notes: notes || null,
-      professionalId: session.user.id,
+      professionalId: actor.userId,
     },
   });
 
-  revalidatePath("/dashboard");
-  revalidatePath("/dashboard/patients");
+  await auditPatient(actor, "PATIENT_CREATED", patient.id);
+  revalidatePatients();
+  return { success: true };
+}
+
+async function setPatientStatus(id: string, status: "ACTIVE" | "INACTIVE" | "DISCHARGED") {
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
+
+  const result = await prisma.patient.updateMany({
+    where: { id, professionalId: actor.userId },
+    data: { status },
+  });
+  if (result.count === 0) return { error: "Paciente no encontrado" };
+
+  await auditPatient(actor, "PATIENT_UPDATED", id, { status });
+  revalidatePatients(id);
   return { success: true };
 }
 
 /** Desactiva un paciente (soft delete — nunca se borra de la BD) */
 export async function deactivatePatient(id: string) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
-
-  await prisma.patient.updateMany({
-    where: { id, professionalId: session.user.id },
-    data: { status: "INACTIVE" },
-  });
-
-  revalidatePath("/dashboard");
-  revalidatePath("/dashboard/patients");
-  return { success: true };
+  return setPatientStatus(id, "INACTIVE");
 }
 
 /** Reactiva un paciente desactivado */
 export async function reactivatePatient(id: string) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
+  return setPatientStatus(id, "ACTIVE");
+}
 
-  await prisma.patient.updateMany({
-    where: { id, professionalId: session.user.id },
-    data: { status: "ACTIVE" },
-  });
-
-  revalidatePath("/dashboard");
-  revalidatePath("/dashboard/patients");
-  return { success: true };
+/** Da de alta a un paciente */
+export async function dischargePatient(id: string) {
+  return setPatientStatus(id, "DISCHARGED");
 }
 
 /** Actualiza la información de un paciente */
 export async function updatePatient(id: string, formData: FormData) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
 
-  const parsed = patientSchema.safeParse({
-    firstName: formData.get("firstName"),
-    lastName: formData.get("lastName"),
-    documentId: formData.get("documentId") || undefined,
-    sex: formData.get("sex") || undefined,
-    email: formData.get("email") || undefined,
-    phone: formData.get("phone") || undefined,
-    dateOfBirth: formData.get("dateOfBirth") || undefined,
-    notes: formData.get("notes") || undefined,
-  });
-
+  const parsed = parsePatientForm(formData);
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Datos inválidos" };
   }
 
-  const { firstName, lastName, documentId, sex, email, phone, dateOfBirth, notes } =
-    parsed.data;
+  const { firstName, lastName, documentId, sex, email, phone, dateOfBirth, notes } = parsed.data;
 
-  const count = await prisma.patient.updateMany({
-    where: { id, professionalId: session.user.id },
+  const result = await prisma.patient.updateMany({
+    where: { id, professionalId: actor.userId },
     data: {
       firstName,
       lastName,
@@ -164,37 +185,18 @@ export async function updatePatient(id: string, formData: FormData) {
     },
   });
 
-  if (count.count === 0) return { error: "Paciente no encontrado" };
+  if (result.count === 0) return { error: "Paciente no encontrado" };
 
-  revalidatePath("/dashboard");
-  revalidatePath("/dashboard/patients");
-  revalidatePath(`/dashboard/patients/${id}`);
-  return { success: true };
-}
-
-/** Da de alta a un paciente */
-export async function dischargePatient(id: string) {
-  const session = await auth();
-  if (!session?.user?.id) return { error: "No autorizado" };
-
-  await prisma.patient.updateMany({
-    where: { id, professionalId: session.user.id },
-    data: { status: "DISCHARGED" },
-  });
-
-  revalidatePath("/dashboard");
-  revalidatePath("/dashboard/patients");
+  await auditPatient(actor, "PATIENT_UPDATED", id);
+  revalidatePatients(id);
   return { success: true };
 }
 
 /** Búsqueda de pacientes con filtros */
 export async function searchPatients(query?: string, status?: string) {
-  const session = await auth();
-  if (!session?.user?.id) throw new Error("No autorizado");
+  const actor = await requireActorFor("PROFESSIONAL");
 
-  const where: Record<string, unknown> = {
-    professionalId: session.user.id,
-  };
+  const where: Record<string, unknown> = { professionalId: actor.userId };
 
   if (status && status !== "ALL") {
     where.status = status;
@@ -203,9 +205,9 @@ export async function searchPatients(query?: string, status?: string) {
   if (query && query.trim().length > 0) {
     const q = query.trim();
     where.OR = [
-      { firstName: { contains: q } },
-      { lastName: { contains: q } },
-      { email: { contains: q } },
+      { firstName: { contains: q, mode: "insensitive" } },
+      { lastName: { contains: q, mode: "insensitive" } },
+      { email: { contains: q, mode: "insensitive" } },
       { documentId: { contains: q } },
       { phone: { contains: q } },
     ];
