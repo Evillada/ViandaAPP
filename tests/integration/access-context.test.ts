@@ -34,6 +34,20 @@ describe("access-context", () => {
     await expect(requireActorFor("PROFESSIONAL")).rejects.toBeInstanceOf(AccessDeniedError);
   });
 
+  it("profesional pendiente con rol PROFESSIONAL igual es rechazado por estado", async () => {
+    const pro = await createProfessional({ status: "PENDING", extraRoles: ["PROFESSIONAL"] });
+    signInAs(pro.id);
+    expect(await getActorFor("PROFESSIONAL")).toBeNull();
+  });
+
+  it("usuario borrado con sesión vigente no obtiene actor", async () => {
+    const pro = await createProfessional();
+    signInAs(pro.id);
+    await prisma.user.delete({ where: { id: pro.id } });
+    expect(await getSessionActor()).toBeNull();
+    expect(await getActorFor("PROFESSIONAL")).toBeNull();
+  });
+
   it("la suspensión surte efecto inmediato (lee BD, no JWT)", async () => {
     const pro = await createProfessional();
     signInAs(pro.id);
