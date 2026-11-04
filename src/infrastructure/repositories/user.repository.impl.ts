@@ -27,7 +27,7 @@ export class UserRepositoryImpl implements IUserRepository {
         email: user.email,
         name: user.name,
         image: user.image,
-        role: user.role,
+        roles: user.roles,
       },
     });
     return this.toDomain(data);
@@ -40,7 +40,7 @@ export class UserRepositoryImpl implements IUserRepository {
         email: user.email,
         name: user.name,
         image: user.image,
-        role: user.role,
+        roles: user.roles,
       },
     });
     return this.toDomain(data);
@@ -57,7 +57,7 @@ export class UserRepositoryImpl implements IUserRepository {
         email: data.email,
         name: data.name ?? "",
         image: data.image ?? undefined,
-        role: (data.role as UserRole) ?? UserRole.USER,
+        roles: (data.roles as UserRole[]) ?? [],
       },
       data.id,
       data.createdAt,

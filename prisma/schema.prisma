@@ -10,9 +10,36 @@ datasource db {
 }
 
 enum Role {
-  USER
-  ADMIN
+  PATIENT
   PROFESSIONAL
+  ADMIN
+}
+
+enum ProfessionalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+enum AuditAction {
+  AUTH_LOGIN
+  AUTH_LOGIN_FAILED
+  PATIENT_RECORD_VIEWED
+  PATIENT_CREATED
+  PATIENT_UPDATED
+  ASSESSMENT_CREATED
+  MEAL_PLAN_CHANGED
+  APPOINTMENT_CHANGED
+  INVITATION_CREATED
+  INVITATION_REVOKED
+  INVITATION_ACCEPTED
+  CONSENT_GRANTED
+  CONSENT_REVOKED
+  PROFESSIONAL_REGISTERED
+  PROFESSIONAL_APPROVED
+  PROFESSIONAL_REJECTED
+  PROFESSIONAL_SUSPENDED
 }
 
 enum Sex {
@@ -113,16 +140,24 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
-  role          Role      @default(PROFESSIONAL)
+  roles         Role[]    @default([])
+  lastArea      Role?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  accounts     Account[]
-  sessions     Session[]
-  patients     Patient[]
-  appointments Appointment[]
-  assessments  Assessment[]
-  mealPlans    MealPlan[]
+  accounts            Account[]
+  sessions            Session[]
+  patients            Patient[]             @relation("PatientProfessional")
+  patientRecords      Patient[]             @relation("PatientAccount")
+  appointments        Appointment[]
+  assessments         Assessment[]
+  mealPlans           MealPlan[]
+  professionalProfile ProfessionalProfile?  @relation("ProfileOwner")
+  reviewedProfiles    ProfessionalProfile[] @relation("ProfileReviewer")
+  invitationsCreated  PatientInvitation[]   @relation("InvitationCreator")
+  invitationsAccepted PatientInvitation[]   @relation("InvitationAcceptor")
+  consents            PatientConsent[]
+  auditLogs           AuditLog[]
 
   @@map("users")
 }
@@ -142,11 +177,17 @@ model Patient {
   updatedAt   DateTime      @updatedAt
 
   professionalId String
-  professional   User          @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+  professional   User                @relation("PatientProfessional", fields: [professionalId], references: [id], onDelete: Cascade)
+  userId         String?
+  user           User?               @relation("PatientAccount", fields: [userId], references: [id], onDelete: SetNull)
   appointments   Appointment[]
   assessments    Assessment[]
   mealPlans      MealPlan[]
+  invitations    PatientInvitation[]
+  consents       PatientConsent[]
+  auditLogs      AuditLog[]
 
+  @@unique([professionalId, userId])
   @@map("patients")
 }
 
@@ -472,4 +513,92 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verification_tokens")
+}
+
+model ProfessionalProfile {
+  id              String             @id @default(cuid())
+  licenseNumber   String
+  status          ProfessionalStatus @default(PENDING)
+  reviewedAt      DateTime?
+  rejectionReason String?
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  userId       String  @unique
+  user         User    @relation("ProfileOwner", fields: [userId], references: [id], onDelete: Cascade)
+  reviewedById String?
+  reviewedBy   User?   @relation("ProfileReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@map("professional_profiles")
+}
+
+model PatientInvitation {
+  id         String    @id @default(cuid())
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  acceptedAt DateTime?
+  revokedAt  DateTime?
+  createdAt  DateTime  @default(now())
+
+  patientId    String
+  patient      Patient @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  createdById  String
+  createdBy    User    @relation("InvitationCreator", fields: [createdById], references: [id], onDelete: Cascade)
+  acceptedById String?
+  acceptedBy   User?   @relation("InvitationAcceptor", fields: [acceptedById], references: [id], onDelete: SetNull)
+
+  @@index([patientId])
+  @@map("patient_invitations")
+}
+
+model ConsentDocument {
+  id          String   @id @default(cuid())
+  version     String   @unique
+  body        String
+  effectiveAt DateTime
+  createdAt   DateTime @default(now())
+
+  consents PatientConsent[]
+
+  @@map("consent_documents")
+}
+
+model PatientConsent {
+  id        String    @id @default(cuid())
+  grantedAt DateTime  @default(now())
+  ip        String?
+  userAgent String?
+  revokedAt DateTime?
+
+  patientId  String
+  patient    Patient         @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  documentId String
+  document   ConsentDocument @relation(fields: [documentId], references: [id])
+
+  @@index([patientId, grantedAt])
+  @@map("patient_consents")
+}
+
+model AuditLog {
+  id         String      @id @default(cuid())
+  actorRole  Role?
+  action     AuditAction
+  entityType String
+  entityId   String?
+  metadata   Json?
+  ip         String?
+  createdAt  DateTime    @default(now())
+
+  actorId   String?
+  actor     User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  patientId String?
+  patient   Patient? @relation(fields: [patientId], references: [id], onDelete: SetNull)
+
+  @@index([patientId, createdAt])
+  @@index([actorId, createdAt])
+  @@index([createdAt])
+  @@map("audit_logs")
 }

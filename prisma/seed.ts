@@ -3,6 +3,14 @@ import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
+const CONSENT_V1_BODY = `BORRADOR — pendiente de revisión legal.
+
+Autorización para el tratamiento de datos personales y datos de salud (Ley 1581 de 2012).
+
+Al aceptar, autorizo de manera previa, expresa e informada a mi profesional de nutrición, a través de la plataforma Vianda, para recolectar, almacenar y usar mis datos personales y mis datos de salud (antropometría, valoraciones, planes alimentarios y registros que yo aporte) con la única finalidad de prestarme atención nutricional.
+
+Entiendo que mis datos de salud son datos sensibles, que no estoy obligado(a) a autorizar su tratamiento, y que puedo conocer, actualizar, rectificar y revocar esta autorización en cualquier momento desde mi cuenta. La revocación corta mi acceso al portal; la ficha clínica que el profesional conserve se rige por las normas de historia clínica aplicables.`;
+
 const NUTRIENTS = [
   { name: "Energía", unit: "kcal", category: "ENERGY" as const },
   { name: "Proteína", unit: "g", category: "MACRO" as const },
@@ -59,14 +67,26 @@ async function main() {
 
   const dev = await prisma.user.upsert({
     where: { email: "dev@gmail.com" },
-    update: { name: "Dr. Desarrollador", password: devPassword, role: "ADMIN" },
-    create: { email: "dev@gmail.com", name: "Dr. Desarrollador", password: devPassword, role: "ADMIN" },
+    update: { name: "Dr. Desarrollador", password: devPassword, roles: ["PROFESSIONAL", "ADMIN"] },
+    create: { email: "dev@gmail.com", name: "Dr. Desarrollador", password: devPassword, roles: ["PROFESSIONAL", "ADMIN"] },
   });
 
-  await prisma.user.upsert({
+  await prisma.professionalProfile.upsert({
+    where: { userId: dev.id },
+    update: { status: "APPROVED", licenseNumber: "RETHUS-DEMO-0001", reviewedAt: new Date() },
+    create: { userId: dev.id, status: "APPROVED", licenseNumber: "RETHUS-DEMO-0001", reviewedAt: new Date() },
+  });
+
+  const patientUser = await prisma.user.upsert({
     where: { email: "paciente@emuj.health" },
-    update: { name: "María García", password: patientPassword, role: "USER" },
-    create: { email: "paciente@emuj.health", name: "María García", password: patientPassword, role: "USER" },
+    update: { name: "María García", password: patientPassword, roles: ["PATIENT"] },
+    create: { email: "paciente@emuj.health", name: "María García", password: patientPassword, roles: ["PATIENT"] },
+  });
+
+  const consentDocument = await prisma.consentDocument.upsert({
+    where: { version: "2026-11-v1" },
+    update: { body: CONSENT_V1_BODY },
+    create: { version: "2026-11-v1", body: CONSENT_V1_BODY, effectiveAt: new Date("2026-11-01T00:00:00Z") },
   });
 
   for (const n of NUTRIENTS) {
@@ -142,6 +162,7 @@ async function main() {
       dateOfBirth: new Date("1990-05-15"),
       notes: "Paciente demo — sedentaria, objetivo pérdida de peso",
       professionalId: dev.id,
+      userId: patientUser.id,
     },
     create: {
       id: "seed-patient-maria",
@@ -153,6 +174,27 @@ async function main() {
       phone: "+57 300 123 4567",
       dateOfBirth: new Date("1990-05-15"),
       notes: "Paciente demo — sedentaria, objetivo pérdida de peso",
+      professionalId: dev.id,
+      userId: patientUser.id,
+    },
+  });
+
+  await prisma.patientConsent.deleteMany({ where: { patientId: patient.id } });
+  await prisma.patientConsent.create({
+    data: { patientId: patient.id, userId: patientUser.id, documentId: consentDocument.id, ip: "seed", userAgent: "seed" },
+  });
+
+  await prisma.patient.upsert({
+    where: { id: "seed-patient-carlos" },
+    update: { professionalId: dev.id },
+    create: {
+      id: "seed-patient-carlos",
+      firstName: "Carlos",
+      lastName: "Ruiz",
+      sex: "MALE",
+      dateOfBirth: new Date("1985-03-10"),
+      phone: "+57 310 555 0101",
+      notes: "Paciente demo sin cuenta — para probar invitaciones",
       professionalId: dev.id,
     },
   });
@@ -260,6 +302,7 @@ async function main() {
   console.log("   Paciente demo:", patient.firstName, patient.lastName);
   console.log(`   ${demoAssessments.length} valoraciones demo con historial`);
   console.log(`   ${FOODS.length} alimentos ICBF cargados`);
+  console.log("   Consentimiento v1, María vinculada a paciente@emuj.health, Carlos sin cuenta");
 }
 
 main()

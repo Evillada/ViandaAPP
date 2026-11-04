@@ -38,7 +38,8 @@ export async function POST(request: Request) {
         name,
         email,
         password: hashedPassword,
-        role: "PROFESSIONAL",
+        roles: ["PROFESSIONAL"],
+        professionalProfile: { create: { licenseNumber: "SIN-REGISTRAR", status: "APPROVED" } },
       },
     });
 
