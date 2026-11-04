@@ -8,7 +8,7 @@ Plataforma de gestión nutricional clínica para profesionales.
 
 - **Next.js 16** (App Router)
 - **TypeScript** + **Tailwind CSS v4**
-- **Prisma** (SQLite local)
+- **Prisma** (PostgreSQL en Supabase)
 - **NextAuth.js v5**
 
 ## Funcionalidades
@@ -33,7 +33,7 @@ pnpm dev
 
 | Rol | Email | Password |
 |-----|-------|----------|
-| Nutricionista | `dev@emuj.health` | `Dev123!` |
+| Nutricionista | `dev@gmail.com` | `Dev123!` |
 
 ## Flujo
 

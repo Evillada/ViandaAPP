@@ -58,9 +58,9 @@ async function main() {
   const patientPassword = await bcrypt.hash("Pac123!", 12);
 
   const dev = await prisma.user.upsert({
-    where: { email: "dev@emuj.health" },
+    where: { email: "dev@gmail.com" },
     update: { name: "Dr. Desarrollador", password: devPassword, role: "ADMIN" },
-    create: { email: "dev@emuj.health", name: "Dr. Desarrollador", password: devPassword, role: "ADMIN" },
+    create: { email: "dev@gmail.com", name: "Dr. Desarrollador", password: devPassword, role: "ADMIN" },
   });
 
   await prisma.user.upsert({
@@ -256,7 +256,7 @@ async function main() {
   }
 
   console.log("✅ Vianda seed completado");
-  console.log("   Nutricionista: dev@emuj.health / Dev123!");
+  console.log("   Nutricionista: dev@gmail.com / Dev123!");
   console.log("   Paciente demo:", patient.firstName, patient.lastName);
   console.log(`   ${demoAssessments.length} valoraciones demo con historial`);
   console.log(`   ${FOODS.length} alimentos ICBF cargados`);

@@ -37,7 +37,7 @@ Evolucionar emuj-health hacia **Vianda**: plataforma de gestión nutricional cl�
 - Next.js monolito, hexagonal ligera
 - `core/nutrition/` — dominio puro (calculadoras)
 - `features/` — server actions + UI
-- SQLite local (`prisma/dev.db`)
+- PostgreSQL en Supabase (Prisma)
 
 ## Flujo principal
 

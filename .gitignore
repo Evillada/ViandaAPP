@@ -40,12 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# sqlite local db
-/prisma/dev.db
-/prisma/dev.db-journal
-
 # pnpm store
 /.pnpm-store
 
 # cursor
 .cursor
+
+# superpowers scratch
+/.superpowers

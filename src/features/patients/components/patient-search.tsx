@@ -1,7 +1,9 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useTransition } from "react";
+import { useCallback, useEffect, useRef, useTransition } from "react";
+
+const SEARCH_DEBOUNCE_MS = 350;
 
 const STATUS_OPTIONS = [
   { value: "ALL", label: "Todos" },
@@ -35,6 +37,16 @@ export function PatientSearch() {
     [router, searchParams]
   );
 
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+  }, []);
+
+  function handleQueryChange(value: string) {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => updateParams("q", value), SEARCH_DEBOUNCE_MS);
+  }
+
   return (
     <div className="flex flex-col sm:flex-row gap-3">
       <div className="relative flex-1">
@@ -43,7 +55,7 @@ export function PatientSearch() {
           type="search"
           placeholder="Buscar por nombre, email, documento..."
           defaultValue={currentQuery}
-          onChange={(e) => updateParams("q", e.target.value)}
+          onChange={(e) => handleQueryChange(e.target.value)}
           className="w-full rounded-xl border border-border bg-surface pl-10 pr-4 py-2.5 text-sm text-text placeholder:text-muted/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
         />
         {isPending && (
