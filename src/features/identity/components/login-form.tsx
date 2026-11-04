@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useSyncExternalStore } from "react";
+import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button, Input } from "@/shared/ui/components";
+import { useHydrated } from "@/shared/lib/use-hydrated";
 import { safeCallbackUrl } from "../safe-callback-url";
-
-const subscribeNoop = () => () => {};
 
 export function LoginForm() {
   const router = useRouter();
@@ -17,9 +16,7 @@ export function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  // El envío queda deshabilitado hasta hidratar: antes de eso el navegador haría un GET nativo a /login.
-  // false en servidor y durante la hidratación; true una vez que React tomó control.
-  const hydrated = useSyncExternalStore(subscribeNoop, () => true, () => false);
+  const hydrated = useHydrated();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { useHydrated } from "@/shared/lib/use-hydrated";
 import { Button, Input } from "@/shared/ui/components";
 import Link from "next/link";
 import { Logo } from "@/shared/ui/brand/logo";
@@ -15,6 +16,7 @@ export default function RegisterPage() {
   const [licenseNumber, setLicenseNumber] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const hydrated = useHydrated();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,7 +111,7 @@ export default function RegisterPage() {
             required
           />
           {error && <p className="text-sm text-danger">{error}</p>}
-          <Button type="submit" className="w-full min-h-11" size="lg" disabled={loading}>
+          <Button type="submit" className="w-full min-h-11" size="lg" disabled={loading || !hydrated}>
             {loading ? "Creando cuenta..." : "Crear cuenta"}
           </Button>
         </form>
