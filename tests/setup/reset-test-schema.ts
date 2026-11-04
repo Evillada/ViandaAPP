@@ -12,10 +12,11 @@ export function resetTestSchema(): void {
   }
   const env = { ...process.env, DATABASE_URL: url, DIRECT_URL: url };
 
-  execSync(`pnpm exec prisma db execute --url "$TEST_DB_URL" --stdin`, {
+  // La URL llega sólo por el entorno del hijo (DATABASE_URL/DIRECT_URL), nunca por argv.
+  execSync("pnpm exec prisma db execute --schema prisma/schema.prisma --stdin", {
     input: 'DROP SCHEMA IF EXISTS "test" CASCADE; CREATE SCHEMA "test";',
     stdio: ["pipe", "inherit", "inherit"],
-    env: { ...env, TEST_DB_URL: url },
+    env,
   });
   execSync("pnpm exec prisma db push --skip-generate", { stdio: "inherit", env });
 }
