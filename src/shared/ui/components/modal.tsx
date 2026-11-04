@@ -83,14 +83,14 @@ export function ConfirmModal({
         <button
           onClick={onClose}
           disabled={isPending}
-          className="px-4 py-2 rounded-xl border border-border text-sm font-medium text-muted hover:bg-background transition-colors disabled:opacity-50"
+          className="min-h-11 px-4 py-2 rounded-xl border border-border text-sm font-medium text-muted hover:bg-background transition-colors disabled:opacity-50"
         >
           {cancelLabel}
         </button>
         <button
           onClick={onConfirm}
           disabled={isPending}
-          className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors disabled:opacity-50 ${variantStyles[variant]}`}
+          className={`min-h-11 px-4 py-2 rounded-xl text-sm font-medium transition-colors disabled:opacity-50 ${variantStyles[variant]}`}
         >
           {isPending ? "Procesando..." : confirmLabel}
         </button>
