@@ -26,6 +26,15 @@ describe("registerProfessional", () => {
     });
   });
 
+  it("registros simultáneos con el mismo email: uno crea y el otro recibe 409", async () => {
+    const results = await Promise.all([
+      registerProfessional({ ...valid, email: "carrera@test.co" }, { ip: null }),
+      registerProfessional({ ...valid, email: "carrera@test.co" }, { ip: null }),
+    ]);
+    expect(results.filter((r) => r.ok)).toHaveLength(1);
+    expect(results.filter((r) => !r.ok && r.status === 409)).toHaveLength(1);
+  });
+
   it("exige tarjeta profesional", async () => {
     const result = await registerProfessional({ ...valid, licenseNumber: "" }, { ip: null });
     expect(result).toEqual({ ok: false, status: 400, error: "Número de tarjeta profesional requerido" });

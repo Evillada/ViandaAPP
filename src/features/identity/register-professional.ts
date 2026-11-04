@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { recordAudit } from "@/infrastructure/audit/audit-logger";
@@ -25,31 +26,39 @@ export async function registerProfessional(
 
   const hashedPassword = await bcrypt.hash(password, 12);
 
-  const user = await prisma.$transaction(async (tx) => {
-    const created = await tx.user.create({
-      data: {
-        name,
-        email,
-        password: hashedPassword,
-        roles: [],
-        professionalProfile: { create: { licenseNumber } },
-      },
-      select: { id: true },
+  let user: { id: string };
+  try {
+    user = await prisma.$transaction(async (tx) => {
+      const created = await tx.user.create({
+        data: {
+          name,
+          email,
+          password: hashedPassword,
+          roles: [],
+          professionalProfile: { create: { licenseNumber } },
+        },
+        select: { id: true },
+      });
+      await recordAudit(
+        {
+          actorId: created.id,
+          actorRole: null,
+          action: "PROFESSIONAL_REGISTERED",
+          entityType: "ProfessionalProfile",
+          entityId: created.id,
+          metadata: { licenseNumber },
+          ip: meta.ip,
+        },
+        tx
+      );
+      return created;
     });
-    await recordAudit(
-      {
-        actorId: created.id,
-        actorRole: null,
-        action: "PROFESSIONAL_REGISTERED",
-        entityType: "ProfessionalProfile",
-        entityId: created.id,
-        metadata: { licenseNumber },
-        ip: meta.ip,
-      },
-      tx
-    );
-    return created;
-  });
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002") {
+      return { ok: false, status: 409, error: "Ya existe una cuenta con este email" };
+    }
+    throw error;
+  }
 
   return { ok: true, userId: user.id };
 }
