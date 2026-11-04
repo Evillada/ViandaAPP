@@ -127,7 +127,7 @@ export async function updateAppointmentStatus(id: string, status: "SCHEDULED" | 
   });
   if (!appointment) return { error: "Cita no encontrada" };
 
-  await prisma.appointment.update({ where: { id }, data: { status } });
+  await prisma.appointment.updateMany({ where: { id, professionalId: actor.userId }, data: { status } });
 
   await auditAppointment(actor.userId, id, appointment.patientId, { status });
   revalidatePath("/dashboard");

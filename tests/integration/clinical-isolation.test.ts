@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { AccessDeniedError } from "@/infrastructure/access/access-context";
-import { createAppointment } from "@/features/appointments/actions";
+import { createAppointment, updateAppointmentStatus } from "@/features/appointments/actions";
 import { getAssessment } from "@/features/assessments/actions";
-import { getMealPlan } from "@/features/nutrition/actions";
+import { activateMealPlan, createMealPlan, getMealPlan } from "@/features/nutrition/actions";
 import { getPatient, getPatients, updatePatient } from "@/features/patients/actions";
 import { prisma } from "../support/db";
 import { createAdmin, createPatientRecord, createProfessional } from "../support/factories";
@@ -44,6 +44,26 @@ describe("aislamiento clínico entre profesionales", () => {
     appointment.set("date", "2026-12-01");
     appointment.set("time", "10:00");
     expect(await createAppointment(appointment)).toEqual({ error: "Paciente no encontrado" });
+  });
+
+  it("A no adjunta la valoración de B a un plan propio", async () => {
+    const { proA, assessmentB } = await setup();
+    const patientA = await createPatientRecord(proA.id, { firstName: "Alicia" });
+    signInAs(proA.id);
+    expect(await createMealPlan(patientA.id, assessmentB.id)).toEqual({ error: "Evaluación no encontrada" });
+    expect(await prisma.mealPlan.count({ where: { assessmentId: assessmentB.id } })).toBe(0);
+  });
+
+  it("A no cambia el estado de citas ni activa planes de B", async () => {
+    const { proA, proB, patientB, planB } = await setup();
+    const appointmentB = await prisma.appointment.create({
+      data: { patientId: patientB.id, professionalId: proB.id, date: new Date("2026-12-01T15:00:00Z") },
+    });
+    signInAs(proA.id);
+    expect(await updateAppointmentStatus(appointmentB.id, "CANCELLED")).toEqual({ error: "Cita no encontrada" });
+    expect(await activateMealPlan(planB.id)).toEqual({ error: "Plan no encontrado" });
+    expect((await prisma.appointment.findUniqueOrThrow({ where: { id: appointmentB.id } })).status).toBe("SCHEDULED");
+    expect((await prisma.mealPlan.findUniqueOrThrow({ where: { id: planB.id } })).status).toBe("DRAFT");
   });
 
   it("abrir la ficha propia audita PATIENT_RECORD_VIEWED", async () => {

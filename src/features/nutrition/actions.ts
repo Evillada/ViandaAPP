@@ -80,6 +80,12 @@ export async function createMealPlan(patientId: string, assessmentId: string) {
   });
   if (!patient) return { error: "Paciente no encontrado" };
 
+  const assessment = await prisma.assessment.findFirst({
+    where: { id: assessmentId, patientId, professionalId: actor.userId },
+    select: { id: true },
+  });
+  if (!assessment) return { error: "Evaluación no encontrada" };
+
   const plan = await prisma.mealPlan.create({
     data: {
       name: `Plan nutricional — ${patient.firstName}`,
@@ -277,8 +283,8 @@ export async function regenerateAutomaticMealPlan(mealPlanId: string) {
     });
   }
 
-  await prisma.mealPlan.update({
-    where: { id: mealPlanId },
+  await prisma.mealPlan.updateMany({
+    where: { id: mealPlanId, professionalId: actor.userId },
     data: {
       notes:
         "Regenerado automáticamente según metas nutricionales. Revisar y ajustar antes de aprobar.",
@@ -356,7 +362,10 @@ export async function activateMealPlan(mealPlanId: string) {
   });
   if (!plan) return { error: "Plan no encontrado" };
 
-  await prisma.mealPlan.update({ where: { id: mealPlanId }, data: { status: "ACTIVE" } });
+  await prisma.mealPlan.updateMany({
+    where: { id: mealPlanId, professionalId: actor.userId },
+    data: { status: "ACTIVE" },
+  });
   await auditMealPlan(actor.userId, mealPlanId, plan.patientId, "activated");
 
   revalidatePath(`/dashboard/meal-plans/${mealPlanId}`);
