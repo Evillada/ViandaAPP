@@ -23,6 +23,7 @@
     "@tanstack/react-query": "^5.102.8",
     "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
+    "lucide-react": "^1.67.0",
     "next": "16.3.3",
     "next-auth": "5.0.0-beta.30",
     "react": "19.2.8",
