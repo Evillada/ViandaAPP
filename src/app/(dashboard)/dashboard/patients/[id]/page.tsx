@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPatient } from "@/features/patients/actions";
 import { PatientDetailTabs } from "@/features/assessments/components/patient-detail-tabs";
+import { getInvitationStatusAction } from "@/features/invitations/actions";
+import { InvitePatientPanel } from "@/features/invitations/components/invite-patient-panel";
 import { PatientEditButton } from "@/features/patients/components/patient-edit-button";
 import { Button, Badge } from "@/shared/ui/components";
 import { formatDate } from "@/shared/lib/utils";
@@ -15,7 +17,7 @@ export default async function PatientDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const patient = await getPatient(id);
+  const [patient, invitationStatus] = await Promise.all([getPatient(id), getInvitationStatusAction(id)]);
   if (!patient) notFound();
 
   const weightSummary = getWeightChangeSummary(patient.assessments);
@@ -23,7 +25,7 @@ export default async function PatientDetailPage({
 
   return (
     <div className="space-y-8 max-w-4xl">
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Link href="/dashboard/patients" className="text-sm text-primary hover:underline">
             ← Pacientes
@@ -67,13 +69,17 @@ export default async function PatientDetailPage({
             </p>
           )}
         </div>
-        <div className="flex gap-2 shrink-0">
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:shrink-0">
           <PatientEditButton patient={patient} />
           <Link href={`/dashboard/patients/${id}/assessments/new`}>
             <Button>Nueva valoración</Button>
           </Link>
         </div>
       </div>
+
+      {invitationStatus && (
+        <InvitePatientPanel patientId={patient.id} patientFirstName={patient.firstName} status={invitationStatus} />
+      )}
 
       <PatientDetailTabs patient={patient} />
     </div>

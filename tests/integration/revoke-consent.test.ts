@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { Actor } from "@/core/access/types";
 import { revokeConsent } from "@/features/consent/revoke-consent";
+import { getInvitationStatus } from "@/features/invitations/invitation-status";
 import { getMyProfessionals } from "@/features/portal/my-professionals";
 import { prisma } from "../support/db";
 import { createConsentDocument, createPatientRecord, createPatientUser, createProfessional } from "../support/factories";
@@ -34,6 +35,7 @@ describe("revocar consentimiento", () => {
     expect((await prisma.patientConsent.findFirstOrThrow({ where: { patientId: patient.id } })).revokedAt).toEqual(now);
     expect(await prisma.auditLog.count({ where: { action: "CONSENT_REVOKED", patientId: patient.id } })).toBe(1);
     expect(await getMyProfessionals(account.id)).toEqual([]);
+    expect(await getInvitationStatus(patient.id, now)).toEqual({ state: "REVOKED_BY_PATIENT" });
     expect((await prisma.user.findUniqueOrThrow({ where: { id: account.id } })).roles).toEqual(["PATIENT"]);
   });
 
