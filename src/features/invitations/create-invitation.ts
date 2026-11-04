@@ -23,6 +23,8 @@ export async function createInvitation(input: {
   const expiresAt = invitationExpiry(input.now);
 
   await prisma.$transaction(async (tx) => {
+    // Row lock on the patient serializes concurrent invitations so only one stays active.
+    await tx.$queryRaw`SELECT id FROM patients WHERE id = ${patient.id} FOR UPDATE`;
     const revoked = await tx.patientInvitation.updateMany({
       where: { patientId: patient.id, acceptedAt: null, revokedAt: null },
       data: { revokedAt: input.now },

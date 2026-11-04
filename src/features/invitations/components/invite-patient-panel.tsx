@@ -16,11 +16,9 @@ const STATUS_COPY: Record<InvitationStatus["state"], string> = {
 
 export function InvitePatientPanel({
   patientId,
-  patientFirstName,
   status,
 }: {
   patientId: string;
-  patientFirstName: string;
   status: InvitationStatus;
 }) {
   const [link, setLink] = useState<{ url: string; expiresAt: Date } | null>(null);
@@ -30,7 +28,7 @@ export function InvitePatientPanel({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const message = link
-    ? `Hola ${patientFirstName}, te invito a Vianda para seguir tu plan nutricional. Crea tu cuenta con este enlace (vence el ${formatDate(link.expiresAt)}): ${link.url}`
+    ? `Hola, te comparto tu enlace personal para crear tu cuenta en Vianda (vence el ${formatDate(link.expiresAt)}): ${link.url}`
     : "";
 
   function generate() {

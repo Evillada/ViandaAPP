@@ -78,7 +78,7 @@ export default async function PatientDetailPage({
       </div>
 
       {invitationStatus && (
-        <InvitePatientPanel patientId={patient.id} patientFirstName={patient.firstName} status={invitationStatus} />
+        <InvitePatientPanel patientId={patient.id} status={invitationStatus} />
       )}
 
       <PatientDetailTabs patient={patient} />

@@ -35,6 +35,16 @@ describe("createInvitation", () => {
     expect(await prisma.auditLog.count({ where: { action: "INVITATION_REVOKED" } })).toBe(1);
   });
 
+  it("invitaciones simultáneas dejan una sola activa", async () => {
+    const pro = await createProfessional();
+    const patient = await createPatientRecord(pro.id);
+    await Promise.all(
+      Array.from({ length: 4 }, () => createInvitation({ actor: proActor(pro.id), patientId: patient.id, now, ip: null }))
+    );
+    const active = await prisma.patientInvitation.count({ where: { patientId: patient.id, revokedAt: null } });
+    expect(active).toBe(1);
+  });
+
   it("no invita fichas ajenas ni ya vinculadas", async () => {
     const pro = await createProfessional();
     const other = await createProfessional();
