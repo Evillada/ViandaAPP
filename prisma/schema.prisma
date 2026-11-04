@@ -572,9 +572,9 @@ model PatientConsent {
   revokedAt DateTime?
 
   patientId  String
-  patient    Patient         @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  patient    Patient         @relation(fields: [patientId], references: [id], onDelete: Restrict)
   userId     String
-  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user       User            @relation(fields: [userId], references: [id], onDelete: Restrict)
   documentId String
   document   ConsentDocument @relation(fields: [documentId], references: [id])
 
