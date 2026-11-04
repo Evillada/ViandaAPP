@@ -46,5 +46,9 @@ next-env.d.ts
 # cursor
 .cursor
 
+# playwright
+/test-results
+/playwright-report
+
 # superpowers scratch
 /.superpowers
