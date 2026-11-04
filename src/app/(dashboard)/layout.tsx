@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getActorFor } from "@/infrastructure/access/access-context";
 import { auth, signOut } from "@/infrastructure/auth/auth";
 import { redirect } from "next/navigation";
 import { cn } from "@/shared/lib/utils";
@@ -17,6 +18,8 @@ export default async function DashboardLayout({
 }) {
   const session = await auth();
   if (!session?.user) redirect("/login");
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) redirect("/start");
 
   return (
     <div className="min-h-screen bg-background flex">
