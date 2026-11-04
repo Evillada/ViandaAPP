@@ -1,53 +1,20 @@
 import { NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
-import { z } from "zod";
-import { prisma } from "@/infrastructure/database/prisma";
-
-const registerSchema = z.object({
-  name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
-  email: z.string().trim().toLowerCase().email("Email inválido"),
-  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
-});
+import { registerProfessional } from "@/features/identity/register-professional";
 
 export async function POST(request: Request) {
+  let body: unknown;
   try {
-    const body = await request.json();
-    const parsed = registerSchema.safeParse(body);
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
+  }
 
-    if (!parsed.success) {
-      return NextResponse.json(
-        { error: parsed.error.issues[0]?.message ?? "Datos inválidos" },
-        { status: 400 }
-      );
-    }
-
-    const { name, email, password } = parsed.data;
-
-    const existing = await prisma.user.findUnique({ where: { email } });
-    if (existing) {
-      return NextResponse.json(
-        { error: "Ya existe una cuenta con este email" },
-        { status: 409 }
-      );
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 12);
-
-    await prisma.user.create({
-      data: {
-        name,
-        email,
-        password: hashedPassword,
-        roles: ["PROFESSIONAL"],
-        professionalProfile: { create: { licenseNumber: "SIN-REGISTRAR", status: "APPROVED" } },
-      },
-    });
-
+  try {
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
+    const result = await registerProfessional(body, { ip });
+    if (!result.ok) return NextResponse.json({ error: result.error }, { status: result.status });
     return NextResponse.json({ success: true }, { status: 201 });
   } catch {
-    return NextResponse.json(
-      { error: "Error al crear la cuenta" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Error al crear la cuenta" }, { status: 500 });
   }
 }
