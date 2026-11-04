@@ -130,7 +130,7 @@ src/features/*/actions.ts todas usan getAccessContext() + políticas
 ### 6.2 Contexto de acceso
 - `getAccessContext()` lee la sesión, carga **desde la BD** los roles y el estado del perfil profesional, y memoiza por petición (`React.cache`).
 - Leer de BD (no del JWT) garantiza que aprobaciones y suspensiones tengan efecto inmediato. Costo aceptado: una consulta adicional por petición.
-- El middleware usa los roles del JWT sólo para enrutar entre áreas; la autorización real está en las políticas.
+- El proxy (antes middleware) sólo verifica que exista sesión en las rutas protegidas; **no** usa roles del JWT. Los roles del JWT quedan obsoletos tras una aprobación o suspensión y provocarían bucles de redirección (`/dashboard` ↔ `/start`). La restricción por área la hace el layout de cada área con `getActorFor(area)`, que lee la BD. El JWT sólo guarda el `id`.
 
 ### 6.3 Matriz de permisos
 
