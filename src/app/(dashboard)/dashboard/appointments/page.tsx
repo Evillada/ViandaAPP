@@ -24,7 +24,16 @@ export default async function AppointmentsPage() {
           <h3 className="text-lg font-semibold text-text mb-4">
             Nueva cita
           </h3>
-          <AppointmentForm patients={patients} />
+          <AppointmentForm
+            patients={patients.map(({ id, firstName, lastName, email, documentId, phone }) => ({
+              id,
+              firstName,
+              lastName,
+              email,
+              documentId,
+              phone,
+            }))}
+          />
         </Card>
 
         <div className="lg:col-span-2">

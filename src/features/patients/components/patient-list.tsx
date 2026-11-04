@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useTransition } from "react";
+import { SearchX, Users } from "lucide-react";
 import { deactivatePatient, reactivatePatient, dischargePatient } from "../actions";
 import { Badge, Card, ConfirmModal, useToast } from "@/shared/ui/components";
 import { formatDate, getInitials } from "@/shared/lib/utils";
@@ -37,21 +38,8 @@ export function PatientList({ patients, searchQuery, statusFilter }: PatientList
   } | null>(null);
   const { success, error } = useToast();
 
-  // Client-side filtering as backup
-  let filtered = patients;
-  if (searchQuery) {
-    const q = searchQuery.toLowerCase();
-    filtered = filtered.filter(
-      (p) =>
-        p.firstName.toLowerCase().includes(q) ||
-        p.lastName.toLowerCase().includes(q) ||
-        p.email?.toLowerCase().includes(q) ||
-        p.phone?.includes(q)
-    );
-  }
-  if (statusFilter && statusFilter !== "ALL") {
-    filtered = filtered.filter((p) => p.status === statusFilter);
-  }
+  const filtered =
+    statusFilter && statusFilter !== "ALL" ? patients.filter((p) => p.status === statusFilter) : patients;
 
   function handleDeactivate(id: string) {
     startTransition(async () => {
@@ -83,7 +71,11 @@ export function PatientList({ patients, searchQuery, statusFilter }: PatientList
     return (
       <Card>
         <div className="text-center py-12">
-          <p className="text-4xl mb-3">{searchQuery ? "🔍" : "👥"}</p>
+          {searchQuery ? (
+            <SearchX className="mx-auto mb-3 h-10 w-10 text-muted" aria-hidden="true" />
+          ) : (
+            <Users className="mx-auto mb-3 h-10 w-10 text-muted" aria-hidden="true" />
+          )}
           <p className="text-muted">
             {searchQuery
               ? `No se encontraron pacientes para "${searchQuery}"`

@@ -3,15 +3,12 @@
 import { useState, useTransition } from "react";
 import { createAppointment } from "../actions";
 import { Button, Input } from "@/shared/ui/components";
+import type { SearchablePatient } from "@/core/patients/patient-search";
+import { PatientPicker } from "@/features/patients/components/patient-picker";
 
-interface Patient {
-  id: string;
-  firstName: string;
-  lastName: string;
-}
-
-export function AppointmentForm({ patients }: { patients: Patient[] }) {
+export function AppointmentForm({ patients }: { patients: SearchablePatient[] }) {
   const [error, setError] = useState<string | null>(null);
+  const [formKey, setFormKey] = useState(0);
   const [isPending, startTransition] = useTransition();
 
   if (patients.length === 0) {
@@ -24,6 +21,10 @@ export function AppointmentForm({ patients }: { patients: Patient[] }) {
 
   function handleSubmit(formData: FormData) {
     setError(null);
+    if (!formData.get("patientId")) {
+      setError("Selecciona un paciente de la lista");
+      return;
+    }
     startTransition(async () => {
       const result = await createAppointment(formData);
       if (result.error) {
@@ -33,30 +34,14 @@ export function AppointmentForm({ patients }: { patients: Patient[] }) {
           "appointment-form"
         ) as HTMLFormElement;
         form?.reset();
+        setFormKey((k) => k + 1);
       }
     });
   }
 
   return (
     <form id="appointment-form" action={handleSubmit} className="space-y-4">
-      <div className="space-y-1">
-        <label htmlFor="patientId" className="block text-sm font-medium text-text">
-          Paciente
-        </label>
-        <select
-          id="patientId"
-          name="patientId"
-          required
-          className="w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-text focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition"
-        >
-          <option value="">Seleccionar paciente</option>
-          {patients.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.firstName} {p.lastName}
-            </option>
-          ))}
-        </select>
-      </div>
+      <PatientPicker key={formKey} patients={patients} name="patientId" />
       <Input label="Fecha" id="date" name="date" type="date" required />
       <Input label="Hora" id="time" name="time" type="time" required />
       <Input

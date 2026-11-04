@@ -5,6 +5,7 @@ import { z } from "zod";
 import { canViewPatientRecord } from "@/core/access/policies";
 import type { Actor } from "@/core/access/types";
 import type { AuditAction } from "@/core/audit/audit";
+import { rankPatients } from "@/core/patients/patient-search";
 import { getActorFor, requireActorFor } from "@/infrastructure/access/access-context";
 import { recordAuditBestEffort } from "@/infrastructure/audit/audit-logger";
 import { prisma } from "@/infrastructure/database/prisma";
@@ -202,27 +203,30 @@ export async function searchPatients(query?: string, status?: string) {
     where.status = status;
   }
 
-  if (query && query.trim().length > 0) {
-    const q = query.trim();
-    where.OR = [
-      { firstName: { contains: q, mode: "insensitive" } },
-      { lastName: { contains: q, mode: "insensitive" } },
-      { email: { contains: q, mode: "insensitive" } },
-      { documentId: { contains: q } },
-      { phone: { contains: q } },
-    ];
+  const include = {
+    _count: { select: { assessments: true, mealPlans: true } },
+    assessments: {
+      orderBy: { assessmentDate: "desc" as const },
+      take: 2,
+      include: { anthropometry: true, nutritionalGoal: true },
+    },
+  };
+
+  if (!query || query.trim().length === 0) {
+    return prisma.patient.findMany({ where, orderBy: { createdAt: "desc" }, include });
   }
 
-  return prisma.patient.findMany({
+  // Accent-insensitive, multi-word and typo-tolerant matching is not expressible as a Prisma filter,
+  // so rank the professional's (bounded) patient list in memory and load details only for matches.
+  const candidates = await prisma.patient.findMany({
     where,
     orderBy: { createdAt: "desc" },
-    include: {
-      _count: { select: { assessments: true, mealPlans: true } },
-      assessments: {
-        orderBy: { assessmentDate: "desc" },
-        take: 2,
-        include: { anthropometry: true, nutritionalGoal: true },
-      },
-    },
+    select: { id: true, firstName: true, lastName: true, email: true, documentId: true, phone: true },
   });
+  const rankedIds = rankPatients(candidates, query).map((p) => p.id);
+  if (rankedIds.length === 0) return [];
+
+  const details = await prisma.patient.findMany({ where: { id: { in: rankedIds } }, include });
+  const byId = new Map(details.map((p) => [p.id, p]));
+  return rankedIds.flatMap((id) => byId.get(id) ?? []);
 }
