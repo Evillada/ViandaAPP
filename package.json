@@ -7,6 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "pnpm test:unit && pnpm test:int",
+    "test:unit": "vitest run --config vitest.config.mts",
+    "test:int": "vitest run --config vitest.integration.config.mts",
+    "test:e2e": "playwright test",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
@@ -38,7 +42,8 @@
     "prisma": "^6.9.0",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^5.1.0"
   },
   "packageManager": "pnpm@11.24.0",
   "prisma": {
