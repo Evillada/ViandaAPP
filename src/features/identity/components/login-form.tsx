@@ -5,10 +5,8 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button, Input } from "@/shared/ui/components";
+import { safeCallbackUrl } from "../safe-callback-url";
 
-function safeCallbackUrl(value: string | null): string {
-  return value && value.startsWith("/") && !value.startsWith("//") ? value : "/start";
-}
 
 export function LoginForm() {
   const router = useRouter();
