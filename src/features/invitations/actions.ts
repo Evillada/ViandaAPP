@@ -53,6 +53,7 @@ export async function acceptInvitationAction(token: string, formData: FormData):
     token,
     userId: actor.userId,
     consentChecked: formData.get("consent") === "on",
+    documentVersion: String(formData.get("documentVersion") ?? ""),
     now: new Date(),
     ip,
     userAgent,

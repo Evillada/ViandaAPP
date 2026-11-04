@@ -11,6 +11,8 @@ export async function acceptInvitation(input: {
   token: string;
   userId: string;
   consentChecked: boolean;
+  /** Version of the consent text the patient was shown; it must still be the current one. */
+  documentVersion: string;
   now: Date;
   ip: string | null;
   userAgent: string | null;
@@ -34,6 +36,9 @@ export async function acceptInvitation(input: {
 
   const document = await getCurrentConsentDocument(input.now);
   if (!document) return { ok: false, error: "No hay un documento de consentimiento vigente. Contacta a soporte." };
+  if (document.version !== input.documentVersion) {
+    return { ok: false, error: "El texto de la autorización se actualizó. Recarga la página y revisa la nueva versión." };
+  }
 
   try {
     await prisma.$transaction(async (tx) => {

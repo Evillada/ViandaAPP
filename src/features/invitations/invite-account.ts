@@ -28,10 +28,17 @@ export async function createInviteAccount(
   const existing = await prisma.user.findUnique({ where: { email }, select: { id: true } });
   if (existing) return { ok: false, error: EMAIL_TAKEN_MESSAGE };
 
+  const hashedPassword = await bcrypt.hash(password, 12);
   try {
-    await prisma.user.create({
-      data: { name, email, password: await bcrypt.hash(password, 12), roles: [] },
+    const created = await prisma.$transaction(async (tx) => {
+      // Lock the invitation and re-check it so an accepted/revoked/expired link cannot keep minting accounts.
+      const [locked] = await tx.$queryRaw<{ acceptedAt: Date | null; revokedAt: Date | null; expiresAt: Date }[]>`
+        SELECT "acceptedAt", "revokedAt", "expiresAt" FROM patient_invitations WHERE id = ${invitation.id} FOR UPDATE`;
+      if (!locked || invitationState(locked, now) !== "VALID") return false;
+      await tx.user.create({ data: { name, email, password: hashedPassword, roles: [] } });
+      return true;
     });
+    if (!created) return { ok: false, error: INVALID_INVITATION_MESSAGE };
   } catch (error) {
     // Concurrent sign-ups with the same email: the unique index decides the winner.
     if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002") {

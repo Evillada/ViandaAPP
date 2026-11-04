@@ -29,6 +29,7 @@ export function ConsentStep({
 
   return (
     <form action={submit} className="space-y-5">
+      <input type="hidden" name="documentVersion" value={documentVersion} />
       <div>
         <h1 className="text-xl font-bold text-text">Autorización de tratamiento de datos</h1>
         <p className="text-sm text-muted mt-1">Para que {professionalName} pueda acompañarte en Vianda. Versión {documentVersion}.</p>

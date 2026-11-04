@@ -19,8 +19,8 @@ async function invited() {
   return { pro, patient, token: result.token };
 }
 
-const accept = (token: string, userId: string, consentChecked = true, at = now) =>
-  acceptInvitation({ token, userId, consentChecked, now: at, ip: "203.0.113.7", userAgent: "vitest" });
+const accept = (token: string, userId: string, consentChecked = true, at = now, documentVersion = "test-v1") =>
+  acceptInvitation({ token, userId, consentChecked, documentVersion, now: at, ip: "203.0.113.7", userAgent: "vitest" });
 
 describe("aceptar invitación", () => {
   it("previsualiza una invitación válida", async () => {
@@ -39,6 +39,26 @@ describe("aceptar invitación", () => {
     const consent = await prisma.patientConsent.findFirstOrThrow({ where: { patientId: patient.id } });
     expect(consent).toMatchObject({ userId: account.id, ip: "203.0.113.7", userAgent: "vitest", revokedAt: null });
     expect(await prisma.auditLog.count({ where: { action: { in: ["INVITATION_ACCEPTED", "CONSENT_GRANTED"] } } })).toBe(2);
+  });
+
+  it("rechaza si la versión mostrada ya no es la vigente", async () => {
+    const { patient, token } = await invited();
+    const account = await createAccount();
+    expect(await accept(token, account.id, true, now, "version-vieja")).toEqual({
+      ok: false,
+      error: "El texto de la autorización se actualizó. Recarga la página y revisa la nueva versión.",
+    });
+    expect((await prisma.patient.findUniqueOrThrow({ where: { id: patient.id } })).userId).toBeNull();
+    expect(await prisma.patientConsent.count({ where: { patientId: patient.id } })).toBe(0);
+  });
+
+  it("un enlace ya usado no crea más cuentas", async () => {
+    const { token } = await invited();
+    const account = await createAccount();
+    expect((await accept(token, account.id)).ok).toBe(true);
+    const input = { name: "Otro", email: "otro@test.co", password: "Secreta1" };
+    expect(await createInviteAccount(input, token, now)).toEqual({ ok: false, error: INVALID_INVITATION_MESSAGE });
+    expect(await prisma.user.count({ where: { email: "otro@test.co" } })).toBe(0);
   });
 
   it("sin consentimiento no vincula", async () => {
@@ -74,8 +94,8 @@ describe("aceptar invitación", () => {
     const t1 = await createInvitation({ actor: proActor(pro.id), patientId: first.id, now, ip: null });
     const t2 = await createInvitation({ actor: proActor(pro.id), patientId: second.id, now, ip: null });
     if (!t1.ok || !t2.ok) throw new Error("setup");
-    await accept(t1.token, account.id);
-    expect(await accept(t2.token, account.id)).toEqual({ ok: false, error: "Tu cuenta ya está vinculada a otra ficha de este profesional" });
+    expect((await accept(t1.token, account.id, true, now, "v-extra")).ok).toBe(true);
+    expect(await accept(t2.token, account.id, true, now, "v-extra")).toEqual({ ok: false, error: "Tu cuenta ya está vinculada a otra ficha de este profesional" });
   });
 
   it("crea cuenta de invitado sin roles y rechaza email existente", async () => {

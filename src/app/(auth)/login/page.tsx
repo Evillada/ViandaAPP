@@ -1,6 +1,9 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { LoginForm } from "@/features/identity/components/login-form";
 import { Logo } from "@/shared/ui/brand/logo";
+
+export const metadata: Metadata = { referrer: "no-referrer" };
 
 export default function LoginPage() {
   return (
