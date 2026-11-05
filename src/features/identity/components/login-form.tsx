@@ -12,6 +12,7 @@ export function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = safeCallbackUrl(searchParams.get("callbackUrl"));
+  const deleted = searchParams.get("deleted") === "1";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -34,6 +35,11 @@ export function LoginForm() {
 
   return (
     <>
+      {deleted && (
+        <p role="status" className="mb-5 rounded-lg border border-primary/30 bg-primary-light px-4 py-3 text-sm text-text">
+          Tu cuenta fue eliminada. Tu nutricionista conserva tu historia clínica.
+        </p>
+      )}
       <form onSubmit={handleSubmit} className="space-y-5">
         <Input
           label="Email"

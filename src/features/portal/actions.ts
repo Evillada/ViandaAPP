@@ -3,8 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { revokeConsent } from "@/features/consent/revoke-consent";
 import { getActorFor, requireActorFor } from "@/infrastructure/access/access-context";
-import { auth } from "@/infrastructure/auth/auth";
+import { auth, signOut } from "@/infrastructure/auth/auth";
 import { getRequestMeta } from "@/infrastructure/http/request-meta";
+import { changePassword, deleteAccount, getAccountOverview, updatePatientPhone } from "./account";
 import { getMyProfessionals } from "./my-professionals";
 import { buildPortalAppointments, buildPortalHome, buildPortalWeek } from "./portal-view";
 
@@ -38,4 +39,42 @@ export async function revokeConsentAction(patientId: string): Promise<{ error?: 
   revalidatePath("/portal");
   revalidatePath("/portal/cuenta");
   return result.ok ? {} : { error: result.error };
+}
+
+export async function getAccountOverviewAction() {
+  const actor = await requireActorFor("PATIENT");
+  return getAccountOverview(actor.userId, new Date());
+}
+
+export async function updatePhoneAction(formData: FormData): Promise<{ error?: string }> {
+  const actor = await getActorFor("PATIENT");
+  if (!actor) return { error: "No autorizado" };
+  const { ip } = await getRequestMeta();
+  const result = await updatePatientPhone(actor, String(formData.get("phone") ?? ""), ip);
+  revalidatePath("/portal/cuenta");
+  return result.ok ? {} : { error: result.error };
+}
+
+export async function changePasswordAction(formData: FormData): Promise<{ error?: string }> {
+  const actor = await getActorFor("PATIENT");
+  if (!actor) return { error: "No autorizado" };
+  const { ip } = await getRequestMeta();
+  const result = await changePassword(
+    actor,
+    String(formData.get("currentPassword") ?? ""),
+    String(formData.get("newPassword") ?? ""),
+    ip
+  );
+  return result.ok ? {} : { error: result.error };
+}
+
+export async function deleteAccountAction(formData: FormData): Promise<{ error?: string }> {
+  const actor = await getActorFor("PATIENT");
+  if (!actor) return { error: "No autorizado" };
+  const { ip } = await getRequestMeta();
+  const result = await deleteAccount(actor, String(formData.get("confirmation") ?? ""), ip, new Date());
+  if (!result.ok) return { error: result.error };
+  // signOut throws a Next redirect internally: keep it last, outside any try/catch.
+  await signOut({ redirectTo: "/login?deleted=1" });
+  return {};
 }
