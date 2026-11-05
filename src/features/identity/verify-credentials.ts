@@ -17,7 +17,7 @@ export async function verifyCredentials(
   const user = await prisma.user.findUnique({ where: { email: normalizedEmail } });
   // Always run a bcrypt comparison so response time does not reveal whether the email exists.
   const matches = await bcrypt.compare(password, user?.password ?? (await dummyHash()));
-  const valid = Boolean(user?.password) && matches;
+  const valid = Boolean(user?.password) && matches && !user?.deletedAt;
 
   if (!user || !valid) {
     await recordAuditBestEffort({

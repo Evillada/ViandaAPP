@@ -25,6 +25,21 @@ describe("verifyCredentials", () => {
     expect(await prisma.auditLog.count({ where: { action: "AUTH_LOGIN_FAILED" } })).toBe(1);
   });
 
+  it("rechaza cuenta eliminada aun con contraseña válida y audita AUTH_LOGIN_FAILED", async () => {
+    const user = await prisma.user.create({
+      data: {
+        email: "gone@test.co",
+        password: await bcrypt.hash("Secreta1!", 4),
+        roles: [],
+        deletedAt: new Date(),
+      },
+    });
+    expect(await verifyCredentials("gone@test.co", "Secreta1!", null)).toBeNull();
+    const log = await prisma.auditLog.findFirstOrThrow({ where: { action: "AUTH_LOGIN_FAILED" } });
+    expect(log.actorId).toBe(user.id);
+    expect(await prisma.auditLog.count({ where: { action: "AUTH_LOGIN" } })).toBe(0);
+  });
+
   it("rechaza email inexistente sin actor", async () => {
     expect(await verifyCredentials("nadie@test.co", "x", null)).toBeNull();
     const log = await prisma.auditLog.findFirstOrThrow({ where: { action: "AUTH_LOGIN_FAILED" } });

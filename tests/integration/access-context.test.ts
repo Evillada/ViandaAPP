@@ -48,6 +48,15 @@ describe("access-context", () => {
     expect(await getActorFor("PROFESSIONAL")).toBeNull();
   });
 
+  it("usuario eliminado (deletedAt) con sesión vigente no obtiene actor", async () => {
+    const patient = await createPatientUser();
+    signInAs(patient.id);
+    expect(await getActorFor("PATIENT")).not.toBeNull();
+    await prisma.user.update({ where: { id: patient.id }, data: { deletedAt: new Date() } });
+    expect(await getSessionActor()).toBeNull();
+    expect(await getActorFor("PATIENT")).toBeNull();
+  });
+
   it("la suspensión surte efecto inmediato (lee BD, no JWT)", async () => {
     const pro = await createProfessional();
     signInAs(pro.id);

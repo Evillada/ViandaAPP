@@ -14,9 +14,14 @@ export class AccessDeniedError extends Error {
 export async function loadActor(userId: string, activeArea: Area | null): Promise<Actor | null> {
   const user = await prisma.user.findUnique({
     where: { id: userId },
-    select: { id: true, roles: true, professionalProfile: { select: { status: true } } },
+    select: {
+      id: true,
+      roles: true,
+      deletedAt: true,
+      professionalProfile: { select: { status: true } },
+    },
   });
-  if (!user) return null;
+  if (!user || user.deletedAt) return null;
   return {
     userId: user.id,
     roles: user.roles,
