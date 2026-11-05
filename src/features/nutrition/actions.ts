@@ -6,6 +6,7 @@ import { getRequestMeta } from "@/infrastructure/http/request-meta";
 import { prisma } from "@/infrastructure/database/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { addPlanDay, deletePlanDay, duplicatePlanDay, renamePlanDay, updatePlanInstructions } from "./plan-days";
 import {
   generateAutomaticMealPlan,
   type FoodForGenerator,
@@ -364,10 +365,51 @@ export async function activateMealPlan(mealPlanId: string) {
 
   await prisma.mealPlan.updateMany({
     where: { id: mealPlanId, professionalId: actor.userId },
-    data: { status: "ACTIVE" },
+    data: { status: "ACTIVE", activatedAt: new Date() },
   });
   await auditMealPlan(actor.userId, mealPlanId, plan.patientId, "activated");
 
   revalidatePath(`/dashboard/meal-plans/${mealPlanId}`);
   return { success: true };
+}
+
+async function runPlanChange(
+  formData: FormData,
+  change: string,
+  run: (actor: NonNullable<Awaited<ReturnType<typeof getActorFor>>>, mealPlanId: string) => Promise<{ ok: boolean; error?: string; dayId?: string }>
+): Promise<void> {
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) throw new Error("No autorizado");
+  const mealPlanId = String(formData.get("mealPlanId") ?? "");
+  const result = await run(actor, mealPlanId);
+  if (!result.ok) throw new Error(result.error ?? "No se pudo guardar");
+  const plan = await prisma.mealPlan.findFirst({ where: { id: mealPlanId, professionalId: actor.userId }, select: { patientId: true } });
+  if (plan) await auditMealPlan(actor.userId, mealPlanId, plan.patientId, change);
+  revalidatePath(`/dashboard/meal-plans/${mealPlanId}`);
+  if (result.dayId) redirect(`/dashboard/meal-plans/${mealPlanId}?day=${result.dayId}`);
+}
+
+export async function addPlanDayForm(formData: FormData): Promise<void> {
+  await runPlanChange(formData, "day_added", (a, id) => addPlanDay(a, id));
+}
+
+export async function duplicatePlanDayForm(formData: FormData): Promise<void> {
+  const dayId = String(formData.get("dayId") ?? "");
+  await runPlanChange(formData, "day_duplicated", (a, id) => duplicatePlanDay(a, id, dayId));
+}
+
+export async function renamePlanDayForm(formData: FormData): Promise<void> {
+  const dayId = String(formData.get("dayId") ?? "");
+  const name = String(formData.get("name") ?? "");
+  await runPlanChange(formData, "day_renamed", (a, id) => renamePlanDay(a, id, dayId, name));
+}
+
+export async function deletePlanDayForm(formData: FormData): Promise<void> {
+  const dayId = String(formData.get("dayId") ?? "");
+  await runPlanChange(formData, "day_deleted", (a, id) => deletePlanDay(a, id, dayId));
+}
+
+export async function updatePlanInstructionsForm(formData: FormData): Promise<void> {
+  const text = String(formData.get("patientInstructions") ?? "");
+  await runPlanChange(formData, "instructions_updated", (a, id) => updatePlanInstructions(a, id, text));
 }

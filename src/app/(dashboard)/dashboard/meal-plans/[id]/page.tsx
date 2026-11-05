@@ -1,22 +1,28 @@
 import Link from "next/link";
+import { RefreshCw } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getMealPlan, getFoods, activateMealPlanForm, regenerateMealPlanFromForm } from "@/features/nutrition/actions";
 import { computePlanTotals } from "@/features/nutrition/plan-totals";
 import { MealPlanEditor } from "@/features/nutrition/components/meal-plan-editor";
+import { PlanDayTabs } from "@/features/nutrition/components/plan-day-tabs";
+import { PlanInstructionsForm } from "@/features/nutrition/components/plan-instructions-form";
 import { Card, Badge, Button } from "@/shared/ui/components";
 import { PLAN_STATUS_LABELS } from "@/shared/lib/labels";
 
 export default async function MealPlanPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ day?: string }>;
 }) {
   const { id } = await params;
+  const { day } = await searchParams;
   const [plan, foods] = await Promise.all([getMealPlan(id), getFoods()]);
   if (!plan) notFound();
 
-  const allItems = plan.days.flatMap((d) => d.meals.flatMap((m) => m.items));
-  const totals = computePlanTotals(allItems);
+  const selectedDay = plan.days.find((d) => d.id === day) ?? plan.days[0];
+  const totals = computePlanTotals(selectedDay?.meals.flatMap((m) => m.items) ?? []);
   const goal = plan.assessment?.nutritionalGoal;
 
   const pct = (actual: number, target: number) =>
@@ -36,7 +42,9 @@ export default async function MealPlanPage({
           {plan.assessmentId && plan.status === "DRAFT" && (
             <form action={regenerateMealPlanFromForm}>
               <input type="hidden" name="mealPlanId" value={id} />
-              <Button type="submit" variant="outline">🔄 Regenerar automático</Button>
+              <Button type="submit" variant="outline" className="gap-2">
+                <RefreshCw className="h-4 w-4" aria-hidden="true" /> Regenerar automático
+              </Button>
             </form>
           )}
           {plan.status === "DRAFT" && (
@@ -54,6 +62,7 @@ export default async function MealPlanPage({
         </p>
       )}
 
+      <p className="text-sm text-muted">Totales de {selectedDay?.name ?? "el día"} frente a la meta diaria</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
           { label: "Calorías", actual: totals.energyKcal, target: goal?.targetKcal, unit: "kcal" },
@@ -79,12 +88,15 @@ export default async function MealPlanPage({
       </div>
 
       <Card>
-        <h3 className="font-semibold text-text mb-4">Comidas del día</h3>
-        <MealPlanEditor
-          mealPlanId={id}
-          meals={plan.days[0]?.meals ?? []}
-          foods={foods}
-        />
+        <h3 className="font-semibold text-text mb-4">Días del plan</h3>
+        <PlanDayTabs mealPlanId={id} days={plan.days.map((d) => ({ id: d.id, name: d.name }))} selectedDayId={selectedDay?.id ?? ""} />
+        <div className="mt-6">
+          <MealPlanEditor key={selectedDay?.id} mealPlanId={id} meals={selectedDay?.meals ?? []} foods={foods} />
+        </div>
+      </Card>
+
+      <Card>
+        <PlanInstructionsForm mealPlanId={id} value={plan.patientInstructions} />
       </Card>
     </div>
   );
