@@ -38,6 +38,7 @@ export async function getPortalProgressAction(requested: string | null = null) {
 
 export async function getPortalAssessmentAction(assessmentId: string) {
   const actor = await requireActorFor("PATIENT");
+  if (typeof assessmentId !== "string") return null;
   return buildPortalAssessment(actor, assessmentId);
 }
 

@@ -102,6 +102,28 @@ describe("progreso del portal", () => {
     expect(detail?.measures).toMatchObject({ weightKg: 73.2, heightCm: 165, waistCm: 82, bmi: 26.9 });
   });
 
+  it("si el plan vigente no tiene indicaciones, no muestra las de un plan anterior", async () => {
+    const { account, patient, pro, last } = await linkedWithProgress();
+    await prisma.mealPlan.create({
+      data: {
+        name: "Viejo", status: "COMPLETED", activatedAt: new Date("2026-08-01T15:00:00Z"), patientInstructions: "VIEJA",
+        patientId: patient.id, professionalId: pro.id, assessmentId: last.id,
+      },
+    });
+    await prisma.mealPlan.updateMany({ where: { patientId: patient.id, status: "ACTIVE" }, data: { patientInstructions: null } });
+    expect((await buildPortalAssessment(patientActor(account.id), last.id))?.instructions).toBeNull();
+  });
+
+  it("al revocar una de dos autorizaciones, el detalle de esa ficha deja de verse", async () => {
+    const { account, patient, last } = await linkedWithProgress();
+    const document = await createConsentDocument("test-v2");
+    const otherPro = await createProfessional();
+    const otherRecord = await createPatientRecord(otherPro.id, { userId: account.id });
+    await prisma.patientConsent.create({ data: { patientId: otherRecord.id, userId: account.id, documentId: document.id } });
+    await prisma.patientConsent.updateMany({ where: { patientId: patient.id }, data: { revokedAt: new Date() } });
+    expect(await buildPortalAssessment(patientActor(account.id), last.id)).toBeNull();
+  });
+
   it("no permite abrir la valoración de otro paciente", async () => {
     const mine = await linkedWithProgress();
     const other = await linkedWithProgress();

@@ -1,6 +1,7 @@
 "use client";
 
-import type { EvolutionPoint } from "@/core/anthropometry/evolution";
+import { plotPoints, type EvolutionPoint } from "@/core/anthropometry/evolution";
+import { formatMeasure } from "@/core/portal/progress";
 
 interface MetricLineChartProps {
   title: string;
@@ -23,9 +24,7 @@ export function MetricLineChart({
   referenceBands,
   color = "#2A9D8F",
 }: MetricLineChartProps) {
-  const points = data
-    .map((d, i) => ({ x: i, y: getValue(d), date: d.date, label: d.label }))
-    .filter((p) => p.y != null) as { x: number; y: number; date: Date; label: string }[];
+  const points = plotPoints(data, getValue);
 
   if (points.length < 2) {
     return (
@@ -65,7 +64,12 @@ export function MetricLineChart({
   return (
     <div className="rounded-xl border border-border bg-surface p-4">
       <p className="text-sm font-medium text-text mb-3">{title}</p>
-      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto">
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        className="w-full h-auto"
+        role="img"
+        aria-label={`${title}: de ${formatMeasure(points[0]!.y)} a ${formatMeasure(points[points.length - 1]!.y)} ${unit}, entre ${shortDate(points[0]!.date)} y ${shortDate(points[points.length - 1]!.date)}`}
+      >
         {referenceBands?.map((band) => {
           const y1 = toY(band.max);
           const y2 = toY(band.min);
@@ -99,7 +103,7 @@ export function MetricLineChart({
         ))}
       </svg>
       <p className="text-xs text-muted mt-1">
-        Último: <span className="font-medium text-text">{points[points.length - 1]!.y} {unit}</span>
+        Último: <span className="font-medium text-text">{formatMeasure(points[points.length - 1]!.y)} {unit}</span>
       </p>
     </div>
   );

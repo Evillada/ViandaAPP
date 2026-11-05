@@ -14,9 +14,11 @@ export default async function PortalProgressPage({ searchParams }: { searchParam
   const data = await getPortalProgressAction(p ?? null);
   if (!data) return <PortalEmpty title="No tienes profesionales vinculados" text="Pide a tu nutricionista un enlace de invitación." />;
 
-  const latest = data.timeline.at(-1) ?? null;
-  const previous = data.timeline.at(-2) ?? null;
-  const metrics = availableMetrics(data.timeline);
+  const timeline = data.showMeasures ? data.timeline : [];
+  const metrics = availableMetrics(timeline);
+  const measured = timeline.filter((p) => metrics.some((m) => p[m.key] != null));
+  const latest = measured.at(-1) ?? null;
+  const previous = measured.at(-2) ?? null;
   const patientId = data.context.current.patientId;
 
   return (
@@ -51,9 +53,9 @@ export default async function PortalProgressPage({ searchParams }: { searchParam
             </section>
           )}
 
-          {data.timeline.length >= 2 && metrics.length > 0 && (
+          {measured.length >= 2 && (
             <section aria-label="Evolución">
-              <ProgressChart timeline={data.timeline} metrics={metrics} />
+              <ProgressChart timeline={timeline} metrics={metrics} />
             </section>
           )}
 

@@ -108,8 +108,8 @@ export async function getPortalAssessment(patientIds: string[], assessmentId: st
       },
       nutritionalGoal: { select: { bmi: true, nutritionalDiagnosis: true, cie10Code: true } },
       mealPlans: {
-        where: { status: { not: "DRAFT" }, patientInstructions: { not: null } },
-        orderBy: { updatedAt: "desc" },
+        where: { status: { notIn: ["DRAFT", "CANCELLED"] } },
+        orderBy: [{ activatedAt: { sort: "desc", nulls: "last" } }, { createdAt: "desc" }],
         take: 1,
         select: { patientInstructions: true },
       },

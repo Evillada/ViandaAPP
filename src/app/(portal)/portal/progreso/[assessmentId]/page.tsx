@@ -8,11 +8,11 @@ import { ASSESSMENT_TYPE_LABELS } from "@/shared/lib/labels";
 import { formatCalendarDate } from "@/shared/lib/utils";
 
 const MEASURE_ROWS: { key: keyof PortalMeasures; label: string; unit: string; digits?: number }[] = [
+  { key: "waistCm", label: "Cintura", unit: "cm" },
+  { key: "hipCm", label: "Cadera", unit: "cm" },
   { key: "weightKg", label: "Peso", unit: "kg" },
   { key: "heightCm", label: "Talla", unit: "cm" },
   { key: "bmi", label: "IMC", unit: "kg/m²" },
-  { key: "waistCm", label: "Cintura", unit: "cm" },
-  { key: "hipCm", label: "Cadera", unit: "cm" },
   { key: "waistHipRatio", label: "Índice cintura/cadera", unit: "", digits: 2 },
   { key: "bodyFatPercent", label: "Grasa corporal", unit: "%" },
   { key: "fatMassKg", label: "Masa grasa", unit: "kg" },

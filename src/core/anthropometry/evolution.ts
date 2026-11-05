@@ -79,6 +79,16 @@ export function buildEvolutionTimeline(
   });
 }
 
+export interface PlotPoint { x: number; y: number; date: Date; label: string }
+
+/** `x` es la posición entre los puntos con valor, no entre todas las valoraciones. */
+export function plotPoints(data: EvolutionPoint[], getValue: (p: EvolutionPoint) => number | null): PlotPoint[] {
+  return data
+    .map((d) => ({ y: getValue(d), date: d.date, label: d.label }))
+    .filter((p): p is { y: number; date: Date; label: string } => p.y != null)
+    .map((p, x) => ({ ...p, x }));
+}
+
 export function formatDelta(value: number | null, unit = ""): string {
   if (value == null) return "—";
   const sign = value > 0 ? "+" : "";
