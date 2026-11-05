@@ -81,6 +81,32 @@ export const BMI_CATEGORY_LABELS: Record<string, string> = {
   OBESE_III: "Obesidad grado III",
 };
 
+export const GABA_GROUP_LABELS: Record<string, string> = {
+  CEREALS_TUBERS: "Cereales y tubérculos",
+  FRUITS: "Frutas",
+  VEGETABLES: "Verduras",
+  DAIRY: "Lácteos",
+  PROTEINS: "Carnes, huevos y leguminosas",
+  FATS: "Grasas",
+  SUGARS: "Azúcares",
+};
+
+export const GABA_GROUP_SHORT_LABELS: Record<string, string> = {
+  CEREALS_TUBERS: "Cereales",
+  FRUITS: "Frutas",
+  VEGETABLES: "Verduras",
+  DAIRY: "Lácteos",
+  PROTEINS: "Proteínas",
+  FATS: "Grasas",
+  SUGARS: "Azúcares",
+};
+
+export const HIGH_IN_LABELS: Record<string, string> = {
+  SUGAR: "Alto en azúcares",
+  SODIUM: "Alto en sodio",
+  SATURATED_FAT: "Alto en grasas saturadas",
+};
+
 export const PLAN_STATUS_LABELS: Record<string, string> = {
   DRAFT: "Borrador",
   ACTIVE: "Activo",

@@ -37,6 +37,14 @@ describe("entrada de catálogo", () => {
     expect(entry.nutrients).toContainEqual({ name: "Carbohidratos", amountPer100g: 28.6 });
   });
 
+  it("aplica la fe de erratas de la fuente al nombre y lo deja documentado", () => {
+    const [row] = parseTcacCsv(CSV.replace("A009,\"Arroz blanco, pulido, cocido, sin sal\"", "A011,\"Arroz integral, cocido, sin sal\""));
+    const entry = catalogEntry(row, new Map());
+    expect(entry.name).toBe("Arroz integral, crudo");
+    expect(entry.searchName).toBe("arroz integral, crudo");
+    expect(entry.sourceRef).toContain("fe de erratas");
+  });
+
   it("sin dato no se guarda nutriente, y sin grupo la porción por defecto es 100 g", () => {
     const entry = catalogEntry(ajiaco, matches);
     expect(entry.nutrients.map((n) => n.name)).not.toContain("Carbohidratos disponibles");

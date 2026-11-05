@@ -8,6 +8,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { addPlanDay, deletePlanDay, duplicatePlanDay, renamePlanDay, updatePlanInstructions } from "./plan-days";
 import { loadFoodsForGenerator } from "./generator-foods";
+import { searchFoods, type FoodSearchResult } from "@/features/catalog/search";
+import { GabaGroup } from "@prisma/client";
 import { generateAutomaticMealPlan } from "@/core/nutrition/meal-plan-generator";
 
 async function auditMealPlan(actorId: string, mealPlanId: string, patientId: string, change: string) {
@@ -24,19 +26,14 @@ async function auditMealPlan(actorId: string, mealPlanId: string, patientId: str
   });
 }
 
-export async function getFoods(search?: string) {
-  return prisma.food.findMany({
-    where: search
-      ? { name: { contains: search } }
-      : undefined,
-    include: {
-      category: true,
-      nutrients: { include: { nutrient: true } },
-      portions: { where: { isDefault: true }, take: 1 },
-    },
-    orderBy: { name: "asc" },
-    take: 50,
-  });
+const GABA_GROUPS = new Set<string>(Object.values(GabaGroup));
+
+export async function searchFoodsAction(query: string, gabaGroup: string | null): Promise<FoodSearchResult[]> {
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return [];
+  if (typeof query !== "string" || query.length > 100) return [];
+  if (gabaGroup !== null && !GABA_GROUPS.has(gabaGroup)) return [];
+  return searchFoods({ query, gabaGroup: (gabaGroup as GabaGroup | null) ?? undefined });
 }
 
 export async function getMealPlan(id: string) {

@@ -11,7 +11,6 @@ const APP_DIR = path.join(SRC_DIR, "app");
  * cada export de un archivo "use server" es un endpoint público.
  */
 const ALLOWED_WITHOUT_ACTOR: Record<string, string> = {
-  getFoods: "catálogo público de alimentos, sin datos clínicos",
   signOutAction: "cerrar sesión no lee datos",
   createInviteAccountAction: "alta anónima autorizada por el token de invitación",
 };

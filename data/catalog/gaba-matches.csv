@@ -5,7 +5,7 @@ table,gaba_subgroup,gaba_food,grams,measure,tcac_code,tcac_name,score,confirmed
 26,CEREALS,Arepa redonda de maíz blanco trillado,52,1 unidad grande,,,,
 26,CEREALS,"Arroz blanco, cocido",80,6 cucharadas soperas colmadas,A009,"Arroz blanco, pulido, cocido, sin sal",0.75,1
 26,CEREALS,"Arroz blanco, cocido",80,6 cucharadas soperas colmadas,A011,"Arroz integral, cocido, sin sal",0.67,
-26,CEREALS,"Arroz integral, cocido",81,8 cucharadas soperas colmadas o 2/3 de pocillo,A011,"Arroz integral, cocido, sin sal",1,1
+26,CEREALS,"Arroz integral, cocido",81,8 cucharadas soperas colmadas o 2/3 de pocillo,A011,"Arroz integral, cocido, sin sal",1,0
 26,CEREALS,"Arroz integral, cocido",81,8 cucharadas soperas colmadas o 2/3 de pocillo,A009,"Arroz blanco, pulido, cocido, sin sal",0.5,
 26,CEREALS,Avena en hojuelas,24,4 cucharadas soperas colmadas,A012,"Avena en hojuelas, precocida",manual,1
 26,CEREALS,Avena en hojuelas,24,4 cucharadas soperas colmadas,A029,"Harina de avena, cruda",0.5,

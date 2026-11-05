@@ -71,3 +71,16 @@ export function unifyAccents(names: string[]): string[] {
 export function normalizeSearch(text: string): string {
   return stripAccents(text.toLowerCase()).replace(/\s+/g, " ").trim();
 }
+
+/** Palabras de una búsqueda: todas deben aparecer en el nombre, en cualquier orden. */
+export function searchTokens(query: string): string[] {
+  return normalizeSearch(query).split(/[^a-z0-9ñ]+/).filter(Boolean).slice(0, 6);
+}
+
+/** Primero los nombres que empiezan por la búsqueda, luego los que tienen una palabra que empieza por ella, luego alfabético. */
+export function rankByQuery<T extends { searchName: string }>(items: T[], query: string): T[] {
+  const tokens = searchTokens(query);
+  const first = tokens[0] ?? "";
+  const rank = (name: string) => (name.startsWith(first) ? 0 : new RegExp(`(^|[^a-z0-9ñ])${first}`).test(name) ? 1 : 2);
+  return [...items].sort((a, b) => rank(a.searchName) - rank(b.searchName) || a.searchName.localeCompare(b.searchName, "es"));
+}

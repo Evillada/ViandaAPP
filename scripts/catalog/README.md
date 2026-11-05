@@ -23,6 +23,6 @@ pnpm tsx scripts/catalog/build-gaba.ts     # → data/catalog/gaba-exchanges.csv
 pnpm tsx scripts/catalog/build-enrich.ts   # → data/catalog/gaba-matches.csv y allergen-review.csv
 ```
 
-`gaba-matches.csv` propone, para cada alimento de la lista de intercambios GABA, alimentos TCAC del mismo estado (crudo/cocido). Sólo las filas con `confirmed = 1` se usan; se confirman a mano y se conservan al regenerar. Para agregar una coincidencia que el script no propone, añadir la fila con `confirmed = 1`.
+`gaba-matches.csv` propone, para cada alimento de la lista de intercambios GABA, alimentos TCAC del mismo estado (crudo/cocido). Sólo las filas con `confirmed = 1` se usan (`0` = rechazada a propósito); se confirman a mano y se conservan al regenerar. Para agregar una coincidencia que el script no propone, añadir la fila con `confirmed = 1`.
 
 `allergen-review.csv` lista los alimentos con alérgenos propuestos (y los preparados y manufacturados) para que la nutricionista llene `confirmed_allergens`.

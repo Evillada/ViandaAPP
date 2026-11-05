@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fixName, normalizeSearch, unifyAccents } from "@/core/catalog/names";
+import { fixName, normalizeSearch, rankByQuery, searchTokens, unifyAccents } from "@/core/catalog/names";
 
 describe("fixName", () => {
   it("corrige los errores de OCR verificados en la imagen", () => {
@@ -32,5 +32,21 @@ describe("unifyAccents", () => {
 describe("normalizeSearch", () => {
   it("minúsculas sin tildes, conserva la ñ y colapsa espacios", () => {
     expect(normalizeSearch("  Ñame,  sin Cáscara ")).toBe("ñame, sin cascara");
+  });
+
+  it("'Fríjol' y 'frijol' se buscan igual", () => {
+    expect(normalizeSearch("Fríjol")).toBe(normalizeSearch("frijol"));
+  });
+});
+
+describe("búsqueda por palabras", () => {
+  it("separa en palabras sin puntuación", () => {
+    expect(searchTokens(" Arroz, cocido ")).toEqual(["arroz", "cocido"]);
+    expect(searchTokens("  ")).toEqual([]);
+  });
+
+  it("ordena: empieza por la búsqueda, luego palabra que empieza por ella, luego alfabético", () => {
+    const items = ["bebida de arroz", "arroz integral", "harina de arroz", "arroz blanco", "carroza"].map((searchName) => ({ searchName }));
+    expect(rankByQuery(items, "arroz").map((i) => i.searchName)).toEqual(["arroz blanco", "arroz integral", "bebida de arroz", "harina de arroz", "carroza"]);
   });
 });

@@ -55,6 +55,17 @@ export const TCAC_NUTRIENTS: Partial<Record<TcacField, { name: string; unit: str
   saturatedFat: { name: "Grasas saturadas", unit: "g", category: "LIPID" },
 };
 
+/**
+ * Errores de la propia TCAC (la imagen dice esto; no es OCR). Sólo se corrige el nombre cuando los valores
+ * muestran sin ambigüedad qué alimento son.
+ */
+export const SOURCE_ERRATA: Record<string, { name: string; note: string }> = {
+  A011: {
+    name: "Arroz integral, crudo",
+    note: "la TCAC lo rotula «cocido, sin sal» con valores de crudo (humedad 11,5 %, 370 kcal)",
+  },
+};
+
 export function parseTcacCsv(csv: string): TcacCsvRow[] {
   const [header, ...rows] = parseCsv(csv);
   const col = (name: string) => header.indexOf(name);
@@ -97,12 +108,14 @@ export function catalogEntry(row: TcacCsvRow, matches: ReadonlyMap<string, Excha
     return value == null ? [] : [{ name: nutrient!.name, amountPer100g: value }];
   });
   const exchangeName = exchange?.measure ? `1 intercambio · ${exchange.measure}` : "1 intercambio";
+  const errata = SOURCE_ERRATA[row.code];
+  const name = errata?.name ?? row.name;
   return {
     code: row.code,
-    name: row.name,
+    name,
     groupLetter: row.code[0],
-    sourceRef: `TCAC 2018, p. ${row.sourcePage}`,
-    searchName: normalizeSearch(row.name),
+    sourceRef: `TCAC 2018, p. ${row.sourcePage}${errata ? `; fe de erratas: ${errata.note}` : ""}`,
+    searchName: normalizeSearch(name),
     gabaGroup: gabaGroupFor(row, matches),
     gabaSubgroup: gabaSubgroupFor(row, matches),
     isProcessed: isProcessed(row),

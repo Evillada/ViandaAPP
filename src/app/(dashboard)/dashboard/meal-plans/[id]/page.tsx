@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { RefreshCw } from "lucide-react";
 import { notFound } from "next/navigation";
-import { getMealPlan, getFoods, activateMealPlanForm, regenerateMealPlanFromForm } from "@/features/nutrition/actions";
+import { getMealPlan, activateMealPlanForm, regenerateMealPlanFromForm } from "@/features/nutrition/actions";
 import { computePlanTotals } from "@/features/nutrition/plan-totals";
 import { MealPlanEditor } from "@/features/nutrition/components/meal-plan-editor";
 import { PlanDayTabs } from "@/features/nutrition/components/plan-day-tabs";
@@ -18,7 +18,7 @@ export default async function MealPlanPage({
 }) {
   const { id } = await params;
   const { day } = await searchParams;
-  const [plan, foods] = await Promise.all([getMealPlan(id), getFoods()]);
+  const plan = await getMealPlan(id);
   if (!plan) notFound();
 
   const selectedDay = plan.days.find((d) => d.id === day) ?? plan.days[0];
@@ -92,7 +92,7 @@ export default async function MealPlanPage({
         <h3 className="font-semibold text-text mb-4">Días del plan</h3>
         <PlanDayTabs mealPlanId={id} days={plan.days.map((d) => ({ id: d.id, name: d.name }))} selectedDayId={selectedDay?.id ?? ""} />
         <div className="mt-6">
-          <MealPlanEditor key={selectedDay?.id} mealPlanId={id} meals={selectedDay?.meals ?? []} foods={foods} />
+          <MealPlanEditor key={selectedDay?.id} mealPlanId={id} meals={selectedDay?.meals ?? []} />
         </div>
       </Card>
 
