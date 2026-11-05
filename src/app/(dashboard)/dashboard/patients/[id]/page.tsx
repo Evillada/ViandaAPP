@@ -5,6 +5,8 @@ import { PatientDetailTabs } from "@/features/assessments/components/patient-det
 import { getInvitationStatusAction } from "@/features/invitations/actions";
 import { InvitePatientPanel } from "@/features/invitations/components/invite-patient-panel";
 import { PatientEditButton } from "@/features/patients/components/patient-edit-button";
+import { PortalSettingsPanel } from "@/features/patients/components/portal-settings-panel";
+import { localDateKey } from "@/core/portal/plan-cycle";
 import { Button, Badge } from "@/shared/ui/components";
 import { formatDate } from "@/shared/lib/utils";
 import { SEX_LABELS, PATIENT_STATUS_LABELS } from "@/shared/lib/labels";
@@ -80,6 +82,13 @@ export default async function PatientDetailPage({
       {invitationStatus && (
         <InvitePatientPanel patientId={patient.id} status={invitationStatus} />
       )}
+
+      <PortalSettingsPanel
+        patientId={patient.id}
+        message={patient.portalMessage}
+        until={patient.portalMessageUntil ? localDateKey(patient.portalMessageUntil) : null}
+        progressEnabled={patient.progressMessagesEnabled}
+      />
 
       <PatientDetailTabs patient={patient} />
     </div>

@@ -10,6 +10,7 @@ import { getActorFor, requireActorFor } from "@/infrastructure/access/access-con
 import { recordAuditBestEffort } from "@/infrastructure/audit/audit-logger";
 import { prisma } from "@/infrastructure/database/prisma";
 import { getRequestMeta } from "@/infrastructure/http/request-meta";
+import { updatePortalSettings } from "./portal-settings";
 
 const patientSchema = z.object({
   firstName: z.string().min(1, "Nombre requerido"),
@@ -191,6 +192,26 @@ export async function updatePatient(id: string, formData: FormData) {
   await auditPatient(actor, "PATIENT_UPDATED", id);
   revalidatePatients(id);
   return { success: true };
+}
+
+/** Mensaje personal, vigencia y mensajes de progreso del portal del paciente */
+export async function updatePortalSettingsAction(patientId: string, formData: FormData): Promise<{ error?: string }> {
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
+  const { ip } = await getRequestMeta();
+  const result = await updatePortalSettings(
+    actor,
+    patientId,
+    {
+      message: String(formData.get("portalMessage") ?? ""),
+      until: String(formData.get("portalMessageUntil") ?? ""),
+      progressEnabled: formData.get("progressMessagesEnabled") === "on",
+    },
+    ip
+  );
+  if (!result.ok) return { error: result.error };
+  revalidatePath(`/dashboard/patients/${patientId}`);
+  return {};
 }
 
 /** Búsqueda de pacientes con filtros */
