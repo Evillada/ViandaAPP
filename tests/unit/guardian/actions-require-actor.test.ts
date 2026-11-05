@@ -4,11 +4,24 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
 const SRC_DIR = fileURLToPath(new URL("../../../src", import.meta.url));
+const APP_DIR = path.join(SRC_DIR, "app");
 
-/** Funciones que consultan sólo el catálogo público de alimentos (sin datos clínicos). */
-const ALLOWED_WITHOUT_ACTOR = new Set(["getFoods"]);
+/**
+ * Server actions que pueden ejecutarse sin actor. Toda entrada nueva necesita una razón:
+ * cada export de un archivo "use server" es un endpoint público.
+ */
+const ALLOWED_WITHOUT_ACTOR: Record<string, string> = {
+  getFoods: "catálogo público de alimentos, sin datos clínicos",
+  signOutAction: "cerrar sesión no lee datos",
+  createInviteAccountAction: "alta anónima autorizada por el token de invitación",
+};
 
-const ACTOR_CALL = /\b(getActorFor|requireActorFor)\(/;
+/** Páginas/layouts que pueden importar prisma directamente. */
+const APP_FILES_ALLOWED_PRISMA: Record<string, string> = {
+  "start/page.tsx": "sólo lee el propio usuario de la sesión para decidir el aterrizaje",
+};
+
+const ACTOR_CALL = /\b(getActorFor|requireActorFor|getSessionActor)\(/;
 
 function topLevelFunctions(source: string): { name: string; exported: boolean; body: string }[] {
   const matches = [...source.matchAll(/^(export )?(?:async )?function (\w+)/gm)];
@@ -19,16 +32,15 @@ function topLevelFunctions(source: string): { name: string; exported: boolean; b
   }));
 }
 
-function serverActionFiles(dir: string): string[] {
+function sourceFiles(dir: string): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
     const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) return serverActionFiles(full);
-    if (!/\.tsx?$/.test(entry.name)) return [];
-    return /^["']use server["']/m.test(readFileSync(full, "utf8")) ? [full] : [];
+    if (entry.isDirectory()) return sourceFiles(full);
+    return /\.tsx?$/.test(entry.name) ? [full] : [];
   });
 }
 
-const actionFiles = serverActionFiles(SRC_DIR);
+const actionFiles = sourceFiles(SRC_DIR).filter((file) => /^["']use server["']/m.test(readFileSync(file, "utf8")));
 
 it("encuentra los archivos de server actions", () => {
   expect(actionFiles.length).toBeGreaterThanOrEqual(4);
@@ -36,20 +48,40 @@ it("encuentra los archivos de server actions", () => {
 
 describe.each(actionFiles)("%s", (file) => {
   const source = readFileSync(file, "utf8");
+  const functions = topLevelFunctions(source);
 
   it("sólo exporta funciones declaradas (formas que el guardián puede inspeccionar)", () => {
     expect(source).not.toMatch(/^export\s+(const|let|var|default|\{|\*)/m);
   });
 
-  const guarded = topLevelFunctions(source).filter(
-    (fn) => fn.exported && fn.body.includes("prisma.") && !ALLOWED_WITHOUT_ACTOR.has(fn.name)
-  );
+  /** Obtiene el actor antes de tocar prisma, directamente o delegando en una función del archivo que lo hace. */
+  function guards(name: string, seen = new Set<string>()): boolean {
+    if (seen.has(name)) return false;
+    seen.add(name);
+    const fn = functions.find((candidate) => candidate.name === name);
+    if (!fn) return false;
+    const actorAt = fn.body.search(ACTOR_CALL);
+    const prismaAt = fn.body.indexOf("prisma.");
+    if (actorAt >= 0 && (prismaAt < 0 || actorAt < prismaAt)) return true;
+    if (prismaAt >= 0) return false;
+    return functions.some(
+      (other) => other.name !== name && new RegExp(`\\b${other.name}\\(`).test(fn.body) && guards(other.name, seen)
+    );
+  }
 
-  if (guarded.length === 0) return;
+  const exported = functions.filter((fn) => fn.exported && !(fn.name in ALLOWED_WITHOUT_ACTOR));
 
-  it.each(guarded.map((fn) => [fn.name, fn.body] as const))("%s obtiene el actor antes de consultar", (_name, body) => {
-    const actorAt = body.search(ACTOR_CALL);
-    expect(actorAt).toBeGreaterThanOrEqual(0);
-    expect(actorAt).toBeLessThan(body.indexOf("prisma."));
+  it.each(exported.map((fn) => [fn.name] as const))("%s exige actor", (name) => {
+    expect(guards(name)).toBe(true);
+  });
+});
+
+describe("páginas y layouts", () => {
+  const appFiles = sourceFiles(APP_DIR);
+
+  it.each(appFiles.map((file) => [path.relative(APP_DIR, file)] as const))("%s no importa prisma", (relative) => {
+    if (relative in APP_FILES_ALLOWED_PRISMA) return;
+    const source = readFileSync(path.join(APP_DIR, relative), "utf8");
+    expect(source).not.toMatch(/infrastructure\/database\/prisma|@prisma\/client/);
   });
 });

@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import { getActorFor, requireActorFor } from "@/infrastructure/access/access-context";
-import { prisma } from "@/infrastructure/database/prisma";
 import { getRequestMeta } from "@/infrastructure/http/request-meta";
 import { listProfessionalsForReview, reviewProfessional } from "./review-professionals";
 
@@ -38,9 +37,4 @@ export async function rejectProfessionalAction(formData: FormData) {
 
 export async function suspendProfessionalAction(formData: FormData) {
   return decide(formData, "SUSPEND");
-}
-
-export async function countPendingProfessionalsAction(): Promise<number> {
-  await requireActorFor("ADMIN");
-  return prisma.professionalProfile.count({ where: { status: "PENDING" } });
 }

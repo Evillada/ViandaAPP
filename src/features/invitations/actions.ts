@@ -33,8 +33,7 @@ export async function getInvitationStatusAction(patientId: string): Promise<Invi
   return getInvitationStatus(patientId, new Date());
 }
 
-// Runs WITHOUT an actor (anonymous sign-up): the DB access lives in invite-account.ts (not a "use server" module),
-// so the actor guardian keeps checking this file's prisma-touching exports.
+// Runs WITHOUT an actor (anonymous sign-up authorized by the token); listed in the guardian's ALLOWED_WITHOUT_ACTOR.
 export async function createInviteAccountAction(token: string, formData: FormData): Promise<{ email?: string; error?: string }> {
   const result = await createInviteAccount(
     { name: formData.get("name"), email: formData.get("email"), password: formData.get("password") },
