@@ -40,6 +40,10 @@ enum AuditAction {
   PROFESSIONAL_APPROVED
   PROFESSIONAL_REJECTED
   PROFESSIONAL_SUSPENDED
+  ACCOUNT_DELETED
+  PATIENT_PHONE_UPDATED
+  PASSWORD_CHANGED
+  SERVICE_PACKAGE_CHANGED
 }
 
 enum Sex {
@@ -142,6 +146,7 @@ model User {
   password      String?
   roles         Role[]    @default([])
   lastArea      Role?
+  deletedAt     DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -158,6 +163,7 @@ model User {
   invitationsAccepted PatientInvitation[]   @relation("InvitationAcceptor")
   consents            PatientConsent[]
   auditLogs           AuditLog[]
+  servicePackages     ServicePackage[]      @relation("PackageProfessional")
 
   @@map("users")
 }
@@ -179,19 +185,45 @@ model Patient {
   createdAt               DateTime      @default(now())
   updatedAt               DateTime      @updatedAt
 
-  professionalId String
-  professional   User                @relation("PatientProfessional", fields: [professionalId], references: [id], onDelete: Cascade)
-  userId         String?
-  user           User?               @relation("PatientAccount", fields: [userId], references: [id], onDelete: SetNull)
-  appointments   Appointment[]
-  assessments    Assessment[]
-  mealPlans      MealPlan[]
-  invitations    PatientInvitation[]
-  consents       PatientConsent[]
-  auditLogs      AuditLog[]
+  professionalId  String
+  professional    User                @relation("PatientProfessional", fields: [professionalId], references: [id], onDelete: Cascade)
+  userId          String?
+  user            User?               @relation("PatientAccount", fields: [userId], references: [id], onDelete: SetNull)
+  appointments    Appointment[]
+  assessments     Assessment[]
+  mealPlans       MealPlan[]
+  invitations     PatientInvitation[]
+  consents        PatientConsent[]
+  auditLogs       AuditLog[]
+  servicePackages ServicePackage[]
 
   @@unique([professionalId, userId])
   @@map("patients")
+}
+
+enum ServicePackageStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+model ServicePackage {
+  id               String               @id @default(cuid())
+  name             String
+  includedSessions Int?
+  startsAt         DateTime
+  endsAt           DateTime?
+  status           ServicePackageStatus @default(ACTIVE)
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @updatedAt
+
+  patientId      String
+  patient        Patient @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  professionalId String
+  professional   User    @relation("PackageProfessional", fields: [professionalId], references: [id], onDelete: Cascade)
+
+  @@index([patientId])
+  @@map("service_packages")
 }
 
 model Assessment {
