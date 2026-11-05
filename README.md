@@ -25,6 +25,7 @@ Plataforma de gestión nutricional clínica para profesionales.
 ```bash
 pnpm install
 pnpm db:push
+pnpm db:security   # RLS en todas las tablas y bloqueo de la Data API de Supabase
 pnpm db:seed
 pnpm dev
 ```
