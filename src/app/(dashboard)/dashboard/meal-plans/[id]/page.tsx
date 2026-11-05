@@ -42,8 +42,9 @@ export default async function MealPlanPage({
           {plan.assessmentId && plan.status === "DRAFT" && (
             <form action={regenerateMealPlanFromForm}>
               <input type="hidden" name="mealPlanId" value={id} />
+              <input type="hidden" name="dayId" value={selectedDay?.id ?? ""} />
               <Button type="submit" variant="outline" className="gap-2">
-                <RefreshCw className="h-4 w-4" aria-hidden="true" /> Regenerar automático
+                <RefreshCw className="h-4 w-4" aria-hidden="true" /> Regenerar {selectedDay?.name ?? "automático"}
               </Button>
             </form>
           )}

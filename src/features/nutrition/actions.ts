@@ -231,11 +231,12 @@ export async function generateAutomaticMealPlanAction(
 
 export async function regenerateMealPlanFromForm(formData: FormData): Promise<void> {
   const mealPlanId = formData.get("mealPlanId") as string;
-  const result = await regenerateAutomaticMealPlan(mealPlanId);
+  const dayId = (formData.get("dayId") as string | null) || undefined;
+  const result = await regenerateAutomaticMealPlan(mealPlanId, dayId);
   if (result?.error) throw new Error(result.error);
 }
 
-export async function regenerateAutomaticMealPlan(mealPlanId: string) {
+export async function regenerateAutomaticMealPlan(mealPlanId: string, dayId?: string) {
   const actor = await getActorFor("PROFESSIONAL");
   if (!actor) return { error: "No autorizado" };
 
@@ -243,7 +244,7 @@ export async function regenerateAutomaticMealPlan(mealPlanId: string) {
     where: { id: mealPlanId, professionalId: actor.userId },
     include: {
       assessment: { include: { nutritionalGoal: true } },
-      days: { include: { meals: { include: { items: true } } } },
+      days: { orderBy: { orderNum: "asc" }, include: { meals: { include: { items: true } } } },
     },
   });
 
@@ -263,7 +264,7 @@ export async function regenerateAutomaticMealPlan(mealPlanId: string) {
     foods
   );
 
-  const day = plan.days[0];
+  const day = dayId ? plan.days.find((d) => d.id === dayId) : plan.days[0];
   if (!day) return { error: "Plan sin días configurados" };
 
   await prisma.mealItem.deleteMany({
