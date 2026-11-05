@@ -6,6 +6,8 @@ import { getInvitationStatusAction } from "@/features/invitations/actions";
 import { InvitePatientPanel } from "@/features/invitations/components/invite-patient-panel";
 import { PatientEditButton } from "@/features/patients/components/patient-edit-button";
 import { PortalSettingsPanel } from "@/features/patients/components/portal-settings-panel";
+import { ServicePackagesPanel } from "@/features/patients/components/service-packages-panel";
+import { packageDisplayStatus } from "@/core/portal/package-status";
 import { localDateKey } from "@/core/portal/plan-cycle";
 import { Button, Badge } from "@/shared/ui/components";
 import { formatDate } from "@/shared/lib/utils";
@@ -22,6 +24,7 @@ export default async function PatientDetailPage({
   const [patient, invitationStatus] = await Promise.all([getPatient(id), getInvitationStatusAction(id)]);
   if (!patient) notFound();
 
+  const now = new Date();
   const weightSummary = getWeightChangeSummary(patient.assessments);
   const age = patient.dateOfBirth ? calculateAge(new Date(patient.dateOfBirth)) : null;
 
@@ -88,6 +91,19 @@ export default async function PatientDetailPage({
         message={patient.portalMessage}
         until={patient.portalMessageUntil ? localDateKey(patient.portalMessageUntil) : null}
         progressEnabled={patient.progressMessagesEnabled}
+      />
+
+      <ServicePackagesPanel
+        patientId={patient.id}
+        packages={patient.servicePackages.map((p) => ({
+          id: p.id,
+          name: p.name,
+          includedSessions: p.includedSessions,
+          startsAt: localDateKey(p.startsAt),
+          endsAt: p.endsAt ? localDateKey(p.endsAt) : null,
+          status: p.status,
+          displayStatus: packageDisplayStatus(p.status, p.endsAt, now),
+        }))}
       />
 
       <PatientDetailTabs patient={patient} />

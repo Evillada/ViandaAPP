@@ -11,6 +11,7 @@ import { recordAuditBestEffort } from "@/infrastructure/audit/audit-logger";
 import { prisma } from "@/infrastructure/database/prisma";
 import { getRequestMeta } from "@/infrastructure/http/request-meta";
 import { updatePortalSettings } from "./portal-settings";
+import { createServicePackage, deleteServicePackage, updateServicePackage } from "./service-packages";
 
 const patientSchema = z.object({
   firstName: z.string().min(1, "Nombre requerido"),
@@ -90,6 +91,7 @@ export async function getPatient(id: string) {
         orderBy: { createdAt: "desc" },
         include: { assessment: { include: { nutritionalGoal: true } } },
       },
+      servicePackages: { orderBy: { startsAt: "desc" } },
     },
   });
 
@@ -209,6 +211,49 @@ export async function updatePortalSettingsAction(patientId: string, formData: Fo
     },
     ip
   );
+  if (!result.ok) return { error: result.error };
+  revalidatePath(`/dashboard/patients/${patientId}`);
+  return {};
+}
+
+function packageInputFromForm(formData: FormData) {
+  return {
+    name: String(formData.get("name") ?? ""),
+    includedSessions: String(formData.get("includedSessions") ?? ""),
+    startsAt: String(formData.get("startsAt") ?? ""),
+    endsAt: String(formData.get("endsAt") ?? ""),
+    status: formData.has("status") ? String(formData.get("status")) : undefined,
+  };
+}
+
+/** Agrega un paquete contratado a la ficha del paciente */
+export async function createServicePackageAction(patientId: string, formData: FormData): Promise<{ error?: string }> {
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
+  const { ip } = await getRequestMeta();
+  const result = await createServicePackage(actor, patientId, packageInputFromForm(formData), ip);
+  if (!result.ok) return { error: result.error };
+  revalidatePath(`/dashboard/patients/${patientId}`);
+  return {};
+}
+
+/** Edita un paquete contratado */
+export async function updateServicePackageAction(packageId: string, patientId: string, formData: FormData): Promise<{ error?: string }> {
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
+  const { ip } = await getRequestMeta();
+  const result = await updateServicePackage(actor, packageId, packageInputFromForm(formData), ip);
+  if (!result.ok) return { error: result.error };
+  revalidatePath(`/dashboard/patients/${patientId}`);
+  return {};
+}
+
+/** Elimina un paquete contratado */
+export async function deleteServicePackageAction(packageId: string, patientId: string): Promise<{ error?: string }> {
+  const actor = await getActorFor("PROFESSIONAL");
+  if (!actor) return { error: "No autorizado" };
+  const { ip } = await getRequestMeta();
+  const result = await deleteServicePackage(actor, packageId, ip);
   if (!result.ok) return { error: result.error };
   revalidatePath(`/dashboard/patients/${patientId}`);
   return {};

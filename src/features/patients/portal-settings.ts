@@ -1,17 +1,10 @@
 import { canEditPatientRecord } from "@/core/access/policies";
 import type { Actor } from "@/core/access/types";
+import { endOfDayBogota } from "@/core/portal/bogota-dates";
 import { recordAudit } from "@/infrastructure/audit/audit-logger";
 import { prisma } from "@/infrastructure/database/prisma";
 
 const MAX_MESSAGE = 280;
-
-/** "YYYY-MM-DD" → último milisegundo de ese día en Bogotá (UTC-5, sin horario de verano). */
-function endOfDayBogota(value: string): Date | null {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
-  const [y, m, d] = value.split("-").map(Number);
-  const date = new Date(Date.UTC(y!, m! - 1, d! + 1, 4, 59, 59, 999));
-  return Number.isNaN(date.getTime()) ? null : date;
-}
 
 export async function updatePortalSettings(
   actor: Actor,
