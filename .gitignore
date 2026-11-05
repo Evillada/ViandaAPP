@@ -52,3 +52,6 @@ next-env.d.ts
 
 # superpowers scratch
 /.superpowers
+
+# Fuentes originales de datos (PDF/descargas); sólo se versiona lo extraído
+/data/sources/
