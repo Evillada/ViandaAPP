@@ -12,7 +12,7 @@ test("paciente: saludo, menú de hoy, plan semanal y completo, citas y cuenta", 
   await expect(page.getByText("Toma 8 vasos de agua al día")).toBeVisible();
 
   const nav = page.getByRole("navigation", { name: "Navegación principal" });
-  for (const label of ["Hoy", "Plan", "Citas", "Cuenta"]) await expect(nav.getByText(label, { exact: true })).toBeVisible();
+  for (const label of ["Hoy", "Plan", "Citas", "Progreso", "Cuenta"]) await expect(nav.getByText(label, { exact: true })).toBeVisible();
 
   await nav.getByRole("link", { name: "Plan" }).click();
   await expect(page).toHaveURL(/\/portal\/plan/);
@@ -27,6 +27,18 @@ test("paciente: saludo, menú de hoy, plan semanal y completo, citas y cuenta", 
   await nav.getByRole("link", { name: "Citas" }).click();
   await expect(page.getByText("Tu próxima cita", { exact: true })).toBeVisible();
   await expect(page.getByText(/Control mensual/)).toBeVisible();
+
+  await nav.getByRole("link", { name: "Progreso" }).click();
+  await expect(page).toHaveURL(/\/portal\/progreso/);
+  await expect(page.getByRole("heading", { level: 1, name: "Mi progreso" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Cintura" })).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: "Peso" }).click();
+  await expect(page.getByRole("button", { name: "Peso" })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("heading", { name: "Tus metas" })).toBeVisible();
+  await page.getByRole("link", { name: /Control \/ seguimiento/ }).first().click();
+  await expect(page).toHaveURL(/\/portal\/progreso\/.+/);
+  await expect(page.getByRole("heading", { name: "Indicaciones de tu nutricionista" })).toBeVisible();
+  await expect(page.getByText(/Toma 8 vasos de agua al día/)).toBeVisible();
 
   await nav.getByRole("button", { name: "Cuenta" }).click();
   await page.getByRole("dialog", { name: "Cuenta" }).getByRole("link", { name: "Mi cuenta y profesionales" }).click();

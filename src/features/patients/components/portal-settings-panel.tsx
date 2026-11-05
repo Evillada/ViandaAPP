@@ -40,7 +40,10 @@ export function PortalSettingsPanel({ patientId, message, until, progressEnabled
       </label>
       <label className="flex min-h-11 items-center gap-3 text-sm">
         <input type="checkbox" name="progressMessagesEnabled" defaultChecked={progressEnabled} className="h-5 w-5 accent-primary" />
-        Mostrar mensajes de progreso en el saludo
+        <span>
+          <span className="block">Mostrar progreso y medidas en el portal</span>
+          <span className="block text-xs text-muted">Si lo apagas, el paciente no ve mensajes de progreso, gráficas, medidas ni diagnóstico.</span>
+        </span>
       </label>
       {status && (
         <p role="status" className={status.kind === "error" ? "text-sm text-danger" : "text-sm text-primary"}>{status.text}</p>
