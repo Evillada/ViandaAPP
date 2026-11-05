@@ -7,10 +7,8 @@ import { prisma } from "@/infrastructure/database/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { addPlanDay, deletePlanDay, duplicatePlanDay, renamePlanDay, updatePlanInstructions } from "./plan-days";
-import {
-  generateAutomaticMealPlan,
-  type FoodForGenerator,
-} from "@/core/nutrition/meal-plan-generator";
+import { loadFoodsForGenerator } from "./generator-foods";
+import { generateAutomaticMealPlan } from "@/core/nutrition/meal-plan-generator";
 
 async function auditMealPlan(actorId: string, mealPlanId: string, patientId: string, change: string) {
   const { ip } = await getRequestMeta();
@@ -128,28 +126,6 @@ export async function generateAutomaticMealPlanFromForm(
   const assessmentId = formData.get("assessmentId") as string;
   const result = await generateAutomaticMealPlanAction(patientId, assessmentId);
   if (result?.error) throw new Error(result.error);
-}
-
-async function loadFoodsForGenerator(): Promise<FoodForGenerator[]> {
-  const foods = await prisma.food.findMany({
-    include: {
-      category: true,
-      nutrients: { include: { nutrient: true } },
-      portions: { where: { isDefault: true }, take: 1 },
-    },
-  });
-
-  return foods.map((food) => ({
-    id: food.id,
-    name: food.name,
-    categorySlug: food.category.slug,
-    defaultPortionGrams: food.portions[0]?.grams ?? 100,
-    nutrients: food.nutrients.map((fn) => ({
-      nutrientName: fn.nutrient.name,
-      unit: fn.nutrient.unit,
-      amountPer100g: fn.amountPer100g,
-    })),
-  }));
 }
 
 export async function generateAutomaticMealPlanAction(
