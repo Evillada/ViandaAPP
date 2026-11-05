@@ -1,0 +1,9 @@
+.env
+.env.*
+.claude
+.superpowers
+.cursor
+graphify-out
+test-results
+playwright-report
+docs

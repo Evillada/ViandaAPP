@@ -14,7 +14,9 @@ test("invitar → crear cuenta en móvil → consentir → portal → revocar", 
   await expect(page.getByRole("heading", { name: "Crea tu cuenta" })).toBeVisible();
   const patientEmail = `carlos-${Date.now()}@test.co`;
   await page.getByLabel("Email").fill(patientEmail);
-  await page.getByLabel("Contraseña").fill("Secreta1");
+  await page.getByLabel("Contraseña", { exact: true }).fill("Secreta1");
+  await page.getByRole("button", { name: "Mostrar contraseña" }).click();
+  await expect(page.getByLabel("Contraseña", { exact: true })).toHaveAttribute("type", "text");
   await page.getByRole("button", { name: "Crear cuenta y continuar" }).click();
 
   await expect(page.getByRole("heading", { name: "Autorización de tratamiento de datos" })).toBeVisible();

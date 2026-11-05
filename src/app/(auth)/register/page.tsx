@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useHydrated } from "@/shared/lib/use-hydrated";
-import { Button, Input } from "@/shared/ui/components";
+import { Button, Input, PasswordInput } from "@/shared/ui/components";
 import Link from "next/link";
 import { Logo } from "@/shared/ui/brand/logo";
 
@@ -87,10 +87,9 @@ export default function RegisterPage() {
             placeholder="tu@email.com"
             required
           />
-          <Input
+          <PasswordInput
             label="Contraseña"
             id="password"
-            type="password"
             autoComplete="new-password"
             className="min-h-11"
             value={password}

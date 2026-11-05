@@ -3,7 +3,7 @@ import { expect, type Page } from "@playwright/test";
 export async function login(page: Page, email: string, password: string) {
   await page.goto("/login");
   await page.getByLabel("Email").fill(email);
-  await page.getByLabel("Contraseña").fill(password);
+  await page.getByLabel("Contraseña", { exact: true }).fill(password);
   const submit = page.getByRole("button", { name: "Iniciar sesión" });
   await expect(submit).toBeEnabled(); // habilitado sólo tras hidratar React
   await submit.click();

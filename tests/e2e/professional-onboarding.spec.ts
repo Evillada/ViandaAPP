@@ -7,7 +7,7 @@ test("registro → pendiente → aprobación → acceso", async ({ page }) => {
   await page.goto("/register");
   await page.getByLabel("Nombre completo").fill("Laura Gómez");
   await page.getByLabel("Email").fill(email);
-  await page.getByLabel("Contraseña").fill("Secreta1");
+  await page.getByLabel("Contraseña", { exact: true }).fill("Secreta1");
   await page.getByLabel("Número de tarjeta profesional").fill("TP-998877");
   await page.getByRole("button", { name: "Crear cuenta" }).click();
 

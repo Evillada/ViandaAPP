@@ -5,7 +5,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useHydrated } from "@/shared/lib/use-hydrated";
-import { Button, Input } from "@/shared/ui/components";
+import { Button, Input, PasswordInput } from "@/shared/ui/components";
 import { createInviteAccountAction } from "../actions";
 
 export function InviteSignUp({ token, defaultName }: { token: string; defaultName: string }) {
@@ -40,7 +40,7 @@ export function InviteSignUp({ token, defaultName }: { token: string; defaultNam
       <form onSubmit={handleSubmit} className="space-y-4">
         <Input label="Nombre completo" id="name" name="name" defaultValue={defaultName} autoComplete="name" className="min-h-11" required />
         <Input label="Email" id="email" name="email" type="email" inputMode="email" autoComplete="email" className="min-h-11" required />
-        <Input label="Contraseña" id="password" name="password" type="password" autoComplete="new-password" minLength={6} className="min-h-11" required />
+        <PasswordInput label="Contraseña" id="password" name="password" autoComplete="new-password" minLength={6} className="min-h-11" required />
         {error && <p className="text-sm text-danger" role="alert">{error}</p>}
         <Button type="submit" className="w-full min-h-11" disabled={loading || !hydrated}>
           {loading ? "Creando cuenta..." : "Crear cuenta y continuar"}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Button, Input } from "@/shared/ui/components";
+import { Button, Input, PasswordInput } from "@/shared/ui/components";
 import { useHydrated } from "@/shared/lib/use-hydrated";
 import { safeCallbackUrl } from "../safe-callback-url";
 
@@ -47,10 +47,9 @@ export function LoginForm() {
           className="min-h-11"
           required
         />
-        <Input
+        <PasswordInput
           label="Contraseña"
           id="password"
-          type="password"
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
