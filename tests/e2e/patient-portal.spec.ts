@@ -32,4 +32,12 @@ test("paciente: saludo, menú de hoy, plan semanal y completo, citas y cuenta", 
   await page.getByRole("dialog", { name: "Cuenta" }).getByRole("link", { name: "Mi cuenta y profesionales" }).click();
   await expect(page).toHaveURL(/\/portal\/cuenta$/);
   await expect(page.getByText("Dr. Desarrollador", { exact: true })).toBeVisible();
+  await expect(page.getByText("Plan trimestral", { exact: true })).toBeVisible();
+  await expect(page.getByText("Vigente", { exact: true })).toBeVisible();
+
+  await expect(page.getByRole("heading", { name: "Mis datos" })).toBeVisible();
+  const phone = page.getByLabel("Teléfono");
+  await phone.fill("300 123 4567");
+  await page.getByRole("button", { name: "Guardar teléfono" }).click();
+  await expect(page.getByRole("status").filter({ hasText: "Teléfono actualizado" })).toBeVisible();
 });

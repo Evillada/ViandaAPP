@@ -367,13 +367,40 @@ async function main() {
     },
   });
 
+  const packageStartsAt = new Date();
+  packageStartsAt.setDate(packageStartsAt.getDate() - 30);
+  const packageEndsAt = new Date();
+  packageEndsAt.setDate(packageEndsAt.getDate() + 60);
+  await prisma.servicePackage.upsert({
+    where: { id: "seed-package-maria" },
+    update: {
+      name: "Plan trimestral",
+      includedSessions: 6,
+      startsAt: packageStartsAt,
+      endsAt: packageEndsAt,
+      status: "ACTIVE",
+      patientId: patient.id,
+      professionalId: dev.id,
+    },
+    create: {
+      id: "seed-package-maria",
+      name: "Plan trimestral",
+      includedSessions: 6,
+      startsAt: packageStartsAt,
+      endsAt: packageEndsAt,
+      status: "ACTIVE",
+      patientId: patient.id,
+      professionalId: dev.id,
+    },
+  });
+
   console.log("✅ Vianda seed completado");
   console.log("   Nutricionista: dev@gmail.com (contraseña: SEED_DEV_PASSWORD en .env)");
   console.log("   Paciente demo:", patient.firstName, patient.lastName);
   console.log(`   ${demoAssessments.length} valoraciones demo con historial`);
   console.log(`   ${FOODS.length} alimentos ICBF cargados`);
   console.log("   Consentimiento v1, María vinculada a paciente@emuj.health, Carlos sin cuenta");
-  console.log("   Plan activo demo de 2 días y cita próxima para María");
+  console.log("   Plan activo demo de 2 días, cita próxima y paquete contratado para María");
 }
 
 main()

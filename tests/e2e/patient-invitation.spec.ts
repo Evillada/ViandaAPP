@@ -37,4 +37,27 @@ test("invitar → crear cuenta en móvil → consentir → portal → revocar", 
 
   await page.goto(new URL(inviteUrl).pathname);
   await expect(page.getByText("Este enlace ya no es válido")).toBeVisible();
+
+  // Eliminar la cuenta recién creada: cierra sesión y redirige al login con aviso.
+  await page.goto("/portal/cuenta");
+  await page.getByRole("button", { name: "Eliminar mi cuenta" }).click();
+  const dialog = page.getByRole("dialog"); // el <dialog> del Modal no expone nombre accesible
+  await expect(dialog).toBeVisible();
+  const confirm = dialog.getByRole("button", { name: "Eliminar mi cuenta" });
+  await expect(confirm).toBeDisabled();
+  await dialog.getByLabel("Escribe ELIMINAR para confirmar").fill("ELIMINAR");
+  await expect(confirm).toBeEnabled();
+  await confirm.click();
+
+  await expect(page).toHaveURL(/\/login\?deleted=1$/, { timeout: 30_000 });
+  await expect(page.getByRole("status").filter({ hasText: "Tu cuenta fue eliminada" })).toBeVisible();
+
+  // La cuenta eliminada ya no puede iniciar sesión con las mismas credenciales.
+  await page.getByLabel("Email").fill(patientEmail);
+  await page.getByLabel("Contraseña", { exact: true }).fill("Secreta1");
+  const submit = page.getByRole("button", { name: "Iniciar sesión" });
+  await expect(submit).toBeEnabled();
+  await submit.click();
+  await expect(page.getByText("Email o contraseña incorrectos")).toBeVisible();
+  await expect(page).toHaveURL(/\/login/);
 });
