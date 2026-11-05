@@ -12,8 +12,9 @@ Que el paciente, desde el teléfono, sepa **qué comer hoy y esta semana**, vea 
 
 | Tema | Decisión |
 |---|---|
-| Navegación | Pestañas inferiores: **Hoy**, **Semana**, **Progreso**, **Cuenta** (mismo patrón que el área profesional). Mobile-first 390×844, iconos lucide, targets ≥ 44 px, sin emojis. |
+| Navegación | 5 pestañas inferiores: **Hoy**, **Plan**, **Citas**, **Progreso**, **Cuenta** (mismo patrón y cantidad que el área profesional). Mobile-first 390×844, iconos lucide, targets ≥ 44 px, sin emojis. |
 | Semana | El ciclo de días del plan activo se repite desde `activatedAt`. La app calcula qué día del ciclo toca en cada fecha real. |
+| Citas | Sólo lectura: próximas e historial. El paciente no agenda ni cancela desde la app en esta versión (lo hace el profesional). |
 | Editar datos | El paciente edita **teléfono** y **contraseña**. Nombre, cédula, sexo y fecha de nacimiento: sólo lectura (los corrige el profesional; afectan cálculos clínicos). |
 | Notas | Campo nuevo **Indicaciones para el paciente** en valoración y plan. Los campos `notes` existentes son internos y **nunca** se muestran al paciente. |
 | Plan contratado | **Paquete de servicio** que el profesional registra a mano en la ficha (sin pagos en la app). |
@@ -30,17 +31,22 @@ Que el paciente, desde el teléfono, sepa **qué comer hoy y esta semana**, vea 
 4. **Indicaciones vigentes** del plan (`MealPlan.patientInstructions`).
 5. Sin plan activo: estado vacío "Tu profesional aún no ha activado un plan".
 
-### 3.2 Semana (`/portal/semana`)
-- Lista de 7 fechas (lunes a domingo de la semana actual; navegación a semana anterior/siguiente).
-- Cada fecha muestra el nombre del día del ciclo y kcal; al tocar se expande el menú.
-- Fechas anteriores a `activatedAt` muestran "Plan aún no activo".
+### 3.2 Plan (`/portal/plan`)
+El plan alimentario que el profesional armó para el paciente, con dos vistas (control segmentado arriba):
+- **Esta semana** (por defecto): 7 fechas reales (lunes a domingo; navegación a semana anterior/siguiente). Cada fecha muestra el día del ciclo que le toca y sus kcal; al tocar se expande el menú. Hoy queda resaltado. Fechas anteriores a `activatedAt` muestran "Plan aún no activo".
+- **Plan completo**: la lista de todos los días del plan (Día 1…Día N) con todas sus comidas — desayuno, media mañana, almuerzo, onces, cena, etc. — y por cada comida sus alimentos con cantidad, porción en gramos y kcal; total de kcal y macros por día frente a la meta. Encabezado con nombre del plan, profesional, fecha de activación e **indicaciones para el paciente**.
 
-### 3.3 Progreso (`/portal/progreso`)
+### 3.3 Citas (`/portal/citas`)
+- **Próximas**: fecha, hora, duración, profesional, motivo y estado (programada). La más cercana arriba y destacada.
+- **Historial**: citas pasadas con estado (completada / cancelada), de la más reciente a la más antigua.
+- Sólo de vínculos con autorización vigente. Estado vacío: "No tienes citas programadas".
+
+### 3.4 Progreso (`/portal/progreso`)
 - Gráficas de línea (peso, IMC, % grasa, cintura) con un punto por valoración, de la más antigua a la más reciente. Si sólo hay una valoración, se muestran los valores sin gráfica.
 - **Metas actuales**: kcal, proteína/carbohidratos/grasa (g y %), agua (ml/día).
 - Lista de valoraciones → detalle (`/portal/progreso/[assessmentId]`): fecha, tipo, antropometría registrada, diagnóstico nutricional y CIE-10, **indicaciones para el paciente**. Nunca `notes`, `anthropometryNotes` ni `DietaryRecall.notes`.
 
-### 3.4 Cuenta (`/portal/cuenta`)
+### 3.5 Cuenta (`/portal/cuenta`)
 - **Mis datos** (de la ficha vinculada): nombre, cédula, sexo, fecha de nacimiento, email de la cuenta — sólo lectura. **Teléfono** editable.
 - **Contraseña**: cambiar (pide la actual).
 - **Mis profesionales**: por cada vínculo con autorización vigente — nombre, fecha de autorización, **paquete contratado** (nombre, consultas incluidas, vigencia, estado) y **Revocar autorización** (ya existe; se mueve aquí).
@@ -140,12 +146,12 @@ En una transacción:
 
 - **Unitarias**: `greeting.ts` (hora, prioridad del dato, dirección del objetivo, mensaje del profesional vigente/vencido, progreso apagado), cálculo del día del ciclo (incluye cambio de mes y planes de 1 y 7 días), frases sin términos prohibidos.
 - **Integración**: paciente no ve fichas ajenas ni de profesionales con autorización revocada; no ve borradores ni `notes`; eliminar cuenta revoca, desvincula, anonimiza y bloquea el login; editar teléfono sólo en fichas propias; duplicar día copia ítems.
-- **E2E móvil**: paciente entra → ve saludo y menú de hoy → semana → progreso → cuenta (edita teléfono) → elimina cuenta → no puede iniciar sesión.
+- **E2E móvil**: paciente entra → ve saludo y menú de hoy → plan (semana y completo) → citas → progreso → cuenta (edita teléfono) → elimina cuenta → no puede iniciar sesión.
 
 ## 10. Entregas
 
-1. **Cuenta**: datos, teléfono, contraseña, mis profesionales + paquete contratado (incluye CRUD del profesional), eliminar cuenta, navegación por pestañas.
-2. **Hoy y Semana**: saludo, menú del día, semana, días múltiples en el editor, indicaciones del plan, `activatedAt`.
+1. **Hoy, Plan y Citas** (navegación de 5 pestañas incluida): saludo, menú del día, plan (semana y completo), citas, días múltiples en el editor, indicaciones del plan, `activatedAt`.
+2. **Cuenta**: datos, teléfono, contraseña, mis profesionales + paquete contratado (incluye CRUD del profesional), eliminar cuenta.
 3. **Progreso**: gráficas, metas, detalle de valoración, indicaciones de la valoración.
 
 Cada entrega se publica por separado en `main`.
