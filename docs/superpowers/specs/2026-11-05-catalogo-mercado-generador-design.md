@@ -19,7 +19,7 @@ Reemplazar el catálogo demo (20 alimentos escritos a mano en `prisma/seed.ts`) 
 |---|---|---|
 | **TCAC 2018** (ICBF + Universidad Nacional), 773 alimentos, 16 grupos, incluye 95 autóctonos y preparaciones típicas | Base del catálogo | Acceso libre, "Requisitos de ley: ninguno", **sin licencia abierta explícita**. Se cita en cada alimento. Antes del lanzamiento comercial: consulta escrita al ICBF (no bloquea desarrollo). Sólo PDF. |
 | **USDA FoodData Central, SR Legacy** | Completar nutrientes faltantes cuando la correspondencia es inequívoca | CC0, citar "U.S. Department of Agriculture, Agricultural Research Service. FoodData Central". |
-| **GABA Colombia** (documento técnico MinSalud/ICBF) | 6 grupos del plato, intercambios diarios por edad y sexo, listas de intercambio con peso y medida casera | Documento público. |
+| **GABA Colombia**, documento técnico (FAO/ICBF 2015, ISBN 978-92-5-308687-0, repositorio abierto de la FAO, con versión en texto) | Tablas 26–45: listas de intercambio con peso y medida casera por subgrupo; tabla 46: aporte promedio por intercambio; tabla 56: intercambios diarios por grupo, edad y sexo | Documento público; se usan datos (cifras), citando la fuente. Nota: GABA cuenta "verduras y frutas" como **un solo grupo** de intercambio; el generador las separa sólo para armar el plato. |
 | **Resolución 2492 de 2022** (Tabla 17) | Marcas ALTO EN: azúcares libres ≥ 10 % de la energía; grasa saturada ≥ 10 % de la energía; sodio ≥ 1 mg/kcal o ≥ 300 mg/100 g (sólidos) | Norma pública. Aplica a procesados con nutriente **añadido**: no se marca fruta o leche natural. |
 
 El PDF original se guarda en `data/sources/` (ignorado por git; el repositorio es público). Sólo se versiona lo extraído.
@@ -49,14 +49,17 @@ El PDF original se guarda en `data/sources/` (ignorado por git; el repositorio e
 
 ## 6. Fase A — Catálogo
 
-1. **Prueba inicial obligatoria**: comprobar que el PDF tiene texto extraíble. Si es imagen escaneada, detenerse y proponer plan B (USDA + lista colombiana curada a mano).
-2. **Extracción** con script en `scripts/catalog/` → `data/catalog/tcac-2018.csv` versionado. Validación por alimento: |kcal − (4·P + 4·C + 9·G)| dentro de tolerancia; fuera de ella → `needsReview`. Reporte de extracción (totales, marcados, completados con USDA).
-3. **USDA** sólo completa nutrientes ausentes con correspondencia inequívoca, registrando el origen por nutriente.
-4. **Grupo GABA** por mapeo de los 16 grupos TCAC + excepciones por alimento. **Porción equivalente y medidas caseras** desde las listas del documento técnico; si el alimento no está, se calcula con la porción de referencia del grupo.
-5. **Alérgenos** por reglas (grupo + palabras del nombre) y **revisión humana obligatoria** antes del uso clínico: se entrega la lista para revisión de un nutricionista.
-6. **ALTO EN** sólo para `isProcessed` con el dato disponible, con los umbrales de la Resolución 2492.
-7. **Carga** idempotente por `code` desde un script de catálogo separado del seed demo. Los 20 alimentos actuales quedan como `MANUAL` (los planes existentes los referencian).
-8. **Buscador** en el editor de planes: por `searchName`, filtros por grupo GABA, categoría TCAC y ALTO EN; muestra kcal y macros por porción. Reemplaza el `<select>`.
+1. **Resultado de la prueba inicial (2026-11-05)**: el PDF de la TCAC (147 páginas) **no tiene capa de texto**; son imágenes de origen digital (nítidas, no escaneo de papel). Decisión del usuario: **OCR validado**. Alcance inicial: análisis proximal + sodio, grasa saturada y parte comestible. Vitaminas y demás minerales quedan para después.
+2. **Estructura del PDF**: tablas nutricionales en las páginas 43–108, por pares enfrentados: izquierda = análisis proximal (código, nombre, parte analizada, humedad, kcal, kJ, proteína, lípidos, carbohidratos totales y disponibles, fibra, cenizas), con columnas en posición fija; derecha = minerales, vitaminas, ácidos grasos, colesterol, parte comestible y código, con columnas que **cambian por página** (se calibran leyendo el encabezado vertical). Hay celdas vacías reales.
+3. **Extracción**: OCR de macOS (Vision) desde un script local que sólo vuelca cajas de texto a `data/sources/ocr/` (no versionado); el análisis (filas ancladas al código, columnas por posición, separación de celdas pegadas) y la validación son TypeScript puro con pruebas. Salida versionada: `data/catalog/tcac-2018.csv`, más un archivo de correcciones manuales también versionado (`tcac-2018-corrections.csv`) y un reporte.
+4. **Validación por fila**: (a) humedad + proteína + lípidos + carbohidratos totales + cenizas ≈ 100 g; (b) kJ ≈ kcal × 4,184; (c) kcal ≈ 4·P + 4·C disp + 9·G + 2·fibra (o con carbohidratos totales si no hay disponibles); (d) códigos en secuencia y sin duplicados; (e) cada código de la página izquierda tiene pareja en la derecha. Filas que fallan → revisión contra la imagen y corrección en el archivo de correcciones; las que no se resuelvan quedan con `needsReview`. Columnas sin suma de control (sodio, grasa saturada) se validan por muestreo y por rangos plausibles.
+5. **USDA** completa nutrientes ausentes sólo cuando la fase que los necesita lo exige (no en la fase A); registrando el origen por nutriente.
+6. **Grupo GABA** por mapeo de los 16 grupos TCAC + excepciones por alimento. **Porción equivalente y medidas caseras** desde las tablas 26–45 del documento técnico (coincidencia de nombre confirmada a mano); si el alimento no está, se calcula con el aporte promedio del intercambio de su subgrupo (tabla 46).
+7. **Alérgenos** por reglas (grupo + palabras del nombre) y **revisión humana obligatoria** antes del uso clínico: se entrega la lista para revisión de un nutricionista.
+8. **ALTO EN** sólo para `isProcessed` con el dato disponible, con los umbrales de la Resolución 2492.
+9. **Carga** idempotente por `code` desde un script de catálogo separado del seed demo. Los 20 alimentos actuales quedan como `MANUAL` (los planes existentes los referencian). "Carbohidratos" sigue siendo carbohidratos totales (lo que usan la calculadora y los planes existentes); se agrega "Carbohidratos disponibles".
+10. **Protección del generador actual**: hasta la fase C, el generador voraz sólo usa alimentos `MANUAL`; con la TCAC cargada elegiría harinas crudas o bebidas alcohólicas que no encajan en sus categorías.
+11. **Buscador** en el editor de planes: por `searchName`, filtros por grupo GABA, categoría TCAC y ALTO EN; muestra kcal y macros por porción. Reemplaza el `<select>` (hoy muestra los primeros 50 alfabéticos, que con la TCAC serían bebidas).
 
 ## 7. Fase B — Restricciones y mercado
 
