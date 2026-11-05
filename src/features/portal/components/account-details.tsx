@@ -1,6 +1,6 @@
 import { UserRound } from "lucide-react";
 import { SEX_LABELS } from "@/shared/lib/labels";
-import { formatDate } from "@/shared/lib/utils";
+import { formatCalendarDate } from "@/shared/lib/utils";
 import { PhoneForm } from "./phone-form";
 
 export interface AccountDetailsRecord {
@@ -34,7 +34,7 @@ export function AccountDetails({ email, record }: { email: string; record: Accou
             <Row label="Nombre" value={`${record.firstName} ${record.lastName}`.trim()} />
             <Row label="Cédula (CC)" value={record.documentId ?? "Sin registrar"} />
             <Row label="Sexo" value={record.sex ? (SEX_LABELS[record.sex] ?? "Sin registrar") : "Sin registrar"} />
-            <Row label="Fecha de nacimiento" value={record.dateOfBirth ? formatDate(record.dateOfBirth) : "Sin registrar"} />
+            <Row label="Fecha de nacimiento" value={record.dateOfBirth ? formatCalendarDate(record.dateOfBirth) : "Sin registrar"} />
           </>
         )}
         <Row label="Correo de la cuenta" value={email} />

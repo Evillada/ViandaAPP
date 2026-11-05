@@ -13,6 +13,16 @@ export function formatDate(date: Date | string): string {
   }).format(new Date(date));
 }
 
+/** Fechas sin hora (p. ej. nacimiento) se guardan a medianoche UTC; formatear en UTC evita el corrimiento de un día. */
+export function formatCalendarDate(date: Date | string): string {
+  return new Intl.DateTimeFormat("es-CO", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(date));
+}
+
 export function formatDateTime(date: Date | string): string {
   return new Intl.DateTimeFormat("es-CO", {
     day: "numeric",
