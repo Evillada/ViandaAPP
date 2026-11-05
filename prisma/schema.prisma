@@ -163,18 +163,21 @@ model User {
 }
 
 model Patient {
-  id          String        @id @default(cuid())
-  firstName   String
-  lastName    String
-  documentId  String?
-  sex         Sex?
-  email       String?
-  phone       String?
-  dateOfBirth DateTime?
-  notes       String?
-  status      PatientStatus @default(ACTIVE)
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  id                      String        @id @default(cuid())
+  firstName               String
+  lastName                String
+  documentId              String?
+  sex                     Sex?
+  email                   String?
+  phone                   String?
+  dateOfBirth             DateTime?
+  notes                   String?
+  status                  PatientStatus @default(ACTIVE)
+  portalMessage           String?
+  portalMessageUntil      DateTime?
+  progressMessagesEnabled Boolean       @default(true)
+  createdAt               DateTime      @default(now())
+  updatedAt               DateTime      @updatedAt
 
   professionalId String
   professional   User                @relation("PatientProfessional", fields: [professionalId], references: [id], onDelete: Cascade)
@@ -218,7 +221,7 @@ model Assessment {
 }
 
 model AnthropometryRecord {
-  id             String  @id @default(cuid())
+  id             String         @id @default(cuid())
   weightKg       Float
   heightCm       Float
   bodyFatPercent Float?
@@ -230,39 +233,39 @@ model AnthropometryRecord {
   // Perímetros
   headCm           Float?
   neckCm           Float?
-  chestCm          Float?   // Mesoesternal
-  waistCm          Float?   // Circunferencia de cintura
-  abdominalCm      Float?   // Circunferencia abdominal (a nivel del ombligo)
-  hipCm            Float?   // Circunferencia de cadera
-  armRelaxedCm     Float?   // Perímetro braquial relajado
-  armContractedCm  Float?   // Mitad de brazo contraído
-  forearmCm        Float?   // Antebrazo
-  wristCm          Float?   // Muñeca
-  thighProximalCm  Float?   // Muslo a 1 cm del pliegue glúteo
-  thighCm          Float?   // Perímetro de muslo
-  calfCm           Float?   // Perímetro de pantorrilla
+  chestCm          Float? // Mesoesternal
+  waistCm          Float? // Circunferencia de cintura
+  abdominalCm      Float? // Circunferencia abdominal (a nivel del ombligo)
+  hipCm            Float? // Circunferencia de cadera
+  armRelaxedCm     Float? // Perímetro braquial relajado
+  armContractedCm  Float? // Mitad de brazo contraído
+  forearmCm        Float? // Antebrazo
+  wristCm          Float? // Muñeca
+  thighProximalCm  Float? // Muslo a 1 cm del pliegue glúteo
+  thighCm          Float? // Perímetro de muslo
+  calfCm           Float? // Perímetro de pantorrilla
   armMuscleAreaCm2 Float?
 
   // Pliegues cutáneos (mm)
-  skinfoldTricepsMm      Float?   // Tricipital
-  skinfoldBicepsMm       Float?   // Bicipital
-  skinfoldSubscapularMm  Float?   // Subescapular
-  skinfoldIliacCrestMm   Float?   // Iliocrestal
-  skinfoldSuprailiacMm   Float?   // Suprailiaco
-  skinfoldAbdominalMm    Float?   // Abdominal
-  skinfoldThighMm        Float?   // Muslo frontal
-  skinfoldCalfMm         Float?   // Pantorrilla medial
-  skinfoldMidaxillaryMm  Float?   // Axilar medial
-  skinfoldPectoralMm     Float?   // Pectoral
+  skinfoldTricepsMm     Float? // Tricipital
+  skinfoldBicepsMm      Float? // Bicipital
+  skinfoldSubscapularMm Float? // Subescapular
+  skinfoldIliacCrestMm  Float? // Iliocrestal
+  skinfoldSuprailiacMm  Float? // Suprailiaco
+  skinfoldAbdominalMm   Float? // Abdominal
+  skinfoldThighMm       Float? // Muslo frontal
+  skinfoldCalfMm        Float? // Pantorrilla medial
+  skinfoldMidaxillaryMm Float? // Axilar medial
+  skinfoldPectoralMm    Float? // Pectoral
 
   // Diámetros óseos (cm) — para somatotipo Heath-Carter
-  humerusBreadthCm  Float?   // Biepicondíleo del húmero
-  femurBreadthCm    Float?   // Biepicondíleo del fémur
+  humerusBreadthCm Float? // Biepicondíleo del húmero
+  femurBreadthCm   Float? // Biepicondíleo del fémur
 
   // Somatotipo calculado
-  somatotypeEndo  Float?
-  somatotypeMeso  Float?
-  somatotypeEcto  Float?
+  somatotypeEndo Float?
+  somatotypeMeso Float?
+  somatotypeEcto Float?
 
   anthropometryNotes String?
 
@@ -273,25 +276,25 @@ model AnthropometryRecord {
 }
 
 model NutritionalGoal {
-  id          String       @id @default(cuid())
+  id          String      @id @default(cuid())
   bmi         Float
   bmiCategory BmiCategory
   tmbKcal     Float
-  tmbFormula  TmbFormula   @default(MIFFLIN_ST_JEOR)
+  tmbFormula  TmbFormula  @default(MIFFLIN_ST_JEOR)
   targetKcal  Float
   proteinG    Float
   carbsG      Float
   fatG        Float
 
   // Distribución de macros personalizable
-  macroPreset  MacroPreset @default(STANDARD)
-  proteinPct   Float       @default(25)
-  carbsPct     Float       @default(50)
-  fatPct       Float       @default(25)
+  macroPreset MacroPreset @default(STANDARD)
+  proteinPct  Float       @default(25)
+  carbsPct    Float       @default(50)
+  fatPct      Float       @default(25)
 
   // Requerimiento hídrico
-  waterMlPerDay  Int?
-  waterMethod    String?
+  waterMlPerDay Int?
+  waterMethod   String?
 
   // Diagnóstico nutricional automático
   nutritionalDiagnosis String?
@@ -320,13 +323,13 @@ model DietaryRecall {
 
 model DietaryRecallItem {
   id                 String  @id @default(cuid())
-  mealType           String  // BREAKFAST, LUNCH, etc.
-  time               String  // "07:30"
+  mealType           String // BREAKFAST, LUNCH, etc.
+  time               String // "07:30"
   foodName           String
   foodId             String? // Enlace opcional al catálogo
   food               Food?   @relation(fields: [foodId], references: [id])
   quantity           Float   @default(1)
-  portionDescription String  // "1 taza", "2 cucharadas"
+  portionDescription String // "1 taza", "2 cucharadas"
   portionGrams       Float
   preparationMethod  String? // "frito", "al horno"
   notes              String?
@@ -365,10 +368,10 @@ model Food {
   categoryId String
   category   FoodCategory @relation(fields: [categoryId], references: [id])
 
-  nutrients    FoodNutrient[]
-  portions     FoodPortion[]
-  mealItems    MealItem[]
-  recallItems  DietaryRecallItem[]
+  nutrients   FoodNutrient[]
+  portions    FoodPortion[]
+  mealItems   MealItem[]
+  recallItems DietaryRecallItem[]
 
   @@map("foods")
 }
@@ -399,13 +402,15 @@ model FoodPortion {
 }
 
 model MealPlan {
-  id      String         @id @default(cuid())
-  name    String
-  notes   String?
-  status  MealPlanStatus @default(DRAFT)
-  version Int            @default(1)
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
+  id                  String         @id @default(cuid())
+  name                String
+  notes               String?
+  status              MealPlanStatus @default(DRAFT)
+  version             Int            @default(1)
+  activatedAt         DateTime?
+  patientInstructions String?
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
 
   patientId      String
   patient        Patient     @relation(fields: [patientId], references: [id], onDelete: Cascade)
