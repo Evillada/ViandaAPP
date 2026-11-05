@@ -13,6 +13,7 @@ import {
   type PortalPlan,
   type PortalRecord,
 } from "./portal-data";
+import { getPortalAssessment, getPortalProgress, type PortalAssessmentDetail, type PortalProgressData } from "./portal-progress";
 
 export interface PortalContext {
   records: { patientId: string; professionalName: string }[];
@@ -97,4 +98,39 @@ export async function buildPortalAppointments(actor: Actor, requested: string | 
   if (!context) return null;
   const { upcoming, past } = await getAppointments(context.current.patientId, now);
   return { context, upcoming, past };
+}
+
+export interface PortalProgressView extends PortalProgressData {
+  context: PortalContext;
+  showMeasures: boolean;
+}
+
+export interface PortalAssessmentView extends PortalAssessmentDetail {
+  professionalName: string;
+  showMeasures: boolean;
+}
+
+export async function buildPortalProgress(actor: Actor, requested: string | null): Promise<PortalProgressView | null> {
+  const context = await loadPortalContext(actor, requested);
+  if (!context) return null;
+  const data = await getPortalProgress(context.current.patientId);
+  const showMeasures = context.current.progressMessagesEnabled;
+  return { context, showMeasures, ...data, timeline: showMeasures ? data.timeline : [] };
+}
+
+export async function buildPortalAssessment(actor: Actor, assessmentId: string): Promise<PortalAssessmentView | null> {
+  if (actor.activeArea !== "PATIENT") return null;
+  // getPortalRecords sólo devuelve fichas del actor con consentimiento vigente.
+  const records = await getPortalRecords(actor.userId);
+  const detail = await getPortalAssessment(records.map((r) => r.patientId), assessmentId);
+  if (!detail) return null;
+  const record = records.find((r) => r.patientId === detail.patientId)!;
+  const showMeasures = record.progressMessagesEnabled;
+  return {
+    ...detail,
+    professionalName: record.professionalName,
+    showMeasures,
+    measures: showMeasures ? detail.measures : null,
+    diagnosis: showMeasures ? detail.diagnosis : null,
+  };
 }

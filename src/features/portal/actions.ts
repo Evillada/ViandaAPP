@@ -7,7 +7,7 @@ import { auth, signOut } from "@/infrastructure/auth/auth";
 import { getRequestMeta } from "@/infrastructure/http/request-meta";
 import { changePassword, deleteAccount, getAccountOverview, updatePatientPhone } from "./account";
 import { getMyProfessionals } from "./my-professionals";
-import { buildPortalAppointments, buildPortalHome, buildPortalWeek } from "./portal-view";
+import { buildPortalAppointments, buildPortalAssessment, buildPortalHome, buildPortalProgress, buildPortalWeek } from "./portal-view";
 
 export async function getMyProfessionalsAction() {
   const actor = await requireActorFor("PATIENT");
@@ -29,6 +29,16 @@ export async function getPortalPlanAction(requested: string | null = null, weekO
 export async function getPortalAppointmentsAction(requested: string | null = null) {
   const actor = await requireActorFor("PATIENT");
   return buildPortalAppointments(actor, requested, new Date());
+}
+
+export async function getPortalProgressAction(requested: string | null = null) {
+  const actor = await requireActorFor("PATIENT");
+  return buildPortalProgress(actor, requested);
+}
+
+export async function getPortalAssessmentAction(assessmentId: string) {
+  const actor = await requireActorFor("PATIENT");
+  return buildPortalAssessment(actor, assessmentId);
 }
 
 export async function revokeConsentAction(patientId: string): Promise<{ error?: string }> {
