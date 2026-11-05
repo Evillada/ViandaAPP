@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import type { CellValue, SpreadRow, TcacField } from "@/core/catalog/tcac-parse";
-import { resolveCodes, validateCatalog, validateRow } from "@/core/catalog/tcac-validate";
+import type { CellValue, TcacField } from "@/core/catalog/tcac-parse";
+import { resolveCodes, validateCatalog, validateRow, type TcacRow } from "@/core/catalog/tcac-validate";
 
 const FIELDS: TcacField[] = [
   "moisture", "energyKcal", "energyKj", "protein", "fat", "carbsTotal", "carbsAvailable", "fiber", "ash", "sodium", "saturatedFat", "edibleFraction",
 ];
 
-function row(code: string, name: string, values: Partial<Record<TcacField, CellValue>>, extra: Partial<SpreadRow> = {}): SpreadRow {
+function row(code: string, name: string, values: Partial<Record<TcacField, CellValue>>, extra: Partial<TcacRow> = {}): TcacRow {
   const base = Object.fromEntries(FIELDS.map((f) => [f, null])) as Record<TcacField, CellValue>;
   return { page: 81, y: 0.3, code, leftCode: code, rightCode: code, name, part: null, values: { ...base, ...values }, problems: [], ...extra };
 }
@@ -42,6 +42,12 @@ describe("validateRow", () => {
     expect(issues.map((i) => i.code)).not.toContain("ENERGY_MISMATCH");
   });
 
+  it("en bebidas alcohólicas la suma de 100 g descuenta el porcentaje de alcohol", () => {
+    const beer = { moisture: 93.3, energyKcal: 38, energyKj: 158, protein: 0.4, fat: 0, carbsTotal: 2.1, ash: 0.2 };
+    expect(blocking(validateRow(row("H006", "Cerveza, regular, 4% de alcohol", beer)))).toEqual([]);
+    expect(blocking(validateRow(row("H006", "Cerveza, regular, 4% de alcohol", { ...beer, moisture: 83.3 })))).toContain("PROXIMATE_SUM");
+  });
+
   it("faltan datos básicos o hay celdas del OCR con problemas", () => {
     expect(blocking(validateRow(row("A001", "Almidón", { energyKcal: 350 })))).toContain("MISSING_CORE");
     const ocr = validateRow(row("H009", "Guarapo", { ...H003, protein: "INVALID" }, { problems: ["INVALID_CELL:protein", "UNASSIGNED:- 7"] }));
@@ -67,9 +73,27 @@ describe("resolveCodes", () => {
     expect(fixed.notes).toContain("CODE_RESOLVED:A051");
   });
 
+  it("repara una racha de códigos con 6 leído como 5 en ambas páginas", () => {
+    const rows = [row("A059", "a", {}), row("A050", "b", {}), row("A051", "c", {}), row("A067", "d", {}, { leftCode: "A057", rightCode: "A067", problems: ["CODE_MISMATCH:A057/A067"] })];
+    const fixed = resolveCodes(rows);
+    expect(fixed.map((r) => r.code)).toEqual(["A059", "A060", "A061", "A067"]);
+    expect(fixed[1].notes).toContain("CODE_REPAIRED:A050>A060");
+    expect(fixed[3].problems).toEqual([]);
+  });
+
   it("deja el conflicto abierto si el orden no decide", () => {
     const rows = [row("A050", "a", {}), row("A061", "b", {}, { leftCode: "A055", rightCode: "A056", problems: ["CODE_MISMATCH:A055/A056"] }), row("A070", "c", {})];
     expect(resolveCodes(rows)[1].problems).toContain("CODE_MISMATCH:A055/A056");
+  });
+});
+
+describe("validateCatalog — aceptados", () => {
+  it("un problema aceptado por venir así de la fuente queda como aviso", () => {
+    const E011 = { moisture: 78.8, energyKcal: 126, energyKj: 526, protein: 17, fat: 6.4, carbsTotal: 0, fiber: 0, ash: 1.1 };
+    const [plain] = validateCatalog([row("E011", "Bocachico", E011)]);
+    expect(plain.issues.find((i) => i.code === "PROXIMATE_SUM")?.blocking).toBe(true);
+    const [accepted] = validateCatalog([row("E011", "Bocachico", E011, { notes: ["ACCEPTED:PROXIMATE_SUM"] })]);
+    expect(accepted.issues.find((i) => i.code === "PROXIMATE_SUM")?.blocking).toBe(false);
   });
 });
 

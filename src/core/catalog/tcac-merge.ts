@@ -75,13 +75,17 @@ function bounds(columns: Column[], field: TcacField): [number, number] | null {
   return [x - half, x + half];
 }
 
-export function cellRequests(rows: MergedRow[], columnsByPage: Map<number, { left: Column[]; right: Column[] }>): CellRequest[] {
+export function cellRequests(
+  rows: MergedRow[],
+  columnsByPage: Map<number, { left: Column[]; right: Column[] }>,
+  everyCell = false
+): CellRequest[] {
   const requests: CellRequest[] = [];
   for (const row of rows) {
     const columns = columnsByPage.get(row.page);
     if (!columns) continue;
     for (const field of ALL_FIELDS) {
-      if (row.values[field] !== null && row.values[field] !== "INVALID") continue;
+      if (!everyCell && row.values[field] !== null && row.values[field] !== "INVALID") continue;
       const isRight = RIGHT_FIELDS.includes(field);
       const range = bounds(isRight ? columns.right : columns.left, field);
       if (!range) continue;
@@ -98,7 +102,91 @@ export function cellRequests(rows: MergedRow[], columnsByPage: Map<number, { lef
   return requests;
 }
 
+/** Con los carbohidratos calculados por diferencia, el redondeo de 5 valores a un decimal no supera 0,25 g. */
+const SUM_TOLERANCE = 0.25;
+const CARBS_TOLERANCE = 0.15;
+const KJ_TOLERANCE = 0.03;
+const MAX_COMBINATIONS = 256;
+
+type Values = Record<TcacField, CellValue>;
+
+interface Check {
+  fields: TcacField[];
+  passes: (v: Record<TcacField, number>) => boolean;
+}
+
+const CHECKS: Check[] = [
+  {
+    fields: ["moisture", "protein", "fat", "carbsTotal", "ash"],
+    passes: (v) => Math.abs(v.moisture + v.protein + v.fat + v.carbsTotal + v.ash - 100) <= SUM_TOLERANCE,
+  },
+  {
+    fields: ["carbsTotal", "carbsAvailable", "fiber"],
+    passes: (v) => Math.abs(v.carbsTotal - v.carbsAvailable - v.fiber) <= CARBS_TOLERANCE,
+  },
+  {
+    fields: ["energyKcal", "energyKj"],
+    passes: (v) => Math.abs(v.energyKj - v.energyKcal * 4.184) <= v.energyKcal * 4.184 * KJ_TOLERANCE,
+  },
+];
+
+function combinations(options: [TcacField, number[]][]): Partial<Record<TcacField, number>>[] {
+  return options.reduce<Partial<Record<TcacField, number>>[]>(
+    (acc, [field, values]) => acc.flatMap((combo) => values.map((value) => ({ ...combo, [field]: value }))),
+    [{}]
+  );
+}
+
+/**
+ * Resuelve desacuerdos entre lectores (típicamente 5/6) probando todas las combinaciones contra las
+ * sumas de control de la fila. Un campo se fija sólo si participa en una comprobación calculable y
+ * todas las combinaciones que la cumplen coinciden en su valor.
+ */
+export function resolveByChecksums(rows: MergedRow[], reads: Record<string, string>): MergedRow[] {
+  return rows.map((row) => {
+    const disputed = (Object.keys(row.candidates) as TcacField[]).filter((f) => row.values[f] === "INVALID");
+    if (!disputed.length) return row;
+    const options: [TcacField, number[]][] = disputed.map((field) => {
+      const read = parseNumber(reads[cellId(row.page, row.y, field)] ?? "");
+      const values = new Set(row.candidates[field]);
+      if (typeof read === "number") values.add(read);
+      return [field, [...values]];
+    });
+    const combos = combinations(options);
+    if (combos.length > MAX_COMBINATIONS) return row;
+
+    const relevant = CHECKS.filter(
+      (check) =>
+        check.fields.some((f) => disputed.includes(f)) &&
+        check.fields.every((f) => disputed.includes(f) || typeof row.values[f] === "number")
+    );
+    if (!relevant.length) return row;
+
+    const feasible = combos.filter((combo) => {
+      const values = { ...row.values, ...combo } as Record<TcacField, number>;
+      return relevant.every((check) => check.passes(values));
+    });
+    if (!feasible.length) return row;
+
+    const values: Values = { ...row.values };
+    const notes = [...row.notes];
+    for (const field of disputed) {
+      if (!relevant.some((check) => check.fields.includes(field))) continue;
+      const decided = new Set(feasible.map((combo) => combo[field]));
+      if (decided.size === 1) {
+        values[field] = [...decided][0]!;
+        notes.push(`CHECKSUM:${field}`);
+      }
+    }
+    const codeProblems = row.problems.filter((p) => p.startsWith("CODE_"));
+    return { ...row, values, notes, problems: [...codeProblems, ...fieldProblems(values, row.candidates)] };
+  });
+}
+
 /** La lectura de celda completa vacíos y desempata; nunca reemplaza un valor en el que coincidieron los dos lectores. */
+/** Marca que escribe `ocr_tcac.py --cells` cuando la celda tiene tinta pero Vision no devolvió texto. */
+export const INK_UNREAD = "<tinta>";
+
 export function applyCellReads(rows: MergedRow[], reads: Record<string, string>): MergedRow[] {
   return rows.map((row) => {
     const values = { ...row.values };
@@ -107,8 +195,11 @@ export function applyCellReads(rows: MergedRow[], reads: Record<string, string>)
       const read = reads[cellId(row.page, row.y, field)];
       if (read === undefined) continue;
       const value = parseNumber(read);
-      if (typeof value !== "number") continue;
       const current = values[field];
+      if (typeof value !== "number") {
+        if (current === null && read.trim()) values[field] = "INVALID";
+        continue;
+      }
       const options = row.candidates[field];
       if (current === null || (current === "INVALID" && (!options || options.includes(value)))) {
         values[field] = value;

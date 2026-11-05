@@ -1,0 +1,774 @@
+code,name,tcac_group,part,moisture,energyKcal,energyKj,protein,fat,carbsTotal,carbsAvailable,fiber,ash,sodium,saturatedFat,edibleFraction,needs_review,issues,source_page
+A001,"Almidón de maíz, crudo",A,,8,370,1571,0.3,0.1,91.4,90.5,0.9,0.1,9,0,100,false,,43
+A002,"Almojabana, bogotana, horneada",A,,41.3,285,1196,13,12.3,30.6,,,2.8,,,100,false,,43
+A003,"Almajabana, vallecaucana, horneada",A,,29.1,341,1430,17.5,14.7,34.6,,,4.1,,,100,false,,43
+A004,"Arepa de maíz precocido, con sal",A,,60.3,163,690,3.3,0.9,35,34.1,0.9,0.5,188,,100,false,,43
+A005,"Arepa de maíz precocido, sin sal",A,,61.3,156,664,3.4,0.5,34.5,,,0.3,,,100,false,,43
+A006,"Arepa de maíz, asada",A,,59.5,162,688,4.1,0,36.3,,,0.1,,,100,false,,43
+A007,"Arepa de maíz, con queso, asada",A,,57.3,211,884,4.8,8.4,29,,,0.5,,,100,false,,43
+A008,"Arepa de maíz, frita",A,,44.1,325,1355,3.4,20.3,32.1,,,0.1,,,100,false,,43
+A009,"Arroz alanco, pulido, cocido, sin sal",A,Semilla,62.9,161,683,2.3,2.1,32.5,30.9,1.6,0.1,4,0.7,100,false,,43
+A010,"Arroz blanco, pulido, crudo",A,Semilla,12.3,353,1498,6.7,0.4,80.1,79,1,0.5,2,0.2,100,false,,43
+A011,"Arroz integral, cocido, sin sal",A,Semilla,11.5,370,1567,7.5,2.6,77.3,73.7,3.6,1.1,4,0.5,100,false,,43
+A012,"Avena en hojue as, precocida",A,Semilla,10,411,1733,16.9,7.5,64.1,54.3,9.8,1.5,3,1.3,100,false,,43
+A013,"Brownie, de chocolate, horneado",A,,13.6,427,1792,4.8,16.3,64.2,62.1,2.1,1.1,286,4.2,100,false,,43
+A014,"Cebada, perlada, cruda",A,Semilla,12.4,385,1627,12.5,1.8,72.1,56.7,15.4,1.2,7,0.3,100,false,,43
+A015,"Cereal para el desayuno, hojuelas de maíz, sin azúcar",A,,3.5,383,1624,8.1,0.4,85,81.7,3.3,2.9,680,0.2,100,false,,43
+A016,"Croissant, de queso, horneado",A,,17,445,1860,9.2,23,48.9,46.3,2.6,1.9,423,10.2,100,false,,43
+A017,"Cuchuco de cebada, crudo",A,Semilla,10.2,358,1518,8.4,0.7,79.4,,,1.3,,,100,false,,43
+A018,"Cuchuco de trigo, crudo",A,Semilla,10.5,358,1520,12.8,1.2,74,,,1.5,,,100,false,,43
+A019,"Envuelto de mazorca, precocido",A,,63,186,780,4.8,7.9,23.5,22.7,0.8,0.8,132,0.5,100,false,,43
+A020,"Galletas dulces, con relleno",A,,1.2,516,2161,3.8,24.1,70.1,68.6,1.6,0.8,103,12.3,100,false,,43
+A021,"Galletas dulces, cucas",A,,5.4,390,1655,7.6,3,83.2,,,0.8,,,100,false,,43
+A022,"Galletas dulces, de avena, con uvas pasas",A,,6.4,451,1897,6.5,16.2,68.6,66.1,2.6,2.3,538,3.2,100,false,,43
+A023,"Galletas dulces, sin relleno",A,,5.4,472,1982,6.4,19.6,67.1,65.8,1.2,1.5,306,7.7,100,false,,43
+A024,"Ge letas dulces, tipo polvorosas",A,,3.2,448,1889,7.5,12,76.4,74.3,2.1,0.8,352,3.9,100,false,,43
+A025,"Galletas dulces, tipo wafer",A,,5.1,455,1913,5.4,15.2,73.2,71.3,1.9,1.1,388,3.8,100,false,,43
+A026,"Ga letas saladas, tipo cracker",A,,3.6,466,1956,8.4,17.2,68.2,65.9,2.3,2.7,708,4.7,100,false,,43
+A027,"Galletas saladas, tipo soda",A,,5,424,1786,9.6,9.7,72.9,70,3,2.7,944,1.7,100,false,,43
+A028,"Harina de arroz, cruda",A,,12,361,1533,6,1.4,80,77.6,2.4,0.6,0,0.4,100,false,,45
+A029,"Harina de avena, cruda",A,,8.6,414,1745,14.7,8.5,65.2,59.7,6.5,2,19,5,100,false,,45
+A030,"Harina de cebada, cruda",A,,11.4,378,1600,10.5,1.6,75.4,65.3,10.1,1.1,4,0.3,100,false,,45
+A031,"Harina de centeno, para panificación, cruda",A,,10.7,390,1646,15.9,2.9,68.3,54.9,13.4,2.2,2,0.3,100,false,,45
+A032,"Harina de centeno, para reposteria, cruda",A,,11.5,370,1567,9.1,1.6,76.6,70.3,6.3,1.2,2,0.2,100,false,,45
+A033,"Harina de maíz amarillo, precocida",A,,10.1,386,1632,7.7,3.3,77.6,70.3,7.3,1.2,22,0.4,100,false,,45
+A034,"Harina de maíz blanco, precocida",A,,12,380,1608,9.1,3.7,73.9,66.4,7.5,1.3,1,0.4,100,false,,45
+A035,"Harina de maíz, extra cruda",A,,10.6,396,1671,8.8,4.9,74.3,64.7,9.6,1.4,5,0.5,100,false,,45
+A036,"Harina de maíz, extra tostada",A,,7.5,385,1630,9.9,3.4,77.9,76.5,1.4,1.3,420,,100,false,,45
+A037,"Harina de quinua, cruda",A,,13.7,360,1525,11,4.1,69,67.5,1.5,2.2,12,,100,false,,45
+A038,"Harina de trigo, fortificada, para panificación, cruda",A,,12.2,363,1541,13.2,1.9,72.1,69.7,2.4,0.6,2,0.3,100,false,,45
+A039,"Harina de trigo, fortificada, para reposteria, cruda",A,,12.8,358,1517,9.5,1.4,75.6,73.3,2.3,0.7,2,0.3,100,false,,45
+A040,"Harina de trigo, fortificada, todo propósito, cruda",A,,13,360,1527,12.5,1.7,72.3,69.7,2.6,0.5,2,0.3,100,false,,45
+A041,"Harina de trigo, integral, cruda",A,,11,382,1616,13.8,2.1,71.2,59.8,11.4,1.8,3,0.4,100,false,,45
+A042,"Hojaldre, regular, horneado",A,,10,555,2310,7.4,38.5,44,42.5,1.5,0.1,307,5.5,100,false,,45
+A043,"Maíz amarillo, crudo",A,Semilla,10.1,393,1660,9.4,4.7,74.5,67.2,7.3,1.2,35,0.7,100,false,,45
+A044,"Maíz amarillo, trillado",A,Semilla,13.2,347,1472,8.8,0.8,76,,,1.1,,,100,false,,45
+A045,"Maíz blanco, crudo",A,Semilla,13.3,363,1539,9.4,3.8,72.2,70.8,1.4,1.3,35,0.7,100,false,,45
+A046,"Maíz blanco, trillado",A,Semilla,12.2,357,1517,8.7,0.9,77.9,76.5,1.4,0.3,6,,100,false,,45
+A047,"Maíz maravilla, crudo",A,Semilla,54.5,180,764,2.8,0.4,41.3,,,1,,,100,false,,45
+A048,"Maíz mute, cocido, sin sal",A,Semilla,75.7,98,418,2.5,0.5,21,,,0.3,,,100,false,,45
+A049,"Maíz opaco 2, crudo",A,Semilla,10.7,378,1600,10.1,5.1,72.9,,,1.2,,,100,false,,45
+A050,"Maíz opaco, crudo",A,Semilla,11.4,366,1549,9.6,3.8,73.3,,,1.9,12,,100,false,,45
+A051,"Maíz pira o reventón, crudo",A,Semilla,12.5,392,1655,10.9,4.3,71.1,58.4,12.7,1.2,7,0.6,100,false,,45
+A052,"Maíz porva, crudo",A,Semilla,13.5,366,1551,7.7,5.2,72.2,,,1.4,,,100,false,,45
+A053,"Maíz tierno, crudo",A,Semilla,64.2,152,642,3.4,1.2,30.5,27.9,2.6,0.7,3,0.2,60,false,,45
+A054,"Mantecada, horneada",A,,27,405,1691,7.9,24.2,38.7,38.3,0.4,2.2,506,,100,false,,45
+A055,"Mezcla lista para preparar pancakes, en polvo",A,,9.7,363,1536,11.7,1.6,72.8,67.4,5.4,4.3,1482,0.1,100,false,,45
+A056,"Mijo, crudo",A,Semilla,11,381,1610,11,4.2,70.5,62.1,8.5,3.2,5,0.7,100,false,,45
+A057,"Mogolla, integral, horneada",A,,23,310,1316,7.2,1.9,66.1,,,1.8,1,,100,false,,45
+A058,"Mojicón, horneado",A,,24.5,310,1316,9.3,1.9,63.7,63.1,0.6,0.6,,,100,false,,45
+A059,"Muffins dulces, con chips de chocolate",A,,33.3,325,1365,7.3,12.4,45.1,43.1,2,1.9,254,4.4,100,false,,47
+A060,"Pan blanco, regular, horneado",A,,37.2,268,1133,8.9,3.4,48.8,45.6,3.2,1.7,541,0.6,100,false,,47
+A061,"Pan blanco, tipo molde, homeado",A,,31.4,278,1181,8.9,1.6,56.8,56.1,0.7,1.3,1183,0.3,100,false,,47
+A062,"Pan de centeno, horneado",A,,35.2,257,1092,9.3,1.2,52.3,,,2,,,100,false,,47
+A063,"Pan de dulce, regular, horneado",A,,23.1,328,1388,8.9,4.3,63.1,62.5,0.6,0.6,203,,100,false,,47
+A064,"Pan de leche, horneado",A,,35.4,281,1187,8.6,4.8,49.7,47.6,2.1,1.5,352,2,100,false,,47
+A065,"Pan de queso, horneado",A,,32.5,367,1533,10.4,20.8,33.5,31.4,2.1,2.8,760,6.2,100,false,,47
+A066,"Pan de sal, regular, horneado",A,,22.4,340,1437,11.1,6.4,59.3,58.9,0.4,0.8,,,100,false,,47
+A067,"Pan de yuca, horneado",A,,23.5,355,1494,15.8,12.2,45.5,,,3,,,100,false,,47
+A068,"Pan frances, horneado",A,,25.3,308,1307,10.1,2.1,61.1,58.8,2.3,1.4,625,0.5,100,false,,47
+A069,"Pan integral, regular, horneado",A,,35.3,279,1181,9.4,3.1,50.4,43.9,6.5,1.9,448,0.7,100,false,,47
+A070,"Pandebono, horneado",A,,20,357,1504,15.8,10.1,50.7,,,3.4,,,100,false,,47
+A071,"Pasta alimenticia, con huevo, sin enriquecer, cocida, sin sal",A,,68.3,132,558,4.5,1,25.5,24.3,1.2,0.5,5,0.3,100,false,,47
+A072,"Pasta alimenticia, enriquecida, cruda",A,,9.9,371,1573,13,1.5,74.7,71.5,3.2,0.9,6,0.3,100,false,,47
+A073,"Pasta alimenticia, sin enriquecer, cocida, sin sal",A,,65.7,143,605,5.8,0.9,27,25.2,1.8,0.5,1,0.2,100,false,,47
+A074,"Pasta alimenticia, sin enriquecer, cruda",A,,9.9,371,1572,13,1.4,74.8,71.6,3.2,0.9,5,0.2,100,false,,47
+A075,"Ponqué blanco, cubierto de chocolate, homeado",A,,22.1,398,1669,3,17.8,55.9,54.4,1.5,1.3,310,5.8,100,false,,47
+A076,"Ponqué blanco, cubierto de crema blanca y chocolate, horneado",A,,22.1,398,1669,3,17.8,55.9,54.4,1.5,1.3,310,5.8,100,false,,47
+A077,"Ponqué blanco, regular, sin cubierta, horneado",A,,22.4,403,1687,5.3,19.2,51.7,50.7,1,1.4,393,5.7,100,false,,47
+A078,"Ponque negro, cubierto de chocolate, horneado",A,,20.5,417,1744,3.5,20.1,54.4,52.2,2.2,1.6,348,5.9,100,false,,47
+A079,"Quinua, cruda",A,Semilla,12,376,1590,14.6,4.4,66.4,59.9,6.5,2.6,5,0.6,100,false,,47
+A080,"Roscas de harina de maíz y cuajada, horneadas",A,,20.4,388,1629,18.6,17.6,38.9,,,4.5,,,100,false,,47
+A081,"Roscas de harina de maíz, horneadas",A,,19.3,353,1492,12.1,7.6,59.1,,,1.9,,,100,false,,47
+A082,"Roscas de harina de trigo, horneadas",A,,34.2,324,1359,7.2,13.2,43.8,43.4,0.4,1.6,281,7.9,100,false,,47
+A083,"Roscon, relleno de arequipe, horneado",A,,20.1,349,1475,6.2,6.6,66.1,,,0.9,757,,100,false,,47
+A084,"Roscón, relleno de bocadillo, homeaao",A,,21,345,1457,7.9,6.8,62.9,,,1.4,606,,100,false,,47
+A085,"Semolina, enriquecida, cruda",A,,12.7,362,1534,12.7,1.6,72.3,68.4,3.9,0.8,1,0.2,100,false,,47
+A086,"Semolina, sin enriquecer, cruda",A,,12.9,362,1536,12.7,1.8,71.9,68,3.9,0.8,1,0.2,100,false,,47
+A087,"Tostadas o calados, horneados",A,,9,398,1682,10,6.8,72.3,68.7,3.6,1.8,570,0.7,100,false,,47
+A088,"Trigo blando, crudo",A,Semilla,13.5,373,1577,10.1,1.6,73.3,60.9,12.5,1.5,2,0.3,100,false,,47
+A089,"Trigo duro, crudo",A,Semilla,13,375,1585,11.3,1.8,72.4,60.2,12.2,1.5,2,0.3,100,false,,47
+B001,"Aceituna, cruda",B,Pulpa sin semilla,74.8,176,730,1.1,14.7,8.3,5,3.3,1.1,1556,,100,false,,49
+B002,"Aceitunas, encurtidas",B,Pulpa sin semilla,75.8,153,632,1.2,13.6,4.8,1.5,3.3,4.6,1842,,100,false,,49
+B003,"Acelga, hojas, cruda",B,Hojas,90,38,161,2.4,0.2,5.3,2.5,2.8,2.1,212,,85,false,,49
+B004,"Acelga, tallos, cruda",B,Tallos,94.5,19,79,0.8,0.1,3,1.6,1.4,1.6,150,,100,false,,49
+B005,"Ahuyama, cocida, sin sal",B,Pulpa sin semillas,89.2,48,201,0.7,0.7,8.4,5.9,2.5,1,1,,100,false,,49
+B006,"Ahuyama, cruda",B,Pulpa sin semillas,92.7,30,126,0.8,0.2,5.8,4.7,1.1,0.6,1,,85,false,,49
+B007,"Aji dulce, crudo",B,Pulpa sin semillas,91.9,42,177,1,1.6,5.1,3.3,1.8,0.5,2,,90,false,,49
+B008,"Aji rojo, crudo",B,Pulpa sin semillas,80.1,80,338,1.7,0.4,16.6,15.1,1.5,1.2,8,,90,false,,49
+B009,"Ajo, crudo",B,Pulpa,64.2,144,611,4.7,0.3,29.3,26.5,2.8,1.5,19,,95,false,,49
+B010,"Alcachofa, cruda",B,Flor,86.4,61,257,2.6,0.2,9.7,4.6,5.1,1.1,94,,30,false,,49
+B011,"Alcaparras, encurtidas",B,Pulpa,85,39,161,2.3,0.9,3.8,0.6,3.2,8,2348,,100,false,,49
+B012,"Almidón de achira, orudo",B,,17.1,331,1407,0.4,0.1,82.1,82.1,0,0.3,,,100,false,,49
+B013,"Almidón de yuca, crudo",B,,15.1,340,1445,0.4,0.4,83.6,83.3,0.3,0.5,31,,100,false,,49
+B014,"Apio, crudo",B,Tallos,93.7,26,111,0.7,0.2,4.6,2.7,1.9,0.8,80,,50,false,,49
+B015,"Arracacha amarilla, sin cáscara, oruda",B,Raíz,71.5,111,472,0.9,0.1,26.3,25.7,0.6,1.2,1,,80,false,,49
+B016,"Arracacha blanca, sin cáscara, cruda",B,Raíz,72.7,109,463,0.8,0.1,25.2,23.1,2.1,1.2,1,,85,false,,49
+B017,"Arracacha morada, sin cáscara, cruda",B,Raiz,71.5,114,483,0.9,0.1,26.3,24.2,2.1,1.2,0,,80,false,,49
+B018,"Arveja verde, cocida, sin sal",B,Semilla,72,120,508,6.7,0.3,19.7,13.7,6,1.3,3,,100,false,,49
+B019,"Arveja verde, cruda",B,Semilla,77.3,99,418,5.9,0.3,15.5,10.2,5.3,1,5,,40,false,ENERGY_MISMATCH(99 vs 88),49
+B020,"Balú o chachafruto verde, crudo",B,Semilla,80.5,74,315,4,0.1,14.3,,,1.1,,,100,false,,49
+B021,"Batata, sin cáscara, cruda",B,Medula,75.8,99,419,1.2,0.1,21.9,19,2.8,1,21,,80,false,,49
+B022,"Berenjena, con cáscara, cocida, sin sal",B,Pulpa,91.8,37,155,0.8,0.2,6.7,4.2,2.5,0.5,1,,100,false,,49
+B023,"Berenjena, con cáscara, oruda",B,Pulpa,92.6,35,145,1,0.2,5.7,2.7,3,0.5,2,,75,false,,49
+B024,"Berro, crudo",B,Hojas,93.6,27,112,1.7,0.3,3.3,1.3,2,1.1,50,,90,false,,49
+B025,"Brocoli, crudo",B,Flor,88.9,46,195,3,0.3,6.6,4,2.6,1.2,33,,40,false,,49
+B026,"Calabaza, sin cáscara, cruda",B,Pulpa,93.9,31,129,0.8,0.4,4.5,1.6,2.9,0.4,0,,90,false,,49
+B027,"Cebolla cabezona, cruda",B,Pulpa,90.3,40,171,1.4,0.1,7.7,6,1.7,0.5,4,,95,false,,49
+B028,"Cebolla junca, hojas, oruda",B,Hojas,90.3,41,172,1.6,0.2,7.1,5,2.1,0.8,16,,45,false,,49
+B029,"Cebolla junca, tallos, cruda",B,Tallos,91.4,37,156,1.2,0.1,6.8,4.8,2,0.5,15,,40,false,,49
+B030,"Cebolla puerro, cruda",B,Tallos,83.1,69,291,1.5,0.1,14.4,12.6,1.8,0.8,20,,95,false,,51
+B031,"Cebolla, deshidratada",B,Pulpa,3.9,391,1659,8.6,0.5,83.6,74.4,9.2,3.4,21,,100,false,,51
+B032,"Cebolla, pasta escaldada",B,,79.7,97,408,1.5,3.5,13.8,11.5,2.3,1.4,369,,100,false,,51
+B033,"Champiñón, crudo",B,Sombrero y tallo,92.4,32,134,3.1,0.6,3,2,1,0.8,5,,100,false,,51
+B034,"Champiñón, en conserva",B,Sombrero y tallo,90,43,180,1.9,0.4,6.6,4.1,2.5,1.1,425,,100,false,,51
+B035,"Cilantro, crudo",B,Hojas,89,44,184,2.3,0.6,5.9,3.1,2.8,2.2,46,,90,false,,51
+B036,"Col o repollitas de bruselas, cruda",B,Flor,85.8,60,254,3.4,0.3,9.1,5.3,3.8,1.4,25,,80,false,,51
+B037,"Col silvestre, cruda",B,Flor,86.7,50,210,2.5,0.5,8.4,7.6,0.8,1.9,,,60,false,,51
+B038,"Coliflor, cocido, sin sal",B,Flor,90.6,41,173,1.9,0.2,6.7,4.2,2.4,0.6,3,,100,false,,51
+B039,"Coliflor, crudo",B,Flor,91.7,36,152,1.9,0.1,5.7,3.3,2.4,0.6,41,,80,false,,51
+B040,"Colinabo, sin cascara, crudo",B,Raíz,91.6,35,149,1.7,0.1,5.7,3.3,2.4,0.9,13,,60,false,,51
+B041,"Espárrago, cocido, sin sal",B,Tallos,92,35,146,2.6,0.3,4.4,2.4,2,0.7,14,,100,false,,51
+B042,"Esparrago, crudo",B,Tallos,92.7,32,133,2,0.2,4.4,2.3,2.1,0.7,2,,95,false,,51
+B043,"Espinaca, cocida, sin sal",B,Hojas,91.1,35,146,2.9,0.1,4.1,1.5,2.6,1.7,67,,100,false,,51
+B044,"Espinaca, cruda",B,Hojas,91.4,34,142,2.9,0.2,3.8,1.1,2.6,1.7,66,,60,false,,51
+B045,"Frijol verde, cocido, con sal",B,Semilla,63,147,624,9.3,0.4,25.5,23.3,2.2,1.8,216,,100,false,,51
+B046,"Frijol verde, crudo",B,Semilla,58.2,166,702,10.5,0.4,29,27,2,1.9,,,50,false,,51
+B047,"Guascas, crudas",B,Hojas,86.1,50,214,3.2,0.5,8.3,,,1.9,,,35,false,,51
+B048,"Guatila, sin cascara, cruda",B,Pulpa,93.5,27,115,0.8,0,5.2,3.5,1.7,0.5,2,,65,false,,51
+B049,"Guisantes dulces, crudos",B,Semilla,86.2,53,226,2.6,0.1,10.5,,,0.6,4,,95,false,,51
+B050,"Haba verde, cruda",B,Semilla,65.7,144,607,9.9,0.6,22.5,18.3,4.2,1.3,26,,60,false,,51
+B051,"Habichuela, cocida, sin sal",B,Pulpa,92.7,32,135,1.6,0.1,4.8,2,2.8,0.8,1,,100,false,,51
+B052,"Habichuela, cruda",B,Pulpa,90,43,182,2.1,0,7.2,4.2,3,0.7,6,,90,false,,51
+B053,"Harina de ahuyama, cruda",B,,5.1,357,1513,6.6,2.5,77,,,7.9,,,100,false,,51
+B054,"Harina de arracacha, cruda",B,,8,368,1564,0.6,0.8,89.7,,,0.9,,,100,false,,51
+B055,"Harina de papa común, cruda",B,,6.5,369,1567,7.2,0.4,83.6,82.3,1.3,2.3,55,,100,false,,51
+B056,"Harina de papa criolla, cruda",B,,6.6,361,1533,4.6,0.1,85.3,,,3.4,22,,100,false,,51
+B057,"Harina de plátano, cruda",B,,13.9,340,1445,3.3,0.3,80.5,79.6,0.9,1.9,,,100,false,,51
+B058,"Hariña de yuca, cruda",B,,12,351,1492,1.1,0.3,85.9,85.7,0.3,0.7,1,,100,false,,51
+B059,"Lechuga común, oruala",B,Hojas,96,18,74,0.8,0.1,2.6,0.9,1.7,0.5,6,,55,false,,51
+B060,"Lechuga romana, cruda",B,Hojas,94.8,23,95,1.1,0.1,3.3,1.2,2.1,0.7,8,,55,false,,51
+B061,"Nabo, sin cáscara, crudo",B,Raíz,92.6,30,125,0.7,0,5.9,4.3,1.6,0.8,65,,80,false,,51
+B062,"Ocra, cruda",B,Pulpa,89.8,45,188,1.9,0.2,7.2,4,3.2,0.9,7,,,false,,53
+B063,"Palmito, crudo",B,Tallos,82.8,67,283,1.6,0.2,13.9,12.4,1.5,1.5,14,,95,false,,53
+B064,"Papa, variedad cerosa, sabanera, con cascara, cocida, sin sal",B,Médula y corteza,75.4,99,418,2.3,0.1,21,18.7,2.3,1.2,9,,100,false,,53
+B065,"Papa, variedad cerosa, sabanera, con cáscara, cruda",B,Médula y corteza,79.7,80,341,2.2,0.1,16.9,15.3,1.6,1.1,6,,100,false,,53
+B066,"Papa, variedad cerosa, sabanera, con cascara, frita, sin sal",B,Médula,36.5,274,1156,5.9,5.6,49.9,,,2.1,,,100,false,,53
+B067,"Papa, variedad cerosa, sabanera, sin cascara, cocida, sin sal",B,Médula,75.7,98,416,2.1,0.1,21.4,19.7,1.7,0.7,6,,100,false,,53
+B068,"Papa, variedad cerosa, sabanera, sin cascara, cruda",B,Médula,81.7,74,313,1.9,0.1,15.3,13.3,2.1,1,11,,80,false,,53
+B069,"Papa, variedad cerosa, sabanera, sin cáscara, frita, tipo francesa, sin sal",B,Médula,41.1,313,1310,3.4,15.5,38.2,34.5,3.7,1.8,25,,100,false,,53
+B070,"Papa, variedad harinosa, criolla, con cáscara, cocida, sin sal",B,Médula y corteza,79.4,85,358,1.4,0,18.1,15.2,3,1,2,,100,false,,53
+B071,"Papa, variedad harinosa, criolla, con cascara, cruda",B,Médula y corteza,75.4,96,406,2.2,0.1,21.1,20.5,0.6,1.2,18,,100,false,,53
+B072,"Papa, variedad harinosa, criolla, sin cáscara, cruda",B,Médula,73.2,105,448,2,0.4,23.3,22.9,0.4,1.1,,,92,false,,53
+B073,"Papa, variedad harinosa, pastusa, con cáscara, cocida, sin sal",B,Médula y corteza,78.9,85,359,2.4,0.1,17.2,14.5,2.7,1.4,9,,100,false,,53
+B074,"Papa, variedad harinosa, pastusa, con cáscara, cruda",B,Médula y corteza,77.7,89,376,2.1,0.1,18.9,17.1,1.8,1.1,6,,100,false,,53
+B075,"Papa, variedad harinosa, pastusa, sin cáscara, cocida, sin sal",B,Médula,76.3,95,407,2,0.1,20.9,19.1,1.8,0.7,0.3,,100,false,,53
+B076,"Papa, variedad harinosa, pastusa, sin cáscara, cruda",B,Médula,76.2,97,410,2,0.2,20.9,19,1.9,0.8,10,,90,false,,53
+B077,"Pepino cohombro, crudo",B,Pulpa sin semillas,96.7,14,57,0.5,0.1,2.3,1.6,0.7,0.4,2,,75,false,,53
+B078,"Pepino de rellenar, crudo",B,Pulpa sin semillas,94.5,21,89,0.6,0.2,3.8,3,0.8,0.8,4,,90,false,,53
+B079,"Perejil, crudo",B,Hojas,86.9,55,230,2.9,1,6.9,3.6,3.3,2.2,56,,90,false,,53
+B080,"Pimentón rojo, crudo",B,Pulpa sin semillas,91.9,35,149,1,0.3,6.3,4.6,1.7,0.5,4,,85,false,,53
+B081,"Pimentón verde, crudo",B,Pulpa sin semillas,93.7,28,118,0.9,0.1,4.9,3,1.9,0.4,3,,80,false,,53
+B082,"Plátano áfrica, maduro, crudo",B,Pulpa,66.3,136,578,1.3,0.3,31,28.7,2.3,1.2,4,,72,false,,53
+B083,"Plátano áfrica, verde, crudo",B,Pulpa,59.8,163,690,1,0.2,38.1,35.8,2.3,0.9,30,,68,false,,53
+B084,"Plátano coli o guineo, verde, crudo",B,Pulpa,67.4,128,544,1.3,0.1,30.3,29.9,0.4,0.9,,,60,false,,53
+B085,"Platano dominico, maduro, crudo",B,Pulpa,66.3,136,578,1.1,0.3,31.1,28.8,2.4,1.2,4,,65,false,,53
+B086,"Platano dominico, verde, crudo",B,Pulpa,58.4,165,703,1.2,0.1,39.4,38.3,1.1,0.9,10,,60,false,,53
+B087,"Platano espermo, maduro, crudo",B,Pulpa,69.1,125,529,1.2,0.3,28.2,25.9,2.3,1.2,4,,60,false,,53
+B088,"Platano hartón, maduro, cocido, sin sal",B,Pulpa,68.4,130,550,0.8,0.2,30.1,27.8,2.3,0.6,5,,100,false,,53
+B089,"Plátano hartón, maduro, crudo",B,Pulpa,67.3,132,559,1.1,0.2,30.3,28,2.3,1.2,4,,72,false,,53
+B090,"Plátano hartón, maduro, frito, en tajadas, sin sal",B,Pulpa,34.7,312,1314,1.2,10.2,52.6,50.1,2.5,1.2,4,,100,false,,55
+B091,"Plátano hartón, verde, cocido, sin sal",B,Pulpa,67.1,133,563,0.9,0.3,30.6,28.3,2.3,1.1,,,100,false,,55
+B092,"Plátano hartón, verde, crudo",B,Pulpa,58.5,166,705,1.2,0.2,39.3,38.1,1.2,0.8,26,,68,false,,55
+B093,"Plátano hartón, verde, frito, en patacón, sin sal",B,Pulpa,36.1,353,1476,1.6,19.2,41.8,38,3.5,1,2,,100,false,,55
+B094,"Platano maritu, maduro, crudo",B,Pulpa,67.5,132,560,1.3,0.3,29.9,27.6,2.3,1,4,,60,false,,55
+B095,"Platano popocho, verde, crudo",B,Pulpa,68.9,123,521,1,0.2,29,28.5,0.5,0.9,,,60,false,,55
+B096,"Rábano, sin cáscara, crudo",B,Raiz,94.7,22,93,0.8,0.1,3.7,2.1,1.6,0.7,13,,90,false,,55
+B097,"Remolacha, sin cáscara, cocida, sin sal",B,Pulpa,87.1,53,224,1.5,0.2,10.1,7.4,2.7,1.1,77,,100,false,,55
+B098,"Remalacha, sin cáscara, cruda",B,Pulpa,87.2,53,226,1.4,0.1,10.3,7.5,2.8,1,71,,80,false,,55
+B099,"Repollo blanco, crudo",B,Hojas,90.7,40,169,1.8,0.3,6.4,3.7,2.6,0.9,18,,70,false,,55
+B100,"Repollo morado, cocido, sin sal",B,Hojas,93.6,30,124,1,0.2,4.7,2.2,2.5,0.5,5,,100,false,,55
+B101,"Repollo morado, crudo",B,Hojas,91.1,39,163,1.4,0.3,6.5,4.4,2.1,0.7,27,,85,false,,55
+B102,"Salsifí, sin cáscara, crudo",B,Raiz,75.4,103,435,3.3,0.3,20.1,16.8,3.3,0.9,20,,60,false,,55
+B103,"Tomate, crudo",B,Pulpa,94.3,23,98,0.9,0.1,4.1,2.9,1.2,0.6,6,,80,false,,55
+B104,"Tomate, escaldado, sin sal",B,Pulpa,94.1,25,104,0.9,0.1,4.3,2.8,1.5,0.6,7,,100,false,,55
+B105,"Tomate, extracto, fresco",B,Extracto/Jugo,94.4,19,82,0.6,0,4,3.5,0.5,1,9,,100,false,,55
+B106,"Yuca blanca, sin cáscara, cocida, sin sal",B,Pulpa,61.6,157,664,0.7,0.2,36.6,33.9,2.7,0.9,4,,100,false,,55
+B107,"Yuca blanca, sin cascara, cruda",B,Pulpa,60.9,159,675,0.9,0.3,37.4,35.6,1.8,0.6,14,,80,false,,55
+B108,"Yuca blanca, sin cáscara, dorada, con sal",B,Pulpa,49.5,231,972,0.9,5.1,43.6,40.1,3.4,1,179,,100,false,,55
+B109,"Zanahoria, sin cáscara, cocida, sin sal",B,Pulpa,90.3,43,181,0.8,0.2,8.1,5.3,2.8,0.7,22,,100,false,,55
+B110,"Zanahoria, sin cáscara, cruda",B,Pulpa,88.9,47,199,0.7,0.1,9.5,6.8,2.7,0.8,35,,85,false,,55
+B111,"Zapallo, crudo",B,Pulpa sin semillas,88.5,46,195,0.9,0.2,9.5,8.2,1.3,0.9,2,,65,false,,55
+C001,"Aguacate Hass, crudo",C,Pulpa sin semilla,66.9,221,915,1.3,16.4,13.5,6.7,6.8,1.8,0,,64,false,,57
+C002,"Aguacate Lorena, crudo",C,Pulpa sin semilla,74.3,179,741,1.6,13.3,10,3.4,6.6,0.8,6,,77,false,,57
+C003,"Almendra, seca",C,Nuez,12,639,2642,18.6,54.1,13.9,3,10.9,1.4,21,,11,false,,57
+C004,"Anón, crudo",C,Pulpa sin semillas,69.7,124,527,2.3,0.1,27,23.9,3.1,0.9,6,,40,false,,57
+C005,"Babaco, maduro, orudo",C,Pulpa sin semillas,92.3,32,135,0.9,0.2,6.5,6,0.5,0.2,10,,45,false,,57
+C006,"Babaco, pintón, crudo",C,Pulpa sin semillas,91.9,34,143,0.9,0.2,6.9,6.4,0.5,0.2,5,,45,false,,57
+C007,"Babaco, verde, crudo",C,Pulpa sin semillas,90.1,41,172,1.5,0.2,7.9,7.4,0.5,0.3,16,,45,false,,57
+C008,"Badea, cruda",C,Pulpa sin semillas,87.9,46,194,0.9,0.2,10.1,,,0.9,,,20,false,,57
+C009,"Banano bocadillo, crudo",C,Pulpa,69.1,125,531,1.2,0.1,28.9,26.9,2,0.7,,,80,false,,57
+C010,"Banano común, crudo",C,Pulpa,75.3,101,430,1.5,0.1,22.3,19.6,2.6,0.8,3,,70,false,,57
+C011,"Banano manzano, crudo",C,Pulpa,69.6,124,526,1.2,0.2,28.1,25.5,2.6,0.9,1,,80,false,,57
+C012,"Breva, madura, cruda",C,Pulpa sin semillas,89,48,201,0.9,0.2,9.2,6.4,2.8,0.7,2,,100,false,,57
+C013,"Breva, verde, cruda",C,Pulpa sin semillas,86.1,59,251,1.7,0.3,11.1,8.3,2.8,0.8,2,,100,false,,57
+C014,"Cereza, cruda",C,Pulpa sin semilla,74.1,104,442,1.2,0.1,23.7,21.9,1.8,0.9,1,,50,false,,57
+C015,"Chirimoya, cruda",C,Pulpa sin semillas,76.7,95,403,1.5,0.5,20.2,18,2.2,1.1,0,,51,false,,57
+C016,"Chontaduro, crudo",C,Pulpa sin semilla,48.2,358,1482,6.3,25.7,19,6.3,12.7,0.8,22,,77,false,,57
+C017,"Ciruela, común, cruda",C,Pulpa sin semilla,87.8,53,222,0.6,0.1,11.1,8.7,2.4,0.4,2,,95,false,,57
+C018,"Citrón, crudo",C,Pulpa sin semillas,88,47,199,0.6,0.1,10.9,,,0.4,,,41,false,,57
+C019,"Coco, crudo",C,Pulpa,47.3,402,1660,3.6,35.5,12.6,3.6,9,1.1,18,,45,false,,57
+C020,"Coco, deshidratado",C,Pulpa,3,593,2467,3.8,35.1,56.9,39.9,17,1.2,66,,100,false,,57
+C021,"Curuba, cruda",C,Pulpa sin semilla,90.1,38,160,0.6,0.1,8.5,8.4,0.1,0.6,85,,50,false,,57
+C022,"Dátil, seco",C,Pulpa,21.3,325,1377,2.4,0.2,74.7,67.3,7.4,1.4,2,,100,false,,57
+C023,"Durazno, crudo",C,Pulpa sin semilla,85.7,58,244,1,0.1,12.5,11,1.5,0.8,1,,85,false,,57
+C024,"Feijoa, crudo",C,Pulpa sin semilla,82,83,349,1.7,0,15.8,9.4,6.4,0.5,3,,83,false,ENERGY_MISMATCH(83 vs 70),57
+C025,"Fresa, madura, cruda",C,Pulpa,89.9,45,189,0.8,0.5,8.3,6.3,2,0.5,2,,95,false,,57
+C026,"Fresa, pintona, cruda",C,Pulpa,91.5,38,159,0.8,0.3,7,5.2,1.9,0.4,1,,95,false,,57
+C027,"Granada, cruda",C,Pulpa sin semillas,84.4,70,295,1,1.2,12.9,11.1,1.8,0.5,2,,30,false,,57
+C028,"Granadilla, cruda",C,Pulpa sin semillas,80.2,95,398,2.1,1.6,14.9,9,5.9,1.1,20,,30,false,ENERGY_MISMATCH(95 vs 82),57
+C029,"Guama, cruda",C,Pulpa sin semillas,85.6,59,249,0.9,0.1,13.1,12.2,0.9,0.3,,,23,false,,57
+C030,"Guanábana, cruda",C,Pulpa sin semillas,92.1,33,139,0.6,0.2,6.8,6,0.8,0.3,9,,70,false,,59
+C031,"Guayaba, madura, cruda",C,Pulpa sin semillas,84.6,71,298,1.9,0.3,13,8,5.4,0.7,3,,75,false,,59
+C032,"Guayaba, pintona, cruda",C,Pulpa sin semillas,82.8,78,330,0.9,0.4,15.1,9.7,5.4,0.8,3,,75,false,ENERGY_MISMATCH(78 vs 68),59
+C033,"Gulupa, madura, cruda",C,Pulpa sin semillas,81.5,74,315,1.9,0.1,17.2,17,0.2,0.2,7,,56,false,,59
+C034,"Gulupa, pintona, cruas",C,Pulpa sin semillas,83.2,66,279,0.7,0,15.6,15.4,0.2,0.5,6,,56,false,,59
+C035,"Gulupa, verde, cruda",C,Pulpa sin semillas,85.3,57,241,0.8,0,13.3,13.1,0.2,0.6,6,,56,false,,59
+C036,"Harina de banano, cruda",C,,14.1,340,1444,3,0.4,80.7,79.8,0.9,1.8,,,100,false,,59
+C037,"Harina de chontaduro, cruda",C,,7.8,375,1590,6.4,0.6,83.9,79.7,4.2,1.3,,,100,false,,59
+C038,"Higo, maduro, crudo",C,Pulpa sin semillas,89,48,203,0.7,0.1,9.7,6.8,2.8,0.5,3,,61,false,,59
+C039,"Higo, pintón, crudo",C,Pulpa sin semillas,83.3,72,302,1.4,1.1,12.5,9.6,2.9,1.7,4,,61,false,,59
+C040,"Higo, verde, crudo",C,Pulpa sin semillas,85.1,65,273,0.7,0.5,12.5,8.9,3,1.1,3,,61,false,,59
+C041,"caco, crudo",C,Pulpa sin semilla,84.8,57,243,0.3,0.1,13.8,,,1,,,20,false,,59
+C042,"Kiwi, crudo",C,Pulpa sin semillas,83,73,310,1,0.4,15,12.1,2.9,0.6,3,,91,false,,59
+C043,"Lima, cruda",C,Pulpa sin semillas,92.4,35,147,0.5,0.1,6.6,3.8,2.8,0.4,2,,40,false,,59
+C044,"Limón, crudo",C,Pulpa sin semillas,89.7,44,186,0.3,0.3,9.3,7.8,1.5,0.4,4,,50,false,,59
+C045,"Lulo, crudo",C,Pulpa sin semillas,89.2,48,200,0.9,0.1,8.9,5.3,3.6,0.8,0,,60,false,,59
+C046,"Macadamia, seca",C,Nuez,3,579,2411,5.9,36.4,52.6,44,8.5,2,5,,100,false,,59
+C047,"Madroño, orudo",C,Pulpa sin semillas,88.3,47,198,0.5,0.1,10.9,,,0.2,,,15,false,,59
+C048,"Mamey, crudo",C,Pulpa sin semillas,85.8,62,262,0.4,0.1,13.4,10.4,3,0.3,15,,65,false,,59
+C049,"Mamoncillo, crudo",C,Pulpa sin semilla,77.4,90,381,1,0.2,21,,,0.4,,,35,false,,59
+C050,"Mandarina, cruda",C,Pulpa sin semillas,87.2,54,228,0.9,0.1,11.4,9.6,1.8,0.4,2,,70,false,,59
+C051,"Mango común, crudo",C,Pulpa sin semilla,81.8,79,334,0.6,0,17.1,13.2,3.9,0.5,4,,50,false,,59
+C052,"Mango Tommy Atkins, crudo",C,Pulpa sin semilla,52.6,194,824,0.4,0.1,46.9,44.8,2.1,0,,,76,false,,59
+C053,"Mangostino, crudo",C,Pulpa sin semillas,82,75,319,0.8,0.1,16.8,15,1.8,0.2,2,,32,false,,59
+C054,"Manzana común, cruda",C,Pu pa sin semillas,82.7,72,305,0.3,0.2,16.5,15,1.5,0.3,2,,85,false,,59
+C055,"Manzana de agua, cruda",C,Pulpa sin semillas,87.8,53,222,1.7,1,9.2,,,0.3,8,,65,false,,59
+C056,"Maracuya, cruda",C,Pulpa sin semillas,84.9,60,256,1.5,0.5,12.4,12.2,0.2,0.7,6,,32,false,,59
+C057,"Marañón, frito, sin sal",C,Nuez,4.1,623,2587,16.1,48.2,29.6,26.3,3.3,2,13,,100,false,,59
+C058,"Marañón, seco",C,Nuez,87,56,237,0.7,0.4,11.5,9.8,1.7,0.4,7,,70,false,,59
+C059,"Marañón, tostado, sin sa",C,Nuez,2,620,2576,15.3,46.4,33.9,30.9,3,2.5,16,,100,false,,59
+C060,"Melón, crudo",C,Pulpa sin semillas,93.6,25,106,0.7,0,5,4,1,0.6,7,,50,false,,59
+C061,"Mora de Castilla, cruda",C,Pulpa sin semillas,83.7,74,311,1,0.1,14.6,9.3,5.3,0.6,1,,90,false,ENERGY_MISMATCH(74 vs 63),59
+C062,"Naranja, cruda",C,Pulpa sin semillas,88.5,41,174,0.7,0.3,8.8,8.6,0.2,1.7,2,,60,false,,61
+C063,"Noni, crudo",C,Pulpa sin semillas,90.8,36,153,0.6,0.2,8,,,0.4,,,65,false,,61
+C064,"Nuez de Brasil, seca",C,Nuez,3.6,721,2976,14.3,66.8,11.8,4.2,7,3.5,3,,100,false,,61
+C065,"Papaya, madura, cruda",C,Pulpa sin semillas,90.7,40,169,0.5,0.1,8.2,6.2,2,0.5,5,,70,false,,61
+C066,"Papaya, pintona, cruda",C,Pulpa sin semillas,89,47,197,0.5,0.1,9.9,8,1.9,0.5,3,,79,false,,61
+C067,"Papayuela, cruda",C,Pulpa sin semillas,93.5,27,113,0.7,0.1,5.1,3.8,1.3,0.6,,,45,false,,61
+C068,"Pepino dulce, maduro, crudo",C,Pulpa sin semillas,92,33,138,0.3,0,7.4,6.6,0.8,0.3,,,89,false,,61
+C069,"Pepino dulce, pintón, crudo",C,Pulpa sin semillas,91.7,34,146,0.3,0.2,7.4,6.6,0.8,0.4,,,88,false,,61
+C070,"Pepino dulce, verde, crudo",C,Pulpa sin semillas,91.5,36,152,0.2,0.4,7.5,6.7,0.8,0.4,,,87,false,,61
+C071,"Pera, cruda",C,Pulpa sin semillas,86.3,63,265,0.3,0.2,12.9,8.5,4.4,0.3,1,,85,false,,61
+C072,"Piña, cruda",C,Pulpa sin semillas,86.5,56,239,0.6,0.1,12.4,10.7,1.7,0.4,3,,55,false,,61
+C073,"Piñuela, cruda",C,Pulpa sin semillas,85.9,54,228,0.2,1.1,10.8,,,2,2,,23,false,,61
+C074,"Pistacho, tostado, sin sal",C,Nuez,2.1,666,2759,14.9,52.8,27.6,17.3,10.3,2.6,1,,100,false,,61
+C075,"Pitahaya amarilla, cruda",C,Pulpa sin semillas,85.5,63,268,0.4,0.1,13.6,10.3,3.3,0.4,4,,55,false,,61
+C076,"Pitahaya roja, cruda",C,Pulpa sin semillas,87.3,56,236,0.5,0.1,11.6,8.3,3.3,0.5,,,55,false,,61
+C077,"Pomarrosa, cruda",C,Pulpa sin semillas,81.1,85,358,0.6,0.2,17.7,12.6,5.1,0.4,2,,65,false,,61
+C078,"Ruibarbo, crudo",C,Tallo,94.9,22,91,0.9,0.1,3.4,1.5,1.8,0.7,4,,65,false,,61
+C079,"Sandia, cruda",C,Pulpa sin semillas,95.7,17,73,0.4,0,3.7,3.3,0.4,0.2,1,,40,false,,61
+C080,"Tamarindo, crudo",C,Pulpa sin semillas,18.4,329,1396,5.4,0.5,73.2,68.1,5.1,2.5,28,,45,false,,61
+C081,"Tomate de árbol amarillo, crudo",C,Pulpa sin semillas,84.9,58,245,1.7,0.1,12.5,,,0.8,1,,60,false,,61
+C082,"Tomate de árbol rojo, crudo",C,Pulpa sin semillas,86.7,55,232,2,0.2,10.2,8.2,2,0.8,0,,86,false,,61
+C083,"Toronja, cruda",C,Pulpa sin semillas,87.3,53,222,0.7,0.1,11.4,9.8,1.6,0.5,0,,60,false,,61
+C084,"Uchuva, cruda",C,Pulpa sin semillas,82.1,77,326,1.5,0.5,14.2,9.1,5.1,1.7,0,,94,false,,61
+C085,"Uva blanca, cruda",C,Pulpa sin semillas,90.5,38,162,0.5,0,8.6,7.7,0.9,0.4,2,,90,false,,61
+C086,"Uva Isabella, cruda",C,Pulpa sin semillas,87.2,51,216,0.4,0,12.1,11.7,0.4,0.3,9,,90,false,,61
+C087,"Uva, deshidratada",C,Pulpa sin semillas,20.2,327,1385,2.5,0.3,75.2,68.5,6.7,1.8,25,,100,false,,61
+C088,"Zapote blanco, crudo",C,Pulpa sin semillas,76.9,102,430,1.2,2.6,18.5,,,0.8,,,82,false,,61
+C089,"Zapote común, crudo",C,Pulpa sin semillas,86.6,59,248,1.1,0,11.7,8.2,3.5,0.6,11,,30,false,,61
+D001,Aceite de ajonjoli o sésamo,D,,0,900,3700,0,100,0,,0,0,0,14.3,100,false,,63
+D002,Aceite de algodón,D,,0,900,3700,0,100,0,,0,0,0,25.9,100,false,,63
+D003,Aceite de canola o colza,D,,0,900,3699,0,100,0,,0,0,0,6.9,100,false,,63
+D004,Aceite de girasol,D,,0,900,3700,0,100,0,,0,0,0,10.5,100,false,,63
+D005,Aceite de linaza o lino,D,,0,900,3700,0,100,0,,0,0,0,9.1,100,false,,63
+D006,Aceite de maíz,D,,0,900,3700,0,100,0,,0,0,0,14.2,100,false,,63
+D007,Aceite de mani,D,,0,900,3700,0,100,0,,0,0,0,18.1,100,false,,63
+D008,Aceite de oliva,D,,0,900,3700,0,100,0,,0,0,2,8.4,100,false,,63
+D009,Aceite de palma,D,,0,900,3700,0,100,0,,0,0,0,49.3,100,false,,63
+D010,Aceite de palma africana,D,,0,900,3700,0,100,0,,0,0,0,50.9,100,false,,63
+D011,Aceite de sacha inchi,D,,0,900,3700,0,100,0,,0,0,,6.1,100,false,,63
+D012,Aceite de soya,D,,0,900,3700,0,100,0,,0,0,0,14.4,100,false,,63
+D013,"Aceite, mezcla vegetal",D,,0,900,3700,0,100,0,,0,0,0,13.4,100,false,,63
+D014,Manteca o grasa de cerdo,D,,1,891,3663,0,99,0,,0,0,0,39.6,100,false,,63
+D015,Mantequilla,D,,16.9,743,3055,0.8,82.2,0,,0,0.1,223,52.6,100,false,,63
+D016,Mantequilla de maní,D,,1.4,643,2666,24.6,50,20.7,,5.8,3.3,478,9.6,100,false,,63
+D017,Margarina de canola,D,,16,731,3005,0.5,81,0,,0,2.5,742,15.2,100,false,,63
+D018,"Margarina, con sal",D,,15.8,732,3011,0.6,81.1,0,,0,2.5,877,34.6,100,false,,63
+D019,"Margarina, esparcible",D,,16,731,3006,0.6,81,0,,0,2.5,685,14.9,100,false,,63
+D020,"Mayonesa, con sal",D,,58.4,326,1343,0.9,33.4,5.4,,0,1.9,711,4.9,100,false,,63
+E001,"Almeja, de agua dulce, cruda",E,,82.8,66,278,14,1,0.3,,0,2,46,0.2,11,false,,65
+E002,"Arenque, entero, crudo",E,,70.3,156,651,17.9,9,0.7,,0,2.1,80,2,54,false,,65
+E003,"Atún, enlatado en aceite",E,,61.4,211,881,25.5,12.1,0,,0,1.5,391,1.8,100,false,,65
+E004,"Atún, enlatado en agua",E,,70,127,537,24.2,3,0.9,,0,1.9,377,0.8,100,false,,65
+E005,"Bagre, graso, sin cabeza, crudo",E,Cuerpo sin cabeza,72.5,165,685,15.5,11.4,0,,0,0.8,98,1.3,85,false,,65
+E006,"Bagre, magro, entero, cocido, sin sal",E,,74.7,138,576,18.2,7.2,0,,0,1.1,101,1.6,66,false,PROXIMATE_SUM(101.2),65
+E007,"Bagre, magro, sin cabeza, crudo",E,Cuerpo sin cabeza,78.7,93,390,17.5,2.4,0.2,,0,1.2,83,0.4,92,false,,65
+E008,"Bagre, semigraso, sin cabeza, crudo",E,Cuerpo sin cabeza,76.9,118,494,15.5,5.9,0.7,,0,1,98,1.3,92,false,,65
+E009,"Bocachico, entero, cocido, sin sal",E,,72.3,138,578,20.1,6.4,0,,0,1.2,97,3.2,51,false,,65
+E010,"Bocachico, sin cabeza, crudo",E,Cuerpo sin cabeza,76.6,96,408,20.2,1.5,0.5,,0,1.2,,,64,false,,65
+E011,"Bocachico, sin cabeza, salado, crudo",E,Cuerpo sin cabeza,78.8,126,526,17,6.4,0,,0,1.1,,,70,false,PROXIMATE_SUM(103.3),65
+E012,"Bonito, sin cabeza, crudo",E,Cuerpo sin cabeza,70.6,134,564,24,4.2,0,,0,1.2,40,0,51,false,,65
+E013,"Cachama, entera, frita, con sal",E,,61.1,254,1058,27,16.2,0,,0,2.2,610,10,83,false,PROXIMATE_SUM(106.5),65
+E014,"Cachama, sin cabeza, cruda",E,Cuerpo sin cabeza,77,106,447,18.1,3.8,0,,0,1.1,,,78,false,,65
+E015,"Calamar, crudo",E,,80.5,79,336,16.4,1.5,0.1,,0,1.5,44,0.4,70,false,,65
+E016,"Camarón, cocido, sin sal",E,,74,103,436,23.5,1,0,,0,1.5,223,0.3,83,false,,65
+E017,"Camarón, crudo",E,,76.6,94,400,20.3,1.2,0.5,,0,1.4,163,0.3,87,false,,65
+E018,"Cangrejo, crudo",E,,79.7,84,353,17.3,1.6,0,,0,1.6,423,0.2,30,false,,65
+E019,"Caracol de mar, crudo",E,,68.3,123,519,23.8,1.4,3.7,,0,2.8,70,0,100,false,,65
+E020,"Carite, entero, crudo",E,,76.3,106,445,18.5,3.5,0.1,,0,1.6,65,0.3,80,false,,65
+E021,"Corvina, de mar, filete, crudo",E,Filete,78,100,420,17.8,3.2,0,,0,1,56,1.1,100,false,,65
+E022,"Jaiba o cangrejo azul, cocida, sin sal",E,,77.9,87,367,19.1,1.1,0.1,,0,1.8,293,0.2,100,false,,65
+E023,"Langosta, cruda",E,,79.7,82,346,16.2,1.9,0,,0,2.2,423,0.2,35,false,,65
+E024,"Langostino, crudo",E,,82.5,71,300,14.5,1.4,0,,0,1.5,531,0.3,47,false,,65
+E025,"Lenguado, entero, crudo",E,,80.2,81,341,16.7,1.4,0.3,,0,1.4,119,0.3,80,false,,65
+E026,"Lisa, sin cabeza, cruda",E,Cuerpo sin cabeza,76.6,105,442,18,3.4,0.6,,0,1.4,65,1.1,50,false,,65
+E027,"Lisa, sin cabeza, salada, cruda",E,Cuerpo sin cabeza,72.3,125,526,21.8,4,0.4,,0,1.5,65,0.9,50,false,,65
+E028,"Macabi o machete, entero, crudo",E,,72.5,132,555,20.5,5.4,0.4,,0,1.2,,,100,false,,65
+E029,"Machuelo o moncholo, sin cabeza, crudo",E,Cuerpo sin cabeza,75.2,118,497,19,4.7,0,,0,1.1,,,,false,,67
+E030,"Merluza, filete, crudo",E,Filete,79,85,361,18.3,1.3,0.1,,0,1.3,75,0.3,100,false,,67
+E031,"Mero, entero, crudo",E,,77.9,89,378,19.4,1.2,0.2,,0,1.3,80,0.2,57,false,,67
+E032,"Ostra, cruda",E,,89.9,43,180,5.4,2.2,0.4,,0,2.1,325,0.4,15,false,,67
+E033,"Pescado seco, crudo",E,,16.1,273,1156,62.8,2.4,0,,0,18.7,7027,0.5,100,false,,67
+E034,"Pulpo, crudo",E,,82.4,69,292,14.9,1,0.1,,0,1.6,230,0.3,79,false,,67
+E035,"Raya, filete, asado",E,Filete,65.9,133,566,31.1,0.5,1.1,,0,1.4,150,0,100,false,,67
+E036,"Róbalo o gualaja, entero, crudo",E,,78.6,92,387,18.4,2,0,,0,1,69,0.5,67,false,,67
+E037,"Salmón, enlatado en aceite",E,,61.6,212,885,21.7,13.9,0.1,,0,2.7,484,1.9,100,false,,67
+E038,"Salmón, filete, crudo",E,Filete,67.2,181,755,20.2,11,0.3,,0,1.3,49,2.2,100,false,,67
+E039,"Sardinas, enlatadas en aceite",E,,58.6,225,940,24.6,14.1,0,,0,2.9,450,2.9,100,false,,67
+E040,"Sardinas, enlatadas en salsa de tomate",E,,66.9,177,738,20.9,10.3,0.1,,0,1.9,414,2.7,100,false,,67
+E041,"Sierra, entera, cruda",E,,72.3,129,541,21.8,4.6,0,,0,1.3,54,0.1,82,false,,67
+E042,"Tiburón, filete, crudo",E,Filete,73.6,122,515,20.5,4.5,0,,0,1.4,79,0.9,100,false,,67
+E043,"Ti apia o mojarra, entera, cruda",E,,77.3,96,405,20.1,1.7,0,,0,0.9,52,0.6,62,false,,67
+E044,"Tilapia o mojarra, frita, sin sal",E,,62.4,227,947,26.3,13.5,0,,0,3.1,250,,44,false,PROXIMATE_SUM(105.3),67
+E045,"Tilapia o mojarra, recortes, crudos",E,Recortes,55.6,312,1293,16.2,27.5,0,,0,1,,,,false,,67
+E046,"Trucha, de mar, entera, cruda",E,,71.4,142,597,20.8,6.6,0,,0,1.2,58,0.9,52,false,,67
+E047,"Trucha, entera, cruda",E,,72.7,135,567,19.9,6.2,0,,0,1.2,52,0.8,52,false,,67
+E048,"Trucha, recortes, crudos",E,Recortes,63.8,211,876,16.3,16.1,0.2,,0,3.7,,,,false,,67
+F001,"Armadillo, carne, cruda",F,,64.5,165,693,29,5.4,0,,0,1.1,,,100,false,,69
+F002,"Babilla, carne, cruda",F,,67.7,126,537,30.8,0.4,0,,0,1.2,,,,false,,69
+F003,"Butifarra, precocida",F,,57.8,256,1062,15.2,20.2,3.3,,0,3.5,703,6.8,100,false,,69
+F004,"Cabra o chivo, carne, cocida, sin sal",F,,68.4,137,579,27.1,3,0.4,,0,1.1,80,0.9,100,false,,69
+F005,"Cabra o chivo, carne, cruda",F,,75.8,104,439,20.6,2.3,0.2,,0,1.1,82,0.7,100,false,,69
+F006,"Caracol terrestre, carne, cruda",F,,81.9,66,280,11.8,0.1,4.5,,0,1.8,,,100,false,,69
+F007,"Cerdo, brazo, cocido, sin sal",F,Brazo,63.5,184,769,26.8,8.5,0,,0,1.2,86,3.7,100,false,,69
+F008,"Cerdo, brazo, crudo",F,Brazo,74.4,115,486,20.3,3.8,0,,0,1.5,87,1.2,100,false,,69
+F009,"Cerdo, brazo, horneado, sin sal",F,Brazo,60.2,220,920,26.7,12.6,0,,0,1.1,80,3.5,100,false,,69
+F010,"Cerdo, carne gorda, cruda",F,,58.2,278,1154,17.1,23,0.7,,0,1,57,8,100,false,,69
+F011,"Cerdo, carne magra, cruda",F,,71.3,140,590,21.4,6,0.2,,0,1.1,52,2,100,false,,69
+F012,"Cerdo, carne muy gorda, cruda",F,,35.7,522,2153,9.3,53.7,0.5,,0,0.8,32,19.5,100,false,,69
+F013,"Cerdo, carne semigorda, cruda",F,,62.1,245,1015,17.2,19.4,0.3,,0,1,65,5.7,100,false,,69
+F014,"Cerdo, costilla, cocida, sin sal",F,Costilla,53.9,258,1079,29.5,15.6,0,,0,1.1,77,7,54,false,,69
+F015,"Cerdo, costilla, cruda",F,Costilla,59.4,277,1150,18.7,22.5,0,,0,0.9,93,7.4,77,false,PROXIMATE_SUM(101.5),69
+F016,"Cerdo, costilla, horneada, sin sal",F,Costilla,48.1,341,1414,24.4,27,0,,0,1,111,11,50,false,,69
+F017,"Cerdo, hígado, crudo",F,Higado,72.3,123,519,21.4,3.7,1.1,,0,1.5,87,1.1,100,false,,69
+F018,"Cerdo, lomo, cocido, sin sal",F,Lomo,60.2,170,718,35.1,3.2,0,,0,1.4,34,1.4,100,false,,69
+F019,"Cerdo, lomo, crudo",F,Lomo,74.3,110,465,21.6,2.5,0.3,,0,1.3,53,0.8,100,false,,69
+F020,"Cerdo, lomo, horneado, sin sal",F,Lomo,60.1,170,719,35.1,3.2,0.2,,0,1.4,55,1.3,100,false,,69
+F021,"Cerdo, panceta o tocineta, cocida, sin sal",F,Panceta,20.4,465,1934,39,34.1,0.5,,0,6,87,11.6,100,false,,69
+F022,"Cerdo, panceta o tocineta, salada, cruda",F,Panceta,44.2,413,1705,13.1,39.7,0.8,,0,2.2,1118,13.3,100,false,,69
+F023,"Cerdo, panceta o tocineta, salteada, sin sal",F,Panceta,47,354,1467,22.4,29.4,0,,0,1.2,77,8.7,100,false,,69
+F024,"Cerdo, pierna o pernil, cocida, sin sal",F,Pierna,67.2,148,623,27.1,4.3,0,,0,1.3,24,1.7,100,false,,69
+F025,"Cerdo, pierna o pernil, cruda",F,Pierna,72.9,131,551,20.5,5.4,0.2,,0,1.1,57,1.9,100,false,,69
+F026,"Cerdo, pierna o pernil, horneada, sin sal",F,Pierna,60,202,848,29.4,9.4,0,,0,1.2,27,3.3,100,false,,69
+F027,"Cerdo, riñón, crudo",F,Riñón,80,89,375,16.2,2.7,0,,0,1.1,121,1,100,false,,69
+F028,"Cerdo, tocino, cocido, sin sal",F,Tocino,10.3,751,3093,10.4,78.8,0,,0,0.4,15,33.1,100,false,,69
+F029,"Cerdo, tocino, crudo",F,Tocino,10.8,784,3224,2.9,85.8,0,,0,0.6,22,34.6,100,false,,71
+F030,"Cerdo, tocino, frito en su propia grasa (chicharrón), con sal",F,Tocino,16.9,599,2477,20.8,56.1,2.8,,0,3.4,125,15.3,100,false,,71
+F031,"Cerdo, tocino, salteado, sin sal",F,Tocino,9.8,754,3106,10.2,79.2,0.1,,0,0.8,18,32.7,100,false,,71
+F032,"Chigüiro, carne, salada, cruda",F,,63.7,134,563,22.1,4.5,1.2,,0,8.5,,,100,false,,71
+F033,"Chiguiro, pierna o pernil, cruda",F,Pierna,70,95,401,22,0.7,0,,0,7.2,,,,false,,71
+F034,"Chorizo de cerdo y res, crudo",F,,47,321,1334,24.1,23.1,4,,0,1.8,1140,9.6,100,false,,71
+F035,"Chorizo de pollo, crudo",F,,52.9,217,910,31.3,10.2,0.1,,0,5.5,,,100,false,,71
+F036,"Codorniz o perdiz, entera sin piel, cruda",F,,71,133,550,22.4,4.5,0.8,,0,1.3,51,1.3,61,false,,71
+F037,"Conejo, carne, cocida, sin sal",F,,59.8,198,833,30.4,8.4,0.3,,0,1.1,45,2.4,100,false,,71
+F038,"Conejo, carne, oruda",F,,72.8,134,560,20.1,5.8,0.2,,0,1.1,41,2.6,57,false,,71
+F039,"Conejo, hígado, crudo",F,Higado,74.6,118,497,17.9,4.3,2,,0,1.2,,,100,false,,71
+F040,"Conejo, riñón, crudo",F,Riñon,75.8,120,501,16.9,5.5,0.6,,0,1.2,,,100,false,,71
+F041,"Cordero, carne gorda, cruda",F,,61.6,252,1044,16.8,20.5,0.1,,0,1,58,9.7,100,false,,71
+F042,"Cordero, carne magra, cruda",F,,70.6,143,600,21.3,5.9,1.1,,0,1.1,67,2.1,100,false,,71
+F043,"Cordero, carne muy gorda, cruda",F,,50.8,357,1475,15.6,32.7,0,,0,0.9,54,14,100,false,,71
+F044,"Cordero, carne semigorda, cruda",F,,61.4,247,1027,18.2,19.4,0,,0,1,59,8.1,100,false,,71
+F045,"Cordero, corazón, orudo",F,Corazón,75,135,563,16,7.8,0.2,,0,1,89,2.2,100,false,,71
+F046,"Cordero, higado, crudo",F,Hígado,72.2,130,544,20.3,4.9,1.1,,0,1.5,70,1.9,100,false,,71
+F047,"Cordero, riñón, crudo",F,Riñón,76.7,104,438,18,3.2,0.8,,0,1.3,156,1,100,false,,71
+F048,"Gallina, entera con piel, cruda",F,,61.3,256,1051,18.9,20,0,,0,0.8,65,4.7,60,false,,71
+F049,"Hamburguesa de carne de res, cruda",F,,58.1,276,1142,16.2,23.3,0.2,,0,2.2,702,9,100,false,,71
+F050,"Iguana, carne, cruda",F,,72.9,106,448,24.4,0.9,0,,0,1.8,,,30,false,,71
+F051,"Jamón de cerdo y res, tipo sanduche, precocido",F,,62.6,215,895,11.4,15.5,7.4,,0,3,1023,5,100,false,,71
+F052,"Jamón de cerdo, crudo",F,,64.4,162,682,23.7,6.6,2,,0,3.3,1217,1.5,100,false,,71
+F053,"Jamón tipo york, precocido",F,,67.8,143,601,14.6,5.7,8.3,,0,3.6,1066,1.5,100,false,,71
+F054,"Mortadela de cerdo y res, precocida",F,,52.3,298,1239,16.7,23.8,4.3,,0,2.9,1228,8.2,100,false,,71
+F055,"Mortadela de pollo, precocida",F,,51.3,291,1210,16.4,21.6,7.8,,0,2.9,1169,6.1,100,false,,71
+F056,"Pato, carne, cruda",F,,74,131,550,18.3,6.3,0.4,,0,1,59,2.1,55,false,,71
+F057,"Pavo, ala sin piel, cruda",F,Ala sin piel,74.9,111,467,22.7,2.2,0,,0,1.1,67,0.5,46,false,,71
+F058,"Pavo, costillar con piel, crudo",F,Costillar,74,102,431,15,0.9,8.4,,0,1.7,,,29,false,,71
+F059,"Pavo, entero con piel, crudo",F,,70.4,156,651,20.9,8,0,,0,0.9,65,2.3,71,false,,71
+F060,"Pavo, entero con piel, horneado, sin sal",F,,62.7,181,760,28.2,7.3,0.6,,0,1.2,68,2.8,100,false,,73
+F061,"Pavo, pechuga sin piel, cruda",F,Pechuga sin piel,72.9,108,458,24.3,1,0.5,,0,1.4,41,0.4,82,false,,73
+F062,"Pavo, pechuga sin piel, horneada, sin sal",F,Pechuga sin piel,65.6,144,608,30.1,2.6,0,,0,1.9,52,0.2,73,false,,73
+F063,"Pavo, pescuezo o cuello sin piel, crudo",F,Pescuezo sin piel,75.9,122,511,16.5,6,0.4,,0,1.1,233,1.6,53,false,,73
+F064,"Pavo, pierna o pernil sin piel, cruda",F,Pierna sin piel,71.5,133,561,21.8,4.8,0.8,,0,1.1,66,1.5,71,false,,73
+F065,"Pavo, pierna o pernil sin piel, horneada, sin sal",F,Pierna sin piel,65.5,151,637,29.2,3.8,0,,0,1,81,1.3,69,false,,73
+F066,"Pavo, rabadilla con piel, cruda",F,Rabadilla,70.5,158,660,16.7,9.5,1.5,,0,1.8,,,34,false,,73
+F067,"Pollo, ala con piel, asada, sin sal",F,Ala con piel,59.6,247,1030,23.8,16.9,0,,0,0.9,98,5,54,false,PROXIMATE_SUM(101.2),73
+F068,"Pollo, ala con piel, cocida, sin sal",F,Ala con piel,64.3,198,826,22.5,12,0,,0,1.2,67,4.4,55,false,,73
+F069,"Pollo, ala con piel, cruda",F,Ala con piel,65.7,214,891,17.5,16,0.1,,0,0.7,73,4.5,71,false,,73
+F070,"Pollo, ala con piel, frita, con sal",F,Ala con piel,48.4,313,1301,26.1,22.2,2.2,,0,1.2,320,5.9,38,false,,73
+F071,"Pollo, ala sin piel, cocida, sin sal",F,Ala sin piel,67,164,690,26.9,6.3,0,,0,0.7,67,2,38,false,,73
+F072,"Pollo, contramuslo con piel, cocido, sin sal",F,piel,61.9,221,922,22.9,14.4,0,,0,0.8,71,4.1,55,false,,73
+F073,"Pollo, contramuslo con piel, crudo",F,piel,67,205,851,17.1,15.1,0,,0,0.8,76,4.3,91,false,,73
+F074,"Pollo, contramuslo sin piel, cocido, sin sal",F,piel,64.8,186,777,24.7,9.7,0,,0,0.9,75,2.7,50,false,,73
+F075,"Pollo, contramuslo sin piel, crudo",F,piel,74.8,139,580,18.9,7,0,,0,1,90,2.1,91,false,PROXIMATE_SUM(101.7),73
+F076,"Pollo, carezan, crudo",F,Corazón,73,151,632,15.6,9.3,1.3,,0,0.8,74,2.7,100,false,,73
+F077,"Pollo, entero con piel, crudo",F,,70.3,167,696,18.1,10.3,0.4,,0,0.9,70,2.9,60,false,,73
+F078,"Pollo, hígado, cocido, sin sal",F,Higado,66.8,160,671,24.4,6.5,0.9,,0,1.4,76,1.8,100,false,,73
+F079,"Pollo, hígado, crudo",F,Higado,76.5,109,458,17.2,3.9,1.2,,0,1.2,79,1.3,100,false,,73
+F080,"Pollo, menudencias, cocidas, sin sal",F,y rojas,67.7,145,611,26.1,4.5,0,,0,1.6,67,1.3,100,false,,73
+F081,"Pollo, menudencias, crudas",F,y rojas,73.1,139,581,17.4,7,1.5,,0,1,77,1.6,100,false,,73
+F082,"Pollo, molleja, cocida, sin sal",F,Molleja,67.9,138,584,27.1,2.7,1.4,,0,0.9,56,0.7,100,false,,73
+F083,"Pollo, molleja, cruda",F,Molleja,79.3,89,376,17.7,2.1,0,,0,1,69,0.5,100,false,,73
+F084,"Pollo, pechuga con piel, cocida, sin sal",F,Pechuga con piel,65.8,174,731,26.9,7.4,0,,0,0.8,61,2.1,77,false,,73
+F085,"Pollo, pechuga con piel, cruda",F,Pechuga con piel,69.2,166,692,20.7,9.2,0.1,,0,0.9,63,2.7,93,false,,73
+F086,"Pollo, pechuga sin piel, asada sin sal",F,Pechuga sin piel,63.8,164,689,29.7,4.9,0.2,,0,1.4,53,1,100,false,,73
+F087,"Pollo, pechuga sin piel, cocida, sin sal",F,Pechuga sin piel,67.5,141,597,28.4,3,0.3,,0,0.9,63,0.8,69,false,,75
+F088,"Pollo, pechuga sin piel, frita sin sal",F,Pechuga sin piel,60.2,178,751,33.4,4.7,0.5,,0,1.1,79,1,100,false,,75
+F089,"Pollo, pierna o colombina con piel, asada, sin sal",F,Pierna con piel,64.8,183,768,24,9.4,0.6,,0,1.1,97,2.6,54,false,,75
+F090,"Pollo, pierna o colombina con piel, cocida, sin sal",F,Pierna con piel,63.6,208,867,22.9,12.9,0,,0,0.8,73,3.6,57,false,,75
+F091,"Pollo, pierna o colombina con piel, cruda",F,Pierna con piel,68.9,182,756,18.1,12.1,0.1,,0,0.8,79,3.4,73,false,,75
+F092,"Pollo, pierna o colombina con piel, frita, sin sal",F,Pierna con piel,55.3,265,1103,17.1,18.2,8.2,,0,1.3,279,2.7,42,false,,75
+F093,"Pollo, pierna o colombina sin piel, cocida, sin sal",F,Pierna sin piel,66.4,173,725,25,8.1,0,,0,0.9,78,2.2,52,false,,75
+F094,"Res, bofe o pulmón, crudo",F,Pulmón,79.4,90,380,16.6,2.5,0.3,,0,1.2,198,0.9,90,false,,75
+F095,"Res, cadera, frita, sin sal",F,Cadera,62.8,176,740,28.7,6.6,0.5,,0,1.4,78,2.4,100,false,,75
+F096,"Res, callo o menudo, cocido, sin sal",F,Callo,79.1,102,427,15,4.1,1.1,,0,0.6,68,1.4,100,false,,75
+F097,"Res, callo o menudo, crudo",F,Callo,81,95,400,14.6,4.1,0,,0,0.3,97,1.6,100,false,,75
+F098,"Res, carne gorda, cruda",F,,60.2,257,1066,18.4,20.3,0.2,,0,0.9,58,6.9,100,false,,75
+F099,"Res, carne magra, cruda",F,,71.5,139,582,21.8,5.7,0,,0,1.2,51,2.4,100,false,,75
+F100,"Res, carne semigorda, cruda",F,,62,223,930,21.6,15.1,0.3,,0,1,50,2.8,100,false,,75
+F101,"Res, carne semigorda, molida, cruda",F,,66.5,194,807,19.6,12.7,0.2,,0,1,60,5.5,100,false,,75
+F102,"Res, chunchullo, crudo",F,Intestino,69.2,216,894,11,19.1,0,,0,0.7,46,15,100,false,,75
+F103,"Res, chunchullo, dorado, sin sal",F,Intestino,44.8,341,1415,24.5,26.2,1.7,,0,2.8,,,100,false,,75
+F104,"Res, churrasco, asado, sin sal",F,Ojo de costilla,60.7,175,737,33.2,4.5,0.4,,0,1.2,67,1.6,100,false,,75
+F105,"Res, corazón, crudo",F,Corazón,77.1,106,445,16.8,3.7,1.4,,0,1,94,1.5,100,false,,75
+F106,"Res, corazón, dorado, sin sal",F,Corazón,51.7,260,1084,28.3,15.5,1.7,,0,2.8,,,100,false,,75
+F107,"Res, costilla, oruda",F,Costilla,56.6,287,1189,17.1,23.3,2.3,,0,0.8,60,11,73,false,,75
+F108,"Res, higado, asado, sin sal",F,Higado,58.8,184,776,29.1,5.3,5.1,,0,1.7,79,1.9,100,false,,75
+F109,"Res, higado, crudo",F,Higado,69.7,138,580,20.4,4.5,3.9,,0,1.5,76,2.8,100,false,,75
+F110,"Res, higado, dorado, sin sal",F,Higado,56,211,883,25.9,11,2.1,,0,5,,,100,false,,75
+F111,"Res, higado, frito, sin sal",F,,62,169,712,26.7,4.7,4.9,,0,1.6,77,2.2,100,false,,75
+F112,"Res, hueso carnudo, crudo",F,Lomo de sauja,69.5,164,686,21.2,8.8,0,,0,1,66,3.2,68,false,,75
+F113,"Res, lengua, cruda",F,Lengua,64.8,219,909,16.5,16.1,1.9,,0,0.7,70,7,95,false,,75
+F114,"Res, lomo, cocido, sin sal",F,Lomo,53.7,218,915,36.1,7.9,0.5,,0,1.8,48,3.4,100,false,,75
+F115,"Res, pajarilla o bazo, cruda",F,Bazo,77.2,102,431,18.4,3.2,0,,0,1.2,85,1,100,false,,75
+F116,"Res, pajarilla o bazo, dorada, sin sal",F,Bazo,63.2,156,655,26.1,5.7,0,,0,5,,,100,false,,75
+F117,"Res, pata, cruda",F,Pata,69.7,125,531,28.2,1.4,0,,0,0.7,,0,49,false,,75
+F118,"Res. pierna, cruda",F,Pierna,73,121,511,21.8,3.8,0,,0,1.4,63,1.3,100,false,,77
+F119,"Res, riñón, crudo",F,Riñón,80.7,87,365,15.3,2.8,0.1,,0,1.1,182,0.8,100,false,,77
+F120,"Res, riñón, dorado, sin sal",F,Riñón,59.6,182,766,27.2,7.3,2,,0,3.9,,,100,false,,77
+F121,"Res, sesos, cocidos, sin sal",F,,74.9,147,613,11.7,10.5,1.5,,0,1.5,108,2.4,100,false,,77
+F122,"Res, sesos, crudos",F,Cerebro,78,130,542,10.8,9.7,0,,0,1.5,126,2.3,100,false,,77
+F123,"Res, sobrebarriga, cocida, sin sal",F,Sobrebarriga,49.7,331,1373,24.2,26,0,,0,0.7,39,12.1,100,false,,77
+F124,"Res, ubre, cruda",F,Ubre,64.9,230,954,15.4,18.7,0,,0,1,,0,100,false,,77
+F125,"Salchicha de cerdo y res, precocida",F,,56.1,266,1104,13.8,20.7,6.1,,0,3.3,1137,7.5,100,false,,77
+F126,"Salchicha de cerdo, tipo frankfurt, precocida",F,,58.1,271,1123,13.5,23.1,2.2,,0,3.1,900,8.7,100,false,,77
+F127,"Salchicha de pollo, precocida",F,,61.6,248,1026,13.8,21.4,0,,0,3.2,1050,5.2,100,false,,77
+F128,"Salchicha de tenera, precocida",F,,62.6,199,829,14,15.3,1.4,,0,6.7,,,100,false,,77
+F129,"Salchichón de cerdo y pollo, cervecero, precocido",F,,60.6,243,1008,15.3,19.9,0.7,,0,3.5,1060,5.9,100,false,,77
+F130,"Salchichón de cerdo y pollo, tradicional, precocido",F,,60.6,243,1008,15.5,19.9,0.5,,0,3.5,1184,6.9,100,false,,77
+F131,"Ternera, carne magra, cruda",F,,74.8,110,465,21.9,2.5,0,,0,1,83,1,100,false,,77
+F132,"Tortuga, carne, cruda",F,,78.5,86,364,19.8,0.5,0.5,,0,0.7,68,0.1,100,false,,77
+G001,Crema de leche,G,,60.7,330,1360,2.1,35,1.7,,0,0.5,46,21.1,100,false,,79
+G002,"Kumis, entero, con azúcar",G,,80.5,88,370,2.9,2.5,13.5,,0,0.6,46,,100,false,,79
+G003,Lactosuero,G,,93.4,24,103,0.8,0.1,5.1,,0,0.6,48,0.1,100,false,,79
+G004,"Leche de cabra, entera, liquida, cruda",G,,86.4,74,308,3.9,4.5,4.4,,0,0.8,50,2.5,100,false,,79
+G005,"Leche de vaca, condensada, con azúcar",G,,27,327,1380,8.3,8.4,54.6,,0,1.7,123,5.5,100,false,,79
+G006,"Leche de vaca, descremada, en polvo",G,,3.2,358,1522,36.2,0.5,52.2,,0,7.9,536,0.5,100,false,,79
+G007,"Leche de vaca, descremada, liquida, pasteurizada",G,,91,34,145,3.3,0.1,4.9,,0,0.7,43,0.1,100,false,,79
+G008,"Leche de vaca, entera, en polvo",G,,2.6,499,2086,26.3,26.6,38.4,,0,6,369,16.7,100,false,,79
+G009,"Leche de vaca, entera, evaporada",G,,73.7,139,580,7.1,7.9,9.8,,0,1.5,106,5,100,false,,79
+G010,"Leche de vaca, entera, liquida, cruda",G,,87.7,65,271,3.3,3.7,4.6,,0,0.7,49,2.3,100,false,,79
+G011,"Leche de vaca, entera, líquida, hervida",G,,88,62,258,3.1,3.3,4.8,,0,0.7,42,1.9,100,false,,79
+G012,"Leche de vaca, entera, liquida, pasteurizada",G,,89.5,55,231,3.2,3.2,3.4,,0,0.7,42,1.9,100,false,,79
+G013,"Leche humana, madura, líquida",G,,87.4,71,294,1.1,4.3,7,,0,0.3,16,2,100,false,,79
+G014,"Queso crema, amarillo",G,,52.1,293,1214,16.4,25.1,0.4,,0,6,1172,16.4,100,false,,79
+G015,"Queso fresco, blando, magro, tipo suero costeño",G,,78.9,83,351,11,1.5,6.4,,0,2.2,,,100,false,,79
+G016,"Queso fresco, semiblando, semimagro, tipo cuajada",G,,62.1,207,862,15.2,15.4,2,,0,5.3,64,,100,false,,79
+G017,"Queso fresco, semiduro, semigraso, tipo campesino",G,,54,301,1246,17.5,25.5,0.3,,0,2.7,935,14.2,100,false,,79
+G018,"Queso fresco, semiduro, semigraso, tipo costeño",G,,52,303,1256,17.5,25.5,0.9,,0,4.1,935,14.2,100,false,,79
+G019,"Queso fresco, semiduro, semigraso, tipo mozzarella",G,,50,296,1233,22.9,21.4,3.1,,0,2.6,373,12.9,100,false,,79
+G020,"Queso fresco, semiduro, semimagro, de pasta hilada",G,,53.8,249,1040,24.3,15.9,2.3,,0,3.8,619,10.1,100,false,,79
+G021,"Queso fresco, semiduro, semimagro, tipo doble crema",G,,54.4,286,1190,23.4,18.7,5.9,,0,2.8,475,,100,false,PROXIMATE_SUM(105.2),79
+G022,"Queso madurado, alando, magro, tipo cottage, con crema",G,,79,101,423,12.5,4.5,2.6,,0,1.4,405,2.7,100,false,,79
+G023,"Queso madurado, blando, magro, tipo cottage, sin crema",G,,82.3,75,315,13.7,1.9,0.7,,0,1.4,406,0.6,100,false,,79
+G024,"Queso madurado, duro, semigraso, tipo parmesano",G,,29.2,389,1621,35.8,26,3.1,,0,6,1602,16.4,100,false,,79
+G025,"Queso madurado, duro, semigraso, tipo roquefort",G,,39.7,372,1541,22.2,30.9,1.2,,0,6,1694,19.6,100,false,,79
+G026,"Queso madurado, semiduro, semigraso, tipo camembert",G,,51.8,300,1243,19.8,24.3,0.4,,0,3.7,842,15.3,100,false,,79
+G027,"Queso madurado, semiduro, semigraso, tipo holandes",G,,41.6,348,1445,24.9,26,3.5,,0,3.9,802,18,100,false,,79
+G028,"Yogurt, bebible, entero, con azúcar",G,,82.6,81,343,2.9,2.8,11.2,,0,0.5,40,1.6,100,false,,79
+H001,"Agua de cebada perlada, sin azúcar",H,,96.8,12,51,0.1,0,2.9,,,0.2,3,,100,false,,81
+H002,"Agua de coco, sin azúcar",H,,96,14,60,0.3,0,3.2,3.2,0,0.5,26,,100,false,,81
+H003,"Bebida de avena en hojuelas, en agua, sin azúcar",H,,86.5,59,249,1.9,1,9.8,8.2,1.6,0.8,45,,100,false,,81
+H004,"Bebida de harina de avena, en agua, sin azúcar",H,,84.8,69,289,2.9,1.4,10.3,8.5,1.8,0.7,57,,100,false,,81
+H005,"Café, tostado y molido, infusión al 6%, sin azúcar",H,,98.5,5,22,0.1,0.1,1,1,0,0.3,2,,100,false,,81
+H006,"Cerveza, regular, 4% de alcohol",H,,93.3,38,158,0.4,0,2.1,2.1,0,0.2,4,,100,false,,81
+H007,"Chicha de maíz, 4% de alcohol",H,,83,78,330,0.6,0,12,,,0.4,,,100,false,,81
+H008,"Gaseosa o bebida carbonatada, regular, con azúcar",H,,89,44,185,0,0,10.9,10.9,0,0.1,6,,100,false,,81
+H009,"Guarapo de caña de azúcar, 3% de alcohol",H,,93.4,33,140,0.1,0,3,,,0.5,,,100,false,,81
+H010,"Néctar de albaricoque, con azúcar",H,,84.6,62,261,0.4,0,14.7,14.1,0.6,0.3,3,,100,false,,81
+H011,"Néctar de durazno, con azúcar",H,,89.2,44,186,0.2,0,10.4,9.9,0.6,0.2,7,,100,false,,81
+H012,"Néctar de guayaba, con azúcar",H,,88.5,48,202,0.1,0,11.3,10.3,1,0.2,7,,100,false,,81
+H013,"Néctar de mango, con azúcar",H,,88.4,47,198,0.2,0,11.3,11.1,0.3,0.1,5,,100,false,,81
+H014,"Néctar de manzana, con azúcar",H,,88.8,44,187,0.2,0,10.9,,,0.2,,,100,false,,81
+H015,"Néctar de pera, con azúcar",H,,87.6,50,213,0.2,0,12.1,11.6,0.5,0.1,4,,100,false,,81
+H016,"Sabajón de tomate de árbol amarillo, 14% de alcohol",H,,55.8,221,927,3.5,1.1,24.2,22.6,1.5,1.5,,,100,false,,81
+H017,"Sabajón de tomate de árbol rojo, 14% de alcohol",H,,57.7,212,889,3.1,0.9,22.7,21.4,1.3,1.6,,,100,false,,81
+H018,"Té, infusión al 2%, sin azúcar",H,,98.6,4,19,0.1,0,1,1,0,0.3,2,,100,false,,81
+J001,"Huevo de codorniz, entero, crudo",J,Clara y yema,74.3,154,640,13,11.1,0.5,,0,1.1,141,3.6,92,false,,83
+J002,"Huevo de gallina, clara, crudo",J,Clara,87.8,47,201,10.8,0.2,0.6,,0,0.6,173,0,100,false,,83
+J003,"Huevo de gallina, entero, cocido, sin sal",J,Clara y yema,75.6,145,605,13,10.4,0,,0,1,143,3.1,100,false,,83
+J004,"Huevo de gallina, entero, crudo",J,Clara y yema,75.4,149,619,12.6,10.8,0.3,,0,0.9,139,3.1,90,false,,83
+J005,"Huevo de gallina, entero, en polvo",J,Clara y yema,4.1,579,2408,48.2,41.8,2.5,,0,3.4,523,12.8,100,false,,83
+J006,"Huevo de gallina, entero, frito, sin sal",J,Clara y yema,65,208,866,17.1,14.6,2,,0,1.3,194,4.1,100,false,,83
+J007,"Huevo de gallina, entero, revuelto, con sal",J,Clara y yema,74.6,152,631,10.2,11.4,2.3,,0,1.6,404,3.3,100,false,,83
+J008,"Huevo de gallina, entero, tibio, sin sal",J,Clara y yema,76.1,143,594,13,10.1,0,,0,0.9,129,3.1,90,false,,83
+J009,"Huevo de gallina, yema, crudo",J,Yema,49.4,355,1469,16.3,31.9,0.7,,0,1.7,48,9.5,100,false,,83
+J010,"Huevo de iguana, entero, crudo",J,Clara y yema,63.2,214,889,14.9,15.2,4.3,,0,2.4,,,88,false,,83
+J011,"Huevo de pata, entero, crudo",J,Clara y yema,69,188,784,13,13.8,3.1,,0,1.1,146,3.7,88,false,,83
+J012,"Huevo de pava, entero, crudo",J,Clara y yema,72.5,166,692,13.7,11.9,1.1,,0,0.8,151,3.6,88,false,,83
+J013,"Huevo de tortuga, entero, crudo",J,Clara y yema,79.2,111,463,12.6,6.3,0.9,,0,1,,,89,false,,83
+K001,Arequipe o dulce de leche,K,,28,320,1350,6.4,7.5,56.7,56.7,0,1.4,135,,100,false,,85
+K002,Arroz con leche,K,,79,89,376,3.3,1.5,15.5,15.4,0.1,0.7,78,,100,false,,85
+K003,"Azúcar blanco, granulado",K,,0.5,397,1688,0,0,99.3,99.3,0,0.2,0,,100,false,,85
+K004,"Azúcar moreno, granulado",K,,1.6,390,1658,0,0,97.5,97.5,0,0.9,39,,100,false,,85
+K005,"Bocadillo o dulce de guayaba, tradicional",K,,19.1,332,1409,0.4,0.5,79.6,75.9,3.7,0.4,,,100,false,,85
+K006,"Bocadillo o dulce de guayaba, veleño",K,,20.1,318,1352,0.3,0.1,79,,,0.5,,,100,false,,85
+K007,"Caramelos o confites, blandos",K,,7.2,371,1576,0,0,92.7,92.7,0,0.1,44,,100,false,,85
+K008,"Caramelos o confites, duros",K,,7.2,369,1559,0,0,92.3,92.3,0,0.5,38,,100,false,,85
+K009,"Chocolate, en bolas, con panela",K,,6.2,419,1766,4.2,10.2,77.5,,,1.9,,,100,false,,85
+K010,"Chocolate, en pastilla, con azúcar",K,,3.1,466,1958,3.6,16.6,75.5,,,1.2,,,100,false,,85
+K011,"Chocolate, en pastilla, con azúcar y leche",K,,1.7,466,1960,7.5,15.8,73.4,,,1.6,,,100,false,,85
+K012,Chocolatina o chocolate de leche,K,,1.3,550,2296,5.5,31.8,60,59.2,0.8,1.4,63,,100,false,,85
+K013,"Chucula o chocolate, en bolas, con harina de cereales y leguminosas",K,,4,438,1847,9.1,12,73.4,,,1.5,,,100,false,,85
+K014,"Cocadas, con panela",K,,6,417,1760,1.6,8.2,82.4,78.8,3.6,1.8,29,,100,false,,85
+K015,"Dulce de coco, con almendras",K,,2,405,1717,1.9,1.7,93.9,90.6,3.3,0.4,33,,100,false,,85
+K016,"Dulce de jengibre, cristalizado",K,,12,355,1506,0.4,0.5,87,86.8,0.2,0.1,31,,100,false,,85
+K017,Dulce de lulo,K,,6.4,385,1632,1.1,1.8,90.3,88.8,1.5,0.4,,,100,false,,85
+K018,"Gelatina con azúcar, en polvo",K,,1.6,392,1668,8.3,0,89.8,89.8,0,0.3,268,,100,false,,85
+K019,"Gelatina con azúcar, liquida",K,,83.1,67,286,1.4,0,15.4,15.4,0,0.1,75,,100,false,,85
+K020,Gelatina de pata,K,,18.5,324,1375,7.4,0,73.5,,,0.6,,,100,false,,85
+K021,"Goma de mascar, con azúcar",K,,2.6,390,1655,0,0.3,96.7,96.7,0,0.4,6,,100,false,,85
+K022,"Helado de agua, con azúcar",K,,89,44,185,0,0,10.9,10.9,0,0.1,7,,100,false,,85
+K023,Helado de crema,K,,62.8,196,822,3.2,10.3,22.8,22.8,0,0.9,61,,100,false,,85
+K024,Helado de leche,K,,84.5,63,266,0.4,0.2,14.8,14.8,0,0.1,17,,100,false,,85
+K025,Manjar blanco,K,,15.9,330,1402,6.1,0.3,75.7,,,2,,,100,false,,85
+K026,Manjar del Valle,K,,16.4,362,1530,7.1,7.3,67,,,2.2,,,100,false,,85
+K027,Masmelos,K,,16.4,334,1421,1.8,0.2,81.3,81.2,0.1,0.3,47,,100,false,,85
+K028,Melaza o miel negra,K,,24,264,1121,0,0.1,65.7,65.7,0,10.2,37,,100,false,,85
+K029,"Melocotón, en almibar",K,,79.3,85,351,0,0.1,20.4,19.1,1.3,0.2,6,,100,false,,85
+K030,"Mermelada, regular, con azúcar",K,,32.6,272,1155,0.5,0,66.5,64.6,1.9,0.4,29,,100,false,,87
+K031,"Miel de abejas, líquida",K,,16.9,332,1410,0.5,0,82.4,82.4,0,0.2,9,,100,false,,87
+K032,"Miel de caña de azúcar, líquida",K,,25,295,1254,0.3,0.2,73,73,0,1.4,,,100,false,,87
+K033,Panela,K,,7.5,364,1548,0.6,0.1,90.2,90.2,0,1,39,,100,false,,87
+K034,"Panelita de leche de vaca, con azúcar",K,,10.6,361,1532,2.9,1.8,83.3,,,1.4,,,100,false,,87
+K035,"Uchuva, en almibar",K,,58.2,165,701,5.4,0.4,35.1,,,1,,,100,false,,87
+L001,"Achiote, seco",L,Semilla,3.1,392,1662,4.4,5.3,81,81,0,5.4,,,100,false,,89
+L002,"Aloe vera, crudo",L,,98.7,7,30,0,0.2,0.9,0.3,0.6,0.1,,,,false,,89
+L003,"Cacao, tostado y molido",L,Semilla,6.9,468,1960,14.4,22.5,51.9,51.9,0,4.3,4,,100,false,,89
+L004,"Café soluble, descafeinado, en polvo",L,,3.2,371,1576,11.6,0.2,80.7,80.7,0,4.3,23,,100,false,,89
+L005,"Café soluble, en polvo",L,,3.1,355,1506,13,0.4,74.7,74.7,0,8.8,38,,100,false,,89
+L006,"Café, tostado y molido, en polvo",L,Semilla,2.1,479,2008,14.2,12.3,67.5,46.9,20.6,3.9,1,,100,false,,89
+L007,"Caldo de carne de res, deshidratado",L,,4.1,259,1076,16.9,20.3,2.2,2.2,0,56.5,20720,,100,false,,89
+L008,Chocolate amargo o negro,L,,1.3,622,2586,4.9,42.6,49.3,38.4,10.9,1.8,17,,100,false,,89
+L009,"Cocoa, en polvo, sin azúcar",L,,2.9,488,2040,19.5,10.8,59.7,22.7,37,7.2,21,,100,false,ENERGY_MISMATCH(488 vs 414),89
+L010,"Jengibre, crudo",L,,9.8,391,1651,9,4.2,72.3,58.2,14.1,4.8,27,,93,false,,89
+L011,"Levadura biológica para pan, fresca, prensada",L,,70.2,137,578,8.4,1.8,17.8,9.7,8.1,1.8,30,,100,false,ENERGY_MISMATCH(137 vs 121),89
+L012,"Moringa, en polvo",L,,4.2,424,1784,13.6,8,68.2,55.5,12.6,6.2,,,100,false,,89
+L013,"Polen, húmedo",L,,19.9,361,1521,16.3,5.4,56.8,46.9,9.9,1.6,,,100,false,,89
+L014,"Polen, seco",L,,5.6,426,1797,22.5,5.8,63.8,49.4,14.4,2.3,,,100,false,,89
+L015,Sal,L,,0.2,0,0,0,0,0,0,0,99.8,38781,,100,false,,89
+L016,Salsa de mostaza,L,,76,107,449,3.6,3.3,14.1,10.9,3.2,3,1206,,100,false,,89
+L017,Salsa de tomate,L,,70.8,109,463,1.3,0.3,25,24.2,0.8,2.6,860,,100,false,,89
+L018,Vinagre,L,,93.8,24,103,0,0,6,6,0,0.2,5,,100,false,,89
+N001,"Margarina, baja en Calorias, esparcible",N,,42,425,1757,1.6,40,14.7,0,0,1.7,390,11.3,100,false,,91
+N002,"Mayonesa, baja en grasa",N,,61.4,308,1271,1,32,4.1,4.1,0,1.5,750,3.5,100,false,,91
+N003,"Mermelada, baja en Calorias",N,,45.8,222,944,0.5,0.3,53.2,50.8,2.4,0.2,47,0,100,false,,91
+N004,"Salchicha de cerdo, baja en grasa",N,,69.9,153,638,16.6,8.1,3.3,3.3,0,2,860,2.9,100,false,,91
+N005,"Yogurt, bebible, descremado, sin azúcar",N,,87.2,49,208,3.7,0.3,7.9,7.9,0,0.9,60,,100,false,,91
+N006,"Yogurt, bebible, semidescremado, con azúcar",N,,76,99,418,4,1.1,18.1,17.8,0.3,0.9,62,0.8,100,false,,91
+P001,"Achira, sin cáscara, cocida, sin sal",P,Raíz,40.2,244,1035,3.4,0.2,54.4,48.5,5.9,1.8,2,,,false,,93
+P002,"Achira, sin cáscara, cruda",P,Raíz,84.4,58,248,0.9,0.2,13,12,0.5,1.5,,,65,false,,93
+P003,"Ackee, crudo",P,Pulpa sin semillas,72,153,637,2.9,9,15,,,1.1,31,,,false,,93
+P004,"Almidón de arracacha, crudo",P,,6.2,371,1576,0.5,0.5,91,90.5,0.5,1.9,,,100,false,,93
+P005,"Almidón de malanga, crudo",P,,14.1,348,1475,1.8,1.3,82.2,82.2,0,0.7,,,100,false,,93
+P006,"Almidón de ñame, crudo",P,,10.1,395,1669,0.8,6.7,82.3,81.3,1,0.1,,,100,false,,93
+P007,"Araza, crudo",P,Pulpa sin semillas,91.2,42,175,1.1,1.1,6.5,5.6,0.9,0.2,28,,77,false,,93
+P008,"Árbol del pan, cocido",P,Pulpa sin semillas,62.5,150,636,5.2,0.8,30.5,,,1,,,100,false,,93
+P009,"Árbol del pan, crudo",P,Pulpa sin semillas,74.2,115,487,2.8,0.6,22.3,17.4,4.9,0.1,2,,55,false,,93
+P010,"Arbol del pan, semilla, crudo",P,Semillaa,47.8,242,1017,7.4,5.6,37.8,32.6,5.2,1.4,25,,68,false,,93
+P011,"Asai, cocido, sin sal",P,Pulpa sin semillas,44.3,378,1566,4.6,25.9,22.4,3.8,18.6,2.8,36,,71,false,,93
+P012,"Asai, orudo",P,Pulpa sin semillas,44.3,385,1593,3.8,30.6,17.5,5,12.5,3.9,28,,42,false,,93
+P013,"Asal, deshidratado",P,Pulpa sin semillas,4.6,391,1659,0.1,1.4,93.9,92.7,1.1,0,,,100,false,,93
+P014,"Asai, liofilizado",P,Pulpa sin semillas,2.6,691,2859,1.6,51.6,43.7,21.4,22.3,0.4,225,,100,false,,93
+P015,"Banano chiro, crudo",P,Pulpa,68.2,126,535,1.5,0.1,28.9,26.9,2,1.3,,,80,false,,93
+P016,"Banano pacífico, orudo",P,Pulpa,71.2,112,475,1.1,0.2,26.4,,,1.1,,,65,false,,93
+P017,"Borojo, crudo",P,Pulpa sin semillas,64,140,594,3,0.6,30.5,,,1.8,8,,60,false,,93
+P018,"Cacao silvestre, crudo",P,Pulpa sin semillas,86,60,251,1,1.1,10.3,8.1,2.2,1.6,1,,8,false,,93
+P019,"Cacao silvestre, semilla, crudo",P,Semilla,3.2,604,2509,13,46,34.4,34.4,0,3.4,4,,8,false,,93
+P020,"Cactus, crudo",P,Tallo,96.9,8,34,0.5,0.1,1.1,0.8,0.3,1.3,32,,,false,,93
+P021,"Caimo morado, crudo",P,Pulpa sin semillas,84.5,70,297,1,1.4,12.9,11.8,1.1,0.2,,,82,false,,93
+P022,"Camu-camu, crudo",P,Pulpa sin semillas,92.1,32,135,0.5,0.1,7.1,6.8,0.3,0.2,,,58,false,,93
+P023,"Carambolo, maduro, crudo",P,Pulpa sin semillas,95.2,25,104,0.4,0.1,4.2,1.4,2.8,0.2,1,,74,false,,93
+P024,"Carambolo, maduro, deshidratado",P,Pulpa sin semillas,4.8,379,1609,0.7,2.4,88.8,,,3.3,1,,100,false,,93
+P025,"Carambolo, pintón, crudo",P,Pulpa sin semillas,95.1,25,105,0.4,0.1,4.2,1.4,2.8,0.2,0,,74,false,,93
+P026,"Carambolo, pintón, deshidratado",P,Pulpa sin semillas,4.9,378,1603,0.7,2.2,88.8,,,3.4,0,,100,false,,93
+P027,"Carambolo, verde, crudo",P,Pulpa sin semillas,95.2,24,102,0.3,0.1,4.1,1.3,2.8,0.2,1,,76,false,,93
+P028,"Carambolo, verde, deshioratado",P,Pulpa sin semillas,4.8,375,1594,0.7,1.7,89.3,,,3.5,1,,100,false,,93
+P029,"Cardo, crudo",P,Tallo,89.1,51,213,1.3,0.2,8.3,2.9,5.4,1.1,90,,85,false,ENERGY_MISMATCH(51 vs 40),93
+P030,"Cardón Guajiro, asado, sin sal",P,Tallo,94.5,22,92,0.8,0.1,3.2,0.7,2.5,1.3,6,,100,false,,95
+P031,"Carurú, cocido, sin sal",P,Hoja,90.7,44,185,2.7,0.6,5.2,1.5,3.7,0.9,1,,100,false,,95
+P032,"Carurú, crudo",P,Hoja,90.7,39,164,2.6,0.3,4.8,1.6,3.2,1.6,1,,100,false,,95
+P033,"Casabe de yuca, asado, con sal",P,,13.7,341,1451,1.6,0.2,83.3,,,1.2,,,100,false,,95
+P034,"Cedro macho, crudo",P,Pulpa sin semillas,83.4,68,289,0.7,0.1,15.4,14,1.4,0.4,0,,94,false,,95
+P035,"Champa, cruda",P,Pulpa sin semillas,80.5,77,327,0.4,0.1,18.6,,,0.4,,,60,false,,95
+P036,"Chicozapote, crudo",P,Pulpa sin semillas,78,102,431,0.6,1.1,19.9,14.6,5.3,0.4,12,,80,false,,95
+P037,"Chigua, cruda",P,Semilla,39.3,249,1055,9.2,2,48.5,,,1,,,100,false,,95
+P038,"Chontaduro amazónico, crudo",P,Pulpa sin semilla,55.6,255,1062,7.9,16.6,18.5,,,1.4,165,,77,false,,95
+P039,"Chupa, cruda",P,Pulpa sin semillas,53.4,231,968,4.4,10,30.8,,,1.4,,,70,false,,95
+P040,"Ciruela joba, cruda",P,Pulpa sin semilla,82.1,74,311,0.7,0.1,16.2,13.9,2.3,0.8,0,,20,false,,95
+P041,"Cocona, cruda",P,Pulpa sin semillas,79,85,359,0.7,0.1,19.5,17.9,1.6,0.7,4,,74,false,,95
+P042,"Coconilla, cocida, sin sal",P,Pulpa sin semillas,80.8,78,331,1.9,0.7,14.7,11.6,3.1,2,0,,34,false,,95
+P043,"Coconilla, cruda",P,Pulpa sin semillas,80.8,92,388,2.2,0.9,14.9,7.2,7.7,1.1,0,,73,false,ENERGY_MISMATCH(92 vs 77),95
+P044,"Concha de caimán, cruda",P,Pulpa,74.3,105,445,4.3,0.2,19.1,13.9,5.2,2.2,12,,,false,,95
+P045,"Copoazú, crudo",P,Pulpa sin semillas,89,50,211,1.2,1,7.5,4.5,3.1,1.2,3,,62,false,,95
+P046,"Corozo, crudo",P,Pulpa sin semillas,40.1,381,1583,3.9,29.5,25,,,1.5,,,60,false,,95
+P047,"Cucurito, cocido, sin sal",P,Pulpa sin semillas,45.5,337,1402,2.9,20.4,29.4,16.9,12.5,1.8,2,,32,false,,95
+P048,"Cucurito, crudo",P,Pulpa sin semillas,45.5,334,1387,2.6,19.4,30.6,17.4,13.2,1.9,2,,30,false,,95
+P049,"Cucurito, semilla, cocido, sin sal",P,Semilla,43.8,425,1753,4.1,36.1,13.9,0,13.9,2.1,0,,19,false,,95
+P050,"Cucurito, semilla, crudo",P,Semilla,43.8,376,1560,5.4,23.6,25.2,4.4,20.8,2,1,,16,false,ENERGY_MISMATCH(376 vs 335),95
+P051,"Duotù simple, sin cascara, cocido, sin sal",P,Medula,78.3,94,397,0.8,0.1,20.2,15.8,4.4,0.6,0,,69,false,,95
+P052,"Ductú simple, sin cascara, crudo",P,Médula,78.2,93,393,0.9,0.1,20.1,16,4,0.7,0,,48,false,,95
+P053,Dulce de borojo,P,,7.4,383,1624,0.9,2.2,89.1,87.7,1.4,0.3,,,100,false,,95
+P054,"Duri, crudo",P,,44,252,1064,3.4,6.7,44.6,,,1.3,54,,,false,,95
+P055,"Emi, crudo",P,Pulpa sin semillas,70.2,143,600,2.6,0.1,26.4,13.3,13.1,0.8,7,,,false,ENERGY_MISMATCH(143 vs 117),95
+P056,"Guáimaro o ramón, cocido, sin sal",P,Pulpa sin semillas,59.6,168,711,6.7,2.2,29.3,27,2.3,2.2,7,,100,false,,95
+P057,"Guayaba de morrocoy, cruda",P,Pulpa sin semillas,91.1,42,177,1.3,0.2,6.9,2.8,4.1,0.6,12,,,false,,95
+P058,"Harina de achira, cruda",P,,9.4,361,1535,0.2,0,90.1,,,0.3,,,100,false,,95
+P059,"Harina de semillas de calabazo o totumo, oruda",P,,5.6,605,2509,27.7,48.8,12.9,11.2,1.7,5,6,,100,false,,95
+P060,"Harina de yuca brava, fariña o mandioca, cruda",P,,13.9,355,1504,1.7,0.2,83.3,76.9,6.4,0.9,1,,100,false,,95
+P061,"Iguaraya, cruda",P,Pulpa sin semillas,84.5,72,304,1,0.4,13.5,8.1,5.4,0.6,1,,84,false,ENERGY_MISMATCH(72 vs 62),97
+P062,Jute de papa criolla,P,,68.3,123,524,2.3,0,28.5,,,0.9,,,100,false,,97
+P063,"Majua o cubio, con cáscara, crudo",P,Médula y corteza,67.8,135,572,5.8,2,22.6,,,1.4,20,,5,false,,97
+P064,"Malanga, sin cáscara, cruda",P,Raiz/Cormo,71.3,120,506,1.5,0.3,25.8,21.7,4.1,1.1,11,,69,false,,97
+P065,"Mamo, crudo",P,,79,82,349,1.2,0.4,18.5,,,0.9,12,,,false,,97
+P066,"Maputo, crudo",P,,28,304,1286,6.4,4.3,59.9,,,1.4,18,,,false,,97
+P067,"Milpesos, cocida, sin sal",P,Pulpa sin semillas,50.6,319,1324,3.3,23.7,19.4,11.8,7.7,3,4,,35,false,,97
+P068,"Milpesos, cruda",P,Pulpa sin semillas,40.8,403,1671,3.2,29.4,24.7,11.2,13.4,1.8,2,,35,false,,97
+P069,"Moriche, crudo",P,Pulpa sin semillas,59.9,296,1224,2.3,25.1,11.8,4.9,7,0.9,12,,23,false,,97
+P070,"Nispero del Japón, crudo",P,Pulpa sin semillas,88,51,217,0.4,0.2,11,9,2,0.4,1,,65,false,,97
+P071,"Nuez caldereña o nuez de barinas, seca, en polvo",P,Nuez,5,582,2419,29.9,42.8,19.4,,,3.1,8,,100,false,,97
+P072,"Name, con cáscara, crudo",P,Médula y corteza,68.9,131,554,2.2,0.4,27.6,23.5,4.1,0.9,,,100,false,,97
+P073,"Ñame, sin cáscara, cocido",P,Médula,70.1,125,530,1.5,0.1,27.6,23.7,3.9,0.7,8,,100,false,,97
+P074,"Name, sin cáscara, crudo",P,Médula,71.1,121,512,2,0.2,25.9,21.8,4.1,0.9,9,,85,false,,97
+P075,"Oca o ibia, con cáscara, cruda",P,Médula y corteza,84.6,77,322,1.1,0.1,13.3,4.1,9.2,0.9,,,100,false,ENERGY_MISMATCH(77 vs 59),97
+P076,"Oca o ibia, sin cáscara, cruda",P,Médula,87.2,52,220,1.4,0.4,10.7,,,0.3,7,,95,false,,97
+P077,"Olloco o chugua, con cascara, cruda",P,Médula y corteza,87.7,50,211,1.4,0.5,9.7,9.4,0.3,0.6,,,100,false,,97
+P078,"Olloco o chugua, sin cascara, cruda",P,Médula y corteza,84.1,60,257,1.5,0,13.6,,,0.8,11,,86,false,,97
+P079,"Ortiga, cruda",P,Tallo,87.7,60,253,0.7,0,10.8,3.9,6.9,0.8,4,,,false,ENERGY_MISMATCH(60 vs 46),97
+P080,"Paja toquilla, cruda",P,Hojas,90.5,42,176,3.4,2,2.6,,,1.5,,,90,false,,97
+P081,"Pepinillo, crudo",P,Pulpa sin semillas,95.8,17,72,0.8,0.1,2.9,2.2,0.7,0.4,38,,,false,,97
+P082,"Perico, crudo",P,,67.9,124,528,2.3,0.1,28.5,,,1.2,15,,,false,,97
+P083,"Piña india, cruda",P,Pulpa,87.1,54,229,0.5,0.2,12,10.7,1.3,0.3,2,,62,false,,97
+P084,"Piña uva hartón, cruda",P,Pulpa,77.6,82,350,3.6,0.1,16.7,,,2,7,,,false,,97
+P085,"Sacha inchi, cruda",P,Nuez,5.2,667,2758,15.8,60.2,15.5,,,3.4,,,100,false,,97
+P086,"Termita, cocida, con sal",P,,44.2,237,998,33.1,1.3,16,1.5,14.4,5.5,1264,,100,false,ENERGY_MISMATCH(237 vs 208),97
+P087,"Termita, cruda",P,,44.2,247,1040,35,0.6,17.6,2.2,15.4,2.6,29,,100,false,ENERGY_MISMATCH(247 vs 216),97
+P088,"Trigo amazónico, crudo",P,Semilla,14.8,344,1460,11.4,1.7,70.7,,,1.3,12,,100,false,,97
+P089,"Trupillo, seco, crudo",P,Semi la,10.9,390,1646,14.4,1.9,68.8,48.7,20.1,4,148,,61,false,ENERGY_MISMATCH(390 vs 350),97
+P090,"Tuna, cruda",P,Pulpa sin semillas,83.7,72,304,1.2,0.2,13.9,8.9,5,1,4,,84,false,,97
+P091,"Umuy, crudo",P,Semilla,60.8,152,645,3.4,0.7,33,,,2.1,,,100,false,,97
+P092,"Weya, crudo",P,,65,139,591,4,0.6,29.5,,,1,15,,,false,,99
+P093,"Wuapo, crudo",P,,66,160,672,1.4,5.2,26.8,,,0.6,37,,,false,,99
+P094,"Yuca brava, sin cáscara, cruda",P,Pulpa,62.4,147,624,0.5,0.1,36,,,1,,,80,false,,99
+P095,"Yuca colorada, sin cáscara, cruda",P,Pulpa,63.4,143,606,0.4,0.2,34.9,,,1.1,,,80,false,,99
+R001,"Alimento para Mujer Gestante y Madre en Periodo de Lactancia, en polvo",R,,8,395,1664,21.5,11,52,51,1,7.5,,,100,false,,101
+R002,"Bienestarina Mas®, precocida, en polvo, sabor a fresa natural",R,,9,354,1499,24,3,57,55.6,1.4,7,67,1.2,100,false,,101
+R003,"Bienestarina Mas®, precocida, en polvo, sabor a vainilla natural",R,,9,354,1499,24,3,57,55.6,1.4,7,67,1.3,100,false,,101
+R004,"Bienestarina Más®, precocida, en polvo, sabor natural",R,,9,354,1498,21,3,60,58.7,1.3,7,67,1.5,100,false,,101
+R005,"Bienestarina®, líquida, con arroz, avena y quinua",R,,80.8,79,333,3.5,2.5,10.2,9.2,1,3,75,,100,false,,101
+R006,"Bienestarina®, liquida, sabor a vainilla natural",R,,80.8,79,333,3.5,2.5,10.2,9.2,1,3,75,,100,false,,101
+S001,Ajiaco santafereño,S,,80.2,82,348,6.4,0.8,11.3,9.1,2.2,1.3,248,0.2,95,false,,103
+S002,Arroz atollado,S,,74.9,119,501,10.1,4.3,9.2,7.5,1.7,1.5,480,0.8,100,false,,103
+S003,Arroz clavado,S,,59.9,182,765,6.4,5.5,26.4,25.9,0.5,1.8,553,1.8,100,false,,103
+S004,Bandeja paisa,S,,60.3,212,884,11.7,11,15.3,13,2.3,1.7,282,1.9,100,false,,103
+S005,"Bollo limpio, precocido",S,,62.4,178,748,3.3,4.8,29.1,26.7,2.4,0.4,132,0.5,100,false,,103
+S006,"Carimañola, con queso, precocida",S,,45.8,295,1231,5.8,17.4,28.6,,,2.3,,,100,false,,103
+S007,"Chicharrón de pirarucu, frito",S,,55.5,217,909,22,10.3,8.7,7.9,0.8,3.5,1030,1.9,100,false,,103
+S008,"Chili con carne, precocido",S,,71.6,129,544,6.6,3.4,16.4,13.1,3.3,2,401,1.3,100,false,,103
+S009,"Chocolate, en agua (50%) y leche de vaca entera (50%)",S,,82,89,374,3.4,3.6,10.3,9.3,1,0.7,53,1.9,100,false,,103
+S010,Cuy asado,S,,49.9,229,964,24.4,7.8,14.8,13.7,1.1,3.1,758,3.2,78,false,,103
+S011,"Empanada de pipian, frita",S,,31.4,396,1650,4.7,26.3,34.6,33.5,1.1,3,,,100,false,,103
+S012,"Envuelto de maíz mute, precocido",S,,66.1,163,685,3.2,4.8,25.5,23.1,2.4,0.4,132,0.5,100,false,,103
+S013,"Envuelto de platano maduro, precocido",S,,60.1,158,672,1.6,0.1,37.6,37.3,0.3,0.6,,,100,false,,103
+S014,"Envuelto de yuca, precocido",S,,64.7,141,597,0.6,0.1,34.3,,,0.3,,,100,false,,103
+S015,Friche de chivo,S,,52.9,243,1016,29.7,12.9,1.6,0.8,0.8,2.9,355,3.3,68,false,,103
+S016,"Gusaamole, crudo",S,,68.2,184,763,0.1,12.7,16.3,14.6,1.7,2.6,137,2.7,100,false,,103
+S017,"Hamburguesa de carne de res, regular, con vegetales y condimentos",S,,51,252,1057,11.7,12.3,23.1,22,1.1,1.8,333,4.1,100,false,,103
+S018,"Lechona tolimense, horneada",S,,53.8,242,1011,21.8,12,10.2,7.3,2.9,2.2,452,2,100,false,,103
+S019,Mazamorra chiquita,S,,77.9,115,479,9.8,5,6.1,3.1,3,1.2,323,2.3,100,false,,103
+S020,Mote de queso,S,,79,102,427,5.4,3.9,10.2,8,2.2,1.5,246,1.9,100,false,,103
+S021,Mute santandereano,S,,79.1,113,470,8.1,6.1,5.4,3.5,1.9,1.3,155,2.7,100,false,,103
+S022,Pisillo de chigüiro,S,,54.6,218,912,26,9.3,6.9,5.8,1.1,3.2,1070,1.8,100,false,,103
+S023,Rundown,S,,68,136,574,8.2,2.1,20.2,18.5,1.7,1.5,302,1.1,97,false,,103
+S024,Sancocho de bagre,S,,73.3,134,560,16.9,6.3,1.6,0.1,1.5,1.9,482,2.6,100,false,,103
+S025,Sancocho valluno de gallina,S,,74,121,509,16.4,4,4.2,2.9,1.3,1.4,347,0.4,93,false,,103
+S026,Sopa de arroz,S,,84.8,68,287,3.7,2.2,8.4,,,0.9,,0.4,100,false,,103
+S027,Sopa de tortillas,S,,87.1,56,237,1.7,1.1,9.3,8.1,1.2,0.8,167,0.2,100,false,,103
+S028,Sudao de piangüa,S,,65.9,182,760,18.4,10.6,2.7,1.6,1.1,2.4,658,9,100,false,,105
+S029,"Tamal de maíz y guiso, cocido",S,,68.3,170,712,3.5,8.8,17.7,14.5,3.2,1.7,277,2.6,100,false,,105
+S030,"Tamal de maíz, cocido",S,,64.3,181,758,3.8,7.2,23.8,21,2.8,0.9,277,2.6,100,false,,105
+S031,"Tamal de pipián, cocido",S,,78.2,84,358,2.2,0.8,17.1,,,1.7,,,100,false,,105
+S032,"Tamal tolimense, cocido",S,,72.6,132,553,5.7,3.8,16.7,12.7,4,1.2,265,0.8,100,false,,105
+S033,Viudo de bocachico,S,,73.5,123,518,13.2,4.1,7.8,6.7,1.1,1.4,283,1.2,76,false,,105
+T001,"Ajonjoll o sésamo, crudo",T,Semilla,4.1,646,2684,20.4,52.2,18.2,5,11.5,5,11,,100,false,,107
+T002,"Arveja seca, cocida, sin sal",T,Semilla,68.4,138,584,8.1,0.4,22.4,16.4,6,1.6,2,,100,false,,107
+T003,"Arveja seca, cruda",T,Semilla,12.4,374,1581,23.9,1.1,60.2,46.3,13,2.4,15,,100,false,,107
+T004,"Bebida vegetal, de soya, líquida, sin azúcar",T,,92,40,168,2.6,1.7,3.2,2.1,1.1,0.5,54,,100,false,,107
+T005,"Frijol blanco, crudo",T,Semilla,12,373,1575,21.3,1.1,61.8,46.7,15.1,3.8,15,,100,false,,107
+T006,"Frijol bola roja, crudo",T,Semilla,14.8,371,1564,21.4,1.2,58.7,38.7,20,4,15,,100,false,ENERGY_MISMATCH(371 vs 331),107
+T007,"Frijol cabecita negra, crudo",T,Semilla,12.8,391,1647,21.6,1.4,60.5,35.6,24.9,3.7,16,,100,false,ENERGY_MISMATCH(391 vs 341),107
+T008,"Frijol canavalia, crudo",T,Semilla,15.2,365,1542,20.6,1.4,59.4,42.9,16.5,3.4,5,,100,false,,107
+T009,"Frijol caraota o negro, crudo",T,Semilla,12.5,385,1627,22.8,1.7,59,37.4,21.6,4,5,,100,false,ENERGY_MISMATCH(385 vs 343),107
+T010,"Frijol cargamanto rojo, cocido, sin sal",T,Semilla,63.3,161,678,8.1,0.6,26.9,19.3,7.6,1.1,1,,100,false,,107
+T011,"Frijol cargamanto rojo, crudo",T,Semilla,11.9,386,1628,22.8,1.5,60.4,40.6,19.8,3.4,10,,100,false,ENERGY_MISMATCH(386 vs 346),107
+T012,"Frijol cargamanto rosado, crudo",T,Semilla,11.9,370,1564,21,1.2,62.4,49.7,12.7,3.5,8,,100,false,,107
+T013,"Frijol guandul, crudo",T,Semilla,14,366,1547,19.5,1.4,61.4,46.4,15,3.7,17,,100,false,,107
+T014,"Frijol mungo, crudo",T,Semilla,11.5,375,1585,23.9,1.1,59.2,43,16.3,4.2,12,,100,false,,107
+T015,"Frijol nima, crudo",T,Semilla,14.8,370,1560,19.4,1.2,61.1,42.7,18.4,3.5,,,100,false,ENERGY_MISMATCH(370 vs 333),107
+T016,"Frijol radical, crudo",T,Semilla,12.4,392,1650,22.9,1.3,59.7,34.9,24.8,3.7,6,,100,false,ENERGY_MISMATCH(392 vs 342),107
+T017,"Frijol sangretoro, crudo",T,Semilla,13.5,370,1563,23.5,1.3,57.9,41.5,16.4,3.8,12,,100,false,,107
+T018,"Garbanzo, cocido, sin sal",T,Semilla,61.7,187,783,8.6,2.3,26,12.4,13.6,1.4,7,,100,false,ENERGY_MISMATCH(187 vs 159),107
+T019,"Garbanzo, crudo",T,Semilla,13,393,1656,19.9,5.5,58.8,44.4,14.3,2.5,30,,100,false,,107
+T020,"Haba seca, cruda",T,Semilla,14,391,1649,25.8,1.8,55.5,30.5,25,2.9,12,,100,false,ENERGY_MISMATCH(391 vs 341),107
+T021,"Harina de algarrobo, cruda",T,,3.6,456,1916,4.6,1.6,85.8,46,39.8,4.3,35,,100,false,ENERGY_MISMATCH(456 vs 376),107
+T022,"Harina de frijol mungo, cruda",T,,5.5,371,1574,29,0.8,61.7,,,2.8,,,100,false,,107
+T023,"Harina de garbanzo, cruda",T,,10.2,403,1699,22.4,6.7,57.9,47.1,10.8,2.8,64,,100,false,,107
+T024,"Harina de soya, con grasa, cruda",T,,7.8,476,1992,36.6,22.5,27.5,17.9,9.6,5,9,,100,false,,107
+T025,"Lenteja común, cocida, sin sal",T,Semilla,72.7,122,515,7.7,0.5,18.5,12,6.5,0.7,6,,100,false,ENERGY_MISMATCH(122 vs 109),107
+T026,"Lenteja común, cruda",T,Semilla,12.6,387,1634,23.1,0.9,61,39.7,21.3,2.4,27,,100,false,ENERGY_MISMATCH(387 vs 345),107
+T027,"Lenteja real, cruda",T,Semilla,11.8,391,1650,25.3,1.1,59.3,37.8,21.5,2.5,6,,100,false,ENERGY_MISMATCH(391 vs 348),107
+T028,"Maní, con piel, crudo",T,Semilla,6.5,619,2568,27.3,47.8,15.8,7.5,8.3,2.6,18,,100,false,,107
+T029,"Maní, con piel, tostado, sin sal",T,Semilla,1.8,650,2695,25.9,50.4,19.2,11.4,7.8,2.7,6,,98,false,,107
+T030,"Soya, cruda",T,Semilla,9.3,479,2003,36.5,20.7,28.6,15.1,15.7,4.6,4,,100,false,,107
+T031,"Soya, tostada",T,Semilla,2,539,2250,38.5,25.4,30.2,12.5,17.7,3.9,4,,100,false,,107
+T032,"Tofu, crudo",T,,73,142,593,17.4,7.7,0.5,0.2,0.3,1.4,17,,100,false,,107

@@ -38,7 +38,9 @@ const num = (value: CellValue): number | null => (typeof value === "number" ? va
 
 function ocrIssues(row: TcacRow): Issue[] {
   return row.problems.map((problem) => {
-    const [code, detail] = problem.split(/:(.*)/s);
+    const separator = problem.indexOf(":");
+    const code = separator < 0 ? problem : problem.slice(0, separator);
+    const detail = separator < 0 ? undefined : problem.slice(separator + 1);
     return { code: code as IssueCode, blocking: true, detail };
   });
 }
@@ -53,10 +55,12 @@ export function validateRow(row: TcacRow): Issue[] {
   const missing = (["energyKcal", "protein", "fat", "carbsTotal"] as const).filter((f) => v[f] === null);
   if (missing.length) issues.push({ code: "MISSING_CORE", blocking: true, detail: missing.join(",") });
 
+  // El etanol no tiene columna: la composición de una bebida suma 100 g menos su % de alcohol.
+  const alcohol = Number(/(\d+(?:[.,]\d+)?)\s*% de alcohol/i.exec(row.name ?? "")?.[1].replace(",", ".") ?? 0);
   const sumCheckable = [moisture, protein, fat, carbsTotal, ash].every((x) => x !== null);
   if (sumCheckable) {
     const sum = moisture! + protein! + fat! + carbsTotal! + ash!;
-    if (Math.abs(sum - 100) > PROXIMATE_SUM_TOLERANCE) {
+    if (Math.abs(sum + alcohol - 100) > PROXIMATE_SUM_TOLERANCE) {
       issues.push({ code: "PROXIMATE_SUM", blocking: true, detail: sum.toFixed(1) });
     }
   }
@@ -89,22 +93,54 @@ export function validateRow(row: TcacRow): Issue[] {
   return issues;
 }
 
-/** Cuando izquierda y derecha leen códigos distintos, gana el único que respeta el orden con sus vecinos. */
+/** Dígitos que esta tipografía confunde en el OCR. */
+const DIGIT_CONFUSIONS: Record<string, string[]> = { "5": ["6"], "6": ["5"], "0": ["8"], "8": ["0", "3"], "3": ["8"], "1": ["7"], "7": ["1"] };
+
+function confusedVariants(code: string): string[] {
+  const variants: string[] = [];
+  for (let i = 1; i < code.length; i++) {
+    for (const swap of DIGIT_CONFUSIONS[code[i]] ?? []) variants.push(code.slice(0, i) + swap + code.slice(i + 1));
+  }
+  return variants;
+}
+
+/**
+ * Los códigos de la tabla son estrictamente crecientes. Se recorre en orden: si izquierda y derecha
+ * difieren gana el único que encaja entre el anterior y el siguiente; si el código no supera al
+ * anterior, se prueba la menor variante por dígitos confundibles que restablezca el orden.
+ */
 export function resolveCodes(rows: TcacRow[]): TcacRow[] {
-  const isMismatch = (r: TcacRow) => r.problems.some((p) => p.startsWith("CODE_MISMATCH"));
-  return rows.map((row, i) => {
-    if (!isMismatch(row) || !row.leftCode || !row.rightCode) return row;
-    const previous = rows.slice(0, i).reverse().find((r) => !isMismatch(r) && r.code)?.code ?? "";
-    const next = rows.slice(i + 1).find((r) => !isMismatch(r) && r.code)?.code ?? "\uffff";
-    const fits = [row.leftCode, row.rightCode].filter((c) => c > previous && c < next);
-    if (fits.length !== 1) return row;
-    return {
-      ...row,
-      code: fits[0],
-      problems: row.problems.filter((p) => !p.startsWith("CODE_MISMATCH")),
-      notes: [...(row.notes ?? []), `CODE_RESOLVED:${fits[0]}`],
-    };
+  const result: TcacRow[] = [];
+  let previous = "";
+  rows.forEach((row, i) => {
+    const candidates = [...new Set([row.leftCode, row.rightCode, row.code].filter((c): c is string => Boolean(c)))];
+    const nextCandidates = [rows[i + 1]?.leftCode, rows[i + 1]?.rightCode].filter((c): c is string => Boolean(c));
+    const next = nextCandidates.length ? nextCandidates.reduce((a, b) => (a > b ? a : b)) : "\uffff";
+    const notes = [...(row.notes ?? [])];
+
+    let fits = candidates.filter((c) => c > previous);
+    if (fits.length > 1) fits = fits.filter((c) => c < next);
+    let chosen: string | undefined = fits.length === 1 ? fits[0] : undefined;
+
+    if (!chosen && !candidates.some((c) => c > previous)) {
+      const repaired = candidates.flatMap(confusedVariants).filter((c) => c > previous).sort()[0];
+      if (repaired) {
+        chosen = repaired;
+        notes.push(`CODE_REPAIRED:${row.code}>${repaired}`);
+      }
+    }
+
+    if (!chosen) {
+      result.push(row);
+      if (row.code && row.code > previous) previous = row.code;
+      return;
+    }
+    const hadMismatch = row.problems.some((p) => p.startsWith("CODE_MISMATCH"));
+    if (hadMismatch) notes.push(`CODE_RESOLVED:${chosen}`);
+    result.push({ ...row, code: chosen, problems: row.problems.filter((p) => !p.startsWith("CODE_MISMATCH")), notes });
+    previous = chosen;
   });
+  return result;
 }
 
 export function validateCatalog(rows: TcacRow[]): ValidatedRow[] {
@@ -112,7 +148,8 @@ export function validateCatalog(rows: TcacRow[]): ValidatedRow[] {
   for (const r of rows) if (r.code) counts.set(r.code, (counts.get(r.code) ?? 0) + 1);
   let previous = "";
   return rows.map((row) => {
-    const issues = validateRow(row);
+    const accepted = new Set((row.notes ?? []).filter((n) => n.startsWith("ACCEPTED:")).map((n) => n.slice(9)));
+    const issues = validateRow(row).map((i) => (accepted.has(i.code) ? { ...i, blocking: false } : i));
     if (row.code && (counts.get(row.code) ?? 0) > 1) issues.push({ code: "DUPLICATE_CODE", blocking: true });
     if (row.code && row.code <= previous && counts.get(row.code) === 1) issues.push({ code: "CODE_ORDER", blocking: true, detail: `después de ${previous}` });
     if (row.code && row.code > previous) previous = row.code;

@@ -119,12 +119,22 @@ describe("calibrateColumns", () => {
         header("Carbohidratos", 0.81),
         header("Totales (g)", 0.826),
         header("Fibra Distaria (g)", 0.864),
-        header("Cenizas (g)", 0.91),
+        header("Conizas (g)", 0.91),
       ],
       0.56
     );
     expect(columns.map((c) => c.field)).toEqual(["moisture", "energyKcal", "energyKj", "protein", "fat", "carbsTotal", "fiber", "ash"]);
     expect(columns.find((c) => c.field === "carbsTotal")?.x).toBeCloseTo(0.818, 3);
+  });
+
+  it("tolera las variantes de OCR vistas en los encabezados", () => {
+    const columns = calibrateColumns([
+      header("Totoles (g)", 0.79),
+      header("Abra Dietaria (g)", 0.83),
+      header("Canizas (g)", 0.87),
+      header("Parte Comestible (%", 0.91),
+    ]);
+    expect(columns.map((c) => c.field)).toEqual(["carbsTotal", "fiber", "ash", "edibleFraction"]);
   });
 
   it("intercala una columna sin nombre cuando falta un encabezado", () => {
@@ -202,5 +212,13 @@ describe("parseSpread", () => {
     const [row] = parseSpread(...spread([box("H005", 0.089, y), box("Cerveza", 0.2, y, 0.1)], [box("H006", 0.912, y)]));
     expect(row.code).toBe("H006");
     expect(row.problems).toContain("CODE_MISMATCH:H005/H006");
+  });
+
+  it("separa el código cuando viene pegado al nombre en la misma caja", () => {
+    const y = 0.8;
+    const [row] = parseSpread(...spread([box("C001 Aguacate Hass, crudo", 0.15, y, 0.2)], [box("C001", 0.912, y)]));
+    expect(row.name).toBe("Aguacate Hass, crudo");
+    expect(row.leftCode).toBe("C001");
+    expect(row.problems).toEqual([]);
   });
 });

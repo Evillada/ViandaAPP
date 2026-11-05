@@ -99,10 +99,10 @@ function fieldFor(label: string): TcacField | undefined {
   if (/k\.?j/.test(text)) return "energyKj";
   if (text.includes("prote")) return "protein";
   if (text.includes("lipido")) return "fat";
-  if (text.includes("totales")) return "carbsTotal";
+  if (/tot[ao]les/.test(text)) return "carbsTotal";
   if (text.includes("disponibles")) return "carbsAvailable";
-  if (text.includes("fibra")) return "fiber";
-  if (text.includes("cenizas")) return "ash";
+  if (/fibra|dietaria/.test(text)) return "fiber";
+  if (/c[aeo]nizas/.test(text)) return "ash";
   if (text.includes("odio")) return "sodium";
   if (text.includes("saturada") && !/mono|poli|insat/.test(text)) return "saturatedFat";
   if (text.includes("comestible")) return "edibleFraction";
@@ -110,7 +110,7 @@ function fieldFor(label: string): TcacField | undefined {
 }
 
 const isTitle = (text: string) => text === text.toUpperCase() && /[A-Z]{4}/.test(text);
-const hasUnit = (text: string) => /\(.*\)/.test(text);
+const hasUnit = (text: string) => text.includes("(");
 
 /** Si el OCR no leyó el encabezado de una columna, se intercalan columnas sin nombre en el hueco. */
 function fillGaps(columns: Column[]): Column[] {
@@ -296,7 +296,12 @@ export function parseSpread(left: OcrPage, right: OcrPage): SpreadRow[] {
     if (index < 0) continue;
     const x = center(b);
     if (isLeftCode(b)) rows[index].leftCode = parseCode(b.text);
-    else if (x < NAME_MAX_X && x >= LEFT_CODE_MAX_X) names[index].push(b);
+    else if (x < NAME_MAX_X && x >= LEFT_CODE_MAX_X) {
+      const [first, ...rest] = b.text.trim().split(/\s+/);
+      const glued = rest.length && /\d/.test(first) ? parseCode(first) : null;
+      if (glued) rows[index].leftCode ??= glued;
+      names[index].push(glued ? { ...b, text: rest.join(" ") } : b);
+    }
     else if (x < PART_MAX_X && x >= NAME_MAX_X) rows[index].part = b.text.trim();
     else if (x >= PART_MAX_X) leftNumbers[index].push(b);
   }

@@ -55,3 +55,6 @@ next-env.d.ts
 
 # Fuentes originales de datos (PDF/descargas); sólo se versiona lo extraído
 /data/sources/
+
+# python
+__pycache__/

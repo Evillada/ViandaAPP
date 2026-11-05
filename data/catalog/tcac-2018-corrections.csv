@@ -1,0 +1,337 @@
+ref,field,value,note
+A020,carbsAvailable,68.6,leído en la imagen (p. 43)
+A020,fiber,1.6,leído en la imagen (p. 43)
+A027,protein,9.6,leído en la imagen (p. 43)
+A027,fiber,3.0,leído en la imagen (p. 43)
+A035,moisture,10.6,leído en la imagen (p. 45)
+A050,protein,9.6,leído en la imagen (p. 45)
+A055,fat,1.6,leído en la imagen (p. 45)
+A061,fat,1.6,leído en la imagen (p. 47)
+A074,carbsAvailable,71.6,leído en la imagen (p. 47)
+A076,energyKj,1669,leído en la imagen (p. 47)
+A079,ash,2.6,leído en la imagen (p. 47)
+A080,fat,17.6,leído en la imagen (p. 47)
+A082,ash,1.6,leído en la imagen (p. 47)
+A083,fat,6.6,leído en la imagen (p. 47)
+A088,fat,1.6,leído en la imagen (p. 47)
+B002,fat,13.6,leído en la imagen (p. 49)
+B002,fiber,3.3,leído en la imagen (p. 49)
+B002,ash,4.6,leído en la imagen (p. 49)
+B008,carbsTotal,16.6,leído en la imagen (p. 49)
+B010,carbsAvailable,4.6,leído en la imagen (p. 49)
+B015,fiber,0.6,leído en la imagen (p. 49)
+B016,fat,0.1,leído en la imagen (p. 49)
+B032,protein,1.5,leído en la imagen (p. 51)
+B032,fat,3.5,leído en la imagen (p. 51)
+B032,ash,1.4,leído en la imagen (p. 51)
+B033,protein,3.1,leído en la imagen (p. 51)
+B033,fat,0.6,leído en la imagen (p. 51)
+B033,ash,0.8,leído en la imagen (p. 51)
+B040,fat,0.1,leído en la imagen (p. 51)
+B049,moisture,86.2,leído en la imagen (p. 51)
+B049,protein,2.6,leído en la imagen (p. 51)
+B049,fat,0.1,leído en la imagen (p. 51)
+B049,carbsTotal,10.5,leído en la imagen (p. 51)
+B049,ash,0.6,leído en la imagen (p. 51)
+B061,fiber,1.6,leído en la imagen (p. 51)
+B063,protein,1.6,leído en la imagen (p. 53)
+B064,fat,0.1,leído en la imagen (p. 53)
+B071,energyKcal,96,leído en la imagen (p. 53)
+B073,sodium,9,leído en la imagen (p. 54)
+B091,protein,0.9,leído en la imagen (p. 55)
+B093,protein,1.6,leído en la imagen (p. 55)
+B098,edibleFraction,80,leído en la imagen (p. 56)
+B100,protein,1.0,leído en la imagen (p. 55)
+C001,protein,1.3,leído en la imagen (p. 57)
+C001,carbsTotal,13.5,leído en la imagen (p. 57)
+C001,fiber,6.8,leído en la imagen (p. 57)
+C001,sodium,0,leído en la imagen (p. 58)
+C002,moisture,74.3,leído en la imagen (p. 57)
+C002,protein,1.6,leído en la imagen (p. 57)
+C002,fat,13.3,leído en la imagen (p. 57)
+C002,carbsTotal,10.0,leído en la imagen (p. 57)
+C002,ash,0.8,leído en la imagen (p. 57)
+C013,moisture,86.1,leído en la imagen (p. 57)
+C013,protein,1.7,leído en la imagen (p. 57)
+C013,fat,0.3,leído en la imagen (p. 57)
+C013,carbsTotal,11.1,leído en la imagen (p. 57)
+C013,ash,0.8,leído en la imagen (p. 57)
+C017,protein,0.6,leído en la imagen (p. 57)
+C017,carbsAvailable,8.7,leído en la imagen (p. 57)
+C021,ash,0.6,leído en la imagen (p. 57)
+C031,fat,0.3,leído en la imagen (p. 59)
+C031,carbsAvailable,8.0,leído en la imagen (p. 59)
+C032,protein,0.9,leído en la imagen (p. 59)
+C032,ash,0.8,leído en la imagen (p. 59)
+C032,sodium,3,leído en la imagen (p. 60)
+C033,fat,0.1,leído en la imagen (p. 59)
+C033,carbsTotal,17.2,leído en la imagen (p. 59)
+C033,carbsAvailable,17.0,leído en la imagen (p. 59)
+C033,fiber,0.2,leído en la imagen (p. 59)
+C033,ash,0.2,leído en la imagen (p. 59)
+C034,protein,0.7,leído en la imagen (p. 59)
+C034,fat,0.0,leído en la imagen (p. 59)
+C034,ash,0.5,leído en la imagen (p. 59)
+C034,sodium,6,leído en la imagen (p. 60)
+C045,fat,0.1,leído en la imagen (p. 59)
+C048,energyKcal,62,leído en la imagen (p. 59)
+C056,energyKcal,60,leído en la imagen (p. 59)
+C061,ash,0.6,leído en la imagen (p. 59)
+C063,protein,0.6,leído en la imagen (p. 61)
+C063,ash,0.4,leído en la imagen (p. 61)
+C063,edibleFraction,65,leído en la imagen (p. 62)
+C064,protein,14.3,leído en la imagen (p. 61)
+C065,protein,0.5,leído en la imagen (p. 61)
+C065,fiber,2.0,leído en la imagen (p. 61)
+C068,energyKj,138,leído en la imagen (p. 61)
+C081,edibleFraction,60,leído en la imagen (p. 62)
+C085,carbsTotal,8.6,leído en la imagen (p. 61)
+E001,carbsTotal,0.3,leído en la imagen (p. 65)
+E002,carbsTotal,0.7,leído en la imagen (p. 65)
+E006,accept,PROXIMATE_SUM,la fuente suma 101.2 g (74.7+18.2+7.2+0+1.1); energía coherente
+E011,accept,PROXIMATE_SUM,la fuente suma 103.3 g (78.8+17.0+6.4+0+1.1); energía coherente (126 kcal)
+E013,accept,PROXIMATE_SUM,la fuente suma 106.5 g (61.1+27.0+16.2+0+2.2); energía coherente (254 kcal)
+E020,edibleFraction,80,leído en la imagen (p. 66)
+E044,accept,PROXIMATE_SUM,la fuente suma 105.3 g (62.4+26.3+13.5+0+3.1); energía coherente (227 kcal)
+F001,energyKj,693,leído en la imagen (p. 69)
+F006,energyKcal,66,leído en la imagen (p. 69)
+F007,sodium,86,leído en la imagen (p. 70)
+F015,accept,PROXIMATE_SUM,la fuente suma 101.5 g (59.4+18.7+22.5+0+0.9); energía coherente (277 kcal)
+F031,moisture,9.8,leído en la imagen (p. 71)
+F031,protein,10.2,leído en la imagen (p. 71)
+F031,fat,79.2,leído en la imagen (p. 71)
+F031,carbsTotal,0.1,leído en la imagen (p. 71)
+F031,ash,0.8,leído en la imagen (p. 71)
+F035,carbsTotal,0.1,leído en la imagen (p. 71)
+F040,carbsTotal,0.6,leído en la imagen (p. 71)
+F061,fat,1.0,leído en la imagen (p. 73)
+F061,carbsTotal,0.5,leído en la imagen (p. 73)
+F061,fiber,0.0,leído en la imagen (p. 73)
+F063,sodium,233,leído en la imagen (p. 74)
+F067,accept,PROXIMATE_SUM,la fuente suma 101.2 g (59.6+23.8+16.9+0+0.9); energía coherente (247 kcal)
+F070,edibleFraction,38,leído en la imagen (p. 74)
+F071,edibleFraction,38,leído en la imagen (p. 74)
+F075,accept,PROXIMATE_SUM,la fuente suma 101.7 g (74.8+18.9+7.0+0+1.0); energía coherente (139 kcal)
+F083,moisture,79.3,leído en la imagen (p. 73)
+F083,protein,17.7,leído en la imagen (p. 73)
+F083,fat,2.1,leído en la imagen (p. 73)
+F083,carbsTotal,0.0,leído en la imagen (p. 73)
+F083,ash,1.0,leído en la imagen (p. 73)
+F088,moisture,60.2,leído en la imagen (p. 75)
+F088,protein,33.4,leído en la imagen (p. 75)
+F088,fat,4.7,leído en la imagen (p. 75)
+F088,carbsTotal,0.5,leído en la imagen (p. 75)
+F088,ash,1.1,leído en la imagen (p. 75)
+F093,moisture,66.4,leído en la imagen (p. 75)
+F097,protein,14.6,leído en la imagen (p. 75)
+F112,sodium,66,leído en la imagen (p. 76)
+F115,moisture,77.2,leído en la imagen (p. 75)
+G001,fat,35.0,leído en la imagen (p. 79)
+G015,energyKcal,83,leído en la imagen (p. 79)
+G021,accept,PROXIMATE_SUM,la fuente suma 105.2 g (54.4+23.4+18.7+5.9+2.8); energía coherente (286 kcal)
+J001,fat,11.1,leído en la imagen (p. 83)
+J007,ash,1.6,leído en la imagen (p. 83)
+K001,fiber,0.0,leído en la imagen (p. 85)
+K002,moisture,79.0,leído en la imagen (p. 85)
+K002,protein,3.3,leído en la imagen (p. 85)
+K002,fat,1.5,leído en la imagen (p. 85)
+K002,carbsTotal,15.5,leído en la imagen (p. 85)
+K002,ash,0.7,leído en la imagen (p. 85)
+K023,sodium,61,leído en la imagen (p. 86)
+K033,fat,0.1,leído en la imagen (p. 87)
+K034,ash,1.4,leído en la imagen (p. 87)
+L001,protein,4.4,leído en la imagen (p. 89)
+L003,energyKj,1960,leído en la imagen (p. 89)
+L013,ash,1.6,leído en la imagen (p. 89)
+L015,energyKcal,0,leído en la imagen (p. 89): sal
+L015,energyKj,0,leído en la imagen (p. 89): sal
+L017,sodium,860,leído en la imagen (p. 90)
+P002,fat,0.2,leído en la imagen (p. 93)
+P002,ash,1.5,leído en la imagen (p. 93)
+P009,fat,0.6,leído en la imagen (p. 93)
+P017,fat,0.6,leído en la imagen (p. 93)
+P022,fat,0.1,leído en la imagen (p. 93)
+P022,ash,0.2,leído en la imagen (p. 93)
+P029,ash,1.1,leído en la imagen (p. 93)
+P030,carbsAvailable,0.7,leído en la imagen (p. 95)
+P031,fat,0.6,leído en la imagen (p. 95)
+P031,carbsTotal,5.2,leído en la imagen (p. 95)
+P031,ash,0.9,leído en la imagen (p. 95)
+P033,protein,1.6,leído en la imagen (p. 95)
+P033,ash,1.2,leído en la imagen (p. 95)
+P034,ash,0.4,leído en la imagen (p. 95)
+P034,sodium,0,leído en la imagen (p. 96)
+P036,protein,0.6,leído en la imagen (p. 95)
+P038,fat,16.6,leído en la imagen (p. 95)
+P041,fiber,1.6,leído en la imagen (p. 95)
+P042,carbsAvailable,11.6,leído en la imagen (p. 95)
+P042,sodium,0,leído en la imagen (p. 96)
+P051,ash,0.6,leído en la imagen (p. 95)
+P061,ash,0.6,leído en la imagen (p. 97)
+P065,energyKcal,82,leído en la imagen (p. 97)
+P065,ash,0.9,leído en la imagen (p. 97)
+P075,ash,0.9,leído en la imagen (p. 97)
+P078,energyKcal,60,leído en la imagen (p. 97)
+P078,ash,0.8,leído en la imagen (p. 97)
+P079,ash,0.8,leído en la imagen (p. 97)
+P085,energyKcal,667,leído en la imagen (p. 97)
+P085,ash,3.4,leído en la imagen (p. 97)
+P086,ash,5.5,leído en la imagen (p. 97)
+P087,ash,2.6,leído en la imagen (p. 97)
+P089,ash,4.0,leído en la imagen (p. 97)
+P094,fat,0.1,leído en la imagen (p. 99)
+R001,carbsTotal,52.0,leído en la imagen (p. 101)
+R002,carbsTotal,57.0,leído en la imagen (p. 101)
+R002,edibleFraction,100,leído en la imagen (p. 102)
+R003,carbsTotal,57.0,leído en la imagen (p. 101)
+R004,carbsTotal,60.0,leído en la imagen (p. 101)
+R005,carbsTotal,10.2,leído en la imagen (p. 101)
+R006,carbsTotal,10.2,leído en la imagen (p. 101)
+R006,edibleFraction,100,leído en la imagen (p. 102)
+S002,fat,4.3,leído en la imagen (p. 103)
+S002,carbsTotal,9.2,leído en la imagen (p. 103)
+S002,carbsAvailable,7.5,leído en la imagen (p. 103)
+S002,sodium,480,leído en la imagen (p. 104)
+S002,saturatedFat,0.8,leído en la imagen (p. 104)
+S015,edibleFraction,68,leído en la imagen (p. 104)
+S025,fat,4.0,leído en la imagen (p. 103)
+S025,carbsTotal,4.2,leído en la imagen (p. 103)
+T001,energyKcal,646,leído en la imagen (p. 107)
+T003,ash,2.4,leído en la imagen (p. 107)
+T007,protein,21.6,leído en la imagen (p. 107)
+T011,protein,22.8,leído en la imagen (p. 107)
+T015,moisture,14.8,leído en la imagen (p. 107)
+T019,carbsTotal,58.8,leído en la imagen (p. 107)
+T019,fiber,14.3,leído en la imagen (p. 107)
+T020,fat,1.8,leído en la imagen (p. 107)
+T026,sodium,27,leído en la imagen (p. 108)
+T027,moisture,11.8,leído en la imagen (p. 107)
+T030,carbsTotal,28.6,leído en la imagen (p. 107)
+B100,ash,0.5,leído en la imagen (p. 55)
+C001,moisture,66.9,leído en la imagen (p. 57)
+C063,energyKcal,36,leído en la imagen (p. 61)
+J001,carbsTotal,0.5,leído en la imagen (p. 83)
+S002,ash,1.5,leído en la imagen (p. 103)
+N006,edibleFraction,100,leído en la imagen (p. 92)
+P001,fat,0.2,leído en la imagen (p. 93)
+P062,protein,2.3,leído en la imagen (p. 97)
+P062,ash,0.9,leído en la imagen (p. 97)
+A012,sodium,3,leído en la imagen (p. 44): cifra aislada que el OCR no detectó
+A028,sodium,0,leído en la imagen (p. 46): cifra aislada que el OCR no detectó
+A031,sodium,2,leído en la imagen (p. 46): cifra aislada que el OCR no detectó
+A031,saturatedFat,0.3,leído en la imagen (p. 46)
+A041,sodium,3,leído en la imagen (p. 46): cifra aislada que el OCR no detectó
+A044,ash,1.1,leído en la imagen (p. 45)
+A072,sodium,6,leído en la imagen (p. 48): cifra aislada que el OCR no detectó
+A073,sodium,1,leído en la imagen (p. 48): cifra aislada que el OCR no detectó
+B001,carbsAvailable,5.0,leído en la imagen (p. 49)
+B015,sodium,1,leído en la imagen (p. 50): cifra aislada que el OCR no detectó
+B016,sodium,1,leído en la imagen (p. 50): cifra aislada que el OCR no detectó
+B017,sodium,0,leído en la imagen (p. 50): cifra aislada que el OCR no detectó
+B018,sodium,3,leído en la imagen (p. 50): cifra aislada que el OCR no detectó
+B026,sodium,0,leído en la imagen (p. 50): cifra aislada que el OCR no detectó
+B065,sodium,6,leído en la imagen (p. 54): cifra aislada que el OCR no detectó
+B070,sodium,2,leído en la imagen (p. 54): cifra aislada que el OCR no detectó
+B081,sodium,3,leído en la imagen (p. 54): cifra aislada que el OCR no detectó
+C002,fiber,6.6,leído en la imagen (p. 57)
+C002,sodium,6,leído en la imagen (p. 58): cifra aislada que el OCR no detectó
+C015,sodium,0,leído en la imagen (p. 58): cifra aislada que el OCR no detectó
+C022,sodium,2,leído en la imagen (p. 58): cifra aislada que el OCR no detectó
+C024,sodium,3,leído en la imagen (p. 58): cifra aislada que el OCR no detectó
+C035,sodium,6,leído en la imagen (p. 60): cifra aislada que el OCR no detectó
+C038,sodium,3,leído en la imagen (p. 60): cifra aislada que el OCR no detectó
+C039,sodium,4,leído en la imagen (p. 60): cifra aislada que el OCR no detectó
+C040,sodium,3,leído en la imagen (p. 60): cifra aislada que el OCR no detectó
+C045,sodium,0,leído en la imagen (p. 60): cifra aislada que el OCR no detectó
+C062,sodium,2,leído en la imagen (p. 62): cifra aislada que el OCR no detectó
+C064,sodium,3,leído en la imagen (p. 62): cifra aislada que el OCR no detectó
+C066,sodium,3,leído en la imagen (p. 62): cifra aislada que el OCR no detectó
+C082,sodium,0,leído en la imagen (p. 62): cifra aislada que el OCR no detectó
+C083,sodium,0,leído en la imagen (p. 62): cifra aislada que el OCR no detectó
+C084,sodium,0,leído en la imagen (p. 62): cifra aislada que el OCR no detectó
+D001,fiber,0.0,leído en la imagen (p. 63)
+D001,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D002,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D003,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D004,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D005,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D006,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D007,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D009,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D010,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D012,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D013,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+D014,sodium,0,leído en la imagen (p. 64): cifra aislada que el OCR no detectó
+E001,fiber,0.0,leído en la imagen (p. 65)
+F001,fiber,0.0,leído en la imagen (p. 69)
+F090,ash,0.8,leído en la imagen (p. 75)
+H010,sodium,3,leído en la imagen (p. 82): cifra aislada que el OCR no detectó
+K002,fiber,0.1,leído en la imagen (p. 85)
+K003,sodium,0,leído en la imagen (p. 86): cifra aislada que el OCR no detectó
+K029,sodium,6,leído en la imagen (p. 86): cifra aislada que el OCR no detectó
+K031,sodium,9,leído en la imagen (p. 88): cifra aislada que el OCR no detectó
+L002,carbsAvailable,0.3,leído en la imagen (p. 89)
+N001,sodium,390,leído en la imagen (p. 92): cifra aislada que el OCR no detectó
+P024,sodium,1,leído en la imagen (p. 94): cifra aislada que el OCR no detectó
+P025,sodium,0,leído en la imagen (p. 94): cifra aislada que el OCR no detectó
+P026,sodium,0,leído en la imagen (p. 94): cifra aislada que el OCR no detectó
+P028,sodium,1,leído en la imagen (p. 94): cifra aislada que el OCR no detectó
+P030,sodium,6,leído en la imagen (p. 96): cifra aislada que el OCR no detectó
+P040,sodium,0,leído en la imagen (p. 96): cifra aislada que el OCR no detectó
+P043,sodium,0,leído en la imagen (p. 96): cifra aislada que el OCR no detectó
+P045,sodium,3,leído en la imagen (p. 96): cifra aislada que el OCR no detectó
+P049,sodium,0,leído en la imagen (p. 96): cifra aislada que el OCR no detectó
+P051,sodium,0,leído en la imagen (p. 96): cifra aislada que el OCR no detectó
+P052,sodium,0,leído en la imagen (p. 96): cifra aislada que el OCR no detectó
+P059,sodium,6,leído en la imagen (p. 96): cifra aislada que el OCR no detectó
+P068,sodium,2,leído en la imagen (p. 98): cifra aislada que el OCR no detectó
+P070,sodium,1,leído en la imagen (p. 98): cifra aislada que el OCR no detectó
+P094,ash,1.0,leído en la imagen (p. 99)
+S001,saturatedFat,0.2,leído en la imagen (p. 104)
+S019,fiber,3,leído en la imagen (p. 103)
+S029,ash,1.7,leído en la imagen (p. 105)
+S033,edibleFraction,76,leído en la imagen (p. 106)
+T002,energyKj,584,leído en la imagen (p. 107)
+T012,sodium,8,leído en la imagen (p. 108): cifra aislada que el OCR no detectó
+T024,sodium,9,leído en la imagen (p. 108): cifra aislada que el OCR no detectó
+T027,sodium,6,leído en la imagen (p. 108): cifra aislada que el OCR no detectó
+B062,edibleFraction,,la fuente imprime 0 % (p. 54); se deja vacío
+A002,energyKj,1196,leído en la imagen ampliada (p. 43); los dos lectores OCR coincidían en 1195
+A002,carbsTotal,30.6,leído en la imagen ampliada (p. 43); los dos lectores OCR coincidían en 30.5
+A011,fat,2.6,leído en la imagen ampliada (p. 43); los dos lectores OCR coincidían en 2.5
+A019,energyKcal,186,leído en la imagen ampliada (p. 43); los dos lectores OCR coincidían en 185
+A023,fat,19.6,leído en la imagen ampliada (p. 43); los dos lectores OCR coincidían en 19.5
+A034,carbsAvailable,66.4,leído en la imagen ampliada (p. 45); los dos lectores OCR coincidían en 65.4
+A084,sodium,606,leído en la imagen ampliada (p. 48); los dos lectores OCR coincidían en 605
+B047,moisture,86.1,leído en la imagen ampliada (p. 51); los dos lectores OCR coincidían en 85.1
+B082,energyKcal,136,leído en la imagen ampliada (p. 53); los dos lectores OCR coincidían en 135
+B091,carbsTotal,30.6,leído en la imagen ampliada (p. 55); los dos lectores OCR coincidían en 30.5
+B094,fat,0.3,leído en la imagen ampliada (p. 55); los dos lectores OCR coincidían en 1.3
+B104,ash,0.6,leído en la imagen ampliada (p. 55); los dos lectores OCR coincidían en 0.5
+C002,carbsAvailable,3.4,leído en la imagen ampliada (p. 57); los dos lectores OCR coincidían en 1.4
+C048,energyKj,262,leído en la imagen ampliada (p. 59); los dos lectores OCR coincidían en 252
+C071,moisture,86.3,leído en la imagen ampliada (p. 61); los dos lectores OCR coincidían en 85.3
+C075,carbsTotal,13.6,leído en la imagen ampliada (p. 61); los dos lectores OCR coincidían en 13.5
+C077,protein,0.6,leído en la imagen ampliada (p. 61); los dos lectores OCR coincidían en 0.5
+E010,moisture,76.6,leído en la imagen ampliada (p. 65); los dos lectores OCR coincidían en 76.5
+E012,moisture,70.6,leído en la imagen ampliada (p. 65); los dos lectores OCR coincidían en 70.5
+E026,moisture,76.6,leído en la imagen ampliada (p. 65); los dos lectores OCR coincidían en 76.5
+E036,moisture,78.6,leído en la imagen ampliada (p. 67); los dos lectores OCR coincidían en 78.5
+F005,protein,20.6,leído en la imagen ampliada (p. 69); los dos lectores OCR coincidían en 20.5
+F057,energyKj,467,leído en la imagen ampliada (p. 71); los dos lectores OCR coincidían en 457
+F064,sodium,66,leído en la imagen ampliada (p. 74); los dos lectores OCR coincidían en 65
+F068,energyKj,826,leído en la imagen ampliada (p. 73); los dos lectores OCR coincidían en 825
+F077,energyKj,696,leído en la imagen ampliada (p. 73); los dos lectores OCR coincidían en 695
+F078,moisture,66.8,leído en la imagen ampliada (p. 73); los dos lectores OCR coincidían en 65.8
+G008,moisture,2.6,leído en la imagen ampliada (p. 79); los dos lectores OCR coincidían en 2.5
+G016,energyKj,862,leído en la imagen ampliada (p. 79); los dos lectores OCR coincidían en 852
+G028,moisture,82.6,leído en la imagen ampliada (p. 79); los dos lectores OCR coincidían en 82.5
+K011,energyKj,1960,leído en la imagen ampliada (p. 85); los dos lectores OCR coincidían en 1950
+P032,ash,1.6,leído en la imagen ampliada (p. 95); los dos lectores OCR coincidían en 1
+P038,energyKj,1062,leído en la imagen ampliada (p. 95); los dos lectores OCR coincidían en 1052
+P054,energyKj,1064,leído en la imagen ampliada (p. 95); los dos lectores OCR coincidían en 1054
+P086,sodium,1264,leído en la imagen ampliada (p. 98); los dos lectores OCR coincidían en 1254
+S005,carbsAvailable,26.7,leído en la imagen ampliada (p. 103); los dos lectores OCR coincidían en 25.7
+S012,moisture,66.1,leído en la imagen ampliada (p. 103); los dos lectores OCR coincidían en 65.1
+T004,ash,0.5,leído en la imagen ampliada (p. 107); los dos lectores OCR coincidían en 1.5
+T005,ash,3.8,imagen ambigua 6/8 (p. 107); 3.8 cierra la suma en 100.0 y 3.5 en 99.7

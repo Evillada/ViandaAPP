@@ -7,6 +7,7 @@ Ver scripts/catalog/README.md.
 Uso:
   ocr_tcac.py [páginas...]   lectura de página completa (original y en gris)
   ocr_tcac.py --cells        relee una a una las celdas listadas en ocr/recheck.json
+  ocr_tcac.py --all-cells    relee todas las celdas (ocr/recheck-all.json) para medir errores no detectables
 """
 
 import json
@@ -26,6 +27,9 @@ SCALE = 4
 CELL_SCALE = 6
 CELL_PADDING = 40
 HEADER_TOP = 0.05
+INK_LEVEL = 60  # el fondo verde oscuro en gris no baja de ~100; las cifras llegan a 0
+INK_MIN_PIXELS = 20
+INK_UNREAD = "<tinta>"
 CODE_PATTERN = re.compile(r"^[A-Z]\d{3}$")
 
 
@@ -79,9 +83,9 @@ def read_pages(pages):
         print(f"page {number}: {len(data['boxes'])} / {len(data['boxesGray'])} cajas")
 
 
-def read_cells():
+def read_cells(name="recheck", output="cell-reads"):
     """Recorta cada celda (con margen blanco) y la lee sola: tercer lector para celdas vacías o en conflicto."""
-    cells = json.loads((OUT_DIR / "recheck.json").read_text())
+    cells = json.loads((OUT_DIR / f"{name}.json").read_text())
     pdf = pdfium.PdfDocument(str(PDF_PATH))
     rendered = {}
     reads = {}
@@ -93,13 +97,24 @@ def read_cells():
         width, height = image.size
         crop = image.crop((int(cell["x0"] * width), int(cell["y0"] * height), int(cell["x1"] * width), int(cell["y1"] * height)))
         padded = ImageOps.expand(crop, border=CELL_PADDING, fill="white")
-        reads[cell["id"]] = " ".join(text for text, _, _ in recognize(padded)).strip()
-    (OUT_DIR / "cell-reads.json").write_text(json.dumps(reads, ensure_ascii=False, indent=1))
-    print(f"{len(reads)} celdas leídas")
+        text = " ".join(text for text, _, _ in recognize(padded)).strip()
+        reads[cell["id"]] = text or (INK_UNREAD if has_ink(crop) else "")
+    (OUT_DIR / f"{output}.json").write_text(json.dumps(reads, ensure_ascii=False, indent=1))
+    unread = sum(1 for value in reads.values() if value == INK_UNREAD)
+    print(f"{len(reads)} celdas leídas · {unread} con tinta sin leer")
+
+
+def has_ink(crop):
+    """Vision no detecta un dígito aislado ("2", "0"); la tinta sí. Se ignoran los bordes de la celda."""
+    width, height = crop.size
+    inner = crop.convert("L").crop((int(width * 0.08), int(height * 0.12), int(width * 0.97), int(height * 0.88)))
+    return sum(inner.histogram()[:INK_LEVEL]) >= INK_MIN_PIXELS
 
 
 if __name__ == "__main__":
     if sys.argv[1:] == ["--cells"]:
         read_cells()
+    elif sys.argv[1:] == ["--all-cells"]:
+        read_cells("recheck-all", "cell-reads-all")
     else:
         read_pages([int(arg) for arg in sys.argv[1:]] or list(range(FIRST_PAGE, LAST_PAGE + 1)))
