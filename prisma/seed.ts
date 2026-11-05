@@ -61,9 +61,18 @@ const FOODS: {
   { name: "Naranja", category: "frutas", nutrients: { Energía: 47, Proteína: 0.9, Carbohidratos: 12, Fibra: 2.4, "Grasas totales": 0.1 }, portion: { name: "unidad mediana", grams: 150 } },
 ];
 
+/** El repositorio es público: las contraseñas demo sólo viven en .env (o en el entorno de quien ejecuta el seed). */
+function requiredEnv(name: string): string {
+  const value = process.env[name];
+  if (!value || value.length < 12) {
+    throw new Error(`${name} debe estar definida en .env (mínimo 12 caracteres) para ejecutar el seed`);
+  }
+  return value;
+}
+
 async function main() {
-  const devPassword = await bcrypt.hash("Dev123!", 12);
-  const patientPassword = await bcrypt.hash("Pac123!", 12);
+  const devPassword = await bcrypt.hash(requiredEnv("SEED_DEV_PASSWORD"), 12);
+  const patientPassword = await bcrypt.hash(requiredEnv("SEED_PATIENT_PASSWORD"), 12);
 
   const dev = await prisma.user.upsert({
     where: { email: "dev@gmail.com" },
@@ -298,7 +307,7 @@ async function main() {
   }
 
   console.log("✅ Vianda seed completado");
-  console.log("   Nutricionista: dev@gmail.com / Dev123!");
+  console.log("   Nutricionista: dev@gmail.com (contraseña: SEED_DEV_PASSWORD en .env)");
   console.log("   Paciente demo:", patient.firstName, patient.lastName);
   console.log(`   ${demoAssessments.length} valoraciones demo con historial`);
   console.log(`   ${FOODS.length} alimentos ICBF cargados`);

@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { login, logout, switchArea } from "./helpers";
+import { loginAsDev, logout, switchArea } from "./helpers";
 
 test("navegación móvil con etiquetas, cambio de área y cierre de sesión", async ({ page }) => {
-  await login(page, "dev@gmail.com", "Dev123!");
+  await loginAsDev(page);
   await switchArea(page, "Consulta"); // el login aterriza en la última área usada (puede ser Administración)
   await expect(page).toHaveURL(/\/dashboard$/);
 

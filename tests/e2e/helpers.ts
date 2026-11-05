@@ -11,6 +11,12 @@ export async function login(page: Page, email: string, password: string) {
   await page.waitForURL((url) => !["/login", "/start"].includes(url.pathname), { timeout: 60_000 });
 }
 
+export async function loginAsDev(page: Page) {
+  const password = process.env.SEED_DEV_PASSWORD;
+  if (!password) throw new Error("SEED_DEV_PASSWORD no está definida: la fija tests/e2e/global-setup.ts");
+  await login(page, "dev@gmail.com", password);
+}
+
 export async function openAccount(page: Page) {
   await page.getByRole("navigation", { name: "Navegación principal" }).getByRole("button", { name: "Cuenta" }).click();
   return page.getByRole("dialog", { name: "Cuenta" });

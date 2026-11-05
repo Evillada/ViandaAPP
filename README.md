@@ -31,9 +31,12 @@ pnpm dev
 
 ## Usuarios demo
 
-| Rol | Email | Password |
-|-----|-------|----------|
-| Nutricionista | `dev@gmail.com` | `Dev123!` |
+El seed crea estos usuarios con las contraseñas definidas en `.env` (nunca en el código):
+
+| Rol | Email | Contraseña |
+|-----|-------|------------|
+| Nutricionista + admin | `dev@gmail.com` | `SEED_DEV_PASSWORD` |
+| Paciente | `paciente@emuj.health` | `SEED_PATIENT_PASSWORD` |
 
 ## Flujo
 

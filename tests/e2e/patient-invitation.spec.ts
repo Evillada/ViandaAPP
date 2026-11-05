@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { login, logout } from "./helpers";
+import { loginAsDev, logout } from "./helpers";
 
 test("invitar → crear cuenta en móvil → consentir → portal → revocar", async ({ page }) => {
-  await login(page, "dev@gmail.com", "Dev123!");
+  await loginAsDev(page);
   await page.goto("/dashboard/patients/seed-patient-carlos");
   await page.getByRole("button", { name: "Invitar al portal" }).click();
   const inviteUrl = await page.getByLabel("Enlace de invitación").inputValue();

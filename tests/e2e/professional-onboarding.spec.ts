@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { login, logout, switchArea } from "./helpers";
+import { login, loginAsDev, logout, switchArea } from "./helpers";
 
 test("registro → pendiente → aprobación → acceso", async ({ page }) => {
   const email = `nueva-${Date.now()}@test.co`;
@@ -16,7 +16,7 @@ test("registro → pendiente → aprobación → acceso", async ({ page }) => {
   await expect(page).toHaveURL(/\/pending$/);
   await page.getByRole("button", { name: "Cerrar sesión" }).click();
 
-  await login(page, "dev@gmail.com", "Dev123!");
+  await loginAsDev(page);
   await switchArea(page, "Administración");
   await expect(page).toHaveURL(/\/admin\/professionals$/);
   await page.getByRole("article", { name: "Laura Gómez" }).getByRole("button", { name: "Aprobar" }).click();

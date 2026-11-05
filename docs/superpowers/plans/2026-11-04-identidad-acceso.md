@@ -4993,7 +4993,7 @@ import { expect, test } from "@playwright/test";
 import { login, logout, openAccount } from "./helpers";
 
 test("navegación móvil con etiquetas, cambio de área y cierre de sesión", async ({ page }) => {
-  await login(page, "dev@gmail.com", "Dev123!");
+  await loginAsDev(page);
   await expect(page).toHaveURL(/\/dashboard$/);
 
   const nav = page.getByRole("navigation", { name: "Navegación principal" });
@@ -5034,7 +5034,7 @@ test("registro → pendiente → aprobación → acceso", async ({ page }) => {
   await expect(page).toHaveURL(/\/pending$/);
   await page.getByRole("button", { name: "Cerrar sesión" }).click();
 
-  await login(page, "dev@gmail.com", "Dev123!");
+  await loginAsDev(page);
   const account = await openAccount(page);
   await account.getByRole("button", { name: "Administración" }).click();
   await page.getByRole("article", { name: "Laura Gómez" }).getByRole("button", { name: "Aprobar" }).click();
@@ -5054,7 +5054,7 @@ import { expect, test } from "@playwright/test";
 import { login, logout } from "./helpers";
 
 test("invitar → crear cuenta en móvil → consentir → portal → revocar", async ({ page }) => {
-  await login(page, "dev@gmail.com", "Dev123!");
+  await loginAsDev(page);
   await page.goto("/dashboard/patients/seed-patient-carlos");
   await page.getByRole("button", { name: "Invitar al portal" }).click();
   const inviteUrl = await page.getByLabel("Enlace de invitación").inputValue();
