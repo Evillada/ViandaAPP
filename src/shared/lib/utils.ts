@@ -5,11 +5,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatDate(date: Date | string): string {
+/** Sin `timeZone` usa la zona del proceso (UTC en Vercel); pásala cuando la fecha dependa del día local. */
+export function formatDate(date: Date | string, timeZone?: string): string {
   return new Intl.DateTimeFormat("es-CO", {
     day: "numeric",
     month: "short",
     year: "numeric",
+    timeZone,
   }).format(new Date(date));
 }
 

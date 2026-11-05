@@ -224,6 +224,10 @@ describe("deleteAccount", () => {
     expect(logs).toHaveLength(1);
     expect(logs[0]).toMatchObject({ actorId: account.id, actorRole: "PATIENT", entityType: "User", ip: "5.5.5.5" });
     expect(logs[0].metadata).toEqual({ revokedConsents: 1, unlinkedRecords: 1 });
+    const consentLogs = await prisma.auditLog.findMany({ where: { action: "CONSENT_REVOKED", patientId: patient.id } });
+    expect(consentLogs).toHaveLength(1);
+    expect(consentLogs[0]).toMatchObject({ actorId: account.id, actorRole: "PATIENT", entityType: "PatientConsent", ip: "5.5.5.5" });
+    expect(consentLogs[0].metadata).toEqual({ reason: "account_deleted" });
 
     expect(await prisma.user.findUnique({ where: { email: account.email } })).toBeNull();
     expect(await verifyCredentials(account.email, "actual-123", null)).toBeNull();

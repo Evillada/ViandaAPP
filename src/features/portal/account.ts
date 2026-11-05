@@ -152,10 +152,28 @@ export async function deleteAccount(actor: Actor, confirmation: string, ip: stri
   }
 
   await prisma.$transaction(async (tx) => {
+    const active = await tx.patientConsent.findMany({
+      where: { userId: user.id, revokedAt: null },
+      select: { patientId: true },
+    });
     const revoked = await tx.patientConsent.updateMany({
       where: { userId: user.id, revokedAt: null },
       data: { revokedAt: now },
     });
+    for (const patientId of new Set(active.map((c) => c.patientId))) {
+      await recordAudit(
+        {
+          actorId: user.id,
+          actorRole: "PATIENT",
+          action: "CONSENT_REVOKED",
+          entityType: "PatientConsent",
+          patientId,
+          metadata: { reason: "account_deleted" },
+          ip,
+        },
+        tx
+      );
+    }
     const unlinked = await tx.patient.updateMany({ where: { userId: user.id }, data: { userId: null } });
     await tx.account.deleteMany({ where: { userId: user.id } });
     await tx.session.deleteMany({ where: { userId: user.id } });
