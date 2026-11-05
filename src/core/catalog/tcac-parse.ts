@@ -45,7 +45,7 @@ export const PROXIMAL_COLUMNS: Column[] = [
   { x: 0.916, label: "Cenizas", field: "ash" },
 ];
 
-const ALL_FIELDS: TcacField[] = [
+export const ALL_FIELDS: TcacField[] = [
   ...PROXIMAL_COLUMNS.map((c) => c.field as ProximalField),
   "sodium",
   "saturatedFat",
@@ -216,10 +216,16 @@ function emptyValues(): Record<TcacField, CellValue> {
   return Object.fromEntries(ALL_FIELDS.map((f) => [f, null])) as Record<TcacField, CellValue>;
 }
 
+export function spreadColumns(left: OcrPage, right: OcrPage): { left: Column[]; right: Column[] } {
+  return {
+    left: left.headerBoxes?.length ? calibrateColumns(left.headerBoxes, PART_MAX_X) : PROXIMAL_COLUMNS,
+    right: calibrateColumns(right.headerBoxes ?? []).filter((c) => c.label !== "Código"),
+  };
+}
+
 /** Interpreta un par de páginas enfrentadas: cada fila está a la misma altura en ambas. */
 export function parseSpread(left: OcrPage, right: OcrPage): SpreadRow[] {
-  const rightColumns = calibrateColumns(right.headerBoxes ?? []).filter((c) => c.label !== "Código");
-  const leftColumns = left.headerBoxes?.length ? calibrateColumns(left.headerBoxes, PART_MAX_X) : PROXIMAL_COLUMNS;
+  const { left: leftColumns, right: rightColumns } = spreadColumns(left, right);
   const isLeftCode = (b: OcrBox) => center(b) < LEFT_CODE_MAX_X && parseCode(b.text) !== null;
   const isRightCode = (b: OcrBox) => center(b) > RIGHT_CODE_MIN_X && parseCode(b.text) !== null;
 

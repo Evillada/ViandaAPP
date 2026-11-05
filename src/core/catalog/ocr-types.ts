@@ -21,5 +21,7 @@ export interface OcrPage {
   width: number;
   height: number;
   boxes: OcrBox[];
+  /** Segunda lectura de la misma página en escala de grises con contraste. */
+  boxesGray?: OcrBox[];
   headerBoxes?: HeaderBox[];
 }
