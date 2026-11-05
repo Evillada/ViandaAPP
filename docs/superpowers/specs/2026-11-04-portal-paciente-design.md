@@ -42,9 +42,11 @@ El plan alimentario que el profesional armó para el paciente, con dos vistas (c
 - Sólo de vínculos con autorización vigente. Estado vacío: "No tienes citas programadas".
 
 ### 3.4 Progreso (`/portal/progreso`)
-- Gráficas de línea (peso, IMC, % grasa, cintura) con un punto por valoración, de la más antigua a la más reciente. Si sólo hay una valoración, se muestran los valores sin gráfica.
-- **Metas actuales**: kcal, proteína/carbohidratos/grasa (g y %), agua (ml/día).
-- Lista de valoraciones → detalle (`/portal/progreso/[assessmentId]`): fecha, tipo, antropometría registrada, diagnóstico nutricional y CIE-10, **indicaciones para el paciente**. Nunca `notes`, `anthropometryNotes` ni `DietaryRecall.notes`.
+- **Una sola gráfica de línea** con selector de medida (Cintura, Peso, IMC, % grasa; en ese orden, la cintura abierta por defecto), un punto por valoración, de la más antigua a la más reciente. Si sólo hay una valoración, se muestran los valores sin gráfica.
+- **Tarjeta "Tu última valoración"**: valores y cambio frente a la anterior en lenguaje neutro ("1,2 cm menos que la valoración anterior"), sin colores verde/rojo ni juicios de mejor/peor.
+- **Metas actuales**: kcal, proteína/carbohidratos/grasa (g y %), agua (ml/día). Salen del plan activo y, si no hay, de la última valoración con metas.
+- Lista de valoraciones → detalle (`/portal/progreso/[assessmentId]`): fecha, tipo, antropometría registrada, diagnóstico nutricional y CIE-10, **indicaciones para el paciente** = `MealPlan.patientInstructions` del plan (no borrador) ligado a esa valoración; no se agrega campo nuevo. Nunca `notes`, `anthropometryNotes` ni `DietaryRecall.notes`.
+- **Interruptor del profesional** (`Patient.progressMessagesEnabled`): apagado oculta, además de los mensajes del saludo, las gráficas, la tarjeta de última valoración, la antropometría y el diagnóstico del detalle. Metas, lista de valoraciones e indicaciones siguen visibles. Pensado para pacientes con riesgo de trastorno de la conducta alimentaria.
 
 ### 3.5 Cuenta (`/portal/cuenta`)
 - **Mis datos** (de la ficha vinculada): nombre, cédula, sexo, fecha de nacimiento, email de la cuenta — sólo lectura. **Teléfono** editable.
