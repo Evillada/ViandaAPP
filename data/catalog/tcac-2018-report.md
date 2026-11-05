@@ -6,6 +6,7 @@ Generado por `scripts/catalog/build-tcac.ts`. Fuente: TCAC 2018 (ICBF, Universid
 - Sin problemas que bloqueen: 773 (100.0 %)
 - Por revisar (`needs_review`): 0
 - Correcciones manuales aplicadas: 336
+- Nombres o partes con errores de OCR o tildes corregidos (`src/core/catalog/names.ts`): 93
 
 ## Problemas por tipo
 

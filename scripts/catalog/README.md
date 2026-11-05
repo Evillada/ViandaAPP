@@ -14,3 +14,15 @@ data/sources/.venv/bin/python scripts/catalog/ocr_tcac.py 46 82    # páginas su
 ```
 
 Salida: `data/sources/ocr/page-NNN.json`. No hace parte del build ni de las pruebas.
+
+## 2. Construcción del catálogo
+
+```bash
+pnpm tsx scripts/catalog/build-tcac.ts     # → data/catalog/tcac-2018.csv y tcac-2018-report.md
+pnpm tsx scripts/catalog/build-gaba.ts     # → data/catalog/gaba-exchanges.csv
+pnpm tsx scripts/catalog/build-enrich.ts   # → data/catalog/gaba-matches.csv y allergen-review.csv
+```
+
+`gaba-matches.csv` propone, para cada alimento de la lista de intercambios GABA, alimentos TCAC del mismo estado (crudo/cocido). Sólo las filas con `confirmed = 1` se usan; se confirman a mano y se conservan al regenerar. Para agregar una coincidencia que el script no propone, añadir la fila con `confirmed = 1`.
+
+`allergen-review.csv` lista los alimentos con alérgenos propuestos (y los preparados y manufacturados) para que la nutricionista llene `confirmed_allergens`.

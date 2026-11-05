@@ -19,6 +19,7 @@ import {
 } from "../../src/core/catalog/tcac-merge";
 import { resolveCodes, validateCatalog } from "../../src/core/catalog/tcac-validate";
 import { applyCorrections, parseCorrections } from "../../src/core/catalog/corrections";
+import { fixName, unifyAccents } from "../../src/core/catalog/names";
 
 const ROOT = join(__dirname, "..", "..");
 const OCR_DIR = join(ROOT, "data", "sources", "ocr");
@@ -50,6 +51,14 @@ merged = applyCellReads(resolveByChecksums(merged, reads), reads);
 
 const corrections = existsSync(CORRECTIONS) ? parseCorrections(readFileSync(CORRECTIONS, "utf8")) : [];
 const rows = applyCorrections(resolveCodes(merged) as MergedRow[], corrections);
+const texts = unifyAccents([...rows.map((r) => fixName(r.name ?? "")), ...rows.map((r) => fixName(r.part ?? ""))]);
+let namesFixed = 0;
+rows.forEach((row, i) => {
+  const [name, part] = [texts[i], texts[rows.length + i] || null];
+  if (name !== row.name || part !== row.part) namesFixed++;
+  row.name = name;
+  row.part = part;
+});
 const validated = validateCatalog(rows);
 
 /** Tercer lector sobre todas las celdas: mide los errores que ninguna suma detecta (p. ej. 5↔6 dentro de tolerancia). */
@@ -138,6 +147,7 @@ const report = [
   `- Sin problemas que bloqueen: ${validated.length - blocking.length} (${(((validated.length - blocking.length) / validated.length) * 100).toFixed(1)} %)`,
   `- Por revisar (\`needs_review\`): ${blocking.length}`,
   `- Correcciones manuales aplicadas: ${corrections.length}`,
+  `- Nombres o partes con errores de OCR o tildes corregidos (\`src/core/catalog/names.ts\`): ${namesFixed}`,
   "",
   "## Problemas por tipo",
   "",

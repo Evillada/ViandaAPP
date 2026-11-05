@@ -1,0 +1,466 @@
+table,gaba_subgroup,gaba_food,grams,measure,tcac_code,tcac_name,score,confirmed
+26,CEREALS,Almojábana,31,1 unidad grande,A002,"Almojábana, bogotana, horneada",manual,1
+26,CEREALS,Almojábana,31,1 unidad grande,A003,"Almojábana, vallecaucana, horneada",manual,1
+26,CEREALS,Arepa delgada de maíz blanco trillado,56,1 unidad pequeña,,,,
+26,CEREALS,Arepa redonda de maíz blanco trillado,52,1 unidad grande,,,,
+26,CEREALS,"Arroz blanco, cocido",80,6 cucharadas soperas colmadas,A009,"Arroz blanco, pulido, cocido, sin sal",0.75,1
+26,CEREALS,"Arroz blanco, cocido",80,6 cucharadas soperas colmadas,A011,"Arroz integral, cocido, sin sal",0.67,
+26,CEREALS,"Arroz integral, cocido",81,8 cucharadas soperas colmadas o 2/3 de pocillo,A011,"Arroz integral, cocido, sin sal",1,1
+26,CEREALS,"Arroz integral, cocido",81,8 cucharadas soperas colmadas o 2/3 de pocillo,A009,"Arroz blanco, pulido, cocido, sin sal",0.5,
+26,CEREALS,Avena en hojuelas,24,4 cucharadas soperas colmadas,A012,"Avena en hojuelas, precocida",manual,1
+26,CEREALS,Avena en hojuelas,24,4 cucharadas soperas colmadas,A029,"Harina de avena, cruda",0.5,
+26,CEREALS,Avena en hojuelas,24,4 cucharadas soperas colmadas,H003,"Bebida de avena en hojuelas, en agua, sin azúcar",0.5,
+26,CEREALS,Avena en hojuelas,24,4 cucharadas soperas colmadas,A022,"Galletas dulces, de avena, con uvas pasas",0.25,
+26,CEREALS,Cebada perlada cocida,72,5 cucharadas soperas colmadas,,,,
+26,CEREALS,Arroz sopero,23,2/3 de pocillo chocolatero,S003,Arroz clavado,0.5,
+26,CEREALS,Arroz sopero,23,2/3 de pocillo chocolatero,S026,Sopa de arroz,0.5,
+26,CEREALS,Arroz sopero,23,2/3 de pocillo chocolatero,S002,Arroz atollado,0.5,
+26,CEREALS,Hojuelas de maíz,25,2/3 de pocillo chocolatero,A015,"Cereal para el desayuno, hojuelas de maíz, sin azúcar",0.4,1
+26,CEREALS,Hojuelas de maíz,25,2/3 de pocillo chocolatero,H003,"Bebida de avena en hojuelas, en agua, sin azúcar",0.25,
+26,CEREALS,Crispetas - Maíz pira,27,1 1/2 pocillo,,,,
+26,CEREALS,Cuchuco de cebada,27,4 cucharadas soperas colmadas,A017,"Cuchuco de cebada, crudo",1,1
+26,CEREALS,Cuchuco de cebada,27,4 cucharadas soperas colmadas,A018,"Cuchuco de trigo, crudo",0.5,
+26,CEREALS,"Pasta larga, cocida",64,2/3 de pocillo chocolatero,A073,"Pasta alimenticia, sin enriquecer, cocida, sin sal",0.5,1
+26,CEREALS,"Pasta larga, cocida",64,2/3 de pocillo chocolatero,A071,"Pasta alimenticia, con huevo, sin enriquecer, cocida, sin sal",0.4,
+26,CEREALS,Cereal en aros,20,2/3 de pocillo chocolatero,A015,"Cereal para el desayuno, hojuelas de maíz, sin azúcar",0.2,
+26,CEREALS,Cereal en aros,20,2/3 de pocillo chocolatero,K013,"Chucula o chocolate, en bolas, con harina de cereales y leguminosas",0.2,
+26,CEREALS,Galletas integrales,20,2 Unidades (Tablas),A021,"Galletas dulces, cucas",0.5,
+26,CEREALS,Galletas integrales,20,2 Unidades (Tablas),A025,"Galletas dulces, tipo wafer",0.5,
+26,CEREALS,Galletas integrales,20,2 Unidades (Tablas),A027,"Galletas saladas, tipo soda",0.5,
+26,CEREALS,Galletas con sabor a queso,18,5 unidades,A021,"Galletas dulces, cucas",0.33,
+26,CEREALS,Galletas con sabor a queso,18,5 unidades,A025,"Galletas dulces, tipo wafer",0.33,
+26,CEREALS,Galletas con sabor a queso,18,5 unidades,A027,"Galletas saladas, tipo soda",0.33,
+26,CEREALS,Galletas de soda,24,3 Unidades (Tablas),A027,"Galletas saladas, tipo soda",1,1
+26,CEREALS,Galletas de soda,24,3 Unidades (Tablas),A021,"Galletas dulces, cucas",0.5,
+26,CEREALS,Galletas de soda,24,3 Unidades (Tablas),A025,"Galletas dulces, tipo wafer",0.5,
+26,CEREALS,Galletas sandwich de chocolate,18,2 unidades,A021,"Galletas dulces, cucas",0.33,
+26,CEREALS,Galletas sandwich de chocolate,18,2 unidades,A025,"Galletas dulces, tipo wafer",0.33,
+26,CEREALS,Galletas sandwich de chocolate,18,2 unidades,A027,"Galletas saladas, tipo soda",0.33,
+26,CEREALS,Galletas tipo wafer,17,3 unidades,A025,"Galletas dulces, tipo wafer",1,1
+26,CEREALS,Galletas tipo wafer,17,3 unidades,A021,"Galletas dulces, cucas",0.5,
+26,CEREALS,Galletas tipo wafer,17,3 unidades,A027,"Galletas saladas, tipo soda",0.5,
+26,CEREALS,Cucas,19,1 unidad pequeña,A021,"Galletas dulces, cucas",0.5,1
+26,CEREALS,Harina de arroz blanco,25,2 cucharadas soperas colmadas,A028,"Harina de arroz, cruda",0.67,1
+26,CEREALS,Harina de arroz blanco,25,2 cucharadas soperas colmadas,B058,"Harina de yuca, cruda",0.33,
+26,CEREALS,Harina de arroz blanco,25,2 cucharadas soperas colmadas,A029,"Harina de avena, cruda",0.33,
+26,CEREALS,Harina de maíz blanco trillado,25,2 cucharadas soperas rasas,A035,"Harina de maíz, extra cruda",0.5,
+26,CEREALS,Harina de maíz blanco trillado,25,2 cucharadas soperas rasas,B058,"Harina de yuca, cruda",0.25,
+26,CEREALS,Harina de maíz blanco trillado,25,2 cucharadas soperas rasas,A028,"Harina de arroz, cruda",0.25,
+26,CEREALS,Harina de trigo refinada fortificada,25,4 cucharadas soperas rasas,A040,"Harina de trigo, fortificada, todo propósito, cruda",0.6,1
+26,CEREALS,Harina de trigo refinada fortificada,25,4 cucharadas soperas rasas,A039,"Harina de trigo, fortificada, para reposteria, cruda",0.6,
+26,CEREALS,Harina de trigo refinada fortificada,25,4 cucharadas soperas rasas,A038,"Harina de trigo, fortificada, para panificación, cruda",0.6,
+26,CEREALS,"Pasta corta, cocida",64,2/3 de pocillo chocolatero,A073,"Pasta alimenticia, sin enriquecer, cocida, sin sal",0.5,
+26,CEREALS,"Pasta corta, cocida",64,2/3 de pocillo chocolatero,A071,"Pasta alimenticia, con huevo, sin enriquecer, cocida, sin sal",0.4,
+26,CEREALS,Maicena (Almidón de maíz),25,4 cucharadas soperas rasas,A001,"Almidón de maíz, crudo",manual,1
+26,CEREALS,"Maíz tierno o choclo, amarillo enlatado",110,8 cucharadas soperas colmadas,A053,"Maíz tierno, crudo",0.4,
+26,CEREALS,"Maíz tierno o choclo, amarillo enlatado",110,8 cucharadas soperas colmadas,A043,"Maíz amarillo, crudo",0.4,
+26,CEREALS,"Maíz tierno o choclo, amarillo enlatado",110,8 cucharadas soperas colmadas,A044,"Maíz amarillo, trillado",0.4,
+26,CEREALS,Palitos o palitroques,22,2 unidades,,,,
+26,CEREALS,Pan blanco,22,1 tajada delgada,A061,"Pan blanco, tipo molde, homeado",0.67,1
+26,CEREALS,Pan blanco,22,1 tajada delgada,P009,"Árbol del pan, crudo",0.5,
+26,CEREALS,Pan blanco,22,1 tajada delgada,P010,"Árbol del pan, semilla, crudo",0.33,
+26,CEREALS,Pan centeno,35,1 tajada mediana,A062,"Pan de centeno, horneado",manual,1
+26,CEREALS,Pan centeno,35,1 tajada mediana,P009,"Árbol del pan, crudo",0.5,
+26,CEREALS,Pan centeno,35,1 tajada mediana,P010,"Árbol del pan, semilla, crudo",0.33,
+26,CEREALS,Pan centeno,35,1 tajada mediana,A061,"Pan blanco, tipo molde, homeado",0.33,
+26,CEREALS,Pan de salvado de avena,38,1 tajada mediana,P009,"Árbol del pan, crudo",0.33,
+26,CEREALS,Pan de salvado de avena,38,1 tajada mediana,P010,"Árbol del pan, semilla, crudo",0.33,
+26,CEREALS,Pan de salvado de avena,38,1 tajada mediana,A061,"Pan blanco, tipo molde, homeado",0.33,
+26,CEREALS,Pan integral,32,1 tajada mediana,A069,"Pan integral, regular, horneado",manual,1
+26,CEREALS,Pan integral,32,1 tajada mediana,P009,"Árbol del pan, crudo",0.5,
+26,CEREALS,Pan integral,32,1 tajada mediana,P010,"Árbol del pan, semilla, crudo",0.33,
+26,CEREALS,Pan integral,32,1 tajada mediana,A061,"Pan blanco, tipo molde, homeado",0.33,
+26,CEREALS,Pan pita o árabe,25,1/2 unidad pequeña,P009,"Árbol del pan, crudo",0.33,
+26,CEREALS,Pan pita o árabe,25,1/2 unidad pequeña,P010,"Árbol del pan, semilla, crudo",0.33,
+26,CEREALS,Pan pita o árabe,25,1/2 unidad pequeña,A061,"Pan blanco, tipo molde, homeado",0.33,
+26,CEREALS,Pan de queso,28,1 unidad pequeña,A065,"Pan de queso, horneado",manual,1
+26,CEREALS,Pan de queso,28,1 unidad pequeña,P009,"Árbol del pan, crudo",0.5,
+26,CEREALS,Pan de queso,28,1 unidad pequeña,P010,"Árbol del pan, semilla, crudo",0.33,
+26,CEREALS,Pan de queso,28,1 unidad pequeña,A061,"Pan blanco, tipo molde, homeado",0.33,
+26,CEREALS,Pan de yuca,20,2 unidades,A067,"Pan de yuca, horneado",manual,1
+26,CEREALS,Pan de yuca,20,2 unidades,P009,"Árbol del pan, crudo",0.5,
+26,CEREALS,Pan de yuca,20,2 unidades,P010,"Árbol del pan, semilla, crudo",0.33,
+26,CEREALS,Pan de yuca,20,2 unidades,A061,"Pan blanco, tipo molde, homeado",0.33,
+26,CEREALS,Ponqué,30,1 trozo pequeño,A077,"Ponqué blanco, regular, sin cubierta, horneado",manual,1
+26,CEREALS,Ponqué,30,1 trozo pequeño,A075,"Ponqué blanco, cubierto de chocolate, homeado",0.25,
+26,CEREALS,Taco vacío,26,2 unidades,,,,
+26,CEREALS,Tostada integral,37,1 unidad mediana,T031,"Soya, tostada",0.5,
+26,CEREALS,Tostada integral,37,1 unidad mediana,L003,"Cacao, tostado y molido",0.5,
+26,CEREALS,Tostada integral,37,1 unidad mediana,C059,"Marañón, tostado, sin sal",0.5,
+26,CEREALS,Tostada o calado,32,1 unidad mediana,A087,"Tostadas o calados, horneados",1,1
+26,CEREALS,Tostada o calado,32,1 unidad mediana,T031,"Soya, tostada",0.5,
+26,CEREALS,Tostada o calado,32,1 unidad mediana,L003,"Cacao, tostado y molido",0.5,
+26,CEREALS,Hojuelas de maíz azucaradas,22,1/3 de pocillo chocolatero,A015,"Cereal para el desayuno, hojuelas de maíz, sin azúcar",0.4,
+26,CEREALS,Hojuelas de maíz azucaradas,22,1/3 de pocillo chocolatero,H003,"Bebida de avena en hojuelas, en agua, sin azúcar",0.25,
+27,ROOTS,Arracacha sin cáscara cruda,96,1 trozo pequeño,B016,"Arracacha blanca, sin cáscara, cruda",1,1
+27,ROOTS,Arracacha sin cáscara cruda,96,1 trozo pequeño,B017,"Arracacha morada, sin cáscara, cruda",1,1
+27,ROOTS,Arracacha sin cáscara cruda,96,1 trozo pequeño,B015,"Arracacha amarilla, sin cáscara, cruda",1,1
+27,ROOTS,Ñame sin cáscara cocido,78,1 trozo pequeño,P073,"Ñame, sin cáscara, cocido",1,1
+27,ROOTS,Yuca blanca cruda,62,1 trozo mediano,B107,"Yuca blanca, sin cáscara, cruda",1,1
+27,ROOTS,Yuca blanca cruda,62,1 trozo mediano,B058,"Harina de yuca, cruda",0.67,
+27,ROOTS,Yuca blanca cruda,62,1 trozo mediano,B013,"Almidón de yuca, crudo",0.67,
+28,TUBERS,Batata cocida sin cáscara,100,1 trozo pequeño,,,,
+28,TUBERS,Cubios o ullucos crudos,155,2 unidades grandes,P063,"Majua o cubio, con cáscara, crudo",0.67,1
+28,TUBERS,Chuguas crudos,155,9 unidades grandes,P077,"Olloco o chugua, con cáscara, cruda",0.67,1
+28,TUBERS,Chuguas crudos,155,9 unidades grandes,P078,"Olloco o chugua, sin cáscara, cruda",0.67,1
+28,TUBERS,Papa común cocida,83,1 unidad mediana,B073,"Papa, variedad harinosa, pastusa, con cáscara, cocida, sin sal",manual,1
+28,TUBERS,Papa común cocida,83,1 unidad mediana,B075,"Papa, variedad harinosa, pastusa, sin cáscara, cocida, sin sal",manual,1
+28,TUBERS,Papa común cocida,83,1 unidad mediana,B064,"Papa, variedad cerosa, sabanera, con cáscara, cocida, sin sal",0.33,1
+28,TUBERS,Papa común cocida,83,1 unidad mediana,B067,"Papa, variedad cerosa, sabanera, sin cáscara, cocida, sin sal",0.33,1
+28,TUBERS,Papa común cocida,83,1 unidad mediana,B070,"Papa, variedad harinosa, criolla, con cáscara, cocida, sin sal",0.33,
+28,TUBERS,Papa criolla cocida,108,3 unidades medianas,B070,"Papa, variedad harinosa, criolla, con cáscara, cocida, sin sal",0.5,1
+28,TUBERS,Papa criolla cocida,108,3 unidades medianas,B064,"Papa, variedad cerosa, sabanera, con cáscara, cocida, sin sal",0.33,
+28,TUBERS,Papa criolla cocida,108,3 unidades medianas,B067,"Papa, variedad cerosa, sabanera, sin cáscara, cocida, sin sal",0.33,
+29,PLANTAINS,Harina de plátano,24,2 cucharadas soperas colmadas,B057,"Harina de plátano, cruda",1,1
+29,PLANTAINS,Harina de plátano,24,2 cucharadas soperas colmadas,B058,"Harina de yuca, cruda",0.5,
+29,PLANTAINS,Harina de plátano,24,2 cucharadas soperas colmadas,A028,"Harina de arroz, cruda",0.5,
+29,PLANTAINS,Plátano verde sin cáscara,78,1/2 unidad mediana,B083,"Plátano áfrica, verde, crudo",0.67,
+29,PLANTAINS,Plátano verde sin cáscara,78,1/2 unidad mediana,B092,"Plátano hartón, verde, crudo",0.67,1
+29,PLANTAINS,Plátano verde sin cáscara,78,1/2 unidad mediana,B095,"Plátano popocho, verde, crudo",0.67,
+29,PLANTAINS,Plátano colí o guineo crudo,88,1 unidad mediana,B084,"Plátano coli o guineo, verde, crudo",1,1
+29,PLANTAINS,Plátano colí o guineo crudo,88,1 unidad mediana,B057,"Harina de plátano, cruda",0.5,
+29,PLANTAINS,Plátano colí o guineo crudo,88,1 unidad mediana,B083,"Plátano áfrica, verde, crudo",0.5,
+29,PLANTAINS,Plátano hartón maduro sin cáscara cocido,66,1/4 unidad mediana,B088,"Plátano hartón, maduro, cocido, sin sal",0.8,1
+29,PLANTAINS,Plátano hartón maduro sin cáscara cocido,66,1/4 unidad mediana,B091,"Plátano hartón, verde, cocido, sin sal",0.6,
+29,PLANTAINS,Plátano hartón maduro sin cáscara cocido,66,1/4 unidad mediana,S013,"Envuelto de plátano maduro, precocido",0.4,
+30,FRUITS,Banano común,65,1/2 unidad grande,C010,"Banano común, crudo",1,1
+30,FRUITS,Banano común,65,1/2 unidad grande,P015,"Banano chiro, crudo",0.5,
+30,FRUITS,Banano común,65,1/2 unidad grande,C011,"Banano manzano, crudo",0.5,
+30,FRUITS,Borojó,54,2/3 pocillo,P017,"Borojo, crudo",1,1
+30,FRUITS,Borojó,54,2/3 pocillo,P053,Dulce de borojo,1,
+30,FRUITS,Chirimoya,92,1/2 unidad mediana,C015,"Chirimoya, cruda",1,1
+30,FRUITS,Chontaduro,27,1 unidad pequeña,C016,"Chontaduro, crudo",1,1
+30,FRUITS,Chontaduro,27,1 unidad pequeña,C037,"Harina de chontaduro, cruda",0.5,
+30,FRUITS,Chontaduro,27,1 unidad pequeña,P038,"Chontaduro amazónico, crudo",0.5,
+30,FRUITS,Ciruela claudia,93,1 unidad mediana,P040,"Ciruela joba, cruda",0.5,
+30,FRUITS,Ciruela claudia,93,1 unidad mediana,C017,"Ciruela, común, cruda",0.5,
+30,FRUITS,Ciruela común,60,12 unidades,C017,"Ciruela, común, cruda",1,1
+30,FRUITS,Ciruela común,60,12 unidades,P040,"Ciruela joba, cruda",0.5,
+30,FRUITS,Curuba,198,5 unidades,C021,"Curuba, cruda",1,1
+30,FRUITS,Feijoa,117,3 unidades pequeñas,C024,"Feijoa, crudo",1,1
+30,FRUITS,Fresas,161,9 unidades medianas,C025,"Fresa, madura, cruda",0.5,1
+30,FRUITS,Fresas,161,9 unidades medianas,C026,"Fresa, pintona, cruda",0.5,1
+30,FRUITS,Granadilla,109,1 unidad grande,C028,"Granadilla, cruda",1,1
+30,FRUITS,Guanábana,100,4 cucharadas soperas colmadas,C030,"Guanábana, cruda",1,1
+30,FRUITS,Guayaba común,100,1 unidad grande,C031,"Guayaba, madura, cruda",0.5,1
+30,FRUITS,Guayaba común,100,1 unidad grande,C032,"Guayaba, pintona, cruda",0.5,1
+30,FRUITS,Guayaba común,100,1 unidad grande,P057,"Guayaba de morrocoy, cruda",0.5,
+30,FRUITS,Higo,122,2 unidades pequeñas,C040,"Higo, verde, crudo",0.5,
+30,FRUITS,Higo,122,2 unidades pequeñas,C038,"Higo, maduro, crudo",0.5,1
+30,FRUITS,Higo,122,2 unidades pequeñas,C039,"Higo, pintón, crudo",0.5,
+30,FRUITS,Kiwi,82,1 unidad mediana,C042,"Kiwi, crudo",1,1
+30,FRUITS,Lulo jugo,200,1 vaso mediano,C045,"Lulo, crudo",0.5,
+30,FRUITS,Lulo jugo,200,1 vaso mediano,K017,Dulce de lulo,0.5,
+30,FRUITS,Mandarina,105,1 unidad mediana,C050,"Mandarina, cruda",1,1
+30,FRUITS,Mango,112,1 unidad pequeña,C051,"Mango común, crudo",0.5,1
+30,FRUITS,Mango,112,1 unidad pequeña,H013,"Néctar de mango, con azúcar",0.5,
+30,FRUITS,Mango,112,1 unidad pequeña,C052,"Mango Tommy Atkins, crudo",0.33,1
+30,FRUITS,Manzana,112,1 unidad pequeña,C054,"Manzana común, cruda",0.5,1
+30,FRUITS,Manzana,112,1 unidad pequeña,C011,"Banano manzano, crudo",0.5,
+30,FRUITS,Manzana,112,1 unidad pequeña,C055,"Manzana de agua, cruda",0.5,
+30,FRUITS,Maracuyá,97,2 unidades medianas,C056,"Maracuyá, cruda",1,1
+30,FRUITS,Melón,126,1 tajada delgada,C060,"Melón, crudo",1,1
+30,FRUITS,Moras de castilla,216,38 unidades,C061,"Mora de Castilla, cruda",1,1
+30,FRUITS,Naranja,147,1 unidad pequeña,C062,"Naranja, cruda",1,1
+30,FRUITS,Papaya,128,1 trozo mediano,C065,"Papaya, madura, cruda",0.5,1
+30,FRUITS,Papaya,128,1 trozo mediano,C066,"Papaya, pintona, cruda",0.5,1
+30,FRUITS,Papayuela,312,1 unidad mediana,C067,"Papayuela, cruda",1,1
+30,FRUITS,Pera,133,1/2 unidad mediana,C071,"Pera, cruda",1,1
+30,FRUITS,Pera,133,1/2 unidad mediana,H015,"Néctar de pera, con azúcar",0.5,
+30,FRUITS,Piña,115,1 tajada delgada,C072,"Piña, cruda",1,1
+30,FRUITS,Piña,115,1 tajada delgada,P083,"Piña india, cruda",0.5,
+30,FRUITS,Piña,115,1 tajada delgada,P084,"Piña uva hartón, cruda",0.33,
+30,FRUITS,Pitahaya,110,1 unidad mediana,C076,"Pitahaya roja, cruda",0.5,1
+30,FRUITS,Pitahaya,110,1 unidad mediana,C075,"Pitahaya amarilla, cruda",0.5,1
+30,FRUITS,Tomate de árbol,172,2 unidades medianas,C082,"Tomate de árbol rojo, crudo",0.67,1
+30,FRUITS,Tomate de árbol,172,2 unidades medianas,C081,"Tomate de árbol amarillo, crudo",0.67,1
+30,FRUITS,Tomate de árbol,172,2 unidades medianas,B103,"Tomate, crudo",0.5,
+30,FRUITS,Uchuvas,69,13 unidades medianas,C084,"Uchuva, cruda",1,1
+30,FRUITS,Uchuvas,69,13 unidades medianas,K035,"Uchuva, en almíbar",1,
+30,FRUITS,Uva blanca,135,20 unidades pequeñas,C085,"Uva blanca, cruda",1,1
+30,FRUITS,Uva blanca,135,20 unidades pequeñas,C087,"Uva, deshidratada",0.5,
+30,FRUITS,Uva blanca,135,20 unidades pequeñas,C086,"Uva Isabella, cruda",0.5,
+30,FRUITS,Zapote,123,1 unidad mediana,C089,"Zapote común, crudo",0.5,1
+30,FRUITS,Zapote,123,1 unidad mediana,C088,"Zapote blanco, crudo",0.5,
+31,VEGETABLES,Arveja verde,42,3 cucharadas soperas,B019,"Arveja verde, cruda",1,1
+31,VEGETABLES,Arveja verde,42,3 cucharadas soperas,T003,"Arveja seca, cruda",0.5,
+31,VEGETABLES,Ahuyama o Zapallo,68,1 trozo mediano,B006,"Ahuyama, cruda",0.5,1
+31,VEGETABLES,Ahuyama o Zapallo,68,1 trozo mediano,B053,"Harina de ahuyama, cruda",0.5,
+31,VEGETABLES,Zanahorias Baby,39,8 unidades medianas,B110,"Zanahoria, sin cáscara, cruda",0.5,
+31,VEGETABLES,Cebolla puerro,50,1 tallo grueso,B030,"Cebolla puerro, cruda",1,1
+31,VEGETABLES,Cebolla puerro,50,1 tallo grueso,B031,"Cebolla, deshidratada",0.5,
+31,VEGETABLES,Cebolla puerro,50,1 tallo grueso,B027,"Cebolla cabezona, cruda",0.5,
+31,VEGETABLES,Cebolla cabezona,54,6 rodajas delgadas,B027,"Cebolla cabezona, cruda",1,1
+31,VEGETABLES,Cebolla cabezona,54,6 rodajas delgadas,B030,"Cebolla puerro, cruda",0.5,
+31,VEGETABLES,Cebolla cabezona,54,6 rodajas delgadas,B031,"Cebolla, deshidratada",0.5,
+31,VEGETABLES,Champiñones,93,1/2 pocillo chocolatero,B033,"Champiñón, crudo",1,1
+31,VEGETABLES,Champiñones,93,1/2 pocillo chocolatero,B034,"Champiñón, en conserva",1,
+31,VEGETABLES,Cidrayota,177,1/2 unidad mediana,,,,
+31,VEGETABLES,Coliflor,86,3 gajos pequeños,B039,"Coliflor, crudo",1,1
+31,VEGETABLES,Pimentón rojo,88,1/2 unidad mediana,B080,"Pimentón rojo, crudo",1,1
+31,VEGETABLES,Pimentón rojo,88,1/2 unidad mediana,B081,"Pimentón verde, crudo",0.5,
+31,VEGETABLES,Remolacha,57,1/2 unidad pequeña,B098,"Remolacha, sin cáscara, cruda",0.5,1
+31,VEGETABLES,Repollo morado,120,2 pocillos chocolateros,B101,"Repollo morado, crudo",1,1
+31,VEGETABLES,Repollo morado,120,2 pocillos chocolateros,B099,"Repollo blanco, crudo",0.5,
+31,VEGETABLES,Tomate rojo,126,1 unidad grande,C082,"Tomate de árbol rojo, crudo",0.67,
+31,VEGETABLES,Tomate rojo,126,1 unidad grande,B103,"Tomate, crudo",0.5,1
+31,VEGETABLES,Tomate rojo,126,1 unidad grande,L017,Salsa de tomate,0.5,
+31,VEGETABLES,Tomate verde (riñón),100,4 rodajas delgadas,B103,"Tomate, crudo",0.33,
+31,VEGETABLES,Tomate verde (riñón),100,4 rodajas delgadas,L017,Salsa de tomate,0.33,
+31,VEGETABLES,Tomate verde (riñón),100,4 rodajas delgadas,B105,"Tomate, extracto, fresco",0.33,
+31,VEGETABLES,Zanahoria,58,1/2 pocillo chocolatero,B110,"Zanahoria, sin cáscara, cruda",0.5,1
+31,VEGETABLES,Tomate rojo maduro enlatado,105,1/2 pocillo chocolatero,C082,"Tomate de árbol rojo, crudo",0.5,
+31,VEGETABLES,Tomate rojo maduro enlatado,105,1/2 pocillo chocolatero,E040,"Sardinas, enlatadas en salsa de tomate",0.5,
+31,VEGETABLES,Tomate rojo maduro enlatado,105,1/2 pocillo chocolatero,H017,"Sabajón de tomate de árbol rojo, 14% de alcohol",0.5,
+31,VEGETABLES,Palmitos enlatados,71,1/2 pocillo chocolatero,B063,"Palmito, crudo",0.5,
+31,VEGETABLES,Champiñones enlatados,83,1/2 pocillo chocolatero,B033,"Champiñón, crudo",0.5,
+31,VEGETABLES,Champiñones enlatados,83,1/2 pocillo chocolatero,B034,"Champiñón, en conserva",0.5,1
+31,VEGETABLES,Espárragos enlatados,105,19 tallos delgados,B042,"Espárrago, crudo",0.5,
+31,VEGETABLES,Habichuelas enlatadas,100,3/4 pocillo (cuadros),B052,"Habichuela, cruda",0.5,
+32,MILK_WHOLE,Leche de cabra cruda,200,1 vaso mediano,G004,"Leche de cabra, entera, líquida, cruda",0.75,1
+32,MILK_WHOLE,Leche de cabra cruda,200,1 vaso mediano,G010,"Leche de vaca, entera, líquida, cruda",0.5,
+32,MILK_WHOLE,Leche de cabra cruda,200,1 vaso mediano,G001,Crema de leche,0.33,
+32,MILK_WHOLE,Leche de vaca en polvo entera,27,6 cucharadas soperas rasas,G008,"Leche de vaca, entera, en polvo",1,1
+32,MILK_WHOLE,Leche de vaca en polvo entera,27,6 cucharadas soperas rasas,G009,"Leche de vaca, entera, evaporada",0.75,
+32,MILK_WHOLE,Leche de vaca en polvo entera,27,6 cucharadas soperas rasas,G006,"Leche de vaca, descremada, en polvo",0.75,
+32,MILK_WHOLE,Leche de vaca entera cruda,200,1 vaso mediano,G010,"Leche de vaca, entera, líquida, cruda",1,1
+32,MILK_WHOLE,Leche de vaca entera cruda,200,1 vaso mediano,G008,"Leche de vaca, entera, en polvo",0.75,
+32,MILK_WHOLE,Leche de vaca entera cruda,200,1 vaso mediano,G009,"Leche de vaca, entera, evaporada",0.75,
+32,MILK_WHOLE,Leche de vaca líquida entera pasterizada,200,1 vaso mediano,G010,"Leche de vaca, entera, líquida, cruda",0.8,
+32,MILK_WHOLE,Leche de vaca líquida entera pasterizada,200,1 vaso mediano,G012,"Leche de vaca, entera, líquida, pasteurizada",0.8,1
+32,MILK_WHOLE,Leche de vaca líquida entera pasterizada,200,1 vaso mediano,G008,"Leche de vaca, entera, en polvo",0.6,
+33,DAIRY_WHOLE,Kumis,150,1 vaso pequeño,G002,"Kumis, entero, con azúcar",0.5,1
+33,DAIRY_WHOLE,Yogur,150,1 vaso pequeño,G028,"Yogurt, bebible, entero, con azúcar",manual,1
+33,DAIRY_WHOLE,Quesito,30,1 tajada delgada,,,,
+33,DAIRY_WHOLE,Cuajada de leche de vaca,34,1 tajada delgada mediana,G016,"Queso fresco, semiblando, semimagro, tipo cuajada",0.25,1
+33,DAIRY_WHOLE,Queso americano,24,1 lonchita,S020,Mote de queso,0.5,
+33,DAIRY_WHOLE,Queso americano,24,1 lonchita,G014,"Queso crema, amarillo",0.5,
+33,DAIRY_WHOLE,Queso americano,24,1 lonchita,G018,"Queso fresco, semiduro, semigraso, tipo costeño",0.25,
+33,DAIRY_WHOLE,Queso campesino,20,1 tajada pequeña delgada,S020,Mote de queso,0.5,
+33,DAIRY_WHOLE,Queso campesino,20,1 tajada pequeña delgada,G014,"Queso crema, amarillo",0.5,
+33,DAIRY_WHOLE,Queso campesino,20,1 tajada pequeña delgada,G017,"Queso fresco, semiduro, semigraso, tipo campesino",0.5,1
+33,DAIRY_WHOLE,Queso sabana (Edam),22,1 tajada delgada,S020,Mote de queso,0.33,
+33,DAIRY_WHOLE,Queso sabana (Edam),22,1 tajada delgada,G014,"Queso crema, amarillo",0.33,
+33,DAIRY_WHOLE,Queso sabana (Edam),22,1 tajada delgada,G018,"Queso fresco, semiduro, semigraso, tipo costeño",0.25,
+33,DAIRY_WHOLE,Queso mozzarella de leche entera,28,1 tajada semigruesa,G019,"Queso fresco, semiduro, semigraso, tipo mozzarella",0.5,1
+33,DAIRY_WHOLE,Queso mozzarella de leche entera,28,1 tajada semigruesa,S020,Mote de queso,0.25,
+33,DAIRY_WHOLE,Queso mozzarella de leche entera,28,1 tajada semigruesa,G014,"Queso crema, amarillo",0.25,
+33,DAIRY_WHOLE,Queso parmesano rallado,18,2 cucharadas soperas colmadas,G024,"Queso madurado, duro, semigraso, tipo parmesano",0.5,1
+33,DAIRY_WHOLE,Queso parmesano rallado,18,2 cucharadas soperas colmadas,S020,Mote de queso,0.33,
+33,DAIRY_WHOLE,Queso parmesano rallado,18,2 cucharadas soperas colmadas,G014,"Queso crema, amarillo",0.33,
+33,DAIRY_WHOLE,Queso ricotta de leche entera,46,6 cucharadas soperas rasas,S020,Mote de queso,0.25,
+33,DAIRY_WHOLE,Queso ricotta de leche entera,46,6 cucharadas soperas rasas,G014,"Queso crema, amarillo",0.25,
+33,DAIRY_WHOLE,Queso ricotta de leche entera,46,6 cucharadas soperas rasas,G018,"Queso fresco, semiduro, semigraso, tipo costeño",0.25,
+34,MILK_REDUCED_FAT,Leche baja en grasa,200,1 vaso mediano,G007,"Leche de vaca, descremada, líquida, pasteurizada",manual,1
+34,MILK_REDUCED_FAT,Leche baja en grasa,200,1 vaso mediano,G001,Crema de leche,0.33,
+34,MILK_REDUCED_FAT,Leche baja en grasa,200,1 vaso mediano,K002,Arroz con leche,0.33,
+34,MILK_REDUCED_FAT,Leche baja en grasa,200,1 vaso mediano,K024,Helado de leche,0.33,
+34,MILK_REDUCED_FAT,Leche en polvo baja en grasa,25,5 cucharadas soperas rasas,G008,"Leche de vaca, entera, en polvo",0.5,
+34,MILK_REDUCED_FAT,Leche en polvo baja en grasa,25,5 cucharadas soperas rasas,G006,"Leche de vaca, descremada, en polvo",0.5,1
+34,MILK_REDUCED_FAT,Leche en polvo baja en grasa,25,5 cucharadas soperas rasas,G001,Crema de leche,0.25,
+35,DAIRY_REDUCED_FAT,Yogur dietético,200,1 vaso mediano,N005,"Yogurt, bebible, descremado, sin azúcar",manual,1
+35,DAIRY_REDUCED_FAT,Kumis dietético,200,1 vaso mediano,G002,"Kumis, entero, con azúcar",0.5,
+36,LEAN_MEATS,Atún enlatado en aceite,40,1/3 lata mediana,E003,"Atún, enlatado en aceite",1,1
+36,LEAN_MEATS,Atún enlatado en aceite,40,1/3 lata mediana,E004,"Atún, enlatado en agua",0.67,
+36,LEAN_MEATS,Bagre carne y piel,70,1/3 de filete pequeño,S024,Sancocho de bagre,0.33,
+36,LEAN_MEATS,Bagre carne y piel,70,1/3 de filete pequeño,E005,"Bagre, graso, sin cabeza, crudo",0.33,1
+36,LEAN_MEATS,Bagre carne y piel,70,1/3 de filete pequeño,E007,"Bagre, magro, sin cabeza, crudo",0.33,1
+36,LEAN_MEATS,Carne de cerdo,60,1/8 de libra,F010,"Cerdo, carne gorda, cruda",0.67,
+36,LEAN_MEATS,Carne de cerdo,60,1/8 de libra,F011,"Cerdo, carne magra, cruda",0.67,1
+36,LEAN_MEATS,Carne de cerdo,60,1/8 de libra,F013,"Cerdo, carne semigorda, cruda",0.67,
+36,LEAN_MEATS,Carne de res,60,1/8 de libra,F098,"Res, carne gorda, cruda",0.67,
+36,LEAN_MEATS,Carne de res,60,1/8 de libra,F099,"Res, carne magra, cruda",0.67,1
+36,LEAN_MEATS,Carne de res,60,1/8 de libra,F100,"Res, carne semigorda, cruda",0.67,
+36,LEAN_MEATS,Carne de ternera,60,1/8 de libra,F131,"Ternera, carne magra, cruda",0.67,1
+36,LEAN_MEATS,Carne de ternera,60,1/8 de libra,F056,"Pato, carne, cruda",0.5,
+36,LEAN_MEATS,Carne de ternera,60,1/8 de libra,F038,"Conejo, carne, cruda",0.5,
+36,LEAN_MEATS,Contramuslo carne sin piel cruda sin hueso,60,1 unidad mediana,F073,"Pollo, contramuslo con piel, crudo",0.6,
+36,LEAN_MEATS,Contramuslo carne sin piel cruda sin hueso,60,1 unidad mediana,F075,"Pollo, contramuslo sin piel, crudo",0.6,1
+36,LEAN_MEATS,Muslo de pollo sin hueso y sin piel,60,1 unidad mediana,,,,
+36,LEAN_MEATS,"Pargo, especies mezcladas",60,1 trozo pequeño,,,,
+36,LEAN_MEATS,Pechuga de pollo sin hueso sin piel,60,1/4 de unidad mediana,F085,"Pollo, pechuga con piel, cruda",0.75,
+36,LEAN_MEATS,Pechuga de pollo sin hueso sin piel,60,1/4 de unidad mediana,F061,"Pavo, pechuga sin piel, cruda",0.5,
+36,LEAN_MEATS,Salmón rosado,60,1 trozo pequeño,E038,"Salmón, filete, crudo",0.5,1
+36,LEAN_MEATS,Salmón rosado,60,1 trozo pequeño,E037,"Salmón, enlatado en aceite",0.5,
+36,LEAN_MEATS,Trucha arco iris,60,1/2 unidad pequeña,E047,"Trucha, entera, cruda",0.33,1
+36,LEAN_MEATS,Trucha arco iris,60,1/2 unidad pequeña,E048,"Trucha, recortes, crudos",0.33,
+36,LEAN_MEATS,Trucha arco iris,60,1/2 unidad pequeña,E046,"Trucha, de mar, entera, cruda",0.33,
+36,LEAN_MEATS,Jamón,84,4 tajadas,F051,"Jamón de cerdo y res, tipo sanduche, precocido",manual,1
+36,LEAN_MEATS,Jamón,84,4 tajadas,F053,"Jamón tipo york, precocido",manual,1
+36,LEAN_MEATS,Jamón,84,4 tajadas,F052,"Jamón de cerdo, crudo",0.5,
+36,LEAN_MEATS,Morcilla,80,1 unidad mediana,,,,
+37,HIGH_FAT_MEATS,Contramuslo de pollo sin hueso y con piel,66,1 unidad mediana,F073,"Pollo, contramuslo con piel, crudo",0.75,1
+37,HIGH_FAT_MEATS,Contramuslo de pollo sin hueso y con piel,66,1 unidad mediana,F075,"Pollo, contramuslo sin piel, crudo",0.75,
+37,HIGH_FAT_MEATS,"Camarón, especies mezcladas",62,37 unidades pequeñas,E017,"Camarón, crudo",0.33,1
+37,HIGH_FAT_MEATS,Alas de pollo,56,1 unidad grande,F069,"Pollo, ala con piel, cruda",0.67,1
+37,HIGH_FAT_MEATS,Alas de pollo,56,1 unidad grande,F057,"Pavo, ala sin piel, cruda",0.33,
+37,HIGH_FAT_MEATS,Hígado de pollo,72,2 unidades medianas,F079,"Pollo, hígado, crudo",1,1
+37,HIGH_FAT_MEATS,Hígado de pollo,72,2 unidades medianas,F109,"Res, hígado, crudo",0.5,
+37,HIGH_FAT_MEATS,Hígado de pollo,72,2 unidades medianas,F017,"Cerdo, hígado, crudo",0.5,
+37,HIGH_FAT_MEATS,Lengua de res,83,1/6 de libra,F113,"Res, lengua, cruda",1,1
+37,HIGH_FAT_MEATS,Langostinos especies mezcladas,75,3 unidades medianas,E024,"Langostino, crudo",0.33,1
+37,HIGH_FAT_MEATS,Callo o panza o mondongo,100,1/5 de libra,F097,"Res, callo o menudo, crudo",0.33,1
+37,HIGH_FAT_MEATS,Sardina enlatada en salsa de tomate,80,1 trozo grande,E040,"Sardinas, enlatadas en salsa de tomate",1,1
+37,HIGH_FAT_MEATS,Sardina enlatada en salsa de tomate,80,1 trozo grande,E039,"Sardinas, enlatadas en aceite",0.5,
+38,EGGS,Huevo de codorniz crudo,50,5 unidades pequeñas,J001,"Huevo de codorniz, entero, crudo",1,1
+38,EGGS,Huevo de codorniz crudo,50,5 unidades pequeñas,J011,"Huevo de pata, entero, crudo",0.67,
+38,EGGS,Huevo de codorniz crudo,50,5 unidades pequeñas,J012,"Huevo de pava, entero, crudo",0.67,
+38,EGGS,Huevo de gallina crudo,50,1 unidad pequeña,J009,"Huevo de gallina, yema, crudo",1,
+38,EGGS,Huevo de gallina crudo,50,1 unidad pequeña,J002,"Huevo de gallina, clara, crudo",1,
+38,EGGS,Huevo de gallina crudo,50,1 unidad pequeña,J004,"Huevo de gallina, entero, crudo",1,1
+39,LEGUMES,Frijol cargamanto rosado con plátano verde,60,1/2 cucharón,T012,"Frijol cargamanto rosado, crudo",0.6,
+39,LEGUMES,Frijol cargamanto rosado con plátano verde,60,1/2 cucharón,B046,"Frijol verde, crudo",0.4,
+39,LEGUMES,Frijol cargamanto rosado con plátano verde,60,1/2 cucharón,T011,"Frijol cargamanto rojo, crudo",0.4,
+39,LEGUMES,Frijol verde con plátano verde,60,1/2 cucharón,B046,"Frijol verde, crudo",0.75,
+39,LEGUMES,Frijol verde con plátano verde,60,1/2 cucharón,T015,"Frijol nima, crudo",0.25,
+39,LEGUMES,Frijol verde con plátano verde,60,1/2 cucharón,T014,"Frijol mungo, crudo",0.25,
+39,LEGUMES,Frijol cargamanto blanco con plátano verde,60,1/2 cucharón,B046,"Frijol verde, crudo",0.4,
+39,LEGUMES,Frijol cargamanto blanco con plátano verde,60,1/2 cucharón,T005,"Frijol blanco, crudo",0.4,
+39,LEGUMES,Frijol cargamanto blanco con plátano verde,60,1/2 cucharón,T011,"Frijol cargamanto rojo, crudo",0.4,
+39,LEGUMES,Frijol bola roja con plátano verde,65,1/2 cucharón,T006,"Frijol bola roja, crudo",0.6,
+39,LEGUMES,Frijol bola roja con plátano verde,65,1/2 cucharón,B046,"Frijol verde, crudo",0.4,
+39,LEGUMES,Frijol bola roja con plátano verde,65,1/2 cucharón,T011,"Frijol cargamanto rojo, crudo",0.4,
+39,LEGUMES,Frijol nima con guiso,70,1/2 cucharón,T015,"Frijol nima, crudo",0.67,
+39,LEGUMES,Frijol nima con guiso,70,1/2 cucharón,B046,"Frijol verde, crudo",0.33,
+39,LEGUMES,Frijol nima con guiso,70,1/2 cucharón,T014,"Frijol mungo, crudo",0.33,
+39,LEGUMES,Frijol blanquillo con guiso,60,1/2 cucharón,T015,"Frijol nima, crudo",0.33,
+39,LEGUMES,Frijol blanquillo con guiso,60,1/2 cucharón,B046,"Frijol verde, crudo",0.33,
+39,LEGUMES,Frijol blanquillo con guiso,60,1/2 cucharón,T014,"Frijol mungo, crudo",0.33,
+39,LEGUMES,Frijol caraota con guiso,70,1/2 cucharón,T009,"Frijol caraota o negro, crudo",0.67,
+39,LEGUMES,Frijol caraota con guiso,70,1/2 cucharón,T015,"Frijol nima, crudo",0.33,
+39,LEGUMES,Frijol caraota con guiso,70,1/2 cucharón,B046,"Frijol verde, crudo",0.33,
+39,LEGUMES,Frijol zaragoza con guiso,50,1/2 cucharón,T015,"Frijol nima, crudo",0.33,
+39,LEGUMES,Frijol zaragoza con guiso,50,1/2 cucharón,B046,"Frijol verde, crudo",0.33,
+39,LEGUMES,Frijol zaragoza con guiso,50,1/2 cucharón,T014,"Frijol mungo, crudo",0.33,
+39,LEGUMES,Frijol cabecita negra con guiso,70,1/2 cucharón,T007,"Frijol cabecita negra, crudo",0.75,
+39,LEGUMES,Frijol cabecita negra con guiso,70,1/2 cucharón,T009,"Frijol caraota o negro, crudo",0.5,
+39,LEGUMES,Frijol cabecita negra con guiso,70,1/2 cucharón,T015,"Frijol nima, crudo",0.25,
+39,LEGUMES,Garbanzo con guiso,50,1/2 cucharón,T019,"Garbanzo, crudo",0.5,
+39,LEGUMES,Garbanzo con guiso,50,1/2 cucharón,T023,"Harina de garbanzo, cruda",0.5,
+39,LEGUMES,Soya con guiso,50,1/2 cucharón,T030,"Soya, cruda",0.5,
+39,LEGUMES,Soya con guiso,50,1/2 cucharón,D012,Aceite de soya,0.5,
+39,LEGUMES,Soya con guiso,50,1/2 cucharón,T024,"Harina de soya, con grasa, cruda",0.33,
+39,LEGUMES,Lenteja con guiso,70,1/2 cucharón,T027,"Lenteja real, cruda",0.5,
+39,LEGUMES,Lenteja con guiso,70,1/2 cucharón,T026,"Lenteja común, cruda",0.5,
+39,LEGUMES,Promedio todas las variedades con plátano,60,1/2 cucharón,,,,
+39,LEGUMES,Promedio todas las variedades con guiso,60,1/2 cucharón,,,,
+39,LEGUMES,Proteína de soya texturizada hidratada,60,2 cucharadas soperas colmadas,,,,
+39,LEGUMES,Proteína de trigo texturizada hidratada,75,3 cucharadas soperas colmadas,,,,
+40,NUTS_SEEDS,Pistacho crudo sin cáscara,9,1 cucharada sopera colmada,,,,
+40,NUTS_SEEDS,Pistacho tostado y salado sin cáscara,9,1 cucharada sopera colmada,C074,"Pistacho, tostado, sin sal",0.5,1
+40,NUTS_SEEDS,Almendras tostadas sin sal,9,3 unidades medianas,C003,"Almendra, seca",manual,1
+40,NUTS_SEEDS,Pecanas tostadas sin sal,8,3 unidades medianas,,,,
+40,NUTS_SEEDS,Avellanas tostadas sin sal,7,5 unidades medianas,,,,
+40,NUTS_SEEDS,Nuez del Brasil,8,2 unidades medianas,C064,"Nuez de Brasil, seca",1,1
+40,NUTS_SEEDS,Nuez del Brasil,8,2 unidades medianas,P071,"Nuez caldereña o nuez de barinas, seca, en polvo",0.2,
+40,NUTS_SEEDS,Marañón tostado sin sal,10,1 cucharada sopera colmada,C059,"Marañón, tostado, sin sal",1,1
+40,NUTS_SEEDS,Maní crudo con cáscara,14,1 cucharada sopera colmada,T028,"Maní, con piel, crudo",0.67,
+40,NUTS_SEEDS,Maní crudo con cáscara,14,1 cucharada sopera colmada,D007,Aceite de maní,0.33,
+40,NUTS_SEEDS,Maní crudo con cáscara,14,1 cucharada sopera colmada,D016,Mantequilla de maní,0.33,
+40,NUTS_SEEDS,Maní sin sal,10,1 cucharada sopera colmada,T029,"Maní, con piel, tostado, sin sal",manual,1
+40,NUTS_SEEDS,Maní sin sal,10,1 cucharada sopera colmada,D007,Aceite de maní,0.5,
+40,NUTS_SEEDS,Maní sin sal,10,1 cucharada sopera colmada,D016,Mantequilla de maní,0.5,
+40,NUTS_SEEDS,Maní sin sal,10,1 cucharada sopera colmada,T028,"Maní, con piel, crudo",0.5,
+40,NUTS_SEEDS,Macadamia tostada sin sal,6,3 unidades medianas,C046,"Macadamia, seca",manual,1
+40,NUTS_SEEDS,Mezcla de nueces,11,1 cucharada sopera rasa,D013,"Aceite, mezcla vegetal",0.5,
+40,NUTS_SEEDS,Mezcla de nueces,11,1 cucharada sopera rasa,A055,"Mezcla lista para preparar pancakes, en polvo",0.2,
+40,NUTS_SEEDS,Nuez del nogal,8,2 unidades medianas,C064,"Nuez de Brasil, seca",0.5,
+40,NUTS_SEEDS,Nuez del nogal,8,2 unidades medianas,P071,"Nuez caldereña o nuez de barinas, seca, en polvo",0.2,
+40,NUTS_SEEDS,Coco deshidratado,9,1 cucharadas soperas colmadas,C020,"Coco, deshidratado",1,1
+40,NUTS_SEEDS,Coco deshidratado,9,1 cucharadas soperas colmadas,C019,"Coco, crudo",0.5,
+40,NUTS_SEEDS,Coco deshidratado,9,1 cucharadas soperas colmadas,H002,"Agua de coco, sin azúcar",0.5,
+40,NUTS_SEEDS,Coco fresco rallado,14,2 cucharadas sopera colmadas,C019,"Coco, crudo",0.33,1
+40,NUTS_SEEDS,Coco fresco rallado,14,2 cucharadas sopera colmadas,C020,"Coco, deshidratado",0.33,
+40,NUTS_SEEDS,Coco fresco rallado,14,2 cucharadas sopera colmadas,H002,"Agua de coco, sin azúcar",0.33,
+41,FATS_POLYUNSATURATED,Aceite de girasol,5,1 cucharada sopera,D004,Aceite de girasol,1,1
+41,FATS_POLYUNSATURATED,Aceite de girasol,5,1 cucharada sopera,D006,Aceite de maíz,0.5,
+41,FATS_POLYUNSATURATED,Aceite de girasol,5,1 cucharada sopera,D007,Aceite de maní,0.5,
+41,FATS_POLYUNSATURATED,Aceite de maíz,5,1 cucharada sopera,D006,Aceite de maíz,1,1
+41,FATS_POLYUNSATURATED,Aceite de maíz,5,1 cucharada sopera,D007,Aceite de maní,0.5,
+41,FATS_POLYUNSATURATED,Aceite de maíz,5,1 cucharada sopera,D012,Aceite de soya,0.5,
+41,FATS_POLYUNSATURATED,Aceite de soya,5,1 cucharada sopera,D012,Aceite de soya,1,1
+41,FATS_POLYUNSATURATED,Aceite de soya,5,1 cucharada sopera,D006,Aceite de maíz,0.5,
+41,FATS_POLYUNSATURATED,Aceite de soya,5,1 cucharada sopera,D007,Aceite de maní,0.5,
+41,FATS_POLYUNSATURATED,Aceite de ajonjolí,5,1 cucharadita,D001,Aceite de ajonjolí o sésamo,1,1
+41,FATS_POLYUNSATURATED,Aceite de ajonjolí,5,1 cucharadita,D006,Aceite de maíz,0.5,
+41,FATS_POLYUNSATURATED,Aceite de ajonjolí,5,1 cucharadita,D007,Aceite de maní,0.5,
+41,FATS_POLYUNSATURATED,Mayonesa comercial,6,1 cucharadita dulcera rasa,D020,"Mayonesa, con sal",0.5,1
+41,FATS_POLYUNSATURATED,Mayonesa comercial,6,1 cucharadita dulcera rasa,N002,"Mayonesa, baja en grasa",0.5,
+42,FATS_MONOUNSATURATED,Aceite de oliva,5,1 cucharada sopera,D008,Aceite de oliva,1,1
+42,FATS_MONOUNSATURATED,Aceite de oliva,5,1 cucharada sopera,D006,Aceite de maíz,0.5,
+42,FATS_MONOUNSATURATED,Aceite de oliva,5,1 cucharada sopera,D007,Aceite de maní,0.5,
+42,FATS_MONOUNSATURATED,Aceite de canola,5,1 cucharada sopera,D003,Aceite de canola o colza,1,1
+42,FATS_MONOUNSATURATED,Aceite de canola,5,1 cucharada sopera,D006,Aceite de maíz,0.5,
+42,FATS_MONOUNSATURATED,Aceite de canola,5,1 cucharada sopera,D007,Aceite de maní,0.5,
+42,FATS_MONOUNSATURATED,Aguacate,30,1/8 unidad,C001,"Aguacate Hass, crudo",0.5,1
+42,FATS_MONOUNSATURATED,Aguacate,30,1/8 unidad,C002,"Aguacate Lorena, crudo",0.5,1
+42,FATS_MONOUNSATURATED,Margarinas suaves promedio,5,1 cucharadita dulcera,D018,"Margarina, con sal",0.33,1
+42,FATS_MONOUNSATURATED,Margarinas suaves promedio,5,1 cucharadita dulcera,D017,Margarina de canola,0.33,1
+42,FATS_MONOUNSATURATED,Margarinas suaves promedio,5,1 cucharadita dulcera,D019,"Margarina, esparcible",0.33,1
+43,FATS_SATURATED,Crema de leche líquida entera,20,1 cucharada sopera alta,G001,Crema de leche,0.5,1
+43,FATS_SATURATED,Crema de leche líquida entera,20,1 cucharada sopera alta,K023,Helado de crema,0.25,
+43,FATS_SATURATED,Crema de leche líquida entera,20,1 cucharada sopera alta,G014,"Queso crema, amarillo",0.25,
+43,FATS_SATURATED,Tocineta,7,1 tira,F022,"Cerdo, panceta o tocineta, salada, cruda",0.25,
+43,FATS_SATURATED,Tocineta,7,1 tira,F023,"Cerdo, panceta o tocineta, salteada, sin sal",0.25,
+43,FATS_SATURATED,Queso crema,13,1 cucharadita dulcera colmada,G014,"Queso crema, amarillo",1,1
+43,FATS_SATURATED,Queso crema,13,1 cucharadita dulcera colmada,S020,Mote de queso,0.5,
+43,FATS_SATURATED,Queso crema,13,1 cucharadita dulcera colmada,G021,"Queso fresco, semiduro, semimagro, tipo doble crema",0.4,
+43,FATS_SATURATED,Mantequilla,6,1 cucharadita dulcera rasa,D015,Mantequilla,1,1
+43,FATS_SATURATED,Mantequilla,6,1 cucharadita dulcera rasa,D016,Mantequilla de maní,1,
+43,FATS_SATURATED,Aceite de palma,5,1 cucharadita,D009,Aceite de palma,1,1
+43,FATS_SATURATED,Aceite de palma,5,1 cucharadita,D010,Aceite de palma africana,1,1
+43,FATS_SATURATED,Aceite de palma,5,1 cucharadita,D006,Aceite de maíz,0.5,
+43,FATS_SATURATED,Manteca de cerdo,4,1 cucharadita dulcera,D014,Manteca o grasa de cerdo,1,1
+43,FATS_SATURATED,Coco pulpa rallada,15,3 cucharadas,C019,"Coco, crudo",0.33,
+43,FATS_SATURATED,Coco pulpa rallada,15,3 cucharadas,C020,"Coco, deshidratado",0.33,
+43,FATS_SATURATED,Coco pulpa rallada,15,3 cucharadas,H002,"Agua de coco, sin azúcar",0.33,
+44,SUGARS_SIMPLE,Azúcar granulada,23,2 cucharadas soperas colmadas,K003,"Azúcar blanco, granulado",1,1
+44,SUGARS_SIMPLE,Azúcar granulada,23,2 cucharadas soperas colmadas,K004,"Azúcar moreno, granulado",1,1
+44,SUGARS_SIMPLE,Azúcar granulada,23,2 cucharadas soperas colmadas,H002,"Agua de coco, sin azúcar",0.5,
+44,SUGARS_SIMPLE,Miel de abejas,21,1 cucharada sopera,K031,"Miel de abejas, líquida",1,1
+44,SUGARS_SIMPLE,Miel de abejas,21,1 cucharada sopera,K028,Melaza o miel negra,0.5,
+44,SUGARS_SIMPLE,Miel de abejas,21,1 cucharada sopera,K032,"Miel de caña de azúcar, líquida",0.33,
+44,SUGARS_SIMPLE,Panela,29,1 trozo pequeño,K033,Panela,1,1
+44,SUGARS_SIMPLE,Panela,29,1 trozo pequeño,K014,"Cocadas, con panela",1,
+44,SUGARS_SIMPLE,Panela,29,1 trozo pequeño,K009,"Chocolate, en bolas, con panela",0.5,
+45,SWEETS,Bocadillo de guayaba,30,1 tajada delgada,K006,"Bocadillo o dulce de guayaba, veleño",0.67,1
+45,SWEETS,Bocadillo de guayaba,30,1 tajada delgada,K005,"Bocadillo o dulce de guayaba, tradicional",0.67,1
+45,SWEETS,Bocadillo de guayaba,30,1 tajada delgada,C009,"Banano bocadillo, crudo",0.5,
+45,SWEETS,Brevas en almíbar,100,4 unidades medianas,C013,"Breva, verde, cruda",0.5,
+45,SWEETS,Brevas en almíbar,100,4 unidades medianas,C012,"Breva, madura, cruda",0.5,
+45,SWEETS,Ciruelas pasas,41,8 unidades medianas,P040,"Ciruela joba, cruda",0.5,
+45,SWEETS,Ciruelas pasas,41,8 unidades medianas,C017,"Ciruela, común, cruda",0.5,
+45,SWEETS,Cóctel de frutas,157,3/4 pocillo chocolatero,,,,
+45,SWEETS,Cocada de panela,25,1 unidad mediana,K014,"Cocadas, con panela",1,1
+45,SWEETS,Gelatina de pata,23,1 unidad mediana,K020,Gelatina de pata,1,1
+45,SWEETS,Gelatina de pata,23,1 unidad mediana,K019,"Gelatina con azúcar, líquida",0.5,
+45,SWEETS,Gelatina de pata,23,1 unidad mediana,K018,"Gelatina con azúcar, en polvo",0.5,
+45,SWEETS,Chocolatina de leche,12,1 unidad pequeña,K012,Chocolatina o chocolate de leche,1,1
+45,SWEETS,Leche condensada,28,2 cucharadas soperas,G005,"Leche de vaca, condensada, con azúcar",0.67,1
+45,SWEETS,Leche condensada,28,2 cucharadas soperas,G001,Crema de leche,0.5,
+45,SWEETS,Leche condensada,28,2 cucharadas soperas,K002,Arroz con leche,0.5,
+45,SWEETS,Helado de vainilla,45,1 bola pequeña,K023,Helado de crema,0.5,1
+45,SWEETS,Helado de vainilla,45,1 bola pequeña,K024,Helado de leche,0.5,
+45,SWEETS,Helado de vainilla,45,1 bola pequeña,K022,"Helado de agua, con azúcar",0.5,
+45,SWEETS,Helado de agua,200,1 unidad,K022,"Helado de agua, con azúcar",1,1
+45,SWEETS,Helado de agua,200,1 unidad,K023,Helado de crema,0.5,
+45,SWEETS,Helado de agua,200,1 unidad,K024,Helado de leche,0.5,
+45,SWEETS,Caramelos,24,6 unidades,K008,"Caramelos o confites, duros",0.5,1
+45,SWEETS,Caramelos,24,6 unidades,K007,"Caramelos o confites, blandos",0.5,1
+45,SWEETS,Yogueta,20,1 unidad,,,,
+45,SWEETS,Confites duros,22,5 unidades,K008,"Caramelos o confites, duros",1,
+45,SWEETS,Confites duros,22,5 unidades,K007,"Caramelos o confites, blandos",0.5,
+45,SWEETS,Gelatina con azúcar preparada,166,1 copa mediana,K019,"Gelatina con azúcar, líquida",0.67,1
+45,SWEETS,Gelatina con azúcar preparada,166,1 copa mediana,K018,"Gelatina con azúcar, en polvo",0.67,
+45,SWEETS,Gelatina con azúcar preparada,166,1 copa mediana,K020,Gelatina de pata,0.33,
+45,SWEETS,Jarabe de maple,37,4 cucharadas soperas,,,,
+45,SWEETS,Colombineta,20,1 unidad,,,,
+45,SWEETS,Masmelos,30,6 unidades pequeñas,K027,Masmelos,1,1
+45,SWEETS,Mermelada,36,4 cucharadas soperas colmadas,N003,"Mermelada, baja en Calorias",0.5,
+45,SWEETS,Mermelada,36,4 cucharadas soperas colmadas,K030,"Mermelada, regular, con azúcar",0.5,1
+45,SWEETS,Piña enlatada,172,6 rodajas pequeñas,C072,"Piña, cruda",0.5,
+45,SWEETS,Piña enlatada,172,6 rodajas pequeñas,P083,"Piña india, cruda",0.5,
+45,SWEETS,Piña enlatada,172,6 rodajas pequeñas,P084,"Piña uva hartón, cruda",0.33,
+45,SWEETS,Durazno enlatado,173,3 mitades pequeñas,C023,"Durazno, crudo",0.5,
+45,SWEETS,Durazno enlatado,173,3 mitades pequeñas,H011,"Néctar de durazno, con azúcar",0.5,
+45,SWEETS,Cerezas en almíbar claro,90,18 Unidades,C014,"Cereza, cruda",0.33,
