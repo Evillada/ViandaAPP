@@ -35,7 +35,7 @@ export function Modal({ open, onClose, title, children, maxWidth = "max-w-md" }:
           <h3 className="text-lg font-semibold text-text">{title}</h3>
           <button
             onClick={onClose}
-            className="text-muted hover:text-text text-xl transition-colors"
+            className="-mr-3 inline-flex h-11 w-11 items-center justify-center rounded-lg text-muted hover:text-text text-xl transition-colors"
             aria-label="Cerrar"
           >
             ×

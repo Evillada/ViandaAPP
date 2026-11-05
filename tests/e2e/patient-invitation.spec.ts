@@ -12,11 +12,14 @@ test("invitar → crear cuenta en móvil → consentir → portal → revocar", 
 
   await page.goto(new URL(inviteUrl).pathname);
   await expect(page.getByRole("heading", { name: "Crea tu cuenta" })).toBeVisible();
-  await page.getByLabel("Email").fill(`carlos-${Date.now()}@test.co`);
+  const patientEmail = `carlos-${Date.now()}@test.co`;
+  await page.getByLabel("Email").fill(patientEmail);
   await page.getByLabel("Contraseña").fill("Secreta1");
   await page.getByRole("button", { name: "Crear cuenta y continuar" }).click();
 
   await expect(page.getByRole("heading", { name: "Autorización de tratamiento de datos" })).toBeVisible();
+  await expect(page.getByText(patientEmail)).toBeVisible();
+  await expect(page.getByRole("button", { name: "Usar otra cuenta" })).toBeVisible();
   const accept = page.getByRole("button", { name: "Acepto" });
   await expect(accept).toBeDisabled();
   await page.getByLabel("Autorizo el tratamiento de mis datos personales y de salud").check();

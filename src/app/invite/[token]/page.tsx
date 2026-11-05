@@ -37,6 +37,7 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
             <ConsentStep
               token={token}
               professionalName={preview.professionalName}
+              accountEmail={session.user.email ?? ""}
               documentVersion={document.version}
               documentBody={document.body}
             />

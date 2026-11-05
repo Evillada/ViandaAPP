@@ -65,7 +65,7 @@ export function LoginForm() {
       </form>
       <p className="text-center text-sm text-muted mt-6">
         ¿Eres nutricionista y no tienes cuenta?{" "}
-        <Link href="/register" className="text-primary hover:underline font-medium">
+        <Link href="/register" className="inline-flex min-h-11 items-center text-primary hover:underline font-medium">
           Regístrate
         </Link>
       </p>

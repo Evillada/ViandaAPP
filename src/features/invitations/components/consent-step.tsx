@@ -1,17 +1,20 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { signOut } from "next-auth/react";
 import { Button } from "@/shared/ui/components";
 import { acceptInvitationAction } from "../actions";
 
 export function ConsentStep({
   token,
   professionalName,
+  accountEmail,
   documentVersion,
   documentBody,
 }: {
   token: string;
   professionalName: string;
+  accountEmail: string;
   documentVersion: string;
   documentBody: string;
 }) {
@@ -33,6 +36,18 @@ export function ConsentStep({
       <div>
         <h1 className="text-xl font-bold text-text">Autorización de tratamiento de datos</h1>
         <p className="text-sm text-muted mt-1">Para que {professionalName} pueda acompañarte en Vianda. Versión {documentVersion}.</p>
+      </div>
+      <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border bg-background px-4 py-2">
+        <p className="text-sm text-text">
+          Tu ficha quedará vinculada a <span className="font-medium break-all">{accountEmail}</span>
+        </p>
+        <button
+          type="button"
+          onClick={() => signOut({ redirectTo: `/invite/${token}` })}
+          className="min-h-11 text-sm font-medium text-primary hover:underline"
+        >
+          Usar otra cuenta
+        </button>
       </div>
       <div
         className="max-h-[45dvh] overflow-y-auto rounded-xl border border-border bg-background p-4 text-sm text-text whitespace-pre-line"
