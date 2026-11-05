@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   UserRound,
   Users,
+  UtensilsCrossed,
   X,
   type LucideIcon,
 } from "lucide-react";
@@ -27,6 +28,7 @@ const ICONS: Record<NavIconName, LucideIcon> = {
   calculator: Calculator,
   shield: ShieldCheck,
   heart: HeartPulse,
+  utensils: UtensilsCrossed,
 };
 
 interface AppShellProps {
@@ -36,6 +38,7 @@ interface AppShellProps {
   user: { name: string | null; email: string | null };
   switchAreaAction: (formData: FormData) => Promise<void>;
   signOutAction: () => Promise<void>;
+  accountLinks?: { href: string; label: string }[];
   children: React.ReactNode;
 }
 
@@ -43,7 +46,16 @@ function isActive(pathname: string, item: NavItem): boolean {
   return item.exact ? pathname === item.href : pathname === item.href || pathname.startsWith(`${item.href}/`);
 }
 
-export function AppShell({ areaLabel, items, areas, user, switchAreaAction, signOutAction, children }: AppShellProps) {
+export function AppShell({
+  areaLabel,
+  items,
+  areas,
+  user,
+  switchAreaAction,
+  signOutAction,
+  accountLinks = [],
+  children,
+}: AppShellProps) {
   const pathname = usePathname();
   const accountDialogRef = useRef<HTMLDialogElement>(null);
   const initial = user.name?.[0]?.toUpperCase() ?? "V";
@@ -59,6 +71,21 @@ export function AppShell({ areaLabel, items, areas, user, switchAreaAction, sign
           <p className="text-xs text-muted truncate">{user.email}</p>
         </div>
       </div>
+      {accountLinks.length > 0 && (
+        <ul className="space-y-2">
+          {accountLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                onClick={() => accountDialogRef.current?.close()}
+                className="flex min-h-11 w-full items-center rounded-xl border border-border px-4 text-sm font-medium text-text hover:bg-background"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
       {areas.length > 1 && (
         <div className="space-y-2">
           <p className="text-xs font-medium text-muted uppercase tracking-wide">Cambiar de área</p>

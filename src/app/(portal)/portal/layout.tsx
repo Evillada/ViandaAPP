@@ -19,6 +19,7 @@ export default async function PortalLayout({ children }: { children: React.React
       user={{ name: session.user.name ?? null, email: session.user.email ?? null }}
       switchAreaAction={switchAreaAction}
       signOutAction={signOutAction}
+      accountLinks={[{ href: "/portal/cuenta", label: "Mi cuenta y profesionales" }]}
     >
       {children}
     </AppShell>

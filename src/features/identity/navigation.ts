@@ -1,7 +1,7 @@
 import { availableAreas } from "@/core/access/landing";
 import type { Actor, Area } from "@/core/access/types";
 
-export type NavIconName = "home" | "users" | "calendar" | "calculator" | "shield" | "heart";
+export type NavIconName = "home" | "users" | "calendar" | "calculator" | "shield" | "heart" | "utensils";
 
 export interface NavItem {
   href: string;
@@ -23,7 +23,11 @@ export const PROFESSIONAL_NAV: NavItem[] = [
   { href: "/dashboard/tools", label: "Herramientas", icon: "calculator" },
 ];
 
-export const PATIENT_NAV: NavItem[] = [{ href: "/portal", label: "Inicio", icon: "heart", exact: true }];
+export const PATIENT_NAV: NavItem[] = [
+  { href: "/portal", label: "Hoy", icon: "home", exact: true },
+  { href: "/portal/plan", label: "Plan", icon: "utensils" },
+  { href: "/portal/citas", label: "Citas", icon: "calendar" },
+];
 
 export const ADMIN_NAV: NavItem[] = [{ href: "/admin/professionals", label: "Profesionales", icon: "shield" }];
 

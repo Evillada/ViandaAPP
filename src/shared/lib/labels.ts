@@ -16,6 +16,8 @@ export const MEAL_TYPE_LABELS: Record<string, string> = {
   OTHER: "Otro",
 };
 
+export const PORTAL_MEAL_LABELS: Record<string, string> = { ...MEAL_TYPE_LABELS, AFTERNOON_SNACK: "Onces" };
+
 export const SEX_LABELS: Record<string, string> = {
   MALE: "Masculino",
   FEMALE: "Femenino",
