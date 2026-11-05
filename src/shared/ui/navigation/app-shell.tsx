@@ -10,6 +10,7 @@ import {
   House,
   LogOut,
   ShieldCheck,
+  TrendingUp,
   UserRound,
   Users,
   UtensilsCrossed,
@@ -29,6 +30,7 @@ const ICONS: Record<NavIconName, LucideIcon> = {
   shield: ShieldCheck,
   heart: HeartPulse,
   utensils: UtensilsCrossed,
+  progress: TrendingUp,
 };
 
 interface AppShellProps {

@@ -9,6 +9,7 @@ describe("progreso del portal", () => {
   it("formatea con coma decimal y máximo un decimal", () => {
     expect(formatMeasure(82.25)).toBe("82,3");
     expect(formatMeasure(80)).toBe("80");
+    expect(formatMeasure(0.837, 2)).toBe("0,84");
   });
 
   it("describe el cambio sin juicio", () => {

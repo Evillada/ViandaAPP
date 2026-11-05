@@ -14,8 +14,8 @@ export const PROGRESS_METRICS: ProgressMetric[] = [
   { key: "bodyFatPercent", label: "% grasa", unit: "%" },
 ];
 
-export function formatMeasure(value: number): string {
-  return new Intl.NumberFormat("es-CO", { maximumFractionDigits: 1 }).format(value);
+export function formatMeasure(value: number, maximumFractionDigits = 1): string {
+  return new Intl.NumberFormat("es-CO", { maximumFractionDigits }).format(value);
 }
 
 /** Cambio frente a la valoración anterior, sin calificarlo como mejor o peor. */
