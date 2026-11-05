@@ -137,6 +137,63 @@ enum MacroPreset {
   CUSTOM
 }
 
+enum FoodSource {
+  TCAC_2018
+  USDA_SR
+  MANUAL
+}
+
+enum GabaGroup {
+  CEREALS_TUBERS
+  FRUITS
+  VEGETABLES
+  DAIRY
+  PROTEINS
+  FATS
+  SUGARS
+}
+
+enum GabaSubgroup {
+  CEREALS
+  ROOTS
+  TUBERS
+  PLANTAINS
+  FRUITS
+  VEGETABLES
+  MILK_WHOLE
+  DAIRY_WHOLE
+  MILK_REDUCED_FAT
+  DAIRY_REDUCED_FAT
+  LEAN_MEATS
+  HIGH_FAT_MEATS
+  EGGS
+  LEGUMES
+  NUTS_SEEDS
+  FATS_POLYUNSATURATED
+  FATS_MONOUNSATURATED
+  FATS_SATURATED
+  SUGARS_SIMPLE
+  SWEETS
+}
+
+enum Allergen {
+  GLUTEN
+  MILK
+  EGG
+  PEANUT
+  TREE_NUTS
+  FISH
+  SHELLFISH
+  SOY
+  SESAME
+}
+
+enum HighIn {
+  SUGAR
+  SODIUM
+  SATURATED_FAT
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -397,6 +454,21 @@ model Food {
   source   String  @default("ICBF")
   isGlobal Boolean @default(true)
 
+  code              String?       @unique
+  catalogSource     FoodSource    @default(MANUAL)
+  sourceRef         String?
+  gabaGroup         GabaGroup?
+  gabaSubgroup      GabaSubgroup?
+  isProcessed       Boolean       @default(false)
+  allergens         Allergen[]
+  highIn            HighIn[]
+  exchangeGrams     Float?
+  exchangeMeasure   String?
+  exchangeEstimated Boolean       @default(false)
+  edibleFraction    Float?
+  searchName        String        @default("")
+  needsReview       Boolean       @default(false)
+
   categoryId String
   category   FoodCategory @relation(fields: [categoryId], references: [id])
 
@@ -405,12 +477,16 @@ model Food {
   mealItems   MealItem[]
   recallItems DietaryRecallItem[]
 
+  @@index([searchName])
+  @@index([gabaGroup])
+  @@index([catalogSource])
   @@map("foods")
 }
 
 model FoodNutrient {
-  id            String @id @default(cuid())
+  id            String     @id @default(cuid())
   amountPer100g Float
+  source        FoodSource @default(MANUAL)
 
   foodId     String
   food       Food     @relation(fields: [foodId], references: [id], onDelete: Cascade)
