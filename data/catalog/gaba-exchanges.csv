@@ -1,0 +1,212 @@
+table,gaba_group,gaba_subgroup,subgroup_name,food,grams,measure
+26,CEREALS_TUBERS,CEREALS,Cereales,Almojábana,31,1 unidad grande
+26,CEREALS_TUBERS,CEREALS,Cereales,Arepa delgada de maíz blanco trillado,56,1 unidad pequeña
+26,CEREALS_TUBERS,CEREALS,Cereales,Arepa redonda de maíz blanco trillado,52,1 unidad grande
+26,CEREALS_TUBERS,CEREALS,Cereales,"Arroz blanco, cocido",80,6 cucharadas soperas colmadas
+26,CEREALS_TUBERS,CEREALS,Cereales,"Arroz integral, cocido",81,8 cucharadas soperas colmadas o 2/3 de pocillo
+26,CEREALS_TUBERS,CEREALS,Cereales,Avena en hojuelas,24,4 cucharadas soperas colmadas
+26,CEREALS_TUBERS,CEREALS,Cereales,Cebada perlada cocida,72,5 cucharadas soperas colmadas
+26,CEREALS_TUBERS,CEREALS,Cereales,Arroz sopero,23,2/3 de pocillo chocolatero
+26,CEREALS_TUBERS,CEREALS,Cereales,Hojuelas de maíz,25,2/3 de pocillo chocolatero
+26,CEREALS_TUBERS,CEREALS,Cereales,Crispetas - Maíz pira,27,1 1/2 pocillo
+26,CEREALS_TUBERS,CEREALS,Cereales,Cuchuco de cebada,27,4 cucharadas soperas colmadas
+26,CEREALS_TUBERS,CEREALS,Cereales,"Pasta larga, cocida",64,2/3 de pocillo chocolatero
+26,CEREALS_TUBERS,CEREALS,Cereales,Cereal en aros,20,2/3 de pocillo chocolatero
+26,CEREALS_TUBERS,CEREALS,Cereales,Galletas integrales,20,2 Unidades (Tablas)
+26,CEREALS_TUBERS,CEREALS,Cereales,Galletas con sabor a queso,18,5 unidades
+26,CEREALS_TUBERS,CEREALS,Cereales,Galletas de soda,24,3 Unidades (Tablas)
+26,CEREALS_TUBERS,CEREALS,Cereales,Galletas sandwich de chocolate,18,2 unidades
+26,CEREALS_TUBERS,CEREALS,Cereales,Galletas tipo wafer,17,3 unidades
+26,CEREALS_TUBERS,CEREALS,Cereales,Cucas,19,1 unidad pequeña
+26,CEREALS_TUBERS,CEREALS,Cereales,Harina de arroz blanco,25,2 cucharadas soperas colmadas
+26,CEREALS_TUBERS,CEREALS,Cereales,Harina de maíz blanco trillado,25,2 cucharadas soperas rasas
+26,CEREALS_TUBERS,CEREALS,Cereales,Harina de trigo refinada fortificada,25,4 cucharadas soperas rasas
+26,CEREALS_TUBERS,CEREALS,Cereales,"Pasta corta, cocida",64,2/3 de pocillo chocolatero
+26,CEREALS_TUBERS,CEREALS,Cereales,Maicena (Almidón de maíz),25,4 cucharadas soperas rasas
+26,CEREALS_TUBERS,CEREALS,Cereales,"Maíz tierno o choclo, amarillo enlatado",110,8 cucharadas soperas colmadas
+26,CEREALS_TUBERS,CEREALS,Cereales,Palitos o palitroques,22,2 unidades
+26,CEREALS_TUBERS,CEREALS,Cereales,Pan blanco,22,1 tajada delgada
+26,CEREALS_TUBERS,CEREALS,Cereales,Pan centeno,35,1 tajada mediana
+26,CEREALS_TUBERS,CEREALS,Cereales,Pan de salvado de avena,38,1 tajada mediana
+26,CEREALS_TUBERS,CEREALS,Cereales,Pan integral,32,1 tajada mediana
+26,CEREALS_TUBERS,CEREALS,Cereales,Pan pita o árabe,25,1/2 unidad pequeña
+26,CEREALS_TUBERS,CEREALS,Cereales,Pan de queso,28,1 unidad pequeña
+26,CEREALS_TUBERS,CEREALS,Cereales,Pan de yuca,20,2 unidades
+26,CEREALS_TUBERS,CEREALS,Cereales,Ponqué,30,1 trozo pequeño
+26,CEREALS_TUBERS,CEREALS,Cereales,Taco vacío,26,2 unidades
+26,CEREALS_TUBERS,CEREALS,Cereales,Tostada integral,37,1 unidad mediana
+26,CEREALS_TUBERS,CEREALS,Cereales,Tostada o calado,32,1 unidad mediana
+26,CEREALS_TUBERS,CEREALS,Cereales,Hojuelas de maíz azucaradas,22,1/3 de pocillo chocolatero
+27,CEREALS_TUBERS,ROOTS,Raíces,Arracacha sin cáscara cruda,96,1 trozo pequeño
+27,CEREALS_TUBERS,ROOTS,Raíces,Ñame sin cáscara cocido,78,1 trozo pequeño
+27,CEREALS_TUBERS,ROOTS,Raíces,Yuca blanca cruda,62,1 trozo mediano
+28,CEREALS_TUBERS,TUBERS,Tubérculos,Batata cocida sin cáscara,100,1 trozo pequeño
+28,CEREALS_TUBERS,TUBERS,Tubérculos,Cubios o ullucos crudos,155,2 unidades grandes
+28,CEREALS_TUBERS,TUBERS,Tubérculos,Chuguas crudos,155,9 unidades grandes
+28,CEREALS_TUBERS,TUBERS,Tubérculos,Papa común cocida,83,1 unidad mediana
+28,CEREALS_TUBERS,TUBERS,Tubérculos,Papa criolla cocida,108,3 unidades medianas
+29,CEREALS_TUBERS,PLANTAINS,Plátanos,Harina de plátano,24,2 cucharadas soperas colmadas
+29,CEREALS_TUBERS,PLANTAINS,Plátanos,Plátano verde sin cáscara,78,1/2 unidad mediana
+29,CEREALS_TUBERS,PLANTAINS,Plátanos,Plátano colí o guineo crudo,88,1 unidad mediana
+29,CEREALS_TUBERS,PLANTAINS,Plátanos,Plátano hartón maduro sin cáscara cocido,66,1/4 unidad mediana
+30,FRUITS,FRUITS,Frutas,Banano común,65,1/2 unidad grande
+30,FRUITS,FRUITS,Frutas,Borojó,54,2/3 pocillo
+30,FRUITS,FRUITS,Frutas,Chirimoya,92,1/2 unidad mediana
+30,FRUITS,FRUITS,Frutas,Chontaduro,27,1 unidad pequeña
+30,FRUITS,FRUITS,Frutas,Ciruela claudia,93,1 unidad mediana
+30,FRUITS,FRUITS,Frutas,Ciruela común,60,12 unidades
+30,FRUITS,FRUITS,Frutas,Curuba,198,5 unidades
+30,FRUITS,FRUITS,Frutas,Feijoa,117,3 unidades pequeñas
+30,FRUITS,FRUITS,Frutas,Fresas,161,9 unidades medianas
+30,FRUITS,FRUITS,Frutas,Granadilla,109,1 unidad grande
+30,FRUITS,FRUITS,Frutas,Guanábana,100,4 cucharadas soperas colmadas
+30,FRUITS,FRUITS,Frutas,Guayaba común,100,1 unidad grande
+30,FRUITS,FRUITS,Frutas,Higo,122,2 unidades pequeñas
+30,FRUITS,FRUITS,Frutas,Kiwi,82,1 unidad mediana
+30,FRUITS,FRUITS,Frutas,Lulo jugo,200,1 vaso mediano
+30,FRUITS,FRUITS,Frutas,Mandarina,105,1 unidad mediana
+30,FRUITS,FRUITS,Frutas,Mango,112,1 unidad pequeña
+30,FRUITS,FRUITS,Frutas,Manzana,112,1 unidad pequeña
+30,FRUITS,FRUITS,Frutas,Maracuyá,97,2 unidades medianas
+30,FRUITS,FRUITS,Frutas,Melón,126,1 tajada delgada
+30,FRUITS,FRUITS,Frutas,Moras de castilla,216,38 unidades
+30,FRUITS,FRUITS,Frutas,Naranja,147,1 unidad pequeña
+30,FRUITS,FRUITS,Frutas,Papaya,128,1 trozo mediano
+30,FRUITS,FRUITS,Frutas,Papayuela,312,1 unidad mediana
+30,FRUITS,FRUITS,Frutas,Pera,133,1/2 unidad mediana
+30,FRUITS,FRUITS,Frutas,Piña,115,1 tajada delgada
+30,FRUITS,FRUITS,Frutas,Pitahaya,110,1 unidad mediana
+30,FRUITS,FRUITS,Frutas,Tomate de árbol,172,2 unidades medianas
+30,FRUITS,FRUITS,Frutas,Uchuvas,69,13 unidades medianas
+30,FRUITS,FRUITS,Frutas,Uva blanca,135,20 unidades pequeñas
+30,FRUITS,FRUITS,Frutas,Zapote,123,1 unidad mediana
+31,VEGETABLES,VEGETABLES,Verduras,Arveja verde,42,3 cucharadas soperas
+31,VEGETABLES,VEGETABLES,Verduras,Ahuyama o Zapallo,68,1 trozo mediano
+31,VEGETABLES,VEGETABLES,Verduras,Zanahorias Baby,39,8 unidades medianas
+31,VEGETABLES,VEGETABLES,Verduras,Cebolla puerro,50,1 tallo grueso
+31,VEGETABLES,VEGETABLES,Verduras,Cebolla cabezona,54,6 rodajas delgadas
+31,VEGETABLES,VEGETABLES,Verduras,Champiñones,93,1/2 pocillo chocolatero
+31,VEGETABLES,VEGETABLES,Verduras,Cidrayota,177,1/2 unidad mediana
+31,VEGETABLES,VEGETABLES,Verduras,Coliflor,86,3 gajos pequeños
+31,VEGETABLES,VEGETABLES,Verduras,Pimentón rojo,88,1/2 unidad mediana
+31,VEGETABLES,VEGETABLES,Verduras,Remolacha,57,1/2 unidad pequeña
+31,VEGETABLES,VEGETABLES,Verduras,Repollo morado,120,2 pocillos chocolateros
+31,VEGETABLES,VEGETABLES,Verduras,Tomate rojo,126,1 unidad grande
+31,VEGETABLES,VEGETABLES,Verduras,Tomate verde (riñón),100,4 rodajas delgadas
+31,VEGETABLES,VEGETABLES,Verduras,Zanahoria,58,1/2 pocillo chocolatero
+31,VEGETABLES,VEGETABLES,Verduras,Tomate rojo maduro enlatado,105,1/2 pocillo chocolatero
+31,VEGETABLES,VEGETABLES,Verduras,Palmitos enlatados,71,1/2 pocillo chocolatero
+31,VEGETABLES,VEGETABLES,Verduras,Champiñones enlatados,83,1/2 pocillo chocolatero
+31,VEGETABLES,VEGETABLES,Verduras,Espárragos enlatados,105,19 tallos delgados
+31,VEGETABLES,VEGETABLES,Verduras,Habichuelas enlatadas,100,3/4 pocillo (cuadros)
+32,DAIRY,MILK_WHOLE,Leche entera,Leche de cabra cruda,200,1 vaso mediano
+32,DAIRY,MILK_WHOLE,Leche entera,Leche de vaca en polvo entera,27,6 cucharadas soperas rasas
+32,DAIRY,MILK_WHOLE,Leche entera,Leche de vaca entera cruda,200,1 vaso mediano
+32,DAIRY,MILK_WHOLE,Leche entera,Leche de vaca líquida entera pasterizada,200,1 vaso mediano
+33,DAIRY,DAIRY_WHOLE,Productos lácteos grasa entera,Kumis,150,1 vaso pequeño
+33,DAIRY,DAIRY_WHOLE,Productos lácteos grasa entera,Yogur,150,1 vaso pequeño
+33,DAIRY,DAIRY_WHOLE,Productos lácteos grasa entera,Quesito,30,1 tajada delgada
+33,DAIRY,DAIRY_WHOLE,Productos lácteos grasa entera,Cuajada de leche de vaca,34,1 tajada delgada mediana
+33,DAIRY,DAIRY_WHOLE,Productos lácteos grasa entera,Queso americano,24,1 lonchita
+33,DAIRY,DAIRY_WHOLE,Productos lácteos grasa entera,Queso campesino,20,1 tajada pequeña delgada
+33,DAIRY,DAIRY_WHOLE,Productos lácteos grasa entera,Queso sabana (Edam),22,1 tajada delgada
+33,DAIRY,DAIRY_WHOLE,Productos lácteos grasa entera,Queso mozzarella de leche entera,28,1 tajada semigruesa
+33,DAIRY,DAIRY_WHOLE,Productos lácteos grasa entera,Queso parmesano rallado,18,2 cucharadas soperas colmadas
+33,DAIRY,DAIRY_WHOLE,Productos lácteos grasa entera,Queso ricotta de leche entera,46,6 cucharadas soperas rasas
+34,DAIRY,MILK_REDUCED_FAT,Lácteos con reducción de grasa,Leche baja en grasa,200,1 vaso mediano
+34,DAIRY,MILK_REDUCED_FAT,Lácteos con reducción de grasa,Leche en polvo baja en grasa,25,5 cucharadas soperas rasas
+35,DAIRY,DAIRY_REDUCED_FAT,Productos lácteos con reducción de grasa,Yogur dietético,200,1 vaso mediano
+35,DAIRY,DAIRY_REDUCED_FAT,Productos lácteos con reducción de grasa,Kumis dietético,200,1 vaso mediano
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Atún enlatado en aceite,40,1/3 lata mediana
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Bagre carne y piel,70,1/3 de filete pequeño
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Carne de cerdo,60,1/8 de libra
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Carne de res,60,1/8 de libra
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Carne de ternera,60,1/8 de libra
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Contramuslo carne sin piel cruda sin hueso,60,1 unidad mediana
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Muslo de pollo sin hueso y sin piel,60,1 unidad mediana
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,"Pargo, especies mezcladas",60,1 trozo pequeño
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Pechuga de pollo sin hueso sin piel,60,1/4 de unidad mediana
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Salmón rosado,60,1 trozo pequeño
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Trucha arco iris,60,1/2 unidad pequeña
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Jamón,84,4 tajadas
+36,PROTEINS,LEAN_MEATS,Carnes magras crudas,Morcilla,80,1 unidad mediana
+37,PROTEINS,HIGH_FAT_MEATS,Productos altos en grasas saturadas y colesterol,Contramuslo de pollo sin hueso y con piel,66,1 unidad mediana
+37,PROTEINS,HIGH_FAT_MEATS,Productos altos en grasas saturadas y colesterol,"Camarón, especies mezcladas",62,37 unidades pequeñas
+37,PROTEINS,HIGH_FAT_MEATS,Productos altos en grasas saturadas y colesterol,Alas de pollo,56,1 unidad grande
+37,PROTEINS,HIGH_FAT_MEATS,Productos altos en grasas saturadas y colesterol,Hígado de pollo,72,2 unidades medianas
+37,PROTEINS,HIGH_FAT_MEATS,Productos altos en grasas saturadas y colesterol,Lengua de res,83,1/6 de libra
+37,PROTEINS,HIGH_FAT_MEATS,Productos altos en grasas saturadas y colesterol,Langostinos especies mezcladas,75,3 unidades medianas
+37,PROTEINS,HIGH_FAT_MEATS,Productos altos en grasas saturadas y colesterol,Callo o panza o mondongo,100,1/5 de libra
+37,PROTEINS,HIGH_FAT_MEATS,Productos altos en grasas saturadas y colesterol,Sardina enlatada en salsa de tomate,80,1 trozo grande
+38,PROTEINS,EGGS,Huevos,Huevo de codorniz crudo,50,5 unidades pequeñas
+38,PROTEINS,EGGS,Huevos,Huevo de gallina crudo,50,1 unidad pequeña
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Frijol cargamanto rosado con plátano verde,60,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Frijol verde con plátano verde,60,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Frijol cargamanto blanco con plátano verde,60,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Frijol bola roja con plátano verde,65,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Frijol nima con guiso,70,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Frijol blanquillo con guiso,60,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Frijol caraota con guiso,70,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Frijol zaragoza con guiso,50,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Frijol cabecita negra con guiso,70,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Garbanzo con guiso,50,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Soya con guiso,50,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Lenteja con guiso,70,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Promedio todas las variedades con plátano,60,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Promedio todas las variedades con guiso,60,1/2 cucharón
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Proteína de soya texturizada hidratada,60,2 cucharadas soperas colmadas
+39,PROTEINS,LEGUMES,Leguminosas secas cocidas y mezclas vegetales cocidas,Proteína de trigo texturizada hidratada,75,3 cucharadas soperas colmadas
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Pistacho crudo sin cáscara,9,1 cucharada sopera colmada
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Pistacho tostado y salado sin cáscara,9,1 cucharada sopera colmada
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Almendras tostadas sin sal,9,3 unidades medianas
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Pecanas tostadas sin sal,8,3 unidades medianas
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Avellanas tostadas sin sal,7,5 unidades medianas
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Nuez del Brasil,8,2 unidades medianas
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Marañón tostado sin sal,10,1 cucharada sopera colmada
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Maní crudo con cáscara,14,1 cucharada sopera colmada
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Maní sin sal,10,1 cucharada sopera colmada
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Macadamia tostada sin sal,6,3 unidades medianas
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Mezcla de nueces,11,1 cucharada sopera rasa
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Nuez del nogal,8,2 unidades medianas
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Coco deshidratado,9,1 cucharadas soperas colmadas
+40,PROTEINS,NUTS_SEEDS,Frutos secos y semillas,Coco fresco rallado,14,2 cucharadas sopera colmadas
+41,FATS,FATS_POLYUNSATURATED,Grasas poliinsaturadas,Aceite de girasol,5,1 cucharada sopera
+41,FATS,FATS_POLYUNSATURATED,Grasas poliinsaturadas,Aceite de maíz,5,1 cucharada sopera
+41,FATS,FATS_POLYUNSATURATED,Grasas poliinsaturadas,Aceite de soya,5,1 cucharada sopera
+41,FATS,FATS_POLYUNSATURATED,Grasas poliinsaturadas,Aceite de ajonjolí,5,1 cucharadita
+41,FATS,FATS_POLYUNSATURATED,Grasas poliinsaturadas,Mayonesa comercial,6,1 cucharadita dulcera rasa
+42,FATS,FATS_MONOUNSATURATED,Grasas monoinsaturadas,Aceite de oliva,5,1 cucharada sopera
+42,FATS,FATS_MONOUNSATURATED,Grasas monoinsaturadas,Aceite de canola,5,1 cucharada sopera
+42,FATS,FATS_MONOUNSATURATED,Grasas monoinsaturadas,Aguacate,30,1/8 unidad
+42,FATS,FATS_MONOUNSATURATED,Grasas monoinsaturadas,Margarinas suaves promedio,5,1 cucharadita dulcera
+43,FATS,FATS_SATURATED,Grasas saturadas,Crema de leche líquida entera,20,1 cucharada sopera alta
+43,FATS,FATS_SATURATED,Grasas saturadas,Tocineta,7,1 tira
+43,FATS,FATS_SATURATED,Grasas saturadas,Queso crema,13,1 cucharadita dulcera colmada
+43,FATS,FATS_SATURATED,Grasas saturadas,Mantequilla,6,1 cucharadita dulcera rasa
+43,FATS,FATS_SATURATED,Grasas saturadas,Aceite de palma,5,1 cucharadita
+43,FATS,FATS_SATURATED,Grasas saturadas,Manteca de cerdo,4,1 cucharadita dulcera
+43,FATS,FATS_SATURATED,Grasas saturadas,Coco pulpa rallada,15,3 cucharadas
+44,SUGARS,SUGARS_SIMPLE,Azúcares simples,Azúcar granulada,23,2 cucharadas soperas colmadas
+44,SUGARS,SUGARS_SIMPLE,Azúcares simples,Miel de abejas,21,1 cucharada sopera
+44,SUGARS,SUGARS_SIMPLE,Azúcares simples,Panela,29,1 trozo pequeño
+45,SUGARS,SWEETS,Dulces y postres,Bocadillo de guayaba,30,1 tajada delgada
+45,SUGARS,SWEETS,Dulces y postres,Brevas en almíbar,100,4 unidades medianas
+45,SUGARS,SWEETS,Dulces y postres,Ciruelas pasas,41,8 unidades medianas
+45,SUGARS,SWEETS,Dulces y postres,Cóctel de frutas,157,3/4 pocillo chocolatero
+45,SUGARS,SWEETS,Dulces y postres,Cocada de panela,25,1 unidad mediana
+45,SUGARS,SWEETS,Dulces y postres,Gelatina de pata,23,1 unidad mediana
+45,SUGARS,SWEETS,Dulces y postres,Chocolatina de leche,12,1 unidad pequeña
+45,SUGARS,SWEETS,Dulces y postres,Leche condensada,28,2 cucharadas soperas
+45,SUGARS,SWEETS,Dulces y postres,Helado de vainilla,45,1 bola pequeña
+45,SUGARS,SWEETS,Dulces y postres,Helado de agua,200,1 unidad
+45,SUGARS,SWEETS,Dulces y postres,Caramelos,24,6 unidades
+45,SUGARS,SWEETS,Dulces y postres,Yogueta,20,1 unidad
+45,SUGARS,SWEETS,Dulces y postres,Confites duros,22,5 unidades
+45,SUGARS,SWEETS,Dulces y postres,Gelatina con azúcar preparada,166,1 copa mediana
+45,SUGARS,SWEETS,Dulces y postres,Jarabe de maple,37,4 cucharadas soperas
+45,SUGARS,SWEETS,Dulces y postres,Colombineta,20,1 unidad
+45,SUGARS,SWEETS,Dulces y postres,Masmelos,30,6 unidades pequeñas
+45,SUGARS,SWEETS,Dulces y postres,Mermelada,36,4 cucharadas soperas colmadas
+45,SUGARS,SWEETS,Dulces y postres,Piña enlatada,172,6 rodajas pequeñas
+45,SUGARS,SWEETS,Dulces y postres,Durazno enlatado,173,3 mitades pequeñas
+45,SUGARS,SWEETS,Dulces y postres,Cerezas en almíbar claro,90,18 Unidades
