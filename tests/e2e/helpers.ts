@@ -17,6 +17,12 @@ export async function loginAsDev(page: Page) {
   await login(page, "dev@gmail.com", password);
 }
 
+export async function loginAsPatient(page: Page) {
+  const password = process.env.SEED_PATIENT_PASSWORD;
+  if (!password) throw new Error("SEED_PATIENT_PASSWORD no está definida: la fija tests/e2e/global-setup.ts");
+  await login(page, "paciente@emuj.health", password);
+}
+
 export async function openAccount(page: Page) {
   await page.getByRole("navigation", { name: "Navegación principal" }).getByRole("button", { name: "Cuenta" }).click();
   return page.getByRole("dialog", { name: "Cuenta" });

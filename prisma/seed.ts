@@ -306,12 +306,74 @@ async function main() {
     });
   }
 
+  const someFoods = await prisma.food.findMany({ take: 4, orderBy: { name: "asc" }, select: { id: true } });
+  const lastAssessment = await prisma.assessment.findFirst({
+    where: { patientId: patient.id },
+    orderBy: { assessmentDate: "desc" },
+    select: { id: true },
+  });
+  // Idempotente: se recrea con id fijo (los días/comidas/ítems caen en cascada).
+  await prisma.mealPlan.deleteMany({ where: { id: "seed-plan-maria" } });
+  const activatedAt = new Date();
+  activatedAt.setDate(activatedAt.getDate() - 1);
+  await prisma.mealPlan.create({
+    data: {
+      id: "seed-plan-maria",
+      name: "Plan demo — María",
+      status: "ACTIVE",
+      activatedAt,
+      patientInstructions: "Toma 8 vasos de agua al día y camina 20 minutos después del almuerzo.",
+      patientId: patient.id,
+      professionalId: dev.id,
+      assessmentId: lastAssessment?.id,
+      days: {
+        create: [1, 2].map((n) => ({
+          name: `Día ${n}`,
+          orderNum: n,
+          meals: {
+            create: [
+              {
+                type: "BREAKFAST" as const,
+                orderNum: 1,
+                items: { create: someFoods.slice(0, 2).map((f) => ({ foodId: f.id, portionGrams: 80 + n * 10, quantity: 1 })) },
+              },
+              {
+                type: "LUNCH" as const,
+                orderNum: 2,
+                items: { create: someFoods.slice(2, 4).map((f) => ({ foodId: f.id, portionGrams: 120, quantity: 1 })) },
+              },
+              { type: "DINNER" as const, orderNum: 3 },
+            ],
+          },
+        })),
+      },
+    },
+  });
+
+  const appointmentAt = new Date();
+  appointmentAt.setDate(appointmentAt.getDate() + 2);
+  appointmentAt.setUTCHours(15, 0, 0, 0);
+  await prisma.appointment.upsert({
+    where: { id: "seed-appointment-maria" },
+    update: { date: appointmentAt, status: "SCHEDULED" },
+    create: {
+      id: "seed-appointment-maria",
+      date: appointmentAt,
+      duration: 45,
+      reason: "Control mensual",
+      status: "SCHEDULED",
+      patientId: patient.id,
+      professionalId: dev.id,
+    },
+  });
+
   console.log("✅ Vianda seed completado");
   console.log("   Nutricionista: dev@gmail.com (contraseña: SEED_DEV_PASSWORD en .env)");
   console.log("   Paciente demo:", patient.firstName, patient.lastName);
   console.log(`   ${demoAssessments.length} valoraciones demo con historial`);
   console.log(`   ${FOODS.length} alimentos ICBF cargados`);
   console.log("   Consentimiento v1, María vinculada a paciente@emuj.health, Carlos sin cuenta");
+  console.log("   Plan activo demo de 2 días y cita próxima para María");
 }
 
 main()

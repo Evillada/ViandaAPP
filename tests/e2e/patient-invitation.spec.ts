@@ -28,6 +28,8 @@ test("invitar → crear cuenta en móvil → consentir → portal → revocar", 
   await accept.click();
 
   await expect(page).toHaveURL(/\/portal$/);
+  await expect(page.getByText("Aún no tienes un plan activo")).toBeVisible();
+  await page.goto("/portal/cuenta");
   await expect(page.getByText("Dr. Desarrollador", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Revocar autorización" }).click();
   await page.getByRole("button", { name: "Sí, revocar" }).click();
