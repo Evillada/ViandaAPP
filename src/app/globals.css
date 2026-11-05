@@ -76,6 +76,43 @@ body {
   animation: slide-up 0.25s ease-out;
 }
 
+/* Saludo del portal */
+@keyframes greeting-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes greeting-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(6deg);
+  }
+}
+
+.greeting-enter {
+  animation: greeting-enter 0.45s ease-out both;
+}
+
+.greeting-float {
+  animation: greeting-float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .greeting-enter,
+  .greeting-float {
+    animation: none;
+  }
+}
+
 /* Modal backdrop */
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.4);

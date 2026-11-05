@@ -20,6 +20,15 @@ describe("saludo", () => {
     expect(buildGreeting(base({ now: new Date("2026-11-05T01:30:00Z") })).salutation).toBe("Buenas noches, María");
   });
 
+  it("indica el momento del día y el tipo de dato para la tarjeta", () => {
+    expect(buildGreeting(base()).period).toBe("MORNING");
+    expect(buildGreeting(base({ now: new Date("2026-11-04T19:00:00Z") })).period).toBe("AFTERNOON");
+    expect(buildGreeting(base({ now: new Date("2026-11-05T01:30:00Z") })).period).toBe("NIGHT");
+    expect(buildGreeting(base()).factKind).toBeNull();
+    expect(buildGreeting(base({ planActivatedAt: new Date("2026-11-01T15:00:00Z") })).factKind).toBe("PLAN");
+    expect(buildGreeting(base({ nextAppointmentAt: new Date("2026-11-06T15:00:00Z") })).factKind).toBe("APPOINTMENT");
+  });
+
   it("prioriza la cita de los próximos 7 días", () => {
     const g = buildGreeting(base({ nextAppointmentAt: new Date("2026-11-06T15:00:00Z"), planActivatedAt: new Date("2026-11-01T15:00:00Z") }));
     expect(g.fact).toMatch(/^Tu próxima cita es el viernes 6 de noviembre/);

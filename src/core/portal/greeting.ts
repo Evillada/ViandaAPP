@@ -18,9 +18,14 @@ export interface GreetingInput {
   professionalMessage: { text: string; until: Date | null; professionalName: string } | null;
 }
 
+export type DayPeriod = "MORNING" | "AFTERNOON" | "NIGHT";
+export type FactKind = "APPOINTMENT" | "PLAN" | "PROGRESS";
+
 export interface Greeting {
   salutation: string;
+  period: DayPeriod;
   fact: string | null;
+  factKind: FactKind | null;
   message: { text: string; author: string | null };
 }
 
@@ -37,11 +42,12 @@ function hourInBogota(now: Date): number {
   return Number(new Intl.DateTimeFormat("en-US", { timeZone: PORTAL_TIME_ZONE, hour: "numeric", hourCycle: "h23" }).format(now));
 }
 
-function salutation(now: Date, firstName: string): string {
+function dayPeriod(now: Date): DayPeriod {
   const hour = hourInBogota(now);
-  const part = hour >= 5 && hour < 12 ? "Buenos días" : hour >= 12 && hour < 19 ? "Buenas tardes" : "Buenas noches";
-  return `${part}, ${firstName}`;
+  return hour >= 5 && hour < 12 ? "MORNING" : hour >= 12 && hour < 19 ? "AFTERNOON" : "NIGHT";
 }
+
+const SALUTATIONS: Record<DayPeriod, string> = { MORNING: "Buenos días", AFTERNOON: "Buenas tardes", NIGHT: "Buenas noches" };
 
 const formatNumber = (value: number) => new Intl.NumberFormat("es-CO", { maximumFractionDigits: 1 }).format(value);
 
@@ -80,12 +86,17 @@ function progressFact(progress: GreetingInput["progress"]): string | null {
 }
 
 export function buildGreeting(input: GreetingInput): Greeting {
-  const fact =
-    appointmentFact(input.now, input.nextAppointmentAt) ?? planFact(input.now, input.planActivatedAt) ?? progressFact(input.progress);
+  const facts: [FactKind, string | null][] = [
+    ["APPOINTMENT", appointmentFact(input.now, input.nextAppointmentAt)],
+    ["PLAN", planFact(input.now, input.planActivatedAt)],
+    ["PROGRESS", progressFact(input.progress)],
+  ];
+  const [factKind, fact] = facts.find(([, text]) => text !== null) ?? [null, null];
+  const period = dayPeriod(input.now);
   const pm = input.professionalMessage;
   const message =
     pm && pm.text.trim() && (pm.until === null || pm.until.getTime() >= input.now.getTime())
       ? { text: pm.text.trim(), author: pm.professionalName }
       : { text: phraseOfTheDay(localDateKey(input.now), input.userId), author: null };
-  return { salutation: salutation(input.now, input.firstName), fact, message };
+  return { salutation: `${SALUTATIONS[period]}, ${input.firstName}`, period, fact, factKind, message };
 }
