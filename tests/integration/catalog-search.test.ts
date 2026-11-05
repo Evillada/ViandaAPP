@@ -38,9 +38,12 @@ describe("buscador de alimentos", () => {
     expect(await searchFoods({ query: "arroz", gabaGroup: "FRUITS" })).toEqual([]);
   });
 
-  it("sin búsqueda ni grupo no devuelve nada, y sin porción usa 100 g", async () => {
+  it("sin búsqueda (o con un solo carácter) ni grupo no devuelve nada; sin porción usa 100 g y el macro ausente es null", async () => {
     await seed();
     expect(await searchFoods({ query: "   " })).toEqual([]);
-    expect((await searchFoods({ query: "frijol" }))[0].portion).toEqual({ name: "100 g", grams: 100 });
+    expect(await searchFoods({ query: "a" })).toEqual([]);
+    const [frijol] = await searchFoods({ query: "frijol" });
+    expect(frijol.portion).toEqual({ name: "100 g", grams: 100 });
+    expect(frijol.per100g.protein).toBeNull();
   });
 });

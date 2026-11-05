@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { normalizeSearch } from "../src/core/catalog/names";
 
 const prisma = new PrismaClient();
 
@@ -123,15 +124,17 @@ async function main() {
   );
 
   for (const food of FOODS) {
-    const existing = await prisma.food.findFirst({ where: { name: food.name } });
+    const existing = await prisma.food.findFirst({ where: { name: food.name, catalogSource: "MANUAL" } });
+    const searchName = normalizeSearch(food.name);
     const foodRecord = existing
       ? await prisma.food.update({
           where: { id: existing.id },
-          data: { categoryId: categoryMap[food.category]! },
+          data: { categoryId: categoryMap[food.category]!, searchName },
         })
       : await prisma.food.create({
           data: {
             name: food.name,
+            searchName,
             categoryId: categoryMap[food.category]!,
             source: "ICBF",
             isGlobal: true,

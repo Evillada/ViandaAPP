@@ -25,13 +25,17 @@ const NO_MATCHES: ReadonlyMap<string, ExchangeMatch> = new Map();
 export function confirmedMatches(csv: string): Map<string, ExchangeMatch> {
   const [header, ...rows] = parseCsv(csv);
   const col = (name: string) => header.indexOf(name);
+  const subgroups = new Set<string>(GABA_SUBGROUPS.map((s) => s.key));
   return new Map(
     rows
       .filter((row) => row[col("confirmed")] === "1")
-      .map((row) => [
-        row[col("tcac_code")],
-        { subgroup: row[col("gaba_subgroup")] as GabaSubgroupKey, grams: Number(row[col("grams")]), measure: row[col("measure")] },
-      ])
+      .map((row) => {
+        const code = row[col("tcac_code")];
+        const grams = Number(row[col("grams")]);
+        const subgroup = row[col("gaba_subgroup")];
+        if (!code || !(grams > 0) || !subgroups.has(subgroup)) throw new Error(`gaba-matches.csv: fila confirmada inválida (${row.join(",")})`);
+        return [code, { subgroup: subgroup as GabaSubgroupKey, grams, measure: row[col("measure")] }];
+      })
   );
 }
 
@@ -146,15 +150,48 @@ export function exchangeFor(food: CatalogFood, confirmed: ReadonlyMap<string, Ex
   const match = confirmed.get(food.code);
   if (match) return { grams: match.grams, measure: match.measure, estimated: false };
   const subgroup = gabaSubgroupFor(food);
+  if (!subgroup) return null;
+  const average = EXCHANGE_AVERAGES[subgroup];
+  const macro = DEFINING_MACRO[subgroup];
+  const perHundred = macro ? macroPer100g(food, macro) : null;
   const kcal = food.values.energyKcal;
-  if (!subgroup || !kcal) return null;
-  return { grams: Math.round(EXCHANGE_AVERAGES[subgroup].kcal / (kcal / 100)), measure: null, estimated: true };
+  const candidates = [
+    macro && perHundred ? average[macro] / (perHundred / 100) : null,
+    kcal ? average.kcal / (kcal / 100) : null,
+  ].filter((grams): grams is number => grams !== null);
+  if (candidates.length === 0) return null;
+  // La menor porción: no aporta más que el intercambio ni en su nutriente definitorio ni en energía.
+  return { grams: Math.round(Math.min(...candidates)), measure: null, estimated: true };
+}
+
+/**
+ * Nutriente que define el intercambio: a igual energía, 164 g de clara no equivalen a un huevo. Los subgrupos
+ * mixtos (verduras, lácteos, leguminosas, semillas, dulces) se igualan por energía.
+ */
+const DEFINING_MACRO: Partial<Record<GabaSubgroupKey, "protein" | "carbs" | "fat">> = {
+  LEAN_MEATS: "protein",
+  HIGH_FAT_MEATS: "protein",
+  EGGS: "protein",
+  CEREALS: "carbs",
+  ROOTS: "carbs",
+  TUBERS: "carbs",
+  PLANTAINS: "carbs",
+  FRUITS: "carbs",
+  SUGARS_SIMPLE: "carbs",
+  FATS_POLYUNSATURATED: "fat",
+  FATS_MONOUNSATURATED: "fat",
+  FATS_SATURATED: "fat",
+};
+
+function macroPer100g(food: CatalogFood, macro: "protein" | "carbs" | "fat"): number | null {
+  const value = macro === "carbs" ? (food.values.carbsAvailable ?? food.values.carbsTotal) : food.values[macro];
+  return value != null && value > 0 ? value : null;
 }
 
 const ALLERGEN_PATTERNS: [Allergen, RegExp][] = [
-  ["GLUTEN", /\b(trigo|cebada|centeno|avena|pan(?! de yuca)|panes|galletas?|ponque|pasta alimenticia|espaguetis?|macarron\w*|croissant|hojaldre|muffin|brownie|roscon|mogolla|cerveza|malta|mantecada|pancakes?|calados?|bienestarina|seitan|cuscus|salvado)\b/],
-  ["MILK", /\b(leche|lacteo|queso|cuajada|crema|yogur\w*|kumis|arequipe|manjar|suero|lactosuero|bienestarina|helado de (crema|leche)|chocolatina|almojabana|pandebono|pan de yuca|ponque|croissant)\b|mantequilla(?! de mani)/],
-  ["EGG", /\b(huevos?|mayonesa|ponque|merengue|pancakes?|natilla)\b/],
+  ["GLUTEN", /\b(trigo|cebada|centeno|avena|pan(?! de yuca)|panes|galletas?|ponque|pasta alimenticia|espaguetis?|macarron\w*|croissant|hojaldre|muffins?|brownie|roscon|mogolla|mojicon|semolina|cerveza|malta|mantecada|pancakes?|calados?|bienestarina|seitan|cuscus|salvado|harina de cereales)\b/],
+  ["MILK", /\b(leche|lacteo|queso|cuajada|crema|yogur\w*|kumis|arequipe|manjar|suero|lactosuero|bienestarina|helado de (crema|leche)|chocolatina|almojabana|pandebono|pan de yuca|ponque|croissant|sabajon)\b|mantequilla(?! de mani)/],
+  ["EGG", /\b(huevos?|mayonesa|ponque|merengue|pancakes?|natilla|sabajon|muffins?)\b/],
   ["PEANUT", /\bmani\b/],
   ["TREE_NUTS", TREE_NUTS],
   ["FISH", FISH],
@@ -179,7 +216,7 @@ const withoutFalseFriends = (text: string) => text.replace(/arbol del pan|para p
 
 // Productos industriales (Res. 2492 aplica a empacados). Lo frito o con sal en casa y los platos típicos (grupo S) no lo son.
 const PROCESSED_GROUPS = new Set(["K", "N", "R"]);
-const PROCESSED = /\b(con azucar|salad[oa]s?|enlatad[oa]s?|en conserva|en almibar|encurtid[oa]s?|ahumad[oa]s?|precocid[oa]s?|nectar|gaseosa|salchich\w*|chorizo|jamon|mortadela|butifarra|morcilla|galletas?|ponque|pan|panes|mayonesa|margarina|hojaldre|croissant|roscon|mantecada|brownie|almojabana|pandebono|cereal para el desayuno|mezcla lista)\b/;
+const PROCESSED = /\b(con azucar|caldo|salsas?|chocolate|salad[oa]s?|enlatad[oa]s?|en conserva|en almibar|encurtid[oa]s?|ahumad[oa]s?|precocid[oa]s?|nectar|gaseosa|salchich\w*|chorizo|jamon|mortadela|butifarra|morcilla|galletas?|ponque|pan|panes|mayonesa|margarina|hojaldre|croissant|roscon|mantecada|brownie|almojabana|pandebono|cereal para el desayuno|mezcla lista)\b/;
 
 export function isProcessed(food: CatalogFood): boolean {
   return PROCESSED_GROUPS.has(groupLetter(food)) || has(withoutFalseFriends(searchText(food)), PROCESSED);
@@ -195,6 +232,10 @@ export function highInFor(food: CatalogFood): HighIn[] {
   return result;
 }
 
+// Bebidas, azucarados, misceláneos, regímenes especiales, manufacturados y preparados: el nombre no revela todos sus ingredientes.
+const REVIEW_GROUPS = new Set(["H", "K", "L", "N", "R", "S"]);
+
+/** Un falso negativo de alérgeno es peor que uno positivo: lo procesado y los grupos con ingredientes ocultos se revisan aunque no se detecte nada. */
 export function needsReview(food: CatalogFood): boolean {
-  return allergensFor(food).length > 0 || ["R", "S"].includes(groupLetter(food));
+  return allergensFor(food).length > 0 || isProcessed(food) || REVIEW_GROUPS.has(groupLetter(food));
 }

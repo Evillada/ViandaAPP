@@ -61,7 +61,14 @@ describe("porción de intercambio", () => {
     });
   });
 
-  it("sin coincidencia, calcula los gramos con el aporte del subgrupo y lo marca como estimado", () => {
+  it("sin coincidencia, iguala por el macronutriente que define el intercambio", () => {
+    // Huevos: 6,5 g de proteína por intercambio; clara con 10,9 g/100 g → 60 g (por energía saldrían 164 g).
+    expect(exchangeFor(food("J002", "Huevo de gallina, clara, crudo", { energyKcal: 47, protein: 10.9 }), new Map())).toMatchObject({ grams: 60 });
+    // Cereales: 16,7 g de carbohidratos; arroz crudo con 79 g disponibles → 21 g.
+    expect(exchangeFor(food("A010", "Arroz blanco, pulido, crudo", { energyKcal: 353, carbsAvailable: 79, carbsTotal: 80.1 }), new Map())).toMatchObject({ grams: 21 });
+  });
+
+  it("sin coincidencia ni macronutriente, calcula los gramos con la energía del subgrupo y lo marca como estimado", () => {
     // Cereales: 88 kcal por intercambio; 352 kcal/100 g → 25 g.
     expect(exchangeFor(food("A001", "Almidón de maíz, crudo", { energyKcal: 352 }), new Map())).toEqual({ grams: 25, measure: null, estimated: true });
     expect(exchangeFor(food("S001", "Ajiaco santafereño"), new Map())).toBeNull();
@@ -77,6 +84,12 @@ describe("coincidencias confirmadas", () => {
       '26,CEREALS,"Arroz blanco, cocido",80,6 cucharadas soperas colmadas,A011,"Arroz integral, cocido, sin sal",0.67,',
     ].join("\n");
     expect([...confirmedMatches(csv)]).toEqual([["A009", { subgroup: "CEREALS", grams: 80, measure: "6 cucharadas soperas colmadas" }]]);
+  });
+
+  it("rechaza una fila confirmada sin gramos o con subgrupo desconocido", () => {
+    const header = "table,gaba_subgroup,gaba_food,grams,measure,tcac_code,tcac_name,score,confirmed";
+    expect(() => confirmedMatches(`${header}\n26,CEREALS,Arroz,,x,A009,Arroz,1,1`)).toThrow(/inválida/);
+    expect(() => confirmedMatches(`${header}\n26,CEREAL,Arroz,80,x,A009,Arroz,1,1`)).toThrow(/inválida/);
   });
 });
 
@@ -105,9 +118,17 @@ describe("alérgenos", () => {
     expect(allergensFor(food("A067", "Pan de yuca, horneado"))).toEqual(["MILK"]);
   });
 
-  it("todo alimento con alérgeno o preparado/manufacturado queda por revisar", () => {
+  it("detecta los alérgenos de nombres en plural y de productos tradicionales", () => {
+    expect(allergensFor(food("A059", "Muffins dulces, con chips de chocolate"))).toEqual(["GLUTEN", "EGG"]);
+    expect(allergensFor(food("A085", "Semolina, enriquecida, cruda"))).toEqual(["GLUTEN"]);
+    expect(allergensFor(food("H016", "Sabajón de tomate de árbol amarillo, 14% de alcohol"))).toEqual(["MILK", "EGG"]);
+  });
+
+  it("todo alimento con alérgeno, procesado o de un grupo con ingredientes ocultos queda por revisar", () => {
     expect(needsReview(food("C003", "Almendra, seca"))).toBe(true);
     expect(needsReview(food("S001", "Ajiaco santafereño"))).toBe(true);
+    expect(needsReview(food("F127", "Salchicha de pollo, precocida"))).toBe(true);
+    expect(needsReview(food("L017", "Salsa de tomate"))).toBe(true);
     expect(needsReview(food("B003", "Acelga, hojas, cruda"))).toBe(false);
   });
 });

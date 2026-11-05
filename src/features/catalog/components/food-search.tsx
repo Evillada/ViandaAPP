@@ -4,12 +4,13 @@ import { useEffect, useState, useTransition } from "react";
 import { Search } from "lucide-react";
 import { searchFoodsAction } from "@/features/nutrition/actions";
 import type { FoodSearchResult } from "@/features/catalog/search";
-import { GABA_GROUP_SHORT_LABELS, HIGH_IN_LABELS } from "@/shared/lib/labels";
+import { ALLERGEN_LABELS, GABA_GROUP_SHORT_LABELS, HIGH_IN_LABELS } from "@/shared/lib/labels";
 import { cn } from "@/shared/lib/utils";
 
 const DEBOUNCE_MS = 300;
+const MIN_QUERY_LENGTH = 2;
 
-const perPortion = (per100g: number, grams: number) => Math.round((per100g * grams) / 100);
+const perPortion = (per100g: number | null, grams: number) => (per100g === null ? "—" : Math.round((per100g * grams) / 100));
 
 interface FoodSearchProps {
   selectedId: string | null;
@@ -23,19 +24,25 @@ export function FoodSearch({ selectedId, onSelect }: FoodSearchProps) {
   const [searched, setSearched] = useState(false);
   const [isPending, startTransition] = useTransition();
 
-  const active = Boolean(query.trim() || group);
+  const active = query.trim().length >= MIN_QUERY_LENGTH || group !== null;
   const shown = active ? results : [];
 
   useEffect(() => {
-    if (!query.trim() && !group) return;
+    if (!active) return;
+    let cancelled = false;
     const timer = setTimeout(() => {
       startTransition(async () => {
-        setResults(await searchFoodsAction(query, group));
+        const found = await searchFoodsAction(query, group);
+        if (cancelled) return;
+        setResults(found);
         setSearched(true);
       });
     }, DEBOUNCE_MS);
-    return () => clearTimeout(timer);
-  }, [query, group]);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [active, query, group]);
 
   return (
     <div className="space-y-3">
@@ -84,23 +91,36 @@ export function FoodSearch({ selectedId, onSelect }: FoodSearchProps) {
               >
                 <span className="block font-medium text-text">{food.name}</span>
                 <span className="block text-xs text-muted">
-                  {food.portion.name} ({food.portion.grams} g): {perPortion(food.per100g.kcal, food.portion.grams)} kcal · P {perPortion(food.per100g.protein, food.portion.grams)} g · C{" "}
-                  {perPortion(food.per100g.carbs, food.portion.grams)} g · G {perPortion(food.per100g.fat, food.portion.grams)} g
+                  {food.portion.name} ({food.portion.grams} g{food.exchangeEstimated && ", estimado"}): {perPortion(food.per100g.kcal, food.portion.grams)} kcal · P{" "}
+                  {perPortion(food.per100g.protein, food.portion.grams)} g · C {perPortion(food.per100g.carbs, food.portion.grams)} g · G{" "}
+                  {perPortion(food.per100g.fat, food.portion.grams)} g
                 </span>
-                {food.highIn.length > 0 && (
-                  <span className="mt-1 flex flex-wrap gap-1">
-                    {food.highIn.map((seal) => (
-                      <span key={seal} className="rounded bg-text px-1.5 py-0.5 text-[10px] font-semibold uppercase text-white">
-                        {HIGH_IN_LABELS[seal]}
-                      </span>
-                    ))}
-                  </span>
-                )}
+                <FoodBadges food={food} />
               </button>
             </li>
           ))}
         </ul>
       )}
     </div>
+  );
+}
+
+const BADGE = "rounded px-1.5 py-0.5 text-[10px] font-semibold";
+
+function FoodBadges({ food }: { food: FoodSearchResult }) {
+  if (food.highIn.length === 0 && food.allergens.length === 0 && !food.needsReview && !food.isProcessed) return null;
+  return (
+    <span className="mt-1 flex flex-wrap gap-1">
+      {food.highIn.map((seal) => (
+        <span key={seal} className={cn(BADGE, "bg-text uppercase text-white")}>
+          {HIGH_IN_LABELS[seal]}
+        </span>
+      ))}
+      {food.isProcessed && <span className={cn(BADGE, "border border-border text-muted")}>Azúcares sin evaluar</span>}
+      {food.allergens.length > 0 && (
+        <span className={cn(BADGE, "bg-amber-100 text-amber-900")}>Contiene: {food.allergens.map((a) => ALLERGEN_LABELS[a]).join(", ")}</span>
+      )}
+      {food.needsReview && <span className={cn(BADGE, "bg-amber-50 text-amber-800")}>Pendiente de revisión</span>}
+    </span>
   );
 }

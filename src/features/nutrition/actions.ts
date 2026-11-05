@@ -27,6 +27,8 @@ async function auditMealPlan(actorId: string, mealPlanId: string, patientId: str
 }
 
 const GABA_GROUPS = new Set<string>(Object.values(GabaGroup));
+const MAX_PORTION_GRAMS = 2000;
+const MAX_QUANTITY = 20;
 
 export async function searchFoodsAction(query: string, gabaGroup: string | null): Promise<FoodSearchResult[]> {
   const actor = await getActorFor("PROFESSIONAL");
@@ -290,6 +292,12 @@ export async function addMealItem(formData: FormData) {
   if (!mealId || !foodId || !portionGrams) {
     return { error: "Datos incompletos" };
   }
+  if (!Number.isFinite(portionGrams) || portionGrams <= 0 || portionGrams > MAX_PORTION_GRAMS) {
+    return { error: `La porción debe estar entre 1 y ${MAX_PORTION_GRAMS} g` };
+  }
+  if (!Number.isFinite(quantity) || quantity <= 0 || quantity > MAX_QUANTITY) {
+    return { error: `La cantidad debe estar entre 1 y ${MAX_QUANTITY}` };
+  }
 
   const plan = await prisma.mealPlan.findFirst({
     where: { id: mealPlanId, professionalId: actor.userId },
@@ -298,6 +306,9 @@ export async function addMealItem(formData: FormData) {
 
   const meal = await prisma.meal.findFirst({ where: { id: mealId, day: { mealPlanId } }, select: { id: true } });
   if (!meal) return { error: "Comida no encontrada en este plan" };
+
+  const food = await prisma.food.findUnique({ where: { id: foodId }, select: { id: true } });
+  if (!food) return { error: "Alimento no encontrado" };
 
   await prisma.mealItem.create({
     data: { mealId, foodId, portionGrams, quantity },

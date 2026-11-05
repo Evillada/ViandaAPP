@@ -107,6 +107,18 @@ export const HIGH_IN_LABELS: Record<string, string> = {
   SATURATED_FAT: "Alto en grasas saturadas",
 };
 
+export const ALLERGEN_LABELS: Record<string, string> = {
+  GLUTEN: "Gluten",
+  MILK: "Leche",
+  EGG: "Huevo",
+  PEANUT: "Maní",
+  TREE_NUTS: "Frutos secos",
+  FISH: "Pescado",
+  SHELLFISH: "Mariscos",
+  SOY: "Soya",
+  SESAME: "Ajonjolí",
+};
+
 export const PLAN_STATUS_LABELS: Record<string, string> = {
   DRAFT: "Borrador",
   ACTIVE: "Activo",
