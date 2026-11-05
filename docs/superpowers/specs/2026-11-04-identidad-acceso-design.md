@@ -1,7 +1,7 @@
 # Subproyecto A — Identidad y acceso
 
 **Fecha:** 2026-11-04
-**Estado:** Diseño aprobado — pendiente de plan de implementación
+**Estado:** Implementado
 **Origen:** `2026-11-04-nutriai-startup-strategy.md` §3, §5, §6, §9
 **Reglas del proyecto:** `CLAUDE.md` (pnpm; responsive-first)
 
